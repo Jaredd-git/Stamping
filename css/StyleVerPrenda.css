@@ -1,0 +1,58 @@
+@import url(https://fonts.cdnfonts.com/css/lexend-deca);
+
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lexend Deca', sans-serif;
+    background-color: #F2F2F2;
+
+}
+
+
+
+
+
+.selects{
+    width: 289px;
+    height: 33px;
+    background-color: #595959;
+    color: white;
+
+}
+
+.explorar{
+    width: 250px;
+    background-color: #595959;
+    color: white;
+    height: 33px;
+}
+
+.ayuda{
+    background-color: #CCCCCC;
+    border-radius: 10px;
+    width: 25px;
+    height: 25px;
+}
+
+.estampado{
+    display: flex;
+    width: 280px;
+    justify-content: space-between;   
+}
+.cantidad{
+    width: 50px;
+    height: 33px;
+    background-color: #595959;
+    color: white;
+}
+
+.btbA{
+    width: 235px;
+    height: 33px;
+    color: white;
+    background-color: #595959;
+}
