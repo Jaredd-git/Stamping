@@ -27,7 +27,7 @@ body {
 
 .imgS {
     height: 5rem;
-    background-image: url('../img/banner.png');
+    background-image: url('../image/iconos/banner.png');
     background-repeat: no-repeat;
     background-size: cover;
     flex-grow: 1;
@@ -68,7 +68,7 @@ body {
 
 .imgI {
     transform: rotate(180deg);
-    background-image: url('../img/banner.png');
+    background-image: url('../image/iconos/banner.png');
     background-repeat: no-repeat;
     background-size: cover;
     height: 5rem;
