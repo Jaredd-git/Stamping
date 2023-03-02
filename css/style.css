@@ -101,3 +101,12 @@ form a:hover{
     font-size: 14px;
     
 }
+
+.v-line{
+    border-left: thick solid #cccccc;
+    border-left-width: 1px;
+    height: 60%;
+    width: 1%;
+    left: 15%;
+    position: absolute;
+   }
