@@ -8,6 +8,14 @@
     height: 70%;
     overflow: hidden;
 }*/
+
+.btn{
+  background-color: #cccccc;
+  border-radius: 20px;
+  width: 220px;
+  height: 220px;
+}
+
 body{
     font-family: 'Lexend Deca', sans-serif;
     background: #F2F2F2;
