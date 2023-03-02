@@ -34,10 +34,6 @@ body {
     flex-shrink: 1;
 }
 
-
-
-
-
 .btn-login {
     margin-top: 20px;
     background: #565656;
@@ -52,7 +48,6 @@ body {
     cursor: pointer;
     vertical-align: middle;
     overflow: hidden;
-    text-align: center;
 }
 .selects{
     width: 289px;
@@ -61,10 +56,6 @@ body {
     color: white;
     margin-top: 10px;
 }
-
-
-
-
 
 .imgI {
     transform: rotate(180deg);
