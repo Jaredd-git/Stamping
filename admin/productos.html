@@ -1,206 +1,203 @@
 <!doctype html>
 <html lang="es">
-
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Stamping</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-</head>
-
-<body>
-	<header>
-		<!-- Esta sección de código crea una barra de navegación fija en la parte superior de la página, con un fondo gris claro y tres iconos alineados a la derecha. -->
-		<nav class="fixed-top" style="background-color: #CCCCCC; width: auto; height: 70px; padding-top: 15px;">
-			<h2 class="text-center">Stamping</h2>
-			<!-- Esta etiqueta ul contiene los íconos de búsqueda, usuario y bolsa, ubicados en la parte superior derecha de la página web -->
-			<ul class="nav justify-content-end fixed-top" style="padding: 14px;">
-				<li class="nav-item">
-					<a class="nav-link active" aria-current="page" href="#">
-						<img src="../image/iconos/isearch.png" alt="search" width="35px">
-					</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link active" aria-current="page" href="#">
-						<img src="../image/iconos/iuser.png" alt="user" width="25px">
-					</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link active" aria-current="page" href="#">
-						<img src="../image/iconos/ibolsa.png" alt="bolsa" width="25px">
-					</a>
-				</li>
-			</ul>
-		</nav>
-	</header>
-	<br>
-	<br>
-	<br>
-	<br>
-	<main>
-		<!-- Boton para regresar a la pagina anterior -->
-		<a style="margin-left: 8%; background-color: #cccccc;" type="button" class="btn" role="button"
-			href="index.html">Regresar</a>
-		<div class="container">
-			<h3 class="text-center">Administración de Productos</h3>
-		</div>
-		<!-- Buscador de la tabla -->
-		<div>
-			<div class="input-group rounded" style="width: 300px; margin-left: 8%; margin-bottom: 1%;">
-				<input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-					aria-describedby="search-addon" />
-				<span class="input-group-text border-0" id="search-addon">
-					<i><img src="../image/iconos/buscar.png" alt=""></i>
-				</span>
-				<i style="margin: 2%;">
-					<img src="../image/iconos/add.png" alt="">
-				</i>
-			</div>
-		</div>
-		<!-- Crea una tabla para mostrar los productos -->
-		<div class="row" style="max-height: 400px; margin-left: 8%; margin-right: 8%; text-align: center;">
-			<table class="table table-striped table-bordered table-hover">
-				<!-- Agrega la cabecera de la tabla -->
-				<thead>
-					<tr>
-						<th scope="col">Producto</th>
-						<th scope="col">Descripción</th>
-						<th scope="col">Categoría</th>
-						<th scope="col">Tipo</th>
-						<th scope="col">Tallas</th>
-						<th scope="col">Colores</th>
-						<th scope="col">Estado</th>
-						<th scope="col">Acciones</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<th scope="row">Camisa Polo</th>
-						<td>Camisa polo de diferentes colores</td>
-						<td>Premium</td>
-						<td>Camiseta</td>
-						<td class="text-center"><img src="../image/iconos/table.png" alt="table" width="20px"></td>
-						<td class="text-center"><img src="../image/iconos/table.png" alt="table_color" width="20px">
-						</td>
-						<td class="text-center">
-							<div class="form-check">
-								<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-								<label class="form-check-label" for="flexCheckDefault">
-								</label>
-							</div>
-						</td>
-						<td>
-							<div class="form-group row">
-								<div class="col-sm-1">
-									<a href="#" role="button">
-										<img src="../image/iconos/editar.png" alt="editar" width="18px">
-									</a>
-								</div>
-								<div class="col-sm-2">
-									<a href="#" role="button">
-										<img src="../image/iconos/eliminar.png" alt="eliminar" width="18px">
-									</a>
-								</div>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<th scope="row">Camiseta informal</th>
-						<td>Camiseta informal de diferentes colores</td>
-						<td>Semi - premium</td>
-						<td>Camiseta</td>
-						<td class="text-center"><img src="../image/iconos/table.png" alt="table" width="20px"></td>
-						<td class="text-center"><img src="../image/iconos/table.png" alt="table_color" width="20px">
-						</td>
-						<td class="text-center">
-							<div class="form-check">
-								<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-								<label class="form-check-label" for="flexCheckDefault">
-								</label>
-							</div>
-						</td>
-						<td>
-							<div class="form-group row">
-								<div class="col-sm-1">
-									<a href="#" role="button">
-										<img src="../image/iconos/editar.png" alt="editar" width="18px">
-									</a>
-								</div>
-								<div class="col-sm-2">
-									<a href="#" role="button">
-										<img src="../image/iconos/eliminar.png" alt="eliminar" width="18px">
-									</a>
-								</div>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<th scope="row">Hoodie</th>
-						<td>Suéter hoodie de diferentes colores</td>
-						<td>Normal</td>
-						<td>Hoodie</td>
-						<td class="text-center"><img src="../image/iconos/table.png" alt="table" width="20px"></td>
-						<td class="text-center"><img src="../image/iconos/table.png" alt="table_color" width="20px">
-						</td>
-						<td class="text-center">
-							<div class="form-check">
-								<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-								<label class="form-check-label" for="flexCheckDefault">
-								</label>
-							</div>
-						</td>
-						<td>
-							<div class="form-group row">
-								<div class="col-sm-1">
-									<a href="#" role="button">
-										<img src="../image/iconos/editar.png" alt="editar" width="18px">
-									</a>
-								</div>
-								<div class="col-sm-2">
-									<a href="#" role="button">
-										<img src="../image/iconos/eliminar.png" alt="eliminar" width="18px">
-									</a>
-								</div>
-							</div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-
-	</main>
-	<!-- Footer con enlaces a redes sociales y terminos y condiciones -->
-	<footer style="background-color: rgba(204, 204, 204, 1); text-align: center;" class="fixed-bottom">
-		<div class="container p-4 pb-0">
-			<section class="mb-4 row row-cols-1 row-cols-md-3 g-4">
-				<!-- Nombre de la empresa -->
-				<a style="text-align: left;" class="text-dark">Stamping Store</a>
-				<!-- Enlaces a redes sociales -->
-				<section>
-					<a href="https://www.facebook.com/"><i><img style="width: 30px; "
-								src="../image/iconos/Facebook.png"></i></a>
-					<a href="https://www.instagram.com/"><i><img style="width: 30px;"
-								src="../image/iconos/Instagram.png"></i></a>
-					<a href="https://www.whatsapp.com/?lang=es"><i><img style="width: 30px;"
-								src="../image/iconos/WhatsApp.png"></i></a>
-					<a href="https://www.pinterest.es/"><i><img style="width: 30px;"
-								src="../image/iconos/Pinterest.png"></i></a>
-				</section>
-				<!-- Enlace a terminos y condiciones -->
-				<a style="text-align: right;" class="text-dark">Terminos y condiciones</a>
-			</section>
-		</div>
-		<!-- Copyright de la empresa -->
-		<div class="text-center p-3" style="background-color: rgba(204, 204, 204, 1);">
-			© 2020 Copyright:
-			<a class="text-dark" href="https://mdbootstrap.com/">Stamping</a>
-		</div>
-	</footer>
-
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-		crossorigin="anonymous"></script>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stamping</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  </head>
+  <body>
+    <header>
+      <!-- Esta sección de código crea una barra de navegación fija en la parte superior de la página, con un fondo gris claro y tres iconos alineados a la derecha. --> 
+      <nav class="fixed-top" style="background-color: #CCCCCC; width: auto; height: 70px; padding-top: 15px;">
+        <h2 class="text-center">Stamping</h2>
+        <!-- Esta etiqueta ul contiene los íconos de búsqueda, usuario y bolsa, ubicados en la parte superior derecha de la página web -->
+        <ul class="nav justify-content-end fixed-top" style="padding: 14px;">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">
+              <img src="../image/iconos/isearch.png" alt="search" width="35px">
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">
+              <img src="../image/iconos/iuser.png" alt="user" width="25px">
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">
+              <img src="../image/iconos/ibolsa.png" alt="bolsa" width="25px">
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <br>
+    <br>
+    <br>
+    <br>
+    <main>
+      <a style="margin-left: 8%; background-color: #cccccc;" type="button" class="btn" role="button" href="index.html">Regresar</a>
+      <div class="container">
+        <h3 class="text-center">Administración de Productos</h3>
+      </div>
+      <div>
+        <div class="input-group rounded" style="width: 300px; margin-left: 8%; margin-bottom: 1%;">
+            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                aria-describedby="search-addon" />
+            <span class="input-group-text border-0" id="search-addon">
+                <i><img src="../image/iconos/buscar.png" alt=""></i>
+            </span>
+            <i style="margin: 2%;">
+                <img src="../image/iconos/add.png" alt="">
+            </i>
+        </div>
+    </div>
+      <!-- Crea una tabla para mostrar los productos -->
+      <div class="row" style="max-height: 400px; margin-left: 8%; margin-right: 8%; text-align: center;">
+        <table class="table table-striped table-bordered table-hover">
+          <!-- Agrega la cabecera de la tabla -->
+          <thead>
+            <tr>
+              <th scope="col">Producto</th>
+              <th scope="col">Descripción</th>
+              <th scope="col">Categoría</th>
+              <th scope="col">Tipo</th>
+              <th scope="col">Tallas</th>
+              <th scope="col">Colores</th>
+              <th scope="col">Estado</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Camisa Polo</th>
+              <td>Camisa polo de diferentes colores</td>
+              <td>Premium</td>
+              <td>Camiseta</td>
+              <td class="text-center"><img src="../image/iconos/table.png" alt="table" width="20px"></td>
+              <td class="text-center"><img src="../image/iconos/table.png" alt="table_color" width="20px"></td>
+              <td class="text-center">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault">
+                  </label>
+                </div>
+              </td>
+              <td>
+                <div class="form-group row">
+                  <div class="col-sm-1">
+                    <a href="#" role="button">
+                      <img src="../image/iconos/editar.png" alt="editar" width="18px">
+                    </a>
+                  </div>
+                  <div class="col-sm-2">
+                    <a href="#" role="button">
+                      <img src="../image/iconos/eliminar.png" alt="eliminar" width="18px">
+                    </a>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Camiseta informal</th>
+              <td>Camiseta informal de diferentes colores</td>
+              <td>Semi - premium</td>
+              <td>Camiseta</td>
+              <td class="text-center"><img src="../image/iconos/table.png" alt="table" width="20px"></td>
+              <td class="text-center"><img src="../image/iconos/table.png" alt="table_color" width="20px"></td>
+              <td class="text-center">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault">
+                  </label>
+                </div>
+              </td>
+              <td>
+                <div class="form-group row">
+                  <div class="col-sm-1">
+                    <a href="#" role="button">
+                      <img src="../image/iconos/editar.png" alt="editar" width="18px">
+                    </a>
+                  </div>
+                  <div class="col-sm-2">
+                    <a href="#" role="button">
+                      <img src="../image/iconos/eliminar.png" alt="eliminar" width="18px">
+                    </a>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Hoodie</th>
+              <td>Suéter hoodie de diferentes colores</td>
+              <td>Normal</td>
+              <td>Hoodie</td>
+              <td class="text-center"><img src="../image/iconos/table.png" alt="table" width="20px"></td>
+              <td class="text-center"><img src="../image/iconos/table.png" alt="table_color" width="20px"></td>
+              <td class="text-center">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault">
+                  </label>
+                </div>
+              </td>
+              <td>
+                <div class="form-group row">
+                  <div class="col-sm-1">
+                    <a href="#" role="button">
+                      <img src="../image/iconos/editar.png" alt="editar" width="18px">
+                    </a>
+                  </div>
+                  <div class="col-sm-2">
+                    <a href="#" role="button">
+                      <img src="../image/iconos/eliminar.png" alt="eliminar" width="18px">
+                    </a>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+    </main>
+    <!-- Footer con enlaces a redes sociales y terminos y condiciones -->
+    <footer style="background-color: rgba(204, 204, 204, 1); text-align: center;" class="fixed-bottom" >
+      <div class="container p-4 pb-0">
+          <section class="mb-4 row row-cols-1 row-cols-md-3 g-4">
+            <!-- Nombre de la empresa -->
+            <a style="text-align: left;" class="text-dark">Stamping Store</a>
+            <!-- Enlaces a redes sociales -->
+            <section>
+              <a href="https://www.facebook.com/"><i><img style="width: 30px; " src="../image/iconos/Facebook.png"></i></a>
+              <a href="https://www.instagram.com/"><i><img style="width: 30px;" src="../image/iconos/Instagram.png"></i></a>
+              <a href="https://www.whatsapp.com/?lang=es"><i><img style="width: 30px;" src="../image/iconos/WhatsApp.png"></i></a>
+              <a href="https://www.pinterest.es/"><i><img style="width: 30px;" src="../image/iconos/Pinterest.png"></i></a>
+            </section>
+            <!-- Enlace a terminos y condiciones -->
+            <section style="text-align: right;">
+              <div class="row">
+                  <a style="text-align: right;" class="text-dark">Terminos y condiciones</a>
+                  <div class="col">
+                      <a style="text-align: right;" class="text-dark" href="../public/sobrenostros.html">Nosotros</a>
+                      
+                      <a style="text-align: right;" class="text-dark" href="../public/">Contactanos</a>
+                  </div>                    
+              </div>             
+            </section>
+          </section>
+        </div>
+        <!-- Copyright de la empresa -->
+        <div class="text-center p-3" style="background-color: rgba(204, 204, 204, 1);">
+          © 2020 Copyright:
+          <a class="text-dark" href="https://mdbootstrap.com/">Stamping</a>
+        </div>
+  </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"></script>
+  </body>
 
 </html>
