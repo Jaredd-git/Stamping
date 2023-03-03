@@ -13,7 +13,7 @@
 <body>
     <header>
         <!-- Esta sección de código crea una barra de navegación fija en la parte superior de la página, con un fondo gris claro y tres iconos alineados a la derecha. -->
-        <nav class="barra-nav navbar navbar-ligth sticky-top" style="background-color: #cccccc">
+        <nav class="barra-nav navbar navbar-ligth fixed-top" style="background-color: #cccccc">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
@@ -70,10 +70,10 @@
         </div>       
       </div>
       <!-- Este contenedor muestra una serie de botones con imágenes y texto que llevan a páginas de administración -->
-      <div class="container" style="margin-left: 12%;">
+      <div class="container">
         <div class="row justify-content-lg-center">
           <!-- Esta etiqueta div contiene un botón que redirige a la página de administración de productos -->
-          <div class="col-3">
+          <div class="col-lg-3 mt-4 text-center">
             <a href="../admin/productos.html" target="_blank">
               <button class="btn btn-lg">
                 <span class="align-items-center">
@@ -84,7 +84,7 @@
             </a>
           </div>
           <!-- Esta etiqueta div contiene un botón que redirige a la página de administración de clientes -->
-          <div class="col-3">
+          <div class="col-lg-3 mt-4 text-center">
             <a href="../admin/clientes.html" target="_blank">
               <button class="btn btn-lg">
                 <span class="align-items-center">
@@ -95,7 +95,7 @@
             </a>
           </div>
           <!-- Esta etiqueta div contiene un botón que redirige a la página de administración de usuarios -->
-          <div class="col-3">
+          <div class="col-lg-3 mt-4 text-center">
             <a href="../admin/usuarios.html" target="_blank">
               <button class="btn btn-lg">
                 <span class="">
@@ -106,7 +106,7 @@
             </a>
           </div>
           <!-- Esta etiqueta div contiene un botón que redirige a la página de administración de categorías -->
-          <div class="col-3">
+          <div class="col-lg-3 mt-4 text-center">
             <a href="categorias.html" target="_blank">
               <button class="btn btn-lg">
                 <span class="align-items-center">
@@ -117,12 +117,12 @@
             </a>
           </div>
         </div>
-        <div class="row align-items-center" style="margin-top: 20px; margin-left: 20%;">
+        <div class="row mt-4 text-center">
           <!-- Esta etiqueta div contiene un botón que redirige a la página de administración de pedidos -->
-          <div class="col-4">
+          <div class="col-lg-6 ">
             <a href="../admin/pedidos.html" target="_blank">
               <button class="btn btn-lg">
-                <span class="align-content-center">
+                <span>
                   <img src="../image/iconos/adpedidos.png" alt="pedidos" style="width: 130px; height: 130px;">
                 </span>
                 <h5 class="text-center">Administra tus pedidos</h5>
@@ -130,7 +130,7 @@
             </a>
           </div>
           <!-- Esta etiqueta div contiene un botón que redirige a la página de administración de valoraciones -->
-          <div class="col-4">
+          <div class="col-lg-6">
             <a href="valoraciones.html" target="_blank">
               <button class="btn btn-lg">
                 <span class="">
@@ -145,7 +145,7 @@
     </main>
     <br>
     <!-- Footer con enlaces a redes sociales y terminos y condiciones -->
-    <footer style="background-color: rgba(204, 204, 204, 1); text-align: center;" class="sticky-bottom" >
+    <footer style="background-color: rgba(204, 204, 204, 1); text-align: center;" class="fixed-bottom" >
       <div class="container p-4 pb-0">
           <section class="mb-4 row row-cols-1 row-cols-md-3 g-4">
             <!-- Nombre de la empresa -->
