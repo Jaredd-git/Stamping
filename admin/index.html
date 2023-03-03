@@ -11,7 +11,7 @@
   <body>
     <header>
       <!-- Navbar de la pagina web -->
-      <div class="sticky-top">
+      <div class="fixed-top">
         <nav class="barra-nav navbar navbar-ligth sticky-top" style="background-color: #cccccc">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -49,7 +49,7 @@
         </div>
       </div>
     </header>
-    <br>
+    <br><br><br><br>
     <main>      
       <!--Esta sección de código crea un contenedor con un título y dos columnas, en la primera se muestra un texto de bienvenida y en la segunda una descripción de las opciones de administración-->
       <div class="container" style="text-align: justify;">
@@ -70,7 +70,7 @@
         </div>       
       </div>
       <!-- Este contenedor muestra una serie de botones con imágenes y texto que llevan a páginas de administración -->
-      <div class="container" style="margin-left: 17%;">
+      <div class="container" style="margin-left: 10%;">
         <div class="row justify-content-lg-center">
           <!-- Esta etiqueta div contiene un botón que redirige a la página de administración de productos -->
           <div class="col-3">
@@ -145,7 +145,7 @@
     </main>
     <br>
     <!-- Footer con enlaces a redes sociales y terminos y condiciones -->
-    <footer style="background-color: rgba(204, 204, 204, 1); text-align: center;" class="fixed-bottom" >
+    <footer style="background-color: rgba(204, 204, 204, 1); text-align: center;" class="sticky-bottom" >
       <div class="container p-4 pb-0">
           <section class="mb-4 row row-cols-1 row-cols-md-3 g-4">
             <!-- Nombre de la empresa -->
@@ -158,13 +158,22 @@
               <a href="https://www.pinterest.es/"><i><img style="width: 30px;" src="../image/iconos/Pinterest.png"></i></a>
             </section>
             <!-- Enlace a terminos y condiciones -->
-            <a style="text-align: right;" class="text-dark">Terminos y condiciones</a>
+            <section style="text-align: right;">
+              <div class="row">
+                  <a style="text-align: right;" class="text-dark">Terminos y condiciones</a>
+                  <div class="col">
+                      <a style="text-align: right;" class="text-dark" href="../public/sobrenostros.html">Nosotros</a>
+                      
+                      <a style="text-align: right;" class="text-dark" href="../public/">Contactanos</a>
+                  </div>                    
+              </div>             
+            </section>
           </section>
         </div>
         <!-- Copyright de la empresa -->
         <div class="text-center p-3" style="background-color: rgba(204, 204, 204, 1);">
           © 2020 Copyright:
-          <a class="text-dark" href="https://mdbootstrap.com/">Stamping</a>
+          <a class="text-dark" href="../admin/index.html">Stamping</a>
         </div>
   </footer>
 
