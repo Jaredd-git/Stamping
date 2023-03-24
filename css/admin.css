@@ -6,7 +6,6 @@
 
 body{
     background-color: #f2f2f2;
-    margin: 20px;
 }
 
 .btn{
@@ -37,4 +36,9 @@ i{
 
 a{
     text-decoration: none;
+}
+
+footer{
+    background-color: rgba(204, 204, 204, 1); 
+    text-align: center;
 }
