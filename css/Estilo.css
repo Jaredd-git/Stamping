@@ -14,3 +14,12 @@ body {
 .contenido-navbar{
     background-color: #f5f3f3;
 }
+
+.v-line{
+    border-left: thick solid #cccccc;
+    border-left-width: 1px;
+    height: 60%;
+    width: 1%;
+    left: 10%;
+    position: absolute;
+}
