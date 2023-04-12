@@ -6,7 +6,7 @@ const FOOTER = document.querySelector('footer');
 HEADER.innerHTML = `
     <!-- Navbar de la pagina web -->
         <div class="sticky-top">
-            <nav class="barra-nav navbar navbar-ligth sticky-top" style="background-color: #cccccc">
+            <nav class="barra-nav navbar navbar-ligth sticky-top" style="background-color: #ccc">
                 <div class="container-fluid">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
@@ -46,7 +46,7 @@ HEADER.innerHTML = `
 
 /* Se manda al footer codigo para usarlo en el html */
 FOOTER.innerHTML = `
-    <div class="container p-4 pb-0">
+    <div class="container p-4 pb-0" style="background-color: #cccccc">
         <section class="mb-4 row row-cols-1 row-cols-md-3 g-4">
             <!-- Nombre de la empresa -->
             <a style="text-align: left;" class="text-dark">Stamping Store</a>

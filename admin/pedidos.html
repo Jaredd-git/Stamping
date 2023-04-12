@@ -4,19 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pedidos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/admin.css">
 </head>
 
 <body>
     <header></header>
     <main>
-        <a style="margin-left: 6%; background-color: #cccccc;" type="button" class="btn" role="button"
+        <a type="button" class="btn" role="button"
             href="../admin/home.html">Regresar</a>
         <div class="container">
             <h3 class="text-center">Administración de pedidos</h3>
         </div>
         <div>
-            <div class="input-group rounded" style="width: 300px; margin-left: 5%; margin-bottom: 1%; margin-top: 1%">
+            <div class="input-group rounded">
                 <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
                     aria-describedby="search-addon" />
                 <span class="input-group-text border-0" id="search-addon">
@@ -27,21 +29,20 @@
                 </i>
             </div>
         </div>
-        <br>
-        <div class="row" style="margin-left: 3%;">
+        <div class="row" id="div-table">
             <div class="col-6">
-                <div class="row" style="max-height: 400px; margin-left: 5%; text-align: center;">
+                <div class="row">
                     <!-- Se crea una tabla para mostrar los datos de los usuarios administradores -->
                     <table class="table table-striped table-bordered table-hover">
                         <thead>
                             <tr>
                                 <!-- Se agregan los encabezados de la tabla -->
-                                <th scope="col" style="width: 100px;"># Pedido</th>
-                                <th scope="col" style="width: 170px;">Cliente</th>
-                                <th scope="col" style="width: 170px;">Fecha</th>
-                                <th scope="col" style="width: 170px;">Dirección</th>
-                                <th scope="col" style="width: 170px;">Estado</th>
-                                <th scope="col" style="width: 60px;">Detalles</th>
+                                <th scope="col" ># Pedido</th>
+                                <th scope="col" >Cliente</th>
+                                <th scope="col" >Fecha</th>
+                                <th scope="col" >Dirección</th>
+                                <th scope="col" >Estado</th>
+                                <th scope="col" >Detalles</th>
                             </tr>
                         </thead>
                         <!-- Se controlan los datos de los usuarios admin a la tabla-->
@@ -115,8 +116,7 @@
             </div>
             <!--crear una sección de la página web con un título y un botón para recuperar la contraseña de un usuario administrador-->
             <div class="col">
-                <div>
-                    <h3 style="font: bold; text-align: center;">Estadísticas de pedidos</h3>
+                <div>Estadísticas de pedidos</h3>
                 </div>
                 <div class="container">
                     <div class="row">
@@ -130,8 +130,7 @@
     </main>
     <br>
     <!-- Footer con enlaces a redes sociales y terminos y condiciones -->
-    <footer class=" footer fixed-bottom text-center text-dark "
-        style="background-color: rgba(204, 204, 204, 1); text-align: center;"></footer>
+    <footer class="text-center text-dark fixed-bottom"></footer>
 
     <script type="text/javascript" src="../js/account.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
@@ -140,10 +139,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
         integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
         crossorigin="anonymous"></script>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </body>
 
 </html>
