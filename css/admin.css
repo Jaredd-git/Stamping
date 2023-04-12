@@ -2,6 +2,8 @@
 
 *{
     font-family: 'Lexend Deca', sans-serif;
+    padding: 0;
+    margin: 0;
 }
 
 body{
@@ -41,4 +43,17 @@ a{
 footer{
     background-color: rgba(204, 204, 204, 1); 
     text-align: center;
+}
+
+.navbar{
+    background-color: #cccccc;
+}
+
+.footer{
+    background-color: #cccccc; 
+    text-align: center;
+}
+
+footer a{
+    width: 30px;
 }
