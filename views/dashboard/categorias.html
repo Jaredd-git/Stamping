@@ -14,7 +14,7 @@
     <header></header>
     <main>
         <!-- Boton para volver a la pagina anterior -->
-            <a type="button" class="btn" role="button" id="btn-regresar" href="../../views/dashboard/home.html">Regresar</a>
+        <a type="button" class="btn" role="button" id="btn-regresar" href="../../views/dashboard/home.html">Regresar</a>
         <div class="container">
             <h3 class="text-center">Administración categorias</h3>
         </div>
@@ -24,9 +24,9 @@
                 <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
                     aria-describedby="search-addon" />
                 <span class="input-group-text border-0" id="search-addon">
-                    <i><img src="../../resources/img/iconos/buscar.png" alt=""></i>
+                    <a href=""><img src="../../resources/img/iconos/buscar.png" alt=""></a>
                 </span>
-                <i>
+                <i id="agregar">
                     <img src="../../resources/img/iconos/add.png" alt="">
                 </i>
             </div>
@@ -92,11 +92,12 @@
         </div>
         <!-- Estadisticas de los productos -->
         <div class="container">
-            <h3 class="text">Estadisticas</h3>
+            <h3 class="text-center">Estadisticas</h3>
         </div>
     </main>
 
-    <footer class="text-center text-dark fixed-bottom"></footer>
+    <footer class="text-center text-dark fixed-bottom">
+    </footer>
 
     <script type="text/javascript" src="../../controllers/dashboard/account.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
