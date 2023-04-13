@@ -46,7 +46,7 @@ HEADER.innerHTML = `
 
 /* Se manda al footer codigo para usarlo en el html */
 FOOTER.innerHTML = `
-  <section class="d-flex justify-content-center justify-content-lg-between ">
+  <section class="justify-content-center justify-content-lg-between ">
 
     <!-- Right -->
     <div>
@@ -120,14 +120,14 @@ FOOTER.innerHTML = `
         <!-- Grid column -->
         <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
           <!-- Links -->
-          <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-          <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+          <h6 class="text-uppercase fw-bold mb-4">Stamping</h6>
+          <p><i class="fas fa-home me-3"></i> Colonia Escalon, N# 10012, ES</p>
           <p>
             <i class="fas fa-envelope me-3"></i>
-            info@example.com
+            stamping@gmail.com
           </p>
-          <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
-          <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+          <p><i class="fas fa-phone me-3"></i> + 503 2345-6788</p>
+          <p><i class="fas fa-print me-3"></i> + 503 2345-6789</p>
         </div>
         <!-- Grid column -->
       </div>
@@ -138,8 +138,8 @@ FOOTER.innerHTML = `
 
   <!-- Copyright -->
   <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-    © 2021 Copyright:
-    <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+    © 2023 Copyright:
+    <a class="text-reset fw-bold" href="https://stamping.com/">stamping.com</a>
   </div>
   <!-- Copyright -->
     `;
