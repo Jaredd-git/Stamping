@@ -7,8 +7,8 @@ HEADER.innerHTML = `
     <!-- Navbar de la pagina web -->
     <div class="sticky-top">
         <nav class="barra-nav navbar-ligth sticky-top" style="background-color: #ccc;">
-            <div class="text-center p-4" style="justify-content: center;">
-                <a class="text-reset fw-bold" href="home.html">STAMPING</a>
+            <div class="text-center p-4" >
+                <a style="text-decoration: none;" class="text-reset fw-bold" href="home.html">STAMPING</a>
             </div>
         </nav>           
     </div>
@@ -23,3 +23,4 @@ FOOTER.innerHTML = `
   </div>
   <!-- Copyright -->
     `;
+

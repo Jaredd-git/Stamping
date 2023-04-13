@@ -1,5 +1,6 @@
-@import url(https://fonts.cdnfonts.com/css/lexend-deca);
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500;600;700;800;900&display=swap');
 *{
+    font-family: 'Lexend Deca', sans-serif;
     padding: 0;
     margin: 0;
 }
@@ -37,13 +38,22 @@ body{
     height: 500px;
 }
 
+h6{
+    margin-top: 12px;
+}
 
 h1{
     color: #000000;
-    text-shadow: 1px 1px 10px rgba(43, 43, 43, 0.3);
     letter-spacing: 1px;
     text-align: center;
+    margin-bottom: 30px;
 }
+
+section{
+    justify-content: center;
+    margin-top: 135px;
+}
+
 input { 
     width: 100%; 
     margin-bottom: 10px; 
@@ -75,9 +85,10 @@ input:focus{
     background-color: #595959;
     border-radius: 10px;
     border: 0px;
+    text-align: center;
 }
 
- .btn-login:hover{
+.btn-login:hover{
     background-color: #929292;
     color: #000000;
     border: 0px;
@@ -106,8 +117,7 @@ form a:hover{
 }
 
 .palabra{
-    font-size: 14px;
-    
+    font-size: 14px;   
 }
 
 .v-line{
