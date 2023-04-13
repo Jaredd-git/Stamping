@@ -46,34 +46,100 @@ HEADER.innerHTML = `
 
 /* Se manda al footer codigo para usarlo en el html */
 FOOTER.innerHTML = `
-    <div class="container p-4 pb-0" style="background-color: #cccccc; height: 40px;">
-        <section class="mb-4 row row-cols-1 row-cols-md-3 g-4">
-            <!-- Nombre de la empresa -->
-            <a style="text-align: left;" class="text-dark">Stamping Store</a>
-            <!-- Enlaces a redes sociales -->
-            <section>
-                <a href="https://www.facebook.com/"><i><img style="width: 30px; " src="../../resources/img/iconos/Facebook.png"></i></a>
-                <a href="https://www.instagram.com/"><i><img style="width: 30px;" src="../../resources/img/iconos/Instagram.png"></i></a>
-                <a href="https://www.whatsapp.com/?lang=es"><i><img style="width: 30px;"
-                    src="../../resources/img/iconos/Whatsapp.png"></i></a>
-                <a href="https://www.pinterest.es/"><i><img style="width: 30px;" src="../../resources/img/iconos/Pinterest.png"></i></a>
-            </section>
-             <!-- Enlace a terminos y condiciones -->
-            <section style="text-align: right;">
-                <div class="row">
-                    <a style="text-align: right;" class="text-dark">Terminos y condiciones</a>
-                    <div class="col">
-                        <a style="text-align: right;" class="text-dark" href="../../views/public/sobrenostros.html">Nosotros</a>
-                        
-                        <a style="text-align: right;" class="text-dark" href="../../views/public/">Contactanos</a>
-                    </div>                    
-                </div>             
-            </section>
-        </section>
+  <section class="d-flex justify-content-center justify-content-lg-between ">
+
+    <!-- Right -->
+    <div>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="" src="../../resources/img/iconos/Facebook.png" class="me-4 text-reset">
+        <i></i>
+      </a>
     </div>
-    <!-- Copyright de la empresa -->
-    <div class="text-center p-3" style="background-color: rgba(204, 204, 204, 1);">
-    © 2020 Copyright:
-        <a class="text-dark" href="https://mdbootstrap.com/">Stamping</a>
+    <!-- Right -->
+  </section>
+  <!-- Section: Social media -->
+
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Products
+          </h6>
+          <p>
+            <a href="https://www.facebook.com"><img src="../../resources/img/iconos/Facebook.png"></img></a>
+          </p>
+          <p>
+          <a href="https://www.instagram.com"><img src="../../resources/img/iconos/Instagram.png"></img></a>
+          </p>
+          <p>
+          <a href="https://www.whatsapp.com"><img src="../../resources/img/iconos/Whatsapp.png"></img></a>
+          </p>
+          <p>
+          <a href="https://www.pinterest.es"><img src="../../resources/img/iconos/Pinterest.png"></img></a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Legalidad
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">Terminos y condiciones</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Politica de reembolso</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Politica de devoluciones</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+          <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+            info@example.com
+          </p>
+          <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+          <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
     </div>
+  </section>
+  <!-- Section: Links  -->
+
+  <!-- Copyright -->
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2021 Copyright:
+    <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+  </div>
+  <!-- Copyright -->
     `;

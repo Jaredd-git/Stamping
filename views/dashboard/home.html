@@ -15,7 +15,7 @@
     <main>
         <!--Esta sección de código crea un contenedor con un título y dos columnas, en la primera se muestra un texto de bienvenida y en la segunda una descripción de las opciones de administración-->
         <div class="container">
-            <h3>Bienvenido a la página del administrador</h3>
+            <h3 id="titulo-h">Bienvenido a la página del administrador</h3>
             <br>
             <!-- Este código muestra una fila con dos columnas, en cada una de ellas se encuentra un párrafo explicando la funcionalidad del sitio del administrador-->
             <div class="row">
@@ -39,8 +39,7 @@
                     <a href="productos.html" target="_blank">
                         <button class="btn btn-lg">
                             <span class="align-items-center">
-                                <img src="../../resources/img/iconos/adproductos.png" alt="productos"
-                                    style="width: 140px; height: 140px;">
+                                <img src="../../resources/img/iconos/adproductos.png" alt="productos" id="imagenes">
                             </span>
                             <h5 class="text-center">Administra tus productos</h5>
                         </button>
@@ -51,8 +50,7 @@
                     <a href="clientes.html" target="_blank">
                         <button class="btn btn-lg">
                             <span class="align-items-center">
-                                <img src="../../resources/img/iconos/adcliente.png" alt="clientes"
-                                    style="width: 140px; height: 140px;">
+                                <img src="../../resources/img/iconos/adcliente.png" alt="clientes" id="imagenes">
                             </span>
                             <h5 class="text-center">Administra tus clientes</h5>
                         </button>
@@ -63,8 +61,7 @@
                     <a href="usuarios.html" target="_blank">
                         <button class="btn btn-lg">
                             <span class="">
-                                <img src="../../resources/img/iconos/adusuario.png" alt="usuarios"
-                                    style="width: 140px; height: 140px;">
+                                <img src="../../resources/img/iconos/adusuario.png" alt="usuarios" id="imagenes">
                             </span>
                             <h5 class="text-center">Administra tus usuarios admin</h5>
                         </button>
@@ -75,8 +72,7 @@
                     <a href="categorias.html" target="_blank">
                         <button class="btn btn-lg">
                             <span class="align-items-center">
-                                <img src="../../resources/img/iconos/adcategoria.png" alt="Categorias"
-                                    style="width: 120px; height: 120px;">
+                                <img src="../../resources/img/iconos/adcategoria.png" alt="Categorias" id="imagenes">
                             </span>
                             <h5 class="text-center" style="margin-top: 15px;">Administra tus categorías</h5>
                         </button>
@@ -85,24 +81,22 @@
             </div>
             <div class="row mt-4 text-center">
                 <!-- Esta etiqueta div contiene un botón que redirige a la página de administración de pedidos -->
-                <div class="col-lg-6 ">
+                <div class="col-lg-6 " id="btn-1">
                     <a href="pedidos.html" target="_blank">
                         <button class="btn btn-lg">
                             <span>
-                                <img src="../image/iconos/adpedidos.png" alt="pedidos"
-                                    style="width: 130px; height: 130px;">
+                                <img src="../../resources/img/iconos/adpedidos.png" alt="pedidos" id="imagenes">
                             </span>
                             <h5 class="text-center">Administra tus pedidos</h5>
                         </button>
                     </a>
                 </div>
                 <!-- Esta etiqueta div contiene un botón que redirige a la página de administración de valoraciones -->
-                <div class="col-lg-6">
+                <div class="col-lg-6" id="btn-2">
                     <a href="valoraciones.html" target="_blank">
                         <button class="btn btn-lg">
                             <span class="">
-                                <img src="../../resources/img/iconos/advaloraciones.png" alt="valoraciones"
-                                    style="width: 140px; height: 140px;">
+                                <img src="../../resources/img/iconos/advaloraciones.png" alt="valoraciones" id="imagenes">
                             </span>
                             <h5 class="text-center">Administra tus valoraciones</h5>
                         </button>
@@ -112,7 +106,7 @@
         </div>
     </main>
     <!-- Footer con enlaces a redes sociales y terminos y condiciones -->
-    <footer class="footer fixed-bottom"></footer>
+    <footer class="footer text-center text-lg-start"></footer>
 
     <script type="text/javascript" src="../../controllers/dashboard/account.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"

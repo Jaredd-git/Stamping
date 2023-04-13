@@ -27,6 +27,15 @@ section a{
     position: absolute;
 }
 
+#imagenes{
+    width: 140px; 
+    height: 140px;
+}
+
+#titulo-h{
+    margin-top: 30px;
+}
+
 .btn{
     background-color: #cccccc;
     border-radius: 20px;
@@ -41,4 +50,12 @@ section a{
 
 footer a{
     width: 30px;
+}
+
+#btn-1{
+    margin-bottom: 25px;
+}
+
+#btn-2{
+    margin-bottom: 25px;
 }
