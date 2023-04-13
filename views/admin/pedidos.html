@@ -1,0 +1,144 @@
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedidos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body>
+    <header></header>
+    <main>
+        <a type="button" class="btn" role="button"
+            href="../admin/home.html">Regresar</a>
+        <div class="container">
+            <h3 class="text-center">Administración de pedidos</h3>
+        </div>
+        <div>
+            <div class="input-group rounded">
+                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                    aria-describedby="search-addon" />
+                <span class="input-group-text border-0" id="search-addon">
+                    <i><img src="../image/iconos/buscar.png" alt=""></i>
+                </span>
+                <i style="margin: 2%;">
+                    <img src="../image/iconos/add.png" alt="">
+                </i>
+            </div>
+        </div>
+        <div class="row" id="div-table">
+            <div class="col-6">
+                <div class="row">
+                    <!-- Se crea una tabla para mostrar los datos de los usuarios administradores -->
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <!-- Se agregan los encabezados de la tabla -->
+                                <th scope="col" ># Pedido</th>
+                                <th scope="col" >Cliente</th>
+                                <th scope="col" >Fecha</th>
+                                <th scope="col" >Dirección</th>
+                                <th scope="col" >Estado</th>
+                                <th scope="col" >Detalles</th>
+                            </tr>
+                        </thead>
+                        <!-- Se controlan los datos de los usuarios admin a la tabla-->
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Jared Diaz</td>
+                                <td>20-01-23</td>
+                                <td>Metrocentro, San Salvador</td>
+                                <td class="text-center">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                        </label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <!-- Acciones que se pueden realizar con el primer usuario-->
+                                    <div class="col-sm-2 align-items-center">
+                                        <a href="#" role="button">
+                                            <img src="../image/iconos/table.png" alt="datos" width="18px">
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Alejandro Garcia</td>
+                                <td>25-01-23</td>
+                                <td>Centro Historico, San Salvador</td>
+                                <td class="text-center">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                        </label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <!-- Acciones que se pueden realizar con el primer usuario-->
+                                    <div class="col-sm-2 align-items-center">
+                                        <a href="#" role="button">
+                                            <img src="../image/iconos/table.png" alt="datos" width="18px">
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Cristian Morales</td>
+                                <td>08-02-23</td>
+                                <td>Las margaritas, Soyapango</td>
+                                <td class="text-center">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                        </label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <!-- Acciones que se pueden realizar con el primer usuario-->
+                                    <div class="col-sm-2 align-items-center">
+                                        <a href="#" role="button">
+                                            <img src="../image/iconos/table.png" alt="datos" width="18px">
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!--crear una sección de la página web con un título y un botón para recuperar la contraseña de un usuario administrador-->
+            <div class="col">
+                <div>Estadísticas de pedidos</h3>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <canvas id="myChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <br>
+    <!-- Footer con enlaces a redes sociales y terminos y condiciones -->
+    <footer class="text-center text-dark fixed-bottom"></footer>
+
+    <script type="text/javascript" src="../js/account.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+        integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
