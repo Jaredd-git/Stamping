@@ -19,7 +19,7 @@ FOOTER.innerHTML = `
   <!-- Copyright -->
   <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
     © 2023 Copyright:
-    <a class="text-reset fw-bold" href="https://stamping.com/">stamping.com</a>
+    <a class="text-reset fw-bold" style="text-decoration: none;" href="https://stamping.com/">Stamping.com</a>
   </div>
   <!-- Copyright -->
     `;
