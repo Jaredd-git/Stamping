@@ -32,7 +32,7 @@ h1{
     text-align: center;
 }
 
-i{
+#agregar{
     margin: 2%;
 }
 
@@ -60,4 +60,17 @@ footer a{
 
 #btn-regresar{
     margin-top: 10px;
+}
+
+#search-addon{
+    background-color: #f2f2f2;
+    
+}
+
+nav{
+    background-color: #ccc;
+}
+
+#img-nav{
+    width: 32px;
 }
