@@ -22,7 +22,6 @@ body{
 }
 
 #div-table{
-    max-height: 400px; 
     margin-left: 8%; 
     margin-right: 8%; 
     text-align: center;
@@ -40,22 +39,8 @@ a{
     text-decoration: none;
 }
 
-footer{
-    background-color: rgba(204, 204, 204, 1); 
-    text-align: center;
-}
-
 .navbar{
     background-color: #cccccc;
-}
-
-.footer{
-    background-color: #cccccc; 
-    text-align: center;
-}
-
-footer a{
-    width: 30px;
 }
 
 #btn-regresar{
@@ -66,6 +51,8 @@ footer a{
     background-color: #f2f2f2; 
 }
 
-nav{
-    background-color: #ccc;
+footer{
+    margin: auto;
+    bottom: 0; 
+    width: 100%;
 }
