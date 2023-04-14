@@ -6,14 +6,14 @@
     <title>Pedidos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../../resources/css/admin.css">
 </head>
 
 <body>
     <header></header>
     <main>
-        <a type="button" class="btn" role="button"
-            href="../admin/home.html">Regresar</a>
+        <a type="button" class="btn" role="button" id="btn-regresar"
+            href="home.html">Regresar</a>
         <div class="container">
             <h3 class="text-center">Administración de pedidos</h3>
         </div>
@@ -22,10 +22,10 @@
                 <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
                     aria-describedby="search-addon" />
                 <span class="input-group-text border-0" id="search-addon">
-                    <i><img src="../image/iconos/buscar.png" alt=""></i>
+                    <i><img src="../../resources/img/iconos/buscar.png" alt=""></i>
                 </span>
-                <i style="margin: 2%;">
-                    <img src="../image/iconos/add.png" alt="">
+                <i id="agregar">
+                    <img src="../../resources/img/iconos/add.png" alt="">
                 </i>
             </div>
         </div>
@@ -63,7 +63,7 @@
                                     <!-- Acciones que se pueden realizar con el primer usuario-->
                                     <div class="col-sm-2 align-items-center">
                                         <a href="#" role="button">
-                                            <img src="../image/iconos/table.png" alt="datos" width="18px">
+                                            <img src="../../resources/img/iconos/table.png" alt="datos" width="18px">
                                         </a>
                                     </div>
                                 </td>
@@ -84,7 +84,7 @@
                                     <!-- Acciones que se pueden realizar con el primer usuario-->
                                     <div class="col-sm-2 align-items-center">
                                         <a href="#" role="button">
-                                            <img src="../image/iconos/table.png" alt="datos" width="18px">
+                                            <img src="../../resources/img/iconos/table.png" alt="datos" width="18px">
                                         </a>
                                     </div>
                                 </td>
@@ -105,7 +105,7 @@
                                     <!-- Acciones que se pueden realizar con el primer usuario-->
                                     <div class="col-sm-2 align-items-center">
                                         <a href="#" role="button">
-                                            <img src="../image/iconos/table.png" alt="datos" width="18px">
+                                            <img src="../../resources/img/iconos/table.png" alt="datos" width="18px">
                                         </a>
                                     </div>
                                 </td>
@@ -116,7 +116,8 @@
             </div>
             <!--crear una sección de la página web con un título y un botón para recuperar la contraseña de un usuario administrador-->
             <div class="col">
-                <div>Estadísticas de pedidos</h3>
+                <div>
+                    <h3>Estadísticas de pedidos</h3>
                 </div>
                 <div class="container">
                     <div class="row">
@@ -132,7 +133,7 @@
     <!-- Footer con enlaces a redes sociales y terminos y condiciones -->
     <footer class="text-center text-dark fixed-bottom"></footer>
 
-    <script type="text/javascript" src="../js/account.js"></script>
+    <script type="text/javascript" src="../../controllers/dashboard/account.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
         crossorigin="anonymous"></script>
