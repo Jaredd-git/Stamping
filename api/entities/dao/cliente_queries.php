@@ -31,7 +31,7 @@ class ClienteQueries
     {
         $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, dui_cliente, correo_cliente, estado_cliente
                 FROM clientes
-                ORDER BY apellidos_cliente';
+                ORDER BY apellido_cliente ASC';
         return Database::getRows($sql);
     }
 
