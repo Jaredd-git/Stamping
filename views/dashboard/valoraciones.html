@@ -7,7 +7,7 @@
     <title>Valoraciones</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../../resources/css/admin.css">
 </head>
 
 <body >
@@ -17,8 +17,8 @@
             <h1>Valoraciones</h1>
         </div>
         <!-- Boton para regresar a la pagina anterior -->
-        <a type="button" class="btn" role="button"
-            href="../admin/home.html">Regresar</a>
+        <a type="button" class="btn" role="button" id="btn-regresar"
+            href="home.html">Regresar</a>
         <br>
         <br>
         <!-- Barra de buscador de la tabla -->
@@ -27,12 +27,12 @@
                 <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
                     aria-describedby="search-addon" />
                 <span class="input-group-text border-0" id="search-addon">
-                    <i><img src="../image/iconos/buscar.png" alt=""></i>
+                    <i><img src="../../resources/img/iconos/buscar.png" alt=""></i>
                 </span>
             </div>
         </div>
         <!-- Tabla -->
-        <div class="row">
+        <div class="row" id="div-table">
             <table class="table table-striped table-bordered table-hover">
                 <!-- Titulos de los elementos de la tabla -->
                 <thead>
@@ -50,106 +50,74 @@
                     <tr>
                         <td scope="row">Alejandro Granados</td>
                         <td>
-                            <img src="../image/iconos/full-screen.png" alt="">
+                            <img src="../../resources/img/iconos/full-screen.png" alt="">
                         </td>
                         <td>
-                            <img src="../image/iconos/leer.png" alt="">
+                            <img src="../../resources/img/iconos/leer.png" alt="">
                         </td>
                         <td>1</td>
                         <td>10/02/2023</td>
                         <td>Activa</td>
                         <td>
-                            <img src="../image/iconos/view.png" alt="">
-                            <img src="../image/iconos/delete.png" alt="">
+                            <img src="../../resources/img/iconos/view.png" alt="">
+                            <img src="../../resources/img/iconos/delete.png" alt="">
                         </td>
                     </tr>
                     <tr>
                         <td scope="row">Cristian Morales</td>
                         <td>
-                            <img src="../image/iconos/full-screen.png" alt="">
+                            <img src="../../resources/img/iconos/full-screen.png" alt="">
                         </td>
                         <td>
-                            <img src="../image/iconos/leer.png" alt="">
+                            <img src="../../resources/img/iconos/leer.png" alt="">
                         </td>
                         <td>1</td>
                         <td>10/02/2023</td>
                         <td>Activa</td>
                         <td>
-                            <img src="../image/iconos/view.png" alt="">
-                            <img src="../image/iconos/delete.png" alt="">
+                            <img src="../../resources/img/iconos/view.png" alt="">
+                            <img src="../../resources/img/iconos/delete.png" alt="">
                         </td>
                     </tr>
                     <tr>
                         <td scope="row">Alejandro Garcia</td>
                         <td>
-                            <img src="../image/iconos/full-screen.png" alt="">
+                            <img src="../../resources/img/iconos/full-screen.png" alt="">
                         </td>
                         <td>
-                            <img src="../image/iconos/leer.png" alt="">
+                            <img src="../../resources/img/iconos/leer.png" alt="">
                         </td>
                         <td>1</td>
                         <td>10/02/2023</td>
                         <td>Activa</td>
                         <td>
-                            <img src="../image/iconos/view.png" alt="">
-                            <img src="../image/iconos/delete.png" alt="">
+                            <img src="../../resources/img/iconos/view.png" alt="">
+                            <img src="../../resources/img/iconos/delete.png" alt="">
                         </td>
                     </tr>
                     <tr>
                         <td scope="row">Jared Diaz</td>
                         <td>
-                            <img src="../image/iconos/full-screen.png" alt="">
+                            <img src="../../resources/img/iconos/full-screen.png" alt="">
                         </td>
                         <td>
-                            <img src="../image/iconos/leer.png" alt="">
-                        </td>
-                        <td>1</td>
-                        <td>10/02/2023</td>
-                        <td>Activa</td>
-                        <td>
-                            <img src="../image/iconos/view.png" alt="">
-                            <img src="../image/iconos/delete.png" alt="">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="row">Josse Ramirez</td>
-                        <td>
-                            <img src="../image/iconos/full-screen.png" alt="">
-                        </td>
-                        <td>
-                            <img src="../image/iconos/leer.png" alt="">
+                            <img src="../../resources/img/iconos/leer.png" alt="">
                         </td>
                         <td>1</td>
                         <td>10/02/2023</td>
                         <td>Activa</td>
                         <td>
-                            <img src="../image/iconos/view.png" alt="">
-                            <img src="../image/iconos/delete.png" alt="">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="row">Jose Velasquez</td>
-                        <td>
-                            <img src="../image/iconos/full-screen.png" alt="">
-                        </td>
-                        <td>
-                            <img src="../image/iconos/leer.png" alt="">
-                        </td>
-                        <td>1</td>
-                        <td>10/02/2023</td>
-                        <td>Activa</td>
-                        <td>
-                            <img src="../image/iconos/view.png" alt="">
-                            <img src="../image/iconos/delete.png" alt="">
+                            <img src="../../resources/img/iconos/view.png" alt="">
+                            <img src="../../resources/img/iconos/delete.png" alt="">
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </main>
-    <footer class="text-center text-dark fixed-bottom"></footer>
+    <footer class="text-center text-dark"></footer>
 
-    <script type="text/javascript" src="../js/account.js"></script>
+    <script type="text/javascript" src="../../controllers/dashboard/account.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
         crossorigin="anonymous"></script>
