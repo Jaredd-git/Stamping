@@ -13,7 +13,7 @@ class ClienteQueries
         $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, dui_cliente, correo_cliente, telefono_cliente, nacimiento_cliente, direccion_cliente, user_cliente
                 FROM clientes
                 WHERE apellido_cliente ILIKE ? OR nombre_cliente ILIKE ? OR user_cliente ILIKE ?
-                ORDER BY nombre_cliente';
+                ORDER BY nombre _cliente';
         $params = array("%$value%", "%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
