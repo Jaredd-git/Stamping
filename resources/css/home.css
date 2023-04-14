@@ -8,6 +8,9 @@
 body{
     font-family: 'Lexend Deca', sans-serif;
     background: #F2F2F2;
+    position: relative;
+    padding-bottom: 40px;
+    min-height: 100vh;
 }
 
 .navbar{
@@ -61,4 +64,10 @@ footer a{
 #btn-2{
     margin-bottom: 25px;
     margin-bottom: 100px;
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
