@@ -2,6 +2,8 @@
 const HEADER = document.querySelector('header');
 const FOOTER = document.querySelector('footer');
 
+// Constante para completar la ruta de la API.
+const USER_API = 'business/dashboard/usuario.php';
 /* Se manda al header codigo para usarlo en el html */
 HEADER.innerHTML = `
     <!-- Navbar de la pagina web -->

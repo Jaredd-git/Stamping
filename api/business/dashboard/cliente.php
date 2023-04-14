@@ -103,7 +103,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Nombres incorrectos';
                 } elseif (!$cliente->setApellidos($_POST['apellidos'])) {
                     $result['exception'] = 'Apellidos incorrectos';
-                } elseif (!$cliente->setDui($_POST['DUI'])) {
+                } elseif (!$cliente->setDUI($_POST['DUI'])) {
                     $result['exception'] = 'DUI incorrecto';
                 } elseif (!$cliente->setCorreo($_POST['correo'])) {
                     $result['exception'] = 'Correo incorrecto';
