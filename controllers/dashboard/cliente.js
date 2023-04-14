@@ -116,7 +116,7 @@ function openCreate() {
     // Se asigna título a la caja de diálogo.
     MODAL_TITLE.textContent = 'Crear cliente';
     // Se habilitan los campos necesarios.
-    document.getElementById('alias').disabled = false;
+    document.getElementById('usuario').disabled = false;
     document.getElementById('clave').disabled = false;
     document.getElementById('confirmar').disabled = false;
 }
