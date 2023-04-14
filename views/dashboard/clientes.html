@@ -26,9 +26,9 @@
                 <span class="input-group-text border-0" id="search-addon">
                     <i><img src="../../resources/img/iconos/buscar.png" alt=""></i>
                 </span>
-                <i id="agregar">
-                    <img src="../../resources/img/iconos/add.png" alt="">
-                </i>
+                <a onclick="window.openCreate()" class="btn waves-effect indigo tooltipped" data-tooltip="Crear">
+                    <i id="agregar"><img src="../../resources/img/iconos/add.png" alt=""></i>
+                </a>
             </div>
         </div>
         <div class="row" id="div-table">
@@ -45,7 +45,7 @@
                 </thead>
                 <!-- Se agregan los datos de los clientes a la tabla-->
                 <tbody id="tbody-rows">
-                
+
                 </tbody>
             </table>
             <div id="save-modal" class="modal">
@@ -75,18 +75,38 @@
                         </div>
                         <div class="input-field col s12 m6">
                             <i class="material-icons prefix">email</i>
-                            <input id="correo" type="email" name="correo" class="validate" required>
-                            <label for="correo">Correo</label>
+                            <input id="correo" type="number" name="DUI" class="validate" required>
+                            <label for="correo">DUI</label>
                         </div>
                         <div class="input-field col s12 m6">
                             <i class="material-icons prefix">person_pin</i>
-                            <input id="alias" type="text" name="alias" class="validate" required>
-                            <label for="alias">Alias</label>
+                            <input id="alias" type="email" name="correo" class="validate" required>
+                            <label for="alias">Correo</label>
                         </div>
                         <div class="input-field col s12 m6">
                             <i class="material-icons prefix">security</i>
-                            <input id="clave" type="password" name="clave" class="validate" required>
-                            <label for="clave">Clave</label>
+                            <input id="clave" type="number" name="telefono" class="validate" required>
+                            <label for="clave">Telefono</label>
+                        </div>
+                        <div class="input-field col s12 m6">
+                            <i class="material-icons prefix">security</i>
+                            <input id="confirmar" type="date" name="nacimiento" class="validate" required>
+                            <label for="confirmar">Nacimiento</label>
+                        </div>
+                        <div class="input-field col s12 m6">
+                            <i class="material-icons prefix">security</i>
+                            <input id="confirmar" type="text" name="direccion" class="validate" required>
+                            <label for="confirmar">Direccion</label>
+                        </div>
+                        <div class="input-field col s12 m6">
+                            <i class="material-icons prefix">security</i>
+                            <input id="confirmar" type="text" name="usuario" class="validate" required>
+                            <label for="confirmar">Usuario</label>
+                        </div>
+                        <div class="input-field col s12 m6">
+                            <i class="material-icons prefix">security</i>
+                            <input id="confirmar" type="password" name="clave" class="validate" required>
+                            <label for="confirmar">Clave</label>
                         </div>
                         <div class="input-field col s12 m6">
                             <i class="material-icons prefix">security</i>
@@ -112,6 +132,8 @@
 
     <script type="text/javascript" src="../../controllers/dashboard/account.js"></script>
     <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="../../controllers/components.js"></script>
+    <script type="text/javascript" src="../../controllers/dashboard/cliente.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
         crossorigin="anonymous"></script>
