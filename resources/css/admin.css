@@ -63,14 +63,9 @@ footer a{
 }
 
 #search-addon{
-    background-color: #f2f2f2;
-    
+    background-color: #f2f2f2; 
 }
 
 nav{
     background-color: #ccc;
-}
-
-#img-nav{
-    width: 32px;
 }
