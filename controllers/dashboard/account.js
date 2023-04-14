@@ -19,7 +19,7 @@ FOOTER.innerHTML = `
   <!-- Copyright -->
   <div style="background-color: rgba(0, 0, 0, 0.05); ">
     © 2023 Copyright:
-    <a class="text-reset fw-bold" style="text-decoration: none;" href="https://stamping.com/">Stamping.com</a>
+    <a class="text-reset fw-bold" style="text-decoration: none;" href="https://us-tuna-sounds-images.voicemod.net/88463959-b331-4a6a-b9ee-9843ec1a9229-1665760464118.png">Stamping.com</a>
   </div>
   <!-- Copyright -->
     `;
