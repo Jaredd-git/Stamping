@@ -1,5 +1,5 @@
 // Constante para completar la ruta de la API.
-const CLIENTE_API = '../business/dashboard/cliente.php';
+const CLIENTE_API = 'business/dashboard/cliente.php';
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
 // Constante para establecer el formulario de guardar.
@@ -14,9 +14,9 @@ const OPTIONS = {
     dismissible: false
 }
 // Inicialización del componente Modal para que funcionen las cajas de diálogo.
-M.Modal.init(document.querySelectorAll('.modal'), OPTIONS);
+// M.Modal.init(document.querySelectorAll('.modal'), OPTIONS);
 // Constante para establecer la modal de guardar.
-const SAVE_MODAL = M.Modal.getInstance(document.getElementById('save-modal'));
+// const SAVE_MODAL = document.getElementById('save-modal');
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -43,13 +43,11 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(SAVE_FORM);
     // Petición para guardar los datos del formulario.
-    const JSON = await dataFetch(USUARIO_API, action, FORM);
+    const JSON = await dataFetch(CLIENTE_API, action, FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se carga nuevamente la tabla para visualizar los cambios.
         fillTable();
-        // Se cierra la caja de diálogo.
-        SAVE_MODAL.close();
         // Se muestra un mensaje de éxito.
         sweetAlert(1, JSON.message, true);
     } else {
@@ -69,7 +67,7 @@ async function fillTable(form = null) {
     // Se verifica la acción a realizar.
     (form) ? action = 'search' : action = 'readAll';
     // Petición para obtener los registros disponibles.
-    const JSON = await dataFetch(USUARIO_API, action, form);
+    const JSON = await dataFetch(CLIENTE_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se recorre el conjunto de registros fila por fila.
@@ -77,25 +75,24 @@ async function fillTable(form = null) {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TBODY_ROWS.innerHTML += `
                 <tr>
-                    <td>${row.nombre_cliente}</td>
-                    <td>${row.apellido_cliente}</td>
-                    <td>${row.telefono_cliente}</td>
-                    <td>
-                        <a onclick="openUpdate(${row.id_cliente})" class="btn waves-effect blue tooltipped" data-tooltip="Actualizar">
-                            <i><img src="../../resources/img/iconos/leer.png" alt=""></i>
-                        </a>
-                        <a onclick="openDelete(${row.id_cliente})" class="btn waves-effect red tooltipped" data-tooltip="Eliminar">
-                            <i><img src="../../resources/img/iconos/editar.png" alt=""></i>
-                        </a>
-                        <a onclick="openDelete(${row.id_cliente})" class="btn waves-effect red tooltipped" data-tooltip="Eliminar">
-                            <i><img src="../../resources/img/iconos/delete.png" alt=""></i>
-                        </a>
-                    </td>
+                    <td>${row.apellido_usuario}</td>
+                    <td>${row.nombre_usuario}</td>
+                    <td>${row.correo_usuario}</td>
+                    <td>${row.alias_usuario}</td>
+                    <th>
+                        <button  onclick="openUpdate(${row.id_cliente})" class="btn btn-secondary">
+                            <i class="bi bi-pencil-fill"></i>
+                        </button>
+                        <button  onclick="openDelete(${row.id_cliente})" class="btn btn-danger">
+                            <i class="bi bi-trash-fill"></i>
+                        </button>
+                    </th>
                 </tr>
             `;
         });
+
         // Se inicializa el componente Tooltip para que funcionen las sugerencias textuales.
-        M.Tooltip.init(document.querySelectorAll('.tooltipped'));
+        // M.Tooltip.init(document.querySelectorAll('.tooltipped'));
         // Se muestra un mensaje de acuerdo con el resultado.
         RECORDS.textContent = JSON.message;
     } else {
@@ -108,15 +105,13 @@ async function fillTable(form = null) {
 *   Parámetros: ninguno.
 *   Retorno: ninguno.
 */
-function openCreate() {
-    // Se abre la caja de diálogo que contiene el formulario.
-    SAVE_MODAL.open();
+function openCreate(){
     // Se restauran los elementos del formulario.
     SAVE_FORM.reset();
     // Se asigna título a la caja de diálogo.
     MODAL_TITLE.textContent = 'Crear cliente';
     // Se habilitan los campos necesarios.
-    document.getElementById('usuario').disabled = false;
+    document.getElementById('alias').disabled = false;
     document.getElementById('clave').disabled = false;
     document.getElementById('confirmar').disabled = false;
 }
@@ -135,7 +130,7 @@ async function openUpdate(id) {
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
-        SAVE_MODAL.open();
+        $('#staticBackdrop').modal({ show:true });
         // Se restauran los elementos del formulario.
         SAVE_FORM.reset();
         // Se asigna título a la caja de diálogo.
