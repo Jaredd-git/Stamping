@@ -75,10 +75,10 @@ async function fillTable(form = null) {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TBODY_ROWS.innerHTML += `
                 <tr>
-                    <td>${row.apellido_usuario}</td>
-                    <td>${row.nombre_usuario}</td>
-                    <td>${row.correo_usuario}</td>
-                    <td>${row.alias_usuario}</td>
+                    <td>${row.nombre_cliente}</td>
+                    <td>${row.apellido_cliente}</td>
+                    <td>${row.telefono_cliente}</td>
+                    <td>${row.direccion_cliente}</td>
                     <th>
                         <button  onclick="openUpdate(${row.id_cliente})" class="btn btn-secondary">
                             <i class="bi bi-pencil-fill"></i>
@@ -111,7 +111,7 @@ function openCreate(){
     // Se asigna título a la caja de diálogo.
     MODAL_TITLE.textContent = 'Crear cliente';
     // Se habilitan los campos necesarios.
-    document.getElementById('alias').disabled = false;
+    document.getElementById('user').disabled = false;
     document.getElementById('clave').disabled = false;
     document.getElementById('confirmar').disabled = false;
 }
@@ -124,7 +124,7 @@ function openCreate(){
 async function openUpdate(id) {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
-    FORM.append('id_usuario', id);
+    FORM.append('id_cliente', id);
     // Petición para obtener los datos del registro solicitado.
     const JSON = await dataFetch(USUARIO_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -134,17 +134,21 @@ async function openUpdate(id) {
         // Se restauran los elementos del formulario.
         SAVE_FORM.reset();
         // Se asigna título a la caja de diálogo.
-        MODAL_TITLE.textContent = 'Actualizar usuario';
+        MODAL_TITLE.textContent = 'Actualizar cliente';
         // Se deshabilitan los campos necesarios.
-        document.getElementById('alias').disabled = true;
+        document.getElementById('user').disabled = true;
         document.getElementById('clave').disabled = true;
         document.getElementById('confirmar').disabled = true;
         // Se inicializan los campos del formulario.
-        document.getElementById('id').value = JSON.dataset.id_usuario;
-        document.getElementById('nombres').value = JSON.dataset.nombres_usuario;
-        document.getElementById('apellidos').value = JSON.dataset.apellidos_usuario;
-        document.getElementById('correo').value = JSON.dataset.correo_usuario;
-        document.getElementById('alias').value = JSON.dataset.alias_usuario;
+        document.getElementById('id').value = JSON.dataset.id_cliente;
+        document.getElementById('nombres').value = JSON.dataset.nombre_cliente;
+        document.getElementById('apellidos').value = JSON.dataset.apellido_cliente;
+        document.getElementById('DUI').value = JSON.dataset.dui_cliente;
+        document.getElementById('correo').value = JSON.dataset.correo_cliente;
+        document.getElementById('telefono').value = JSON.dataset.telefono_cliente;
+        document.getElementById('nacimiento').value = JSON.dataset.nacimiento_cliente;
+        document.getElementById('direccion').value = JSON.dataset.direccion_cliente;
+        document.getElementById('user').value = JSON.dataset.user_cliente;
         // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
         M.updateTextFields();
     } else {
@@ -164,9 +168,9 @@ async function openDelete(id) {
     if (RESPONSE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
         const FORM = new FormData();
-        FORM.append('id_usuario', id);
+        FORM.append('id_cliente', id);
         // Petición para eliminar el registro seleccionado.
-        const JSON = await dataFetch(USUARIO_API, 'delete', FORM);
+        const JSON = await dataFetch(CLIENTE_API, 'delete', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
             // Se carga nuevamente la tabla para visualizar los cambios.
