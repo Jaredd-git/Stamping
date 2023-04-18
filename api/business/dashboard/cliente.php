@@ -7,6 +7,7 @@ if (isset($_GET['action'])) {
     session_start();
     // Se instancia la clase correspondiente.
     $cliente = new Cliente;
+    $usuario = new Usuario;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'session' => 0, 'message' => null, 'exception' => null, 'dataset' => null, 'username' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
@@ -75,7 +76,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'readAll':
-                if ($result['dataset'] = $usuario->readAll()) {
+                if ($result['dataset'] = $cliente->readAll()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen '.count($result['dataset']).' registros';
                 } elseif (Database::getException()) {
@@ -88,7 +89,7 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
                     $result['exception'] = 'Ingrese un valor para buscar';
-                } elseif ($result['dataset'] = $usuario->searchRows($_POST['search'])) {
+                } elseif ($result['dataset'] = $cliente->searchRows($_POST['search'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
                 } elseif (Database::getException()) {
@@ -113,7 +114,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Fecha incorrecto';
                 } elseif (!$cliente->setDireccion($_POST['direccion'])) {
                     $result['exception'] = 'Direccion incorrecto';
-                } elseif (!$cliente->setUser($_POST['usuario'])) {
+                } elseif (!$cliente->setUser($_POST['user'])) {
                     $result['exception'] = 'Usuario incorrecto';
                 } elseif ($_POST['clave'] != $_POST['confirmar']) {
                     $result['exception'] = 'Claves diferentes';
@@ -127,45 +128,45 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'readOne':
-                if (!$usuario->setId($_POST['id_usuario'])) {
-                    $result['exception'] = 'Usuario incorrecto';
-                } elseif ($result['dataset'] = $usuario->readOne()) {
+                if (!$cliente->setId($_POST['id_cliente'])) {
+                    $result['exception'] = 'Cliente incorrecto';
+                } elseif ($result['dataset'] = $cliente->readOne()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'Usuario inexistente';
+                    $result['exception'] = 'Cliente inexistente';
                 }
                 break;
             case 'update':
                 $_POST = Validator::validateForm($_POST);
-                if (!$usuario->setId($_POST['id'])) {
-                    $result['exception'] = 'Usuario incorrecto';
-                } elseif (!$usuario->readOne()) {
-                    $result['exception'] = 'Usuario inexistente';
-                } elseif (!$usuario->setNombres($_POST['nombres'])) {
+                if (!$cliente->setId($_POST['id'])) {
+                    $result['exception'] = 'Cliente incorrecto';
+                } elseif (!$cliente->readOne()) {
+                    $result['exception'] = 'Cliente inexistente';
+                } elseif (!$cliente->setNombres($_POST['nombres'])) {
                     $result['exception'] = 'Nombres incorrectos';
-                } elseif (!$usuario->setApellidos($_POST['apellidos'])) {
+                } elseif (!$cliente->setApellidos($_POST['apellidos'])) {
                     $result['exception'] = 'Apellidos incorrectos';
-                } elseif (!$usuario->setCorreo($_POST['correo'])) {
+                } elseif (!$cliente->setCorreo($_POST['correo'])) {
                     $result['exception'] = 'Correo incorrecto';
-                } elseif ($usuario->updateRow()) {
+                } elseif ($cliente->updateRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Usuario modificado correctamente';
+                    $result['message'] = 'Cliente actualizado correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
             case 'delete':
-                if ($_POST['id_usuario'] == $_SESSION['id_usuario']) {
+                if ($_POST['id_cliente'] == $_SESSION['id_usuario']) {
                     $result['exception'] = 'No se puede eliminar a sí mismo';
-                } elseif (!$usuario->setId($_POST['id_usuario'])) {
-                    $result['exception'] = 'Usuario incorrecto';
-                } elseif (!$usuario->readOne()) {
-                    $result['exception'] = 'Usuario inexistente';
-                } elseif ($usuario->deleteRow()) {
+                } elseif (!$cliente->setId($_POST['id_cliente'])) {
+                    $result['exception'] = 'Cliente incorrecto';
+                } elseif (!$cliente->readOne()) {
+                    $result['exception'] = 'Cliente inexistente';
+                } elseif ($cliente->deleteRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Usuario eliminado correctamente';
+                    $result['message'] = 'Cliente eliminado correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
