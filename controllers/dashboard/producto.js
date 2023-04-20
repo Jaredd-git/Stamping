@@ -1,5 +1,7 @@
-// Constante para completar la ruta de la API.
-const USUARIO_API = 'business/dashboard/producto.php';
+// Constantes para completar las rutas de la API.
+const PRODUCTO_API = 'business/dashboard/producto.php';
+const TIPO_API = 'business/dashboard/tipo.php';
+const TALLA_API = 'business/dashboard/talla.php';
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
 // Constante para establecer el formulario de guardar.
@@ -14,9 +16,9 @@ const OPTIONS = {
     dismissible: false
 }
 // Inicialización del componente Modal para que funcionen las cajas de diálogo.
-// M.Modal.init(document.querySelectorAll('.modal'), OPTIONS);
+//M.Modal.init(document.querySelectorAll('.modal'), OPTIONS);
 // Constante para establecer la modal de guardar.
-// const SAVE_MODAL = document.getElementById('save-modal');
+//const SAVE_MODAL = M.Modal.getInstance(document.getElementById('save-modal'));
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -43,11 +45,13 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(SAVE_FORM);
     // Petición para guardar los datos del formulario.
-    const JSON = await dataFetch(USUARIO_API, action, FORM);
+    const JSON = await dataFetch(PRODUCTO_API, action, FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se carga nuevamente la tabla para visualizar los cambios.
         fillTable();
+        // Se cierra la caja de diálogo.
+        SAVE_MODAL.close();
         // Se muestra un mensaje de éxito.
         sweetAlert(1, JSON.message, true);
     } else {
@@ -67,32 +71,37 @@ async function fillTable(form = null) {
     // Se verifica la acción a realizar.
     (form) ? action = 'search' : action = 'readAll';
     // Petición para obtener los registros disponibles.
-    const JSON = await dataFetch(USUARIO_API, action, form);
+    const JSON = await dataFetch(PRODUCTO_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
-        // Se recorre el conjunto de registros fila por fila.
+        // Se recorre el conjunto de registros (dataset) fila por fila a través del objeto row.
         JSON.dataset.forEach(row => {
+            // Se establece un icono para el estado del producto.
+            (row.estado_producto) ? icon = 'visibility' : icon = 'visibility_off';
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TBODY_ROWS.innerHTML += `
                 <tr>
-                    <td>${row.apellido_usuario}</td>
-                    <td>${row.nombre_usuario}</td>
-                    <td>${row.correo_usuario}</td>
-                    <td>${row.alias_usuario}</td>
-                    <th>
-                        <button  onclick="openUpdate(${row.id_usuario})" class="btn btn-secondary">
-                            <i class="bi bi-pencil-fill"></i>
-                        </button>
-                        <button  onclick="openDelete(${row.id_usuario})" class="btn btn-danger">
-                            <i class="bi bi-trash-fill"></i>
-                        </button>
-                    </th>
+                    <td>${row.nombre_producto}</td>
+                    <td>${row.descripcion_producto}</td>
+                    <td>${row.precio_producto}</td>
+                    <td>${row.estado_producto}</td>
+                    <td>${row.color_producto}</td>
+                    <td><i class="material-icons">${icon}</i></td>
+                    <td>
+                        <a onclick="openUpdate(${row.id_producto})" class="btn waves-effect blue tooltipped" data-tooltip="Actualizar">
+                            <i class="material-icons">mode_edit</i>
+                        </a>
+                        <a onclick="openDelete(${row.id_producto})" class="btn waves-effect red tooltipped" data-tooltip="Eliminar">
+                            <i class="material-icons">delete</i>
+                        </a>
+                    </td>
                 </tr>
             `;
         });
-
+        // Se inicializa el componente Material Box para que funcione el efecto Lightbox.
+        //M.Materialbox.init(document.querySelectorAll('.materialboxed'));
         // Se inicializa el componente Tooltip para que funcionen las sugerencias textuales.
-        // M.Tooltip.init(document.querySelectorAll('.tooltipped'));
+        //M.Tooltip.init(document.querySelectorAll('.tooltipped'));
         // Se muestra un mensaje de acuerdo con el resultado.
         RECORDS.textContent = JSON.message;
     } else {
@@ -105,15 +114,16 @@ async function fillTable(form = null) {
 *   Parámetros: ninguno.
 *   Retorno: ninguno.
 */
-function openCreate(){
+function openCreate() {
     // Se restauran los elementos del formulario.
     SAVE_FORM.reset();
-    // Se asigna título a la caja de diálogo.
-    MODAL_TITLE.textContent = 'Crear usuario';
-    // Se habilitan los campos necesarios.
-    document.getElementById('alias').disabled = false;
-    document.getElementById('clave').disabled = false;
-    document.getElementById('confirmar').disabled = false;
+    // Se asigna el título a la caja de diálogo.
+    MODAL_TITLE.textContent = 'Crear producto';
+    // Se establece el campo de archivo como obligatorio.
+    //document.getElementById('archivo').required = true;
+    // Llamada a la función para llenar el select del formulario. Se encuentra en el archivo components.js
+    fillSelect(TIPO_API, 'readAll', 'tipo');
+    fillSelect(TALLA_API, 'readAll', 'talla');
 }
 
 /*
@@ -122,29 +132,33 @@ function openCreate(){
 *   Retorno: ninguno.
 */
 async function openUpdate(id) {
-    // Se define una constante tipo objeto con los datos del registro seleccionado.
+    // Se define un objeto con los datos del registro seleccionado.
     const FORM = new FormData();
-    FORM.append('id_usuario', id);
+    FORM.append('id', id);
     // Petición para obtener los datos del registro solicitado.
-    const JSON = await dataFetch(USUARIO_API, 'readOne', FORM);
+    const JSON = await dataFetch(PRODUCTO_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
-        $('#staticBackdrop').modal({ show:true });
+        SAVE_MODAL.open();
         // Se restauran los elementos del formulario.
         SAVE_FORM.reset();
-        // Se asigna título a la caja de diálogo.
-        MODAL_TITLE.textContent = 'Actualizar usuario';
-        // Se deshabilitan los campos necesarios.
-        document.getElementById('alias').disabled = true;
-        document.getElementById('clave').disabled = true;
-        document.getElementById('confirmar').disabled = true;
+        // Se asigna el título para la caja de diálogo (modal).
+        MODAL_TITLE.textContent = 'Actualizar producto';
+        // Se establece el campo de archivo como opcional.
+        document.getElementById('archivo').required = false;
         // Se inicializan los campos del formulario.
-        document.getElementById('id').value = JSON.dataset.id_usuario;
-        document.getElementById('nombres').value = JSON.dataset.nombres_usuario;
-        document.getElementById('apellidos').value = JSON.dataset.apellidos_usuario;
-        document.getElementById('correo').value = JSON.dataset.correo_usuario;
-        document.getElementById('alias').value = JSON.dataset.alias_usuario;
+        document.getElementById('id').value = JSON.dataset.id_producto;
+        document.getElementById('nombre').value = JSON.dataset.nombre_producto;
+        document.getElementById('precio').value = JSON.dataset.precio_producto;
+        document.getElementById('descripcion').value = JSON.dataset.descripcion_producto;
+        fillSelect(TIPO_API, 'readAll', 'tipo', JSON.dataset.id_tipo);
+        fillSelect(TALLA_API, 'readAll', 'talla', JSON.dataset.id_talla);
+        if (JSON.dataset.estado_producto) {
+            document.getElementById('estado').checked = true;
+        } else {
+            document.getElementById('estado').checked = false;
+        }
         // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
         M.updateTextFields();
     } else {
@@ -159,14 +173,14 @@ async function openUpdate(id) {
 */
 async function openDelete(id) {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
-    const RESPONSE = await confirmAction('¿Desea eliminar el usuario de forma permanente?');
+    const RESPONSE = await confirmAction('¿Desea eliminar el producto de forma permanente?');
     // Se verifica la respuesta del mensaje.
     if (RESPONSE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
         const FORM = new FormData();
-        FORM.append('id_usuario', id);
+        FORM.append('id_producto', id);
         // Petición para eliminar el registro seleccionado.
-        const JSON = await dataFetch(USUARIO_API, 'delete', FORM);
+        const JSON = await dataFetch(PRODUCTO_API, 'delete', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
             // Se carga nuevamente la tabla para visualizar los cambios.
@@ -178,3 +192,15 @@ async function openDelete(id) {
         }
     }
 }
+
+/*
+*   Función para abrir el reporte de productos por categoría.
+*   Parámetros: ninguno.
+*   Retorno: ninguno.
+*/
+//function openReport() {
+    // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+    //const PATH = new URL(`${SERVER_URL}reports/dashboard/productos.php`);
+    // Se abre el reporte en una nueva pestaña del navegador web.
+    //window.open(PATH.href);
+//}

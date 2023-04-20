@@ -11,10 +11,8 @@ class Producto extends ProductoQueries
     protected $nombre = null;
     protected $descripcion = null;
     protected $precio = null;
-    protected $imagen = null;
     protected $color = null;
     protected $estado = null;
-    protected $ruta = '../../images/productos/';
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -31,7 +29,7 @@ class Producto extends ProductoQueries
 
     public function setNombre($value)
     {
-        if (Validator::validateAlphanumeric($value, 1, 50)) {
+        if (Validator::validateString($value, 1, 250)) {
             $this->nombre = $value;
             return true;
         } else {
@@ -53,16 +51,6 @@ class Producto extends ProductoQueries
     {
         if (Validator::validateMoney($value)) {
             $this->precio = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setImagen($file)
-    {
-        if (Validator::validateImageFile($file, 500, 500)) {
-            $this->imagen = Validator::getFileName();
             return true;
         } else {
             return false;
@@ -112,11 +100,6 @@ class Producto extends ProductoQueries
         return $this->precio;
     }
 
-    public function getImagen()
-    {
-        return $this->imagen;
-    }
-
     public function getColor()
     {
         return $this->color;
@@ -125,10 +108,5 @@ class Producto extends ProductoQueries
     public function getEstado()
     {
         return $this->estado;
-    }
-
-    public function getRuta()
-    {
-        return $this->ruta;
     }
 }
