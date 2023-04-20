@@ -11,6 +11,8 @@ const MODAL_TITLE = document.getElementById('modal-title');
 // Constantes para establecer el contenido de la tabla.
 const TBODY_ROWS = document.getElementById('tbody-rows');
 const RECORDS = document.getElementById('records');
+
+const MODAL = new bootstrap.Modal(document.getElementById('staticBackdrop'));
 // Constante tipo objeto para establecer las opciones del componente Modal.
 const OPTIONS = {
     dismissible: false
@@ -86,23 +88,17 @@ async function fillTable(form = null) {
                     <td>${row.precio_producto}</td>
                     <td>${row.estado_producto}</td>
                     <td>${row.color_producto}</td>
-                    <td><i class="material-icons">${icon}</i></td>
-                    <td>
-                        <a onclick="openUpdate(${row.id_producto})" class="btn waves-effect blue tooltipped" data-tooltip="Actualizar">
-                            <i class="material-icons">mode_edit</i>
-                        </a>
-                        <a onclick="openDelete(${row.id_producto})" class="btn waves-effect red tooltipped" data-tooltip="Eliminar">
-                            <i class="material-icons">delete</i>
-                        </a>
-                    </td>
+                    <th>
+                        <button  onclick="openUpdate(${row.id_usuario})" class="btn btn-secondary">
+                            <i class="bi bi-pencil-fill"></i>
+                        </button>
+                        <button  onclick="openDelete(${row.id_usuario})" class="btn btn-danger">
+                            <i class="bi bi-trash-fill"></i>
+                        </button>
+                    </th>
                 </tr>
             `;
         });
-        // Se inicializa el componente Material Box para que funcione el efecto Lightbox.
-        //M.Materialbox.init(document.querySelectorAll('.materialboxed'));
-        // Se inicializa el componente Tooltip para que funcionen las sugerencias textuales.
-        //M.Tooltip.init(document.querySelectorAll('.tooltipped'));
-        // Se muestra un mensaje de acuerdo con el resultado.
         RECORDS.textContent = JSON.message;
     } else {
         sweetAlert(4, JSON.exception, true);
@@ -134,19 +130,17 @@ function openCreate() {
 async function openUpdate(id) {
     // Se define un objeto con los datos del registro seleccionado.
     const FORM = new FormData();
-    FORM.append('id', id);
+    FORM.append('id_producto', id);
     // Petición para obtener los datos del registro solicitado.
     const JSON = await dataFetch(PRODUCTO_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
-        SAVE_MODAL.open();
+        MODAL.show()
         // Se restauran los elementos del formulario.
         SAVE_FORM.reset();
         // Se asigna el título para la caja de diálogo (modal).
         MODAL_TITLE.textContent = 'Actualizar producto';
-        // Se establece el campo de archivo como opcional.
-        document.getElementById('archivo').required = false;
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.id_producto;
         document.getElementById('nombre').value = JSON.dataset.nombre_producto;
@@ -159,8 +153,6 @@ async function openUpdate(id) {
         } else {
             document.getElementById('estado').checked = false;
         }
-        // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
-        M.updateTextFields();
     } else {
         sweetAlert(2, JSON.exception, false);
     }
