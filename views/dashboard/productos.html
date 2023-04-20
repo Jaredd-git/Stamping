@@ -7,6 +7,7 @@
     <title>Productos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../../resources/css/admin.css">
 </head>
 
@@ -14,432 +15,115 @@
     <header></header>
 
     <main>
-        <a type="button" class="btn" role="button" id="btn-regresar"
-            href="home.html">Regresar</a>
+        <a type="button" class="btn" role="button" id="btn-regresar" href="home.html">Regresar</a>
         <div class="container">
             <h3 class="text-center">Administración de Productos</h3>
         </div>
-        <div>
-            <div class="input-group rounded">
-                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-                    aria-describedby="search-addon" />
-                <span class="input-group-text border-0" id="search-addon">
-                    <i><img src="../../resources/img/iconos/buscar.png" alt=""></i>
-                </span>
-                <i id="agregar">
-                    <img src="../../resources/img/iconos/add.png" alt="">
-                </i>
+        <div class="input-group rounded">
+            <div class=" d-flex">
+                <form class="d-flex" method="post" id="search-form">
+                    <input id="search" type="text" name="search" class="form-control rounded" placeholder="Search"
+                        aria-label="Search" aria-describedby="search-addon" />
+                    <button id="search-btn" type="submit">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </form>
+                <!-- modal para registros nuevos -->
+                <button onclick="{openCreate()}" type="submit" class="btn btn-secondary" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop">
+                    <i class="bi bi-plus-circle"></i>
+                </button>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="modal-title">..</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                                data-tooltip="Cerrar"></button>
+                        </div>
+                        <form method="post" id="save-form">
+                            <div class="modal-body">
+                                <div class="container">
+
+                                    <br>
+                                    <div class="row">
+                                        <input class="d-none" type="number" id="id" name="id">
+                                        <div class="form-floating mb-3 col-6">
+                                            <input type="text" class="form-control" id="nombres" name="nombres"
+                                                placeholder="name@example.com">
+                                            <label for="floatingInput">Nombre</label>
+                                        </div>
+                                        <div class="form-floating mb-3 col-6">
+                                            <input type="text" class="form-control" id="apellidos" name="apellidos"
+                                                placeholder="name@example.com">
+                                            <label for="floatingInput">Apellido</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-floating mb-3 col-6">
+                                            <input type="email" class="form-control" id="correo" name="correo"
+                                                placeholder="name@example.com">
+                                            <label for=" floatingInput">Correo</label>
+                                        </div>
+                                        <div class="form-floating mb-3 col-6">
+                                            <input type="text" class="form-control" id="alias" name="alias"
+                                                placeholder="name@example.com">
+                                            <label for=" floatingInput">Alias</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-floating mb-3 col-6">
+                                            <input type="text" class="form-control" id="clave" name="clave"
+                                                placeholder="name@example.com">
+                                            <label for=" floatingInput">Clave</label>
+                                        </div>
+                                        <div class="form-floating mb-3 col-6">
+                                            <input type="text" class="form-control" id="confirmar" name="confirmar"
+                                                placeholder="name@example.com">
+                                            <label for=" floatingInput">Confirmar clave</label>
+                                        </div>
+                                    </div>
+                                    </br>
+                                </div>
+                            </div>
+                            <div class="modal-footer d-flex justify-content-center">
+                                <button type="reset" class="btn btn-secondary">
+                                    <i class="bi bi-arrow-counterclockwise"></i>
+                                </button>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bi bi-save-fill">
+                                    </i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- Crea una tabla para mostrar los productos -->
-        <div id="div-table">
-            <table class="table table-striped table-bordered table-hover">
-                <!-- Agrega la cabecera de la tabla -->
-                <thead>
-                    <tr>
-                        <th scope="col">Producto</th>
-                        <th scope="col">Descripción</th>
-                        <th scope="col">Categoría</th>
-                        <th scope="col">Tipo</th>
-                        <th scope="col">Tallas</th>
-                        <th scope="col">Colores</th>
-                        <th scope="col">Estado</th>
-                        <th scope="col">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Camisa Polo</th>
-                        <td>Camisa polo de diferentes colores</td>
-                        <td>Premium</td>
-                        <td>Camiseta</td>
-                        <td class="text-center"><img src="../../resources/img/iconos/table.png" alt="table" width="20px"></td>
-                        <td class="text-center"><img src="../../resources/img/iconos/table.png" alt="table_color" width="20px">
-                        </td>
-                        <td class="text-center">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                </label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group row">
-                                <div class="col-sm-1">
-                                    <a href="#" role="button">
-                                        <img src="../../resources/img/iconos/editar.png" alt="editar" width="18px">
-                                    </a>
-                                </div>
-                                <div class="col-sm-2">
-                                    <a href="#" role="button">
-                                        <img src="../../resources/img/iconos/eliminar.png" alt="eliminar" width="18px">
-                                    </a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Camiseta informal</th>
-                        <td>Camiseta informal de diferentes colores</td>
-                        <td>Semi - premium</td>
-                        <td>Camiseta</td>
-                        <td class="text-center"><img src="../../resources/img/iconos/table.png" alt="table" width="20px"></td>
-                        <td class="text-center"><img src="../../resources/img/iconos/table.png" alt="table_color" width="20px">
-                        </td>
-                        <td class="text-center">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                </label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group row">
-                                <div class="col-sm-1">
-                                    <a href="#" role="button">
-                                        <img src="../../resources/img/iconos/editar.png" alt="editar" width="18px">
-                                    </a>
-                                </div>
-                                <div class="col-sm-2">
-                                    <a href="#" role="button">
-                                        <img src="../../resources/img/iconos/eliminar.png" alt="eliminar" width="18px">
-                                    </a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Hoodie</th>
-                        <td>Suéter hoodie de diferentes colores</td>
-                        <td>Normal</td>
-                        <td>Hoodie</td>
-                        <td class="text-center"><img src="../../resources/img/iconos/table.png" alt="table" width="20px"></td>
-                        <td class="text-center"><img src="../../resources/img/iconos/table.png" alt="table_color" width="20px">
-                        </td>
-                        <td class="text-center">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                </label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group row">
-                                <div class="col-sm-1">
-                                    <a href="#" role="button">
-                                        <img src="../../resources/img/iconos/editar.png" alt="editar" width="18px">
-                                    </a>
-                                </div>
-                                <div class="col-sm-2">
-                                    <a href="#" role="button">
-                                        <img src="../../resources/img/iconos/eliminar.png" alt="eliminar" width="18px">
-                                    </a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Camisa Polo</th>
-                        <td>Camisa polo de diferentes colores</td>
-                        <td>Premium</td>
-                        <td>Camiseta</td>
-                        <td class="text-center"><img src="../../resources/img/iconos/table.png" alt="table" width="20px"></td>
-                        <td class="text-center"><img src="../../resources/img/iconos/table.png" alt="table_color" width="20px">
-                        </td>
-                        <td class="text-center">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                </label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group row">
-                                <div class="col-sm-1">
-                                    <a href="#" role="button">
-                                        <img src="../../resources/img/iconos/editar.png" alt="editar" width="18px">
-                                    </a>
-                                </div>
-                                <div class="col-sm-2">
-                                    <a href="#" role="button">
-                                        <img src="../../resources/img/iconos/eliminar.png" alt="eliminar" width="18px">
-                                    </a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Camiseta informal</th>
-                        <td>Camiseta informal de diferentes colores</td>
-                        <td>Semi - premium</td>
-                        <td>Camiseta</td>
-                        <td class="text-center"><img src="../../resources/img/iconos/table.png" alt="table" width="20px"></td>
-                        <td class="text-center"><img src="../../resources/img/iconos/table.png" alt="table_color" width="20px">
-                        </td>
-                        <td class="text-center">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                </label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group row">
-                                <div class="col-sm-1">
-                                    <a href="#" role="button">
-                                        <img src="../../resources/img/iconos/editar.png" alt="editar" width="18px">
-                                    </a>
-                                </div>
-                                <div class="col-sm-2">
-                                    <a href="#" role="button">
-                                        <img src="../../resources/img/iconos/eliminar.png" alt="eliminar" width="18px">
-                                    </a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Hoodie</th>
-                        <td>Suéter hoodie de diferentes colores</td>
-                        <td>Normal</td>
-                        <td>Hoodie</td>
-                        <td class="text-center"><img src="../../resources/img/iconos/table.png" alt="table" width="20px"></td>
-                        <td class="text-center"><img src="../../resources/img/iconos/table.png" alt="table_color" width="20px">
-                        </td>
-                        <td class="text-center">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                </label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group row">
-                                <div class="col-sm-1">
-                                    <a href="#" role="button">
-                                        <img src="../../resources/img/iconos/editar.png" alt="editar" width="18px">
-                                    </a>
-                                </div>
-                                <div class="col-sm-2">
-                                    <a href="#" role="button">
-                                        <img src="../../resources/img/iconos/eliminar.png" alt="eliminar" width="18px">
-                                    </a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Camisa Polo</th>
-                        <td>Camisa polo de diferentes colores</td>
-                        <td>Premium</td>
-                        <td>Camiseta</td>
-                        <td class="text-center"><img src="../../resources/img/iconos/table.png" alt="table" width="20px"></td>
-                        <td class="text-center"><img src="../../resources/img/iconos/table.png" alt="table_color" width="20px">
-                        </td>
-                        <td class="text-center">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                </label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group row">
-                                <div class="col-sm-1">
-                                    <a href="#" role="button">
-                                        <img src="../../resources/img/iconos/editar.png" alt="editar" width="18px">
-                                    </a>
-                                </div>
-                                <div class="col-sm-2">
-                                    <a href="#" role="button">
-                                        <img src="../../resources/img/iconos/eliminar.png" alt="eliminar" width="18px">
-                                    </a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Camiseta informal</th>
-                        <td>Camiseta informal de diferentes colores</td>
-                        <td>Semi - premium</td>
-                        <td>Camiseta</td>
-                        <td class="text-center"><img src="../../resources/img/iconos/table.png" alt="table" width="20px"></td>
-                        <td class="text-center"><img src="../../resources/img/iconos/table.png" alt="table_color" width="20px">
-                        </td>
-                        <td class="text-center">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                </label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group row">
-                                <div class="col-sm-1">
-                                    <a href="#" role="button">
-                                        <img src="../../resources/img/iconos/editar.png" alt="editar" width="18px">
-                                    </a>
-                                </div>
-                                <div class="col-sm-2">
-                                    <a href="#" role="button">
-                                        <img src="../../resources/img/iconos/eliminar.png" alt="eliminar" width="18px">
-                                    </a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Hoodie</th>
-                        <td>Suéter hoodie de diferentes colores</td>
-                        <td>Normal</td>
-                        <td>Hoodie</td>
-                        <td class="text-center"><img src="../../resources/img/iconos/table.png" alt="table" width="20px"></td>
-                        <td class="text-center"><img src="../../resources/img/iconos/table.png" alt="table_color" width="20px">
-                        </td>
-                        <td class="text-center">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                </label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group row">
-                                <div class="col-sm-1">
-                                    <a href="#" role="button">
-                                        <img src="../../resources/img/iconos/editar.png" alt="editar" width="18px">
-                                    </a>
-                                </div>
-                                <div class="col-sm-2">
-                                    <a href="#" role="button">
-                                        <img src="../../resources/img/iconos/eliminar.png" alt="eliminar" width="18px">
-                                    </a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Camisa Polo</th>
-                        <td>Camisa polo de diferentes colores</td>
-                        <td>Premium</td>
-                        <td>Camiseta</td>
-                        <td class="text-center"><img src="../../resources/img/iconos/table.png" alt="table" width="20px"></td>
-                        <td class="text-center"><img src="../../resources/img/iconos/table.png" alt="table_color" width="20px">
-                        </td>
-                        <td class="text-center">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                </label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group row">
-                                <div class="col-sm-1">
-                                    <a href="#" role="button">
-                                        <img src="../../resources/img/iconos/editar.png" alt="editar" width="18px">
-                                    </a>
-                                </div>
-                                <div class="col-sm-2">
-                                    <a href="#" role="button">
-                                        <img src="../../resources/img/iconos/eliminar.png" alt="eliminar" width="18px">
-                                    </a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Camiseta informal</th>
-                        <td>Camiseta informal de diferentes colores</td>
-                        <td>Semi - premium</td>
-                        <td>Camiseta</td>
-                        <td class="text-center"><img src="../../resources/img/iconos/table.png" alt="table" width="20px"></td>
-                        <td class="text-center"><img src="../../resources/img/iconos/table.png" alt="table_color" width="20px">
-                        </td>
-                        <td class="text-center">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                </label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group row">
-                                <div class="col-sm-1">
-                                    <a href="#" role="button">
-                                        <img src="../../resources/img/iconos/editar.png" alt="editar" width="18px">
-                                    </a>
-                                </div>
-                                <div class="col-sm-2">
-                                    <a href="#" role="button">
-                                        <img src="../../resources/img/iconos/eliminar.png" alt="eliminar" width="18px">
-                                    </a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Hoodie</th>
-                        <td>Suéter hoodie de diferentes colores</td>
-                        <td>Normal</td>
-                        <td>Hoodie</td>
-                        <td class="text-center"><img src="../../resources/img/iconos/table.png" alt="table" width="20px"></td>
-                        <td class="text-center"><img src="../../resources/img/iconos/table.png" alt="table_color" width="20px">
-                        </td>
-                        <td class="text-center">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                </label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group row">
-                                <div class="col-sm-1">
-                                    <a href="#" role="button">
-                                        <img src="../../resources/img/iconos/editar.png" alt="editar" width="18px">
-                                    </a>
-                                </div>
-                                <div class="col-sm-2">
-                                    <a href="#" role="button">
-                                        <img src="../../resources/img/iconos/eliminar.png" alt="eliminar" width="18px">
-                                    </a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Camisa Polo</th>
-                        <td>Camisa polo de diferentes colores</td>
-                        <td>Premium</td>
-                        <td>Camiseta</td>
-                        <td class="text-center"><img src="../../resources/img/iconos/table.png" alt="table" width="20px"></td>
-                        <td class="text-center"><img src="../../resources/img/iconos/table.png" alt="table_color" width="20px">
-                        </td>
-                        <td class="text-center">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                </label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group row">
-                                <div class="col-sm-1">
-                                    <a href="#" role="button">
-                                        <img src="../../resources/img/iconos/editar.png" alt="editar" width="18px">
-                                    </a>
-                                </div>
-                                <div class="col-sm-2">
-                                    <a href="#" role="button">
-                                        <img src="../../resources/img/iconos/eliminar.png" alt="eliminar" width="18px">
-                                    </a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="row" id="div-table">
+            <div class="col-12">
+                <div class="row">
+                    <!-- Se crea una tabla para mostrar los datos de los usuarios administradores -->
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr id="records"></tr>
+                            <!-- Se agregan los encabezados de la tabla -->
+                            <th scope="col" style="width: 140px;">Imagen</th>
+                            <th scope="col" style="width: 100px;">Producto</th>
+                            <th scope="col" style="width: 100px;">Descripcion</th>
+                            <th scope="col" style="width: 60px;">Precio</th>
+                            <th scope="col" style="width: 60px;">Estado</th>
+                            <th scope="col" style="width: 60px;">Color</th>
+                        </thead>
+                        <!-- Se controlan los datos de los usuarios admin a la tabla-->
+                        <tbody id="tbody-rows"></tbody>
+                    </table>
+                </div>
+            </div>
         </div>
 
     </main>
