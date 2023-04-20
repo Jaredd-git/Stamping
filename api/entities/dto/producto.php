@@ -1,18 +1,20 @@
 <?php
 require_once('../../helpers/validator.php');
-require_once('../../entities/dao/usuario_queries.php');
+require_once('../../entities/dao/producto_queries.php');
 /*
-*	Clase para manejar la transferencia de datos de la entidad USUARIO.
+*	Clase para manejar la transferencia de datos de la entidad PRODUCTO.
 */
-class Productos extends ProductoQueries
+class Producto extends ProductoQueries
 {
     // Declaración de atributos (propiedades).
     protected $id = null;
-    protected $nombres = null;
-    protected $apellidos = null;
-    protected $correo = null;
-    protected $alias = null;
-    protected $clave = null;
+    protected $nombre = null;
+    protected $descripcion = null;
+    protected $precio = null;
+    protected $imagen = null;
+    protected $color = null;
+    protected $estado = null;
+    protected $ruta = '../../images/productos/';
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -27,50 +29,60 @@ class Productos extends ProductoQueries
         }
     }
 
-    public function setNombres($value)
-    {
-        if (Validator::validateAlphabetic($value, 1, 50)) {
-            $this->nombres = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setApellidos($value)
-    {
-        if (Validator::validateAlphabetic($value, 1, 50)) {
-            $this->apellidos = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setCorreo($value)
-    {
-        if (Validator::validateEmail($value)) {
-            $this->correo = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setAlias($value)
+    public function setNombre($value)
     {
         if (Validator::validateAlphanumeric($value, 1, 50)) {
-            $this->alias = $value;
+            $this->nombre = $value;
             return true;
         } else {
             return false;
         }
     }
 
-    public function setClave($value)
+    public function setDescripcion($value)
     {
-        if (Validator::validatePassword($value)) {
-            $this->clave = password_hash($value, PASSWORD_DEFAULT);
+        if (Validator::validateString($value, 1, 250)) {
+            $this->descripcion = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setPrecio($value)
+    {
+        if (Validator::validateMoney($value)) {
+            $this->precio = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setImagen($file)
+    {
+        if (Validator::validateImageFile($file, 500, 500)) {
+            $this->imagen = Validator::getFileName();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setColor($value)
+    {
+        if (Validator::validateString($value, 1, 250)) {
+            $this->color = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setEstado($value)
+    {
+        if (Validator::validateBoolean($value)) {
+            $this->estado = $value;
             return true;
         } else {
             return false;
@@ -85,28 +97,38 @@ class Productos extends ProductoQueries
         return $this->id;
     }
 
-    public function getNombres()
+    public function getNombre()
     {
-        return $this->nombres;
+        return $this->nombre;
     }
 
-    public function getApellidos()
+    public function getDescripcion()
     {
-        return $this->apellidos;
+        return $this->descripcion;
     }
 
-    public function getCorreo()
+    public function getPrecio()
     {
-        return $this->correo;
+        return $this->precio;
     }
 
-    public function getAlias()
+    public function getImagen()
     {
-        return $this->alias;
+        return $this->imagen;
     }
 
-    public function getClave()
+    public function getColor()
     {
-        return $this->clave;
+        return $this->color;
+    }
+
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    public function getRuta()
+    {
+        return $this->ruta;
     }
 }
