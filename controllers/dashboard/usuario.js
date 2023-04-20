@@ -9,14 +9,9 @@ const MODAL_TITLE = document.getElementById('modal-title');
 // Constantes para establecer el contenido de la tabla.
 const TBODY_ROWS = document.getElementById('tbody-rows');
 const RECORDS = document.getElementById('records');
-// Constante tipo objeto para establecer las opciones del componente Modal.
-const OPTIONS = {
-    dismissible: false
-}
-// Inicialización del componente Modal para que funcionen las cajas de diálogo.
-// M.Modal.init(document.querySelectorAll('.modal'), OPTIONS);
+
 // Constante para establecer la modal de guardar.
-// const SAVE_MODAL = document.getElementById('save-modal');
+const MODAL = new bootstrap.Modal(document.getElementById('staticBackdrop'));
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -130,7 +125,7 @@ async function openUpdate(id) {
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
-        $('#staticBackdrop').modal({ show:true });
+        MODAL.show()
         // Se restauran los elementos del formulario.
         SAVE_FORM.reset();
         // Se asigna título a la caja de diálogo.
@@ -141,12 +136,10 @@ async function openUpdate(id) {
         document.getElementById('confirmar').disabled = true;
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.id_usuario;
-        document.getElementById('nombres').value = JSON.dataset.nombres_usuario;
-        document.getElementById('apellidos').value = JSON.dataset.apellidos_usuario;
+        document.getElementById('nombres').value = JSON.dataset.nombre_usuario;
+        document.getElementById('apellidos').value = JSON.dataset.apellido_usuario;
         document.getElementById('correo').value = JSON.dataset.correo_usuario;
         document.getElementById('alias').value = JSON.dataset.alias_usuario;
-        // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
-        M.updateTextFields();
     } else {
         sweetAlert(2, JSON.exception, false);
     }

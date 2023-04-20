@@ -30,10 +30,10 @@ class ProductoQueries
 
     public function readAll()
     {
-        $sql = 'SELECT id_producto, nombre_producto, descripcion_producto, precio_producto, color_producto, tipo, talla
-                FROM productos INNER JOIN tipos USING(id_tipo)
-                INNER JOIN tallas USING(id_talla)
-                ORDER BY nombre_producto';
+        $sql = 'SELECT id_producto, nombre_producto, descripcion_producto, precio_producto, color_producto, id_tipo, id_talla
+        FROM productos INNER JOIN tipos USING(id_tipo)
+        INNER JOIN tallas USING(id_talla)
+        ORDER BY nombre_producto';
         return Database::getRows($sql);
     }
 
