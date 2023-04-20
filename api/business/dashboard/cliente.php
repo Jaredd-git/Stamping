@@ -110,7 +110,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Correo incorrecto';
                 } elseif (!$cliente->setTelefono($_POST['telefono'])) {
                     $result['exception'] = 'Telefono incorrecto';
-                } elseif (!$cliente->setNacimiento($_POST['nacimiento']))     c     
+                } elseif (!$cliente->setNacimiento($_POST['nacimiento'])) {    
                     $result['exception'] = 'Fecha incorrecto';
                 } elseif (!$cliente->setDireccion($_POST['direccion'])) {
                     $result['exception'] = 'Direccion incorrecto';
