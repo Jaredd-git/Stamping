@@ -110,7 +110,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Correo incorrecto';
                 } elseif (!$cliente->setTelefono($_POST['telefono'])) {
                     $result['exception'] = 'Telefono incorrecto';
-                } elseif (!$cliente->setNacimiento($_POST['nacimiento'])) {
+                } elseif (!$cliente->setNacimiento($_POST['nacimiento']))     c     
                     $result['exception'] = 'Fecha incorrecto';
                 } elseif (!$cliente->setDireccion($_POST['direccion'])) {
                     $result['exception'] = 'Direccion incorrecto';
@@ -118,7 +118,11 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Usuario incorrecto';
                 } elseif ($_POST['clave'] != $_POST['confirmar']) {
                     $result['exception'] = 'Claves diferentes';
-                } elseif (!$usuario->setClave($_POST['clave'])) {
+                } elseif        
+                
+                
+                
+                (!$usuario->setClave($_POST['clave'])) {
                     $result['exception'] = Validator::getPasswordError();
                 } elseif ($usuario->createRow()) {
                     $result['status'] = 1;
