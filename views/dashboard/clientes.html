@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,7 +15,12 @@
     <header></header>
     <main>
         <!-- Boton para regresar a la pagina anterior -->
-        <a type="button" class="btn" role="button" id="btn-regresar" href="../../views/dashboard/home.html">Regresar</a>
+        <a href="home.html">
+            <button type="button" class="btn btn-secondary" id="btn-regresar">
+                <i class="bi bi-arrow-left-short"></i>
+                Regresar
+            </button>
+        </a>
         <div class="container">
             <h3 class="text-center">Administración de Clientes</h3>
         </div>
@@ -25,7 +31,7 @@
                     <form class="d-flex" method="post" id="search-form">
                         <input id="search" type="text" name="search" class="form-control rounded" placeholder="Search"
                             aria-label="Search" aria-describedby="search-addon" />
-                        <button  id="search-btn2" type="submit">
+                        <button id="search-btn2" type="submit">
                             <i class="bi bi-search"></i>
                         </button>
                     </form>
@@ -48,7 +54,7 @@
                             <form method="post" id="save-form">
                                 <div class="modal-body">
                                     <div class="container">
-                                        
+
                                         <div class="row">
                                             <input class="d-none" type="number" id="id" name="id">
                                             <div class="form-floating mb-3 col-4">
@@ -79,8 +85,8 @@
                                                 <label for="floatingInput">Telefono</label>
                                             </div>
                                             <div class="form-floating mb-3 col-4">
-                                                <input type="date" class="form-control" id="nacimiento" name="nacimiento"
-                                                    placeholder="name@example.com" required>
+                                                <input type="date" class="form-control" id="nacimiento"
+                                                    name="nacimiento" placeholder="name@example.com" required>
                                                 <label for=" floatingInput">F. Nacimiento</label>
                                             </div>
                                         </div>
@@ -106,7 +112,7 @@
                                                 <label for=" floatingInput">Confirmar clave</label>
                                             </div>
                                         </div>
-                                       
+
                                     </div>
                                 </div>
                                 <div class="modal-footer d-flex justify-content-center">

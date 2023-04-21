@@ -14,7 +14,12 @@
     <header></header>
 
     <main>
-        <a type="button" class="btn" role="button" id="btn-regresar" href="home.html">Regresar</a>
+        <a href="home.html">
+            <button type="button" class="btn btn-secondary" id="btn-regresar">
+                <i class="bi bi-arrow-left-short"></i>
+                Regresar
+            </button>
+        </a>
         <div class="container">
             <h3 class="text-center">Administración de Productos</h3>
         </div>
@@ -48,43 +53,43 @@
                                 <div class="container">
                                     <div class="row">
                                         <input class="d-none" type="number" id="id" name="id">
-                                        <div class="form-floating mb-3 col-6">
-                                            <input type="text" class="form-control" id="nombre" name="nombre"
-                                                placeholder="name@example.com">
+                                        <div class=" mb-3 col-6">
                                             <label for="floatingInput">Nombre</label>
+                                            <input type="text" class="form-control" id="nombre" name="nombre"
+                                                placeholder="Camiseta...">
                                         </div>
-                                        <div class="form-floating mb-3 col-6">
-                                            <input type="text" class="form-control" id="descripcion" name="descripcion"
-                                                placeholder="name@example.com">
+                                        <div class="mb-3 col-6">
                                             <label for="floatingInput">Descripcion</label>
+                                            <input type="text" class="form-control" id="descripcion" name="descripcion"
+                                                placeholder="Camiseta de corte largo">
                                         </div>
-                                        <div class="form-floating mb-3 col-6">
-                                            <input type="number" class="form-control" id="precio" name="precio"
-                                                placeholder="name@example.com">
+                                        <div class=" mb-3 col-6">
                                             <label for=" floatingInput">Precio</label>
+                                            <input type="number" class="form-control" id="precio" name="precio" step="0.01"
+                                                placeholder="10.99">
                                         </div>
-                                        <div class="form-floating mb-3 col-6">
+                                        <div class=" mb-3 col-6">
+                                            <label for="floatingInput">Color</label>
+                                            <input type="text" class="form-control" id="color" name="color"
+                                                placeholder="Celeste">
+                                        </div>
+                                        <div class="mb-3 col-6">
                                             <select class="form-select" aria-label="Tipo" id="tipo" name="tipo">
                                             </select>
                                         </div>
-                                        <div class="form-floating input-field mb-3 col-6">
+                                        <div class=" input-field mb-3 col-6">
                                             <select class="form-select" aria-label="Tipo" id="talla" name="talla">
                                             </select>
                                         </div>
-                                        <div class="form-floating mb-3 col-6">
-                                            <input type="number" class="form-control" id="existencias"
-                                                name="existencias" placeholder="name@example.com">
+                                        <div class=" mb-3 col-6">
                                             <label for=" floatingInput">Existencias</label>
-                                        </div>
-                                        <div class="form-floating mb-3 col-6">
-                                            <input type="text" class="form-control" id="color" name="color"
-                                                placeholder="name@example.com">
-                                            <label for="floatingInput">Color</label>
+                                            <input type="number" class="form-control" id="existencias"
+                                                name="existencias" placeholder="123...">
                                         </div>
                                         <div class="form-check form-switch mb-3 col-6">
+                                            <label for=" floatingInput">Estado</label>
                                             <input class="form-check-input" type="checkbox" id="estado" name="estado"
                                                 checked>
-                                            <label class="form-check-label" for="estado">Estado</label>
                                         </div>
                                         <div class="mb-3 col-6">
                                             <label for="imagen" class="form-label"></label>
@@ -116,13 +121,13 @@
                         <thead>
                             <tr id="records"></tr>
                             <!-- Se agregan los encabezados de la tabla -->
-                            <th scope="col" style="width: 50px;">Producto</th>
-                            <th scope="col" style="width: 60px;">Descripcion</th>
-                            <th scope="col" style="width: 60px;">Precio</th>
-                            <th scope="col" style="width: 60px;">Estado</th>
-                            <th scope="col" style="width: 60px;">Color</th>
-                            <th scope="col" style="width: 60px;">Existencias</th>
-                            <th scope="col" style="width: 60px;">Acciones</th>
+                            <th scope="col">Producto</th>
+                            <th scope="col">Descripcion</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Color</th>
+                            <th scope="col">Existencias</th>
+                            <th scope="col">Acciones</th>
                         </thead>
                         <!-- Se controlan los datos de los usuarios admin a la tabla-->
                         <tbody id="tbody-rows"></tbody>

@@ -24,6 +24,10 @@ body{
     margin-bottom: 1%;
 }
 
+#estado{
+    margin-left: 1in
+}
+
 #div-table{
     margin-left: 8%; 
     margin-right: 8%; 
@@ -47,7 +51,9 @@ a{
 }
 
 #btn-regresar{
-    margin-top: 10px;
+    margin-top: 3%;
+    margin-left: 8%;
+    margin-bottom: 3%;
 }
 
 #search-addon{
