@@ -1,3 +1,4 @@
+
 <html lang="es">
 
 <head>
@@ -80,6 +81,18 @@
                                             </select>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="form-floating mb-3 col-6">
+                                            <input type="number" class="form-control" id="existencias" name="existencias"
+                                                placeholder="name@example.com">
+                                            <label for=" floatingInput">Existencias</label>
+                                        </div>
+                                        <div class="form-floating mb-3 col-6">
+                                            <input type="text" class="form-control" id="color" name="color"
+                                                placeholder="name@example.com">
+                                            <label for="floatingInput">Color</label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="modal-footer d-flex justify-content-center">
@@ -105,11 +118,12 @@
                         <thead>
                             <tr id="records"></tr>
                             <!-- Se agregan los encabezados de la tabla -->
-                            <th scope="col" style="width: 60px;">Producto</th>
+                            <th scope="col" style="width: 50px;">Producto</th>
                             <th scope="col" style="width: 60px;">Descripcion</th>
                             <th scope="col" style="width: 60px;">Precio</th>
                             <th scope="col" style="width: 60px;">Estado</th>
                             <th scope="col" style="width: 60px;">Color</th>
+                            <th scope="col" style="width: 60px;">Existencias</th>
                             <th scope="col" style="width: 60px;">Acciones</th>
                         </thead>
                         <!-- Se controlan los datos de los usuarios admin a la tabla-->

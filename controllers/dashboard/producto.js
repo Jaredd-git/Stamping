@@ -53,7 +53,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
         // Se carga nuevamente la tabla para visualizar los cambios.
         fillTable();
         // Se cierra la caja de diálogo.
-        SAVE_MODAL.close();
+        //SAVE_MODAL.close();
         // Se muestra un mensaje de éxito.
         sweetAlert(1, JSON.message, true);
     } else {
@@ -78,6 +78,7 @@ async function fillTable(form = null) {
     if (JSON.status) {
         // Se recorre el conjunto de registros (dataset) fila por fila a través del objeto row.
         JSON.dataset.forEach(row => {
+            (row.estado_cliente) ? estado  = 'Activo' : estado = 'Inactivo';
             // Se establece un icono para el estado del producto.
             (row.estado_producto) ? icon = 'visibility' : icon = 'visibility_off';
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
@@ -86,13 +87,14 @@ async function fillTable(form = null) {
                     <td>${row.nombre_producto}</td>
                     <td>${row.descripcion_producto}</td>
                     <td>${row.precio_producto}</td>
-                    <td>${row.estado_producto}</td>
+                    <td>${estado}</td>
                     <td>${row.color_producto}</td>
+                    <td>${row.existencias}</td>
                     <th>
-                        <button  onclick="openUpdate(${row.id_usuario})" class="btn btn-secondary">
+                        <button  onclick="openUpdate(${row.id_producto})" class="btn btn-secondary">
                             <i class="bi bi-pencil-fill"></i>
                         </button>
-                        <button  onclick="openDelete(${row.id_usuario})" class="btn btn-danger">
+                        <button  onclick="openDelete(${row.id_producto})" class="btn btn-danger">
                             <i class="bi bi-trash-fill"></i>
                         </button>
                     </th>
@@ -145,6 +147,8 @@ async function openUpdate(id) {
         document.getElementById('id').value = JSON.dataset.id_producto;
         document.getElementById('nombre').value = JSON.dataset.nombre_producto;
         document.getElementById('precio').value = JSON.dataset.precio_producto;
+        document.getElementById('existencias').value = JSON.dataset.existencias;
+        document.getElementById('color').value = JSON.dataset.color_producto;
         document.getElementById('descripcion').value = JSON.dataset.descripcion_producto;
         fillSelect(TIPO_API, 'readAll', 'tipo', JSON.dataset.id_tipo);
         fillSelect(TALLA_API, 'readAll', 'talla', JSON.dataset.id_talla);

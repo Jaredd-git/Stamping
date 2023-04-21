@@ -15,6 +15,7 @@ class Producto extends ProductoQueries
     protected $estado = null;
     protected $tipo = null;
     protected $talla = null;
+    protected $existencias = null;
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -99,6 +100,15 @@ class Producto extends ProductoQueries
         }
     }
 
+    public function setExistencias($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->existencias = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
     /*
     *   Métodos para obtener valores de los atributos.
     */
@@ -130,5 +140,20 @@ class Producto extends ProductoQueries
     public function getEstado()
     {
         return $this->estado;
+    }
+
+    public function getExistencias()
+    {
+        return $this->existencias;
+    }
+
+    public function getTipo()
+    {
+        return $this->tipo;
+    }
+
+    public function getTalla()
+    {
+        return $this->talla;
     }
 }

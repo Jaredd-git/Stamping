@@ -55,6 +55,10 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Talla incorrecta';
                 }  elseif (!$producto->setEstado(isset($_POST['estado']) ? 1 : 0)) {
                     $result['exception'] = 'Estado incorrecto';
+                } elseif (!$producto->setExistencias($_POST['existencias'])) {
+                    $result['exception'] = 'Existencias incorrectas';
+                } elseif (!$producto->setColor($_POST['color'])) {
+                    $result['exception'] = 'Color incorrecto';
                 } elseif ($producto->createRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Producto creado correctamente';
@@ -81,30 +85,23 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Producto inexistente';
                 } elseif (!$producto->setNombre($_POST['nombre'])) {
                     $result['exception'] = 'Nombre incorrecto';
+                } elseif (!$producto->setColor($_POST['color'])) {
+                    $result['exception'] = 'Color incorrecto';
                 } elseif (!$producto->setDescripcion($_POST['descripcion'])) {
                     $result['exception'] = 'Descripción incorrecta';
                 } elseif (!$producto->setPrecio($_POST['precio'])) {
                     $result['exception'] = 'Precio incorrecto';
-                } elseif (!$producto->setCategoria($_POST['categoria'])) {
-                    $result['exception'] = 'Seleccione una categoría';
+                } elseif (!$producto->setTipo($_POST['tipo'])) {
+                    $result['exception'] = 'Tipo incorrecto';
                 } elseif (!$producto->setEstado(isset($_POST['estado']) ? 1 : 0)) {
                     $result['exception'] = 'Estado incorrecto';
-                } elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
-                    if ($producto->updateRow($data['imagen_producto'])) {
+                } elseif (!$producto->setTalla($_POST['talla'])) {
+                    $result['exception'] = 'Talla incorrecta';
+                } elseif (!$producto->setExistencias($_POST['existencias'])) {
+                    $result['exception'] = 'Existencias incorrectas';
+                } elseif ($producto->updateRow()) {
                         $result['status'] = 1;
                         $result['message'] = 'Producto modificado correctamente';
-                    } else {
-                        $result['exception'] = Database::getException();
-                    }
-                } elseif (!$producto->setImagen($_FILES['archivo'])) {
-                    $result['exception'] = Validator::getFileError();
-                } elseif ($producto->updateRow($data['imagen_producto'])) {
-                    $result['status'] = 1;
-                    if (Validator::saveFile($_FILES['archivo'], $producto->getRuta(), $producto->getImagen())) {
-                        $result['message'] = 'Producto modificado correctamente';
-                    } else {
-                        $result['message'] = 'Producto modificado pero no se guardó la imagen';
-                    }
                 } else {
                     $result['exception'] = Database::getException();
                 }
