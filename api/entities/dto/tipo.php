@@ -8,7 +8,7 @@ class Tipo extends TipoQueries
 {
     // Declaración de atributos (propiedades).
     protected $id = null;
-    protected $nombre_tipo = null;
+    protected $nombreTipo = null;
 
     /*
     *   Métodos para obtener valores de los atributos.
@@ -18,8 +18,8 @@ class Tipo extends TipoQueries
         return $this->id;
     }
 
-    public function getTalla()
+    public function getNombreTipo()
     {
-        return $this->nombre_tipo;
+        return $this->nombreTipo;
     }
 }
