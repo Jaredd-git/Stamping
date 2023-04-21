@@ -10,7 +10,7 @@ class ProductoQueries
     */
     public function searchRows($value)
     {
-        $sql = 'SELECT id_producto, nombre_producto, descripcion_producto, precio_producto, tipo, estado_producto, color_producto, existencias
+        $sql = 'SELECT id_producto, nombre_producto, descripcion_producto, precio_producto, id_tipo, estado_producto, color_producto, existencias
                 FROM productos INNER JOIN tipos USING(id_tipo)
                 WHERE nombre_producto ILIKE ? OR descripcion_producto ILIKE ?
                 ORDER BY nombre_producto';
