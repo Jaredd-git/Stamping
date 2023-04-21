@@ -75,7 +75,7 @@ async function fillTable(form = null) {
                     <td>${row.telefono_cliente}</td>
                     <td>${row.direccion_cliente}</td>
                     <th>
-                        <button  onclick="openUpdate(${row.id_cliente})" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Revisar datos del Cliente">
+                        <button  onclick="openUpdate(${row.id_cliente})" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Datos del Cliente">
                             <i class="bi bi-file-text"></i>
                         </button>
                         <button  onclick="openDelete(${row.id_cliente})" class="btn btn-danger">
@@ -129,8 +129,15 @@ async function openUpdate(id) {
         // Se restauran los elementos del formulario.
         SAVE_FORM.reset();
         // Se asigna título a la caja de diálogo.
-        MODAL_TITLE.textContent = 'Revisar cliente';
+        MODAL_TITLE.textContent = 'Datos del cliente';
         // Se deshabilitan los campos necesarios.
+        document.getElementById('nombres').disabled = true;
+        document.getElementById('apellidos').disabled = true;
+        document.getElementById('DUI').disabled = true;
+        document.getElementById('correo').disabled = true;
+        document.getElementById('telefono').disabled = true;
+        document.getElementById('nacimiento').disabled = true;
+        document.getElementById('direccion').disabled = true;
         document.getElementById('user').disabled = true;
         document.getElementById('clave').disabled = true;
         document.getElementById('confirmar').disabled = true;
