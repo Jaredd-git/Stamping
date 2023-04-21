@@ -77,13 +77,13 @@ async function fillTable(form = null) {
                     <td>${row.direccion_cliente}</td>
                     <td>${estado}</td>
                     <th>
-                        <button  onclick="openUpdate(${row.id_cliente})" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Datos del Cliente">
+                        <button  onclick="openUpdate(${row.id_cliente})" class="btn btn-outline-info" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Datos del Cliente">
                             <i class="bi bi-file-text"></i>
                         </button>
-                        <button  onclick="openChangeStatus(${row.id_cliente})" class="btn btn-warning">
-                            <i class="bi bi-trash-fill"></i>
+                        <button  onclick="openChangeStatus(${row.id_cliente})" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Cambiar estado del cliente">
+                            <i class="bi bi-check2-square"></i>
                         </button>
-                        <button  onclick="openDelete(${row.id_cliente})" class="btn btn-danger">
+                        <button  onclick="openDelete(${row.id_cliente})" class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Eliminar Cliente">
                             <i class="bi bi-trash-fill"></i>
                         </button>
                     </th>
