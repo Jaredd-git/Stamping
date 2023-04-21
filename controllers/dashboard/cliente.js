@@ -67,6 +67,7 @@ async function fillTable(form = null) {
     if (JSON.status) {
         // Se recorre el conjunto de registros fila por fila.
         JSON.dataset.forEach(row => {
+            (row.estado_cliente) ? estado  = 'Activo' : estado = 'Inactivo';
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TBODY_ROWS.innerHTML += `
                 <tr>
@@ -74,9 +75,13 @@ async function fillTable(form = null) {
                     <td>${row.apellido_cliente}</td>
                     <td>${row.telefono_cliente}</td>
                     <td>${row.direccion_cliente}</td>
+                    <td>${estado}</td>
                     <th>
                         <button  onclick="openUpdate(${row.id_cliente})" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Datos del Cliente">
                             <i class="bi bi-file-text"></i>
+                        </button>
+                        <button  onclick="openChangeStatus(${row.id_cliente})" class="btn btn-warning">
+                            <i class="bi bi-trash-fill"></i>
                         </button>
                         <button  onclick="openDelete(${row.id_cliente})" class="btn btn-danger">
                             <i class="bi bi-trash-fill"></i>
@@ -100,7 +105,7 @@ async function fillTable(form = null) {
 *   Parámetros: ninguno.
 *   Retorno: ninguno.
 */
-function openCreate(){
+function openCreate() {
     // Se restauran los elementos del formulario.
     SAVE_FORM.reset();
     // Se asigna título a la caja de diálogo.
@@ -163,7 +168,7 @@ async function openUpdate(id) {
 */
 async function openDelete(id) {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
-    const RESPONSE = await confirmAction('¿Desea eliminar el usuario de forma permanente?');
+    const RESPONSE = await confirmAction('¿Desea eliminar el cliente?');
     // Se verifica la respuesta del mensaje.
     if (RESPONSE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
@@ -171,6 +176,32 @@ async function openDelete(id) {
         FORM.append('id_cliente', id);
         // Petición para eliminar el registro seleccionado.
         const JSON = await dataFetch(CLIENTE_API, 'delete', FORM);
+        // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+        if (JSON.status) {
+            // Se carga nuevamente la tabla para visualizar los cambios.
+            fillTable();
+            // Se muestra un mensaje de éxito.
+            sweetAlert(1, JSON.message, true);
+        } else {
+            sweetAlert(2, JSON.exception, false);
+        }
+    }
+}
+
+/*
+*   Función asíncrona para eliminar un registro.
+*   Parámetros: id (identificador del registro seleccionado).
+*   Retorno: ninguno.
+*/
+async function openChangeStatus(id) {
+    // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
+    const RESPONSE = await confirmAction('¿Desea cambiar el estado del cliente?');
+    // Se verifica la respuesta del mensaje.
+    if (RESPONSE) {
+        const FORM = new FormData();
+        FORM.append('id_cliente', id);
+        // Petición para eliminar el registro seleccionado.
+        const JSON = await dataFetch(CLIENTE_API, 'changeStatus', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
             // Se carga nuevamente la tabla para visualizar los cambios.

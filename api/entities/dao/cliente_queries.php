@@ -61,6 +61,7 @@ class ClienteQueries
         return Database::executeRow($sql, $params);
     }
     
+
     /*
     *   Métodos para gestionar la cuenta del cliente.
     */
@@ -106,12 +107,13 @@ class ClienteQueries
         return Database::executeRow($sql, $params);
     }
 
-    public function changeStatus()
+    public function changeStatus($status)
     {
+        ($status) ? $status = 0 : $status = 1;
         $sql = 'UPDATE clientes
                 SET estado_cliente = ?
                 WHERE id_cliente = ?';
-        $params = array($this->estado, $this->id);
+        $params = array($status, $this->id);
         return Database::executeRow($sql, $params);
     }
 }

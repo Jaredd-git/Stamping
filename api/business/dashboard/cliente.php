@@ -166,9 +166,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'delete':
-                if ($_POST['id_cliente'] == $_SESSION['id_usuario']) {
-                    $result['exception'] = 'No se puede eliminar a sí mismo';
-                } elseif (!$cliente->setId($_POST['id_cliente'])) {
+                if (!$cliente->setId($_POST['id_cliente'])) {
                     $result['exception'] = 'Cliente incorrecto';
                 } elseif (!$cliente->readOne()) {
                     $result['exception'] = 'Cliente inexistente';
@@ -179,6 +177,18 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+            case 'changeStatus':
+                    if (!$cliente->setId($_POST['id_cliente'])) {
+                        $result['exception'] = 'Cliente incorrecto';
+                    } elseif (!$data = $cliente->readOne()) {
+                        $result['exception'] = 'Cliente inexistente';
+                    } elseif ($cliente->changeStatus($data['estado_cliente'])) {
+                        $result['status'] = 1;
+                        $result['message'] = 'Estado actualizado correctamente';
+                    } else {
+                        $result['exception'] = Database::getException();
+                    }
+                    break;
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }
