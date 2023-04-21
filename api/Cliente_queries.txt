@@ -1,0 +1,56 @@
+//Cliente_queries
+
+public function deleteRow($desactivar = false)
+{
+    if ($desactivar) {
+        $sql = 'UPDATE clientes
+                SET estado_cliente = false
+                WHERE id_cliente = ?';
+    } else {
+        $sql = 'DELETE FROM clientes
+                WHERE id_cliente = ?';
+    }
+    $params = array($this->id);
+    return Database::executeRow($sql, $params);
+}
+
+components
+
+async function confirmDelete() {
+  const id = 123; // ID del cliente que se eliminará o actualizará su estado
+  const result = await Swal.fire({
+    title: '¿Qué quieres hacer con el cliente?',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Actualizar estado',
+    cancelButtonText: 'Eliminar definitivamente',
+    reverseButtons: true
+  });
+
+  if (result.isConfirmed) {
+    // Lógica para actualizar el estado del cliente
+    const FORM = new FormData();
+    FORM.append('id_cliente', id);
+    FORM.append('estado_cliente', false);
+    const response = await dataFetch(CLIENTE_API, 'update', FORM);
+    if (response.status) {
+      // Actualización exitosa
+      Swal.fire('Estado actualizado', 'El estado del cliente ha sido actualizado correctamente', 'success');
+    } else {
+      // Error al actualizar el estado
+      Swal.fire('Error', `No se pudo actualizar el estado del cliente: ${response.exception}`, 'error');
+    }
+  } else if (result.dismiss === Swal.DismissReason.cancel) {
+    // Lógica para eliminar definitivamente el cliente
+    const FORM = new FormData();
+    FORM.append('id_cliente', id);
+    const response = await dataFetch(CLIENTE_API, 'delete', FORM);
+    if (response.status) {
+      // Eliminación exitosa
+      Swal.fire('Cliente eliminado', 'El cliente ha sido eliminado correctamente', 'success');
+    } else {
+      // Error al eliminar el cliente
+      Swal.fire('Error', `No se pudo eliminar el cliente: ${response.exception}`, 'error');
+    }
+  }
+}
