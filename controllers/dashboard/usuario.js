@@ -75,10 +75,10 @@ async function fillTable(form = null) {
                     <td>${row.correo_usuario}</td>
                     <td>${row.alias_usuario}</td>
                     <th>
-                        <button  onclick="openUpdate(${row.id_usuario})" class="btn btn-secondary">
-                            <i class="bi bi-pencil-fill"></i>
+                        <button  onclick="openUpdate(${row.id_usuario})" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Actualizar usuario">
+                            <i class="bi bi-pencil-square"></i>
                         </button>
-                        <button  onclick="openDelete(${row.id_usuario})" class="btn btn-danger">
+                        <button  onclick="openDelete(${row.id_usuario})" class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Eliminar usuario">
                             <i class="bi bi-trash-fill"></i>
                         </button>
                     </th>

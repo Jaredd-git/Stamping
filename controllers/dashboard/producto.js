@@ -83,6 +83,7 @@ async function fillTable(form = null) {
             (row.estado_producto) ? icon = 'visibility' : icon = 'visibility_off';
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TBODY_ROWS.innerHTML += `
+            
                 <tr>
                     <td>${row.nombre_producto}</td>
                     <td>${row.descripcion_producto}</td>
@@ -91,10 +92,10 @@ async function fillTable(form = null) {
                     <td>${row.color_producto}</td>
                     <td>${row.existencias}</td>
                     <th>
-                        <button  onclick="openUpdate(${row.id_producto})" class="btn btn-secondary">
-                            <i class="bi bi-pencil-fill"></i>
+                        <button  onclick="openUpdate(${row.id_producto})" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Actualizar producto">
+                            <i class="bi bi-pencil-square"></i>
                         </button>
-                        <button  onclick="openDelete(${row.id_producto})" class="btn btn-danger">
+                        <button  onclick="openDelete(${row.id_producto})" class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Eliminar producto">
                             <i class="bi bi-trash-fill"></i>
                         </button>
                     </th>
