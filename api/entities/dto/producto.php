@@ -13,6 +13,8 @@ class Producto extends ProductoQueries
     protected $precio = null;
     protected $color = null;
     protected $estado = null;
+    protected $tipo = null;
+    protected $talla = null;
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -61,6 +63,26 @@ class Producto extends ProductoQueries
     {
         if (Validator::validateString($value, 1, 250)) {
             $this->color = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setTipo($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->tipo = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setTalla($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->talla = $value;
             return true;
         } else {
             return false;

@@ -45,26 +45,22 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Descripción incorrecta';
                 } elseif (!$producto->setPrecio($_POST['precio'])) {
                     $result['exception'] = 'Precio incorrecto';
-                } elseif (!isset($_POST['categoria'])) {
-                    $result['exception'] = 'Seleccione una categoría';
-                } elseif (!$producto->setCategoria($_POST['categoria'])) {
-                    $result['exception'] = 'Categoría incorrecta';
-                } elseif (!$producto->setEstado(isset($_POST['estado']) ? 1 : 0)) {
+                } elseif (!isset($_POST['tipo'])) {
+                    $result['exception'] = 'Seleccione un tipo';
+                } elseif (!$producto->setTipo($_POST['tipo'])) {
+                    $result['exception'] = 'Tipo incorrecto';
+                } elseif (!isset($_POST['talla'])) {
+                    $result['exception'] = 'Seleccione una talla';
+                } elseif (!$producto->setTalla($_POST['talla'])) {
+                    $result['exception'] = 'Talla incorrecta';
+                }  elseif (!$producto->setEstado(isset($_POST['estado']) ? 1 : 0)) {
                     $result['exception'] = 'Estado incorrecto';
-                } elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
-                    $result['exception'] = 'Seleccione una imagen';
-                } elseif (!$producto->setImagen($_FILES['archivo'])) {
-                    $result['exception'] = Validator::getFileError();
                 } elseif ($producto->createRow()) {
                     $result['status'] = 1;
-                    if (Validator::saveFile($_FILES['archivo'], $producto->getRuta(), $producto->getImagen())) {
-                        $result['message'] = 'Producto creado correctamente';
+                    $result['message'] = 'Producto creado correctamente';
                     } else {
-                        $result['message'] = 'Producto creado pero no se guardó la imagen';
+                        $result['exception'] = Database::getException();
                     }
-                } else {
-                    $result['exception'] = Database::getException();;
-                }
                 break;
             case 'readOne':
                 if (!$producto->setId($_POST['id'])) {
@@ -114,20 +110,16 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'delete':
-                if (!$producto->setId($_POST['id_producto'])) {
+                if (!$producto->setId($_POST['id'])) {
                     $result['exception'] = 'Producto incorrecto';
                 } elseif (!$data = $producto->readOne()) {
                     $result['exception'] = 'Producto inexistente';
                 } elseif ($producto->deleteRow()) {
                     $result['status'] = 1;
-                    if (Validator::deleteFile($producto->getRuta(), $data['imagen_producto'])) {
                         $result['message'] = 'Producto eliminado correctamente';
                     } else {
-                        $result['message'] = 'Producto eliminado pero no se borró la imagen';
+                        $result['exception'] = Database::getException();
                     }
-                } else {
-                    $result['exception'] = Database::getException();
-                }
                 break;
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
