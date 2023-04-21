@@ -15,7 +15,9 @@ class Producto extends ProductoQueries
     protected $estado = null;
     protected $tipo = null;
     protected $talla = null;
+    protected $imagen = null;
     protected $existencias = null;
+    protected $ruta = '../../images/productos/';
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -109,6 +111,16 @@ class Producto extends ProductoQueries
             return false;
         }
     }
+
+    public function setImagen($value)
+    {
+        if (Validator::validateImageFile($value, 600, 800)) {
+            $this->imagen = Validator::getFileName();
+            return true;
+        } else {
+            return false;
+        }
+    }
     /*
     *   Métodos para obtener valores de los atributos.
     */
@@ -155,5 +167,10 @@ class Producto extends ProductoQueries
     public function getTalla()
     {
         return $this->talla;
+    }
+
+    public function getImagen()
+    {
+        return $this->imagen;
     }
 }

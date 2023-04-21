@@ -1,4 +1,3 @@
-
 <html lang="es">
 
 <head>
@@ -44,7 +43,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                                 data-tooltip="Cerrar"></button>
                         </div>
-                        <form method="post" id="save-form">
+                        <form method="post" id="save-form" enctype="multipart/form-data">
                             <div class="modal-body">
                                 <div class="container">
                                     <div class="row">
@@ -59,19 +58,11 @@
                                                 placeholder="name@example.com">
                                             <label for="floatingInput">Descripcion</label>
                                         </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="form-floating mb-3 col-6">
                                             <input type="number" class="form-control" id="precio" name="precio"
                                                 placeholder="name@example.com">
                                             <label for=" floatingInput">Precio</label>
                                         </div>
-                                        <div class="form-check form-switch mb-3 col-6">
-                                            <input class="form-check-input" type="checkbox" id="estado" name="estado" checked>
-                                            <label class="form-check-label" for="flexSwitchCheckDefault">Estado</label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="form-floating mb-3 col-6">
                                             <select class="form-select" aria-label="Tipo" id="tipo" name="tipo">
                                             </select>
@@ -80,17 +71,24 @@
                                             <select class="form-select" aria-label="Tipo" id="talla" name="talla">
                                             </select>
                                         </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="form-floating mb-3 col-6">
-                                            <input type="number" class="form-control" id="existencias" name="existencias"
-                                                placeholder="name@example.com">
+                                            <input type="number" class="form-control" id="existencias"
+                                                name="existencias" placeholder="name@example.com">
                                             <label for=" floatingInput">Existencias</label>
                                         </div>
                                         <div class="form-floating mb-3 col-6">
                                             <input type="text" class="form-control" id="color" name="color"
                                                 placeholder="name@example.com">
                                             <label for="floatingInput">Color</label>
+                                        </div>
+                                        <div class="form-check form-switch mb-3 col-6">
+                                            <input class="form-check-input" type="checkbox" id="estado" name="estado"
+                                                checked>
+                                            <label class="form-check-label" for="estado">Estado</label>
+                                        </div>
+                                        <div class="mb-3 col-6">
+                                            <label for="imagen" class="form-label"></label>
+                                            <input class="form-control" type="file" id="imagen" name="imagen">
                                         </div>
                                     </div>
                                 </div>

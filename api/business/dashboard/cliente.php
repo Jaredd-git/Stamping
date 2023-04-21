@@ -10,14 +10,14 @@ if (isset($_GET['action'])) {
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'session' => 0, 'message' => null, 'exception' => null, 'dataset' => null, 'username' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
-    if (isset($_SESSION['id_usuario'])) {
+    if (isset($_SESSION['id_admin'])) {
         $result['session'] = 1;
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
             case 'getUser':
-                if (isset($_SESSION['alias_usuario'])) {
+                if (isset($_SESSION['alias_admin'])) {
                     $result['status'] = 1;
-                    $result['username'] = $_SESSION['alias_usuario'];
+                    $result['username'] = $_SESSION['alias_admin'];
                 } else {
                     $result['exception'] = 'Alias de usuario indefinido';
                 }
@@ -51,7 +51,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Alias incorrecto';
                 } elseif ($usuario->editProfile()) {
                     $result['status'] = 1;
-                    $_SESSION['alias_usuario'] = $usuario->getAlias();
+                    $_SESSION['alias_admin'] = $usuario->getAlias();
                     $result['message'] = 'Perfil modificado correctamente';
                 } else {
                     $result['exception'] = Database::getException();
@@ -59,7 +59,7 @@ if (isset($_GET['action'])) {
                 break;
             case 'changePassword':
                 $_POST = Validator::validateForm($_POST);
-                if (!$usuario->setId($_SESSION['id_usuario'])) {
+                if (!$usuario->setId($_SESSION['id_admin'])) {
                     $result['exception'] = 'Usuario incorrecto';
                 } elseif (!$usuario->checkPassword($_POST['actual'])) {
                     $result['exception'] = 'Clave actual incorrecta';
@@ -230,8 +230,8 @@ if (isset($_GET['action'])) {
                 } elseif ($usuario->checkPassword($_POST['clave'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Autenticación correcta';
-                    $_SESSION['id_usuario'] = $usuario->getId();
-                    $_SESSION['alias_usuario'] = $usuario->getAlias();
+                    $_SESSION['id_admin'] = $usuario->getId();
+                    $_SESSION['alias_admin'] = $usuario->getAlias();
                 } else {
                     $result['exception'] = 'Clave incorrecta';
                 }

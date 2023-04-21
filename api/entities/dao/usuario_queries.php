@@ -37,7 +37,7 @@ class UsuarioQueries
     public function changePassword()
     {
         $sql = 'UPDATE usuarios SET clave_usuario = ? WHERE id_usuario = ?';
-        $params = array($this->clave, $_SESSION['id_usuario']);
+        $params = array($this->clave, $_SESSION['id_admin']);
         return Database::executeRow($sql, $params);
     }
 
@@ -46,7 +46,7 @@ class UsuarioQueries
         $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario, alias_usuario
                 FROM usuarios
                 WHERE id_usuario = ?';
-        $params = array($_SESSION['id_usuario']);
+        $params = array($_SESSION['id_admin']);
         return Database::getRow($sql, $params);
     }
 
@@ -55,7 +55,7 @@ class UsuarioQueries
         $sql = 'UPDATE usuarios
                 SET nombre_usuario = ?, apellido_usuario = ?, correo_usuario = ?, alias_usuario = ?
                 WHERE id_usuario = ?';
-        $params = array($this->nombres, $this->apellidos, $this->correo, $this->alias, $_SESSION['id_usuario']);
+        $params = array($this->nombres, $this->apellidos, $this->correo, $this->alias, $_SESSION['id_admin']);
         return Database::executeRow($sql, $params);
     }
 
