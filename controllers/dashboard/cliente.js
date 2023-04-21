@@ -9,14 +9,9 @@ const MODAL_TITLE = document.getElementById('modal-title');
 // Constantes para establecer el contenido de la tabla.
 const TBODY_ROWS = document.getElementById('tbody-rows');
 const RECORDS = document.getElementById('records');
-// Constante tipo objeto para establecer las opciones del componente Modal.
-const OPTIONS = {
-    dismissible: false
-}
-// Inicialización del componente Modal para que funcionen las cajas de diálogo.
-// M.Modal.init(document.querySelectorAll('.modal'), OPTIONS);
+
 // Constante para establecer la modal de guardar.
-// const SAVE_MODAL = document.getElementById('save-modal');
+const MODAL = new bootstrap.Modal(document.getElementById('staticBackdrop'));
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -80,8 +75,8 @@ async function fillTable(form = null) {
                     <td>${row.telefono_cliente}</td>
                     <td>${row.direccion_cliente}</td>
                     <th>
-                        <button  onclick="openUpdate(${row.id_cliente})" class="btn btn-secondary">
-                            <i class="bi bi-pencil-fill"></i>
+                        <button  onclick="openUpdate(${row.id_cliente})" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Revisar datos del Cliente">
+                            <i class="bi bi-file-text"></i>
                         </button>
                         <button  onclick="openDelete(${row.id_cliente})" class="btn btn-danger">
                             <i class="bi bi-trash-fill"></i>
@@ -126,15 +121,15 @@ async function openUpdate(id) {
     const FORM = new FormData();
     FORM.append('id_cliente', id);
     // Petición para obtener los datos del registro solicitado.
-    const JSON = await dataFetch(USUARIO_API, 'readOne', FORM);
+    const JSON = await dataFetch(CLIENTE_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
-        $('#staticBackdrop').modal({ show:true });
+        MODAL.show()
         // Se restauran los elementos del formulario.
         SAVE_FORM.reset();
         // Se asigna título a la caja de diálogo.
-        MODAL_TITLE.textContent = 'Actualizar cliente';
+        MODAL_TITLE.textContent = 'Revisar cliente';
         // Se deshabilitan los campos necesarios.
         document.getElementById('user').disabled = true;
         document.getElementById('clave').disabled = true;
@@ -149,8 +144,6 @@ async function openUpdate(id) {
         document.getElementById('nacimiento').value = JSON.dataset.nacimiento_cliente;
         document.getElementById('direccion').value = JSON.dataset.direccion_cliente;
         document.getElementById('user').value = JSON.dataset.user_cliente;
-        // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
-        M.updateTextFields();
     } else {
         sweetAlert(2, JSON.exception, false);
     }
