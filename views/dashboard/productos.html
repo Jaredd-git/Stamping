@@ -14,7 +14,12 @@
     <header></header>
 
     <main>
-        <a type="button" class="btn" role="button" id="btn-regresar" href="home.html">Regresar</a>
+        <a href="home.html">
+            <button type="button" class="btn btn-secondary" id="btn-regresar">
+                <i class="bi bi-arrow-left-short"></i>
+                Regresar
+            </button>
+        </a>
         <div class="container">
             <h3 class="text-center">Administración de Productos</h3>
         </div>
@@ -116,13 +121,13 @@
                         <thead>
                             <tr id="records"></tr>
                             <!-- Se agregan los encabezados de la tabla -->
-                            <th scope="col" style="width: 50px;">Producto</th>
-                            <th scope="col" style="width: 60px;">Descripcion</th>
-                            <th scope="col" style="width: 60px;">Precio</th>
-                            <th scope="col" style="width: 60px;">Estado</th>
-                            <th scope="col" style="width: 60px;">Color</th>
-                            <th scope="col" style="width: 60px;">Existencias</th>
-                            <th scope="col" style="width: 60px;">Acciones</th>
+                            <th scope="col">Producto</th>
+                            <th scope="col">Descripcion</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Color</th>
+                            <th scope="col">Existencias</th>
+                            <th scope="col">Acciones</th>
                         </thead>
                         <!-- Se controlan los datos de los usuarios admin a la tabla-->
                         <tbody id="tbody-rows"></tbody>

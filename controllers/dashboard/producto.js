@@ -78,7 +78,7 @@ async function fillTable(form = null) {
     if (JSON.status) {
         // Se recorre el conjunto de registros (dataset) fila por fila a través del objeto row.
         JSON.dataset.forEach(row => {
-            (row.estado_cliente) ? estado  = 'Activo' : estado = 'Inactivo';
+            (row.estado_producto) ? estado  = 'Activo' : estado = 'Inactivo';
             // Se establece un icono para el estado del producto.
             (row.estado_producto) ? icon = 'visibility' : icon = 'visibility_off';
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
