@@ -189,7 +189,7 @@ async function openDelete(id) {
 }
 
 /*
-*   Función asíncrona para eliminar un registro.
+*   Función asíncrona para cambiar el estado de un registro.
 *   Parámetros: id (identificador del registro seleccionado).
 *   Retorno: ninguno.
 */
