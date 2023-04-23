@@ -4,7 +4,7 @@ require_once('../../entities/dao/valoracion_queries.php');
 /*
 *	Clase para manejar la transferencia de datos de la entidad CLIENTE.
 */
-class Valoraciones extends ValoracionQueries
+class Valoracion extends ValoracionQueries
 {
     // Declaración de atributos (propiedades).
     protected $id = null;
