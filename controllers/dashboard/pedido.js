@@ -1,5 +1,5 @@
 // Constante para completar la ruta de la API.
-const PEDIDO_API = 'business/dashboard/pedido.php';
+const PEDIDO_API = 'business/dashboard/detallepedido.php';
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
 // Constante para establecer el formulario de guardar.
@@ -62,7 +62,7 @@ async function fillTable(form = null) {
     // Se verifica la acción a realizar.
     (form) ? action = 'search' : action = 'readAll';
     // Petición para obtener los registros disponibles.
-    const JSON = await dataFetch(USUARIO_API, action, form);
+    const JSON = await dataFetch(PEDIDO_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se recorre el conjunto de registros fila por fila.
