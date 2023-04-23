@@ -43,6 +43,7 @@ async function fillTable(form = null) {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TBODY_ROWS.innerHTML += `
                 <tr>
+                    <td>${row.id_producto}</td>
                     <td>${row.calificacion_producto}</td>
                     <td>${row.comentario_producto}</td>
                     <td>${row.fecha_comentario}</td>
