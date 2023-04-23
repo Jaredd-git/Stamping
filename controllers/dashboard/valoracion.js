@@ -67,7 +67,7 @@ async function fillTable(form = null) {
     if (JSON.status) {
         // Se recorre el conjunto de registros fila por fila.
         JSON.dataset.forEach(row => {
-            (row.estado_comentario) ? estado  = 'Activa' : estado = 'Inactiva';
+            (row.estado_comentario) ? estado  = 'Activo' : estado = 'Inactivo';
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TBODY_ROWS.innerHTML += `
                 <tr>
@@ -77,6 +77,9 @@ async function fillTable(form = null) {
                     <td>${row.fecha_comentario}</td>
                     <td>${estado}</td>
                     <th>
+                        <button  onclick="openUpdate(${row.id_valoracion})" class="btn btn-outline-info" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Datos del Cliente">
+                            <i class="bi bi-file-text"></i>
+                        </button>
                         <button  onclick="openChangeStatus(${row.id_valoracion})" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Cambiar estado del cliente">
                             <i class="bi bi-check2-square"></i>
                         </button>
@@ -102,12 +105,61 @@ async function fillTable(form = null) {
 *   Parámetros: ninguno.
 *   Retorno: ninguno.
 */
+function openCreate() {
+    // Se restauran los elementos del formulario.
+    SAVE_FORM.reset();
+    // Se asigna título a la caja de diálogo.
+    MODAL_TITLE.textContent = 'Crear cliente';
+    // Se habilitan los campos necesarios.
+    document.getElementById('user').disabled = false;
+    document.getElementById('clave').disabled = false;
+    document.getElementById('confirmar').disabled = false;
+}
 
 /*
 *   Función asíncrona para preparar el formulario al momento de actualizar un registro.
 *   Parámetros: id (identificador del registro seleccionado).
 *   Retorno: ninguno.
 */
+async function openUpdate(id) {
+    // Se define una constante tipo objeto con los datos del registro seleccionado.
+    const FORM = new FormData();
+    FORM.append('id_valoracion', id);
+    // Petición para obtener los datos del registro solicitado.
+    const JSON = await dataFetch(VALORACION_API, 'readOne', FORM);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    if (JSON.status) {
+        // Se abre la caja de diálogo que contiene el formulario.
+        MODAL.show()
+        // Se restauran los elementos del formulario.
+        SAVE_FORM.reset();
+        // Se asigna título a la caja de diálogo.
+        MODAL_TITLE.textContent = 'Datos del cliente';
+        // Se deshabilitan los campos necesarios.
+        document.getElementById('nombres').disabled = true;
+        document.getElementById('apellidos').disabled = true;
+        document.getElementById('DUI').disabled = true;
+        document.getElementById('correo').disabled = true;
+        document.getElementById('telefono').disabled = true;
+        document.getElementById('nacimiento').disabled = true;
+        document.getElementById('direccion').disabled = true;
+        document.getElementById('user').disabled = true;
+        document.getElementById('clave').disabled = true;
+        document.getElementById('confirmar').disabled = true;
+        // Se inicializan los campos del formulario.
+        document.getElementById('id').value = JSON.dataset.id_cliente;
+        document.getElementById('nombres').value = JSON.dataset.nombre_cliente;
+        document.getElementById('apellidos').value = JSON.dataset.apellido_cliente;
+        document.getElementById('DUI').value = JSON.dataset.dui_cliente;
+        document.getElementById('correo').value = JSON.dataset.correo_cliente;
+        document.getElementById('telefono').value = JSON.dataset.telefono_cliente;
+        document.getElementById('nacimiento').value = JSON.dataset.nacimiento_cliente;
+        document.getElementById('direccion').value = JSON.dataset.direccion_cliente;
+        document.getElementById('user').value = JSON.dataset.user_cliente;
+    } else {
+        sweetAlert(2, JSON.exception, false);
+    }
+}
 
 /*
 *   Función asíncrona para eliminar un registro.
@@ -116,12 +168,12 @@ async function fillTable(form = null) {
 */
 async function openDelete(id) {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
-    const RESPONSE = await confirmAction('¿Desea eliminar la valoracion?');
+    const RESPONSE = await confirmAction('¿Desea eliminar la valoración?');
     // Se verifica la respuesta del mensaje.
     if (RESPONSE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
         const FORM = new FormData();
-        FORM.append('id_cliente', id);
+        FORM.append('id_valoracion', id);
         // Petición para eliminar el registro seleccionado.
         const JSON = await dataFetch(VALORACION_API, 'delete', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -147,7 +199,7 @@ async function openChangeStatus(id) {
     // Se verifica la respuesta del mensaje.
     if (RESPONSE) {
         const FORM = new FormData();
-        FORM.append('id_cliente', id);
+        FORM.append('id_valoracion', id);
         // Petición para eliminar el registro seleccionado.
         const JSON = await dataFetch(VALORACION_API, 'changeStatus', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
