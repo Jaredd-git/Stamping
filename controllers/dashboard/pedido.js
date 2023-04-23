@@ -9,14 +9,9 @@ const MODAL_TITLE = document.getElementById('modal-title');
 // Constantes para establecer el contenido de la tabla.
 const TBODY_ROWS = document.getElementById('tbody-rows');
 const RECORDS = document.getElementById('records');
-// Constante tipo objeto para establecer las opciones del componente Modal.
-const OPTIONS = {
-    dismissible: false
-}
-// Inicialización del componente Modal para que funcionen las cajas de diálogo.
-// M.Modal.init(document.querySelectorAll('.modal'), OPTIONS);
+
 // Constante para establecer la modal de guardar.
-// const SAVE_MODAL = document.getElementById('save-modal');
+const MODAL = new bootstrap.Modal(document.getElementById('staticBackdrop'));
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -43,7 +38,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(SAVE_FORM);
     // Petición para guardar los datos del formulario.
-    const JSON = await dataFetch(USUARIO_API, action, FORM);
+    const JSON = await dataFetch(PEDIDO_API, action, FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se carga nuevamente la tabla para visualizar los cambios.
@@ -81,11 +76,11 @@ async function fillTable(form = null) {
                     <td>${row.fecha_pedido}</td>
                     <td>${row.direccion_pedido}</td>
                     <th>
-                        <button  onclick="openUpdate(${row.id_pedido})" class="btn btn-secondary">
-                            <i class="bi bi-pencil-fill"></i>
+                        <button  onclick="openUpdate(${row.id_pedido})" class="btn btn-outline-info" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Datos del Cliente">
+                            <i class="bi bi-file-text"></i>
                         </button>
-                        <button  onclick="openDelete(${row.id_pedido})" class="btn btn-danger">
-                            <i class="bi bi-trash-fill"></i>
+                        <button  onclick="openChangeStatus(${row.id_pedido})" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Cambiar estado del cliente">
+                            <i class="bi bi-check2-square"></i>
                         </button>
                     </th>
                 </tr>
@@ -123,7 +118,7 @@ async function openUpdate(id) {
     const FORM = new FormData();
     FORM.append('id_usuario', id);
     // Petición para obtener los datos del registro solicitado.
-    const JSON = await dataFetch(USUARIO_API, 'readOne', FORM);
+    const JSON = await dataFetch(PEDIDO_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
@@ -131,39 +126,39 @@ async function openUpdate(id) {
         // Se restauran los elementos del formulario.
         SAVE_FORM.reset();
         // Se asigna título a la caja de diálogo.
-        MODAL_TITLE.textContent = 'Actualizar usuario';
+        MODAL_TITLE.textContent = 'Revisar pedido';
         // Se deshabilitan los campos necesarios.
-        document.getElementById('alias').disabled = true;
-        document.getElementById('clave').disabled = true;
-        document.getElementById('confirmar').disabled = true;
+        document.getElementById('id').disabled = true;
+        document.getElementById('nombres').disabled = true;
+        document.getElementById('estadop').disabled = true;
+        document.getElementById('fechap').disabled = true;
+        document.getElementById('direccion').disabled = true;
         // Se inicializan los campos del formulario.
-        document.getElementById('id').value = JSON.dataset.id_usuario;
-        document.getElementById('nombres').value = JSON.dataset.nombres_usuario;
-        document.getElementById('apellidos').value = JSON.dataset.apellidos_usuario;
-        document.getElementById('correo').value = JSON.dataset.correo_usuario;
-        document.getElementById('alias').value = JSON.dataset.alias_usuario;
-        // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
-        M.updateTextFields();
+        document.getElementById('id').value = JSON.dataset.id_pedido;
+        document.getElementById('nombres').value = JSON.dataset.id_cliente;
+        document.getElementById('estadop').value = JSON.dataset.id_estado_pedido;
+        document.getElementById('fechap').value = JSON.dataset.fecha_pedido;
+        document.getElementById('direccion').value = JSON.dataset.direccion_pedido;
     } else {
         sweetAlert(2, JSON.exception, false);
     }
 }
 
 /*
-*   Función asíncrona para eliminar un registro.
+*   Función asíncrona para cambiar el estado de un registro.
 *   Parámetros: id (identificador del registro seleccionado).
 *   Retorno: ninguno.
 */
-async function openDelete(id) {
+async function openChangeStatus(id) {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
-    const RESPONSE = await confirmAction('¿Desea eliminar el usuario de forma permanente?');
+    const RESPONSE = await confirmAction('¿Desea cambiar el estado del pedido?');
     // Se verifica la respuesta del mensaje.
     if (RESPONSE) {
-        // Se define una constante tipo objeto con los datos del registro seleccionado.
+        //Se define una constante de tipo objeto con los datos del registro seleccionado 
         const FORM = new FormData();
         FORM.append('id_pedido', id);
         // Petición para eliminar el registro seleccionado.
-        const JSON = await dataFetch(PEDIDO_API, 'delete', FORM);
+        const JSON = await dataFetch(PEDIDO_API, 'changeStatus', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
             // Se carga nuevamente la tabla para visualizar los cambios.
