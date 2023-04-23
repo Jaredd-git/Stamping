@@ -8,19 +8,16 @@ class Pedido extends PedidoQueries
 {
     // Declaración de atributos (propiedades).
     protected $id_pedido = null;
+    protected $id_cliente = null;
+    protected $id_estado = null;
+    protected $fecha_pedido = null;
+    protected $direccion_pedido = null;
+
     protected $id_detalle = null;
-    protected $cliente = null;
     protected $producto = null;
+    protected $talla = null;
     protected $cantidad = null;
     protected $precio = null;
-    protected $estado = null; // Valor por defecto en la base de datos: 0
-    /*
-    *   ESTADOS PARA UN PEDIDO
-    *   0: Pendiente. Es cuando el pedido esta en proceso por parte del cliente y se puede modificar el detalle.
-    *   1: Finalizado. Es cuando el cliente finaliza el pedido y ya no es posible modificar el detalle.
-    *   2: Entregado. Es cuando la tienda ha entregado el pedido al cliente.
-    *   3: Anulado. Es cuando el cliente se arrepiente de haber realizado el pedido.
-    */
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -35,6 +32,50 @@ class Pedido extends PedidoQueries
         }
     }
 
+    public function setCliente($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->id_cliente = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setEstado($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->id_estado = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setFechaPedido($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->fecha_pedido = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setDireccion($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->direccion_pedido = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /*
+     *   Detalles pedidos
+    */
+
     public function setIdDetalle($value)
     {
         if (Validator::validateNaturalNumber($value)) {
@@ -45,20 +86,20 @@ class Pedido extends PedidoQueries
         }
     }
 
-    public function setCliente($value)
+    public function setProducto($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->cliente = $value;
+            $this->producto = $value;
             return true;
         } else {
             return false;
         }
     }
 
-    public function setProducto($value)
+    public function setTalla($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->producto = $value;
+            $this->talla = $value;
             return true;
         } else {
             return false;
@@ -85,21 +126,60 @@ class Pedido extends PedidoQueries
         }
     }
 
-    public function setEstado($value)
-    {
-        if (Validator::validateNaturalNumber($value)) {
-            $this->estado = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     /*
-    *   Métodos para obtener valores de los atributos.
+    *   Métodos para obtener valores de los atributos (Pedidos).
     */
     public function getIdPedido()
     {
         return $this->id_pedido;
+    }
+
+    public function getCliente()
+    {
+        return $this->id_cliente;
+    }
+
+    public function getEstado()
+    {
+        return $this->id_estado;
+    }
+
+    public function getFechaPedido()
+    {
+        return $this->fecha_pedido;
+    }
+
+    public function getDireccion()
+    {
+        return $this->direccion_pedido;
+    }
+
+    /*
+    *   Métodos para obtener valores de los atributos (Detalle Pedidos).
+    */
+
+    public function getIdDetalle()
+    {
+        return $this->id_detalle;
+    }
+
+    public function getProducto()
+    {
+        return $this->producto;
+    }
+
+    public function getTalla()
+    {
+        return $this->talla;
+    }
+
+    public function getCantidad()
+    {
+        return $this->cantidad;
+    }
+
+    public function getPrecio()
+    {
+        return $this->precio;
     }
 }
