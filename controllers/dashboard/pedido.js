@@ -13,6 +13,10 @@ const RECORDS = document.getElementById('records');
 // Constante para establecer la modal de guardar.
 const MODAL = new bootstrap.Modal(document.getElementById('staticBackdrop'));
 
+const OPTIONS = {
+    dismissible: false
+}
+
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para llenar la tabla con los registros disponibles.
@@ -116,13 +120,13 @@ function openCreate(){
 async function openUpdate(id) {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
-    FORM.append('id_usuario', id);
+    FORM.append('id_pedido', id);
     // Petición para obtener los datos del registro solicitado.
     const JSON = await dataFetch(PEDIDO_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
-        $('#staticBackdrop').modal({ show:true });
+        MODAL.Show();
         // Se restauran los elementos del formulario.
         SAVE_FORM.reset();
         // Se asigna título a la caja de diálogo.
