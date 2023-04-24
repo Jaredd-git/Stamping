@@ -23,7 +23,7 @@ class DetalleQueries
         JOIN clientes c ON p.id_cliente = c.id_cliente 
         JOIN estados_pedidos e ON p.id_estado = e.id_estado_pedido 
 		    WHERE id_pedido = ?';
-        $params = array($this->id);
+        $params = array($this->id_pedido);
         return Database::getRow($sql, $params);
     }
 
