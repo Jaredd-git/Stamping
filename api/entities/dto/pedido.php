@@ -12,6 +12,7 @@ class Pedido extends PedidoQueries
     protected $id_estado = null;
     protected $fecha_pedido = null;
     protected $direccion_pedido = null;
+    
     protected $id_detalle = null;
     protected $producto = null;
     protected $talla = null;

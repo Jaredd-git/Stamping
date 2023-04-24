@@ -8,6 +8,16 @@ class PedidoQueries
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
     */
+    public function searchRows($value)
+    {
+        $sql = 'SELECT id_pedido, id_cliente, id_estado, fecha_pedido, direccion_pedido
+                FROM pedidos
+                WHERE direccion_pedido ILIKE ?
+                ORDER BY fecha_pedido DESC';
+        $params = array("%$value%");
+        return Database::getRows($sql, $params);
+    }
+
     public function readAll()
     {
         $sql = 'SELECT id_pedido, id_cliente, id_estado, fecha_pedido, direccion_pedido 
@@ -18,10 +28,8 @@ class PedidoQueries
 
     public function readOne()
     {
-        $sql = 'SELECT p.id_pedido, c.nombre_cliente, e.estado, p.fecha_pedido, p.direccion_pedido 
-        FROM pedidos p
-        JOIN clientes c ON p.id_cliente = c.id_cliente 
-        JOIN estados_pedidos e ON p.id_estado = e.id_estado_pedido 
+        $sql = 'SELECT id_pedido, id_cliente, id_estado, fecha_pedido, direccion_pedido 
+            FROM pedidos
 		    WHERE id_pedido = ?';
         $params = array($this->id_pedido);
         return Database::getRow($sql, $params);
@@ -33,7 +41,24 @@ class PedidoQueries
         $sql = 'UPDATE clientes
                 SET estado_cliente = ?
                 WHERE id_cliente = ?';
-        $params = array($status, $this->id);
+        $params = array($status, $this->id_pedido);
+        return Database::executeRow($sql, $params);
+    }
+
+    public function updateRow()
+    {
+        $sql = 'UPDATE pedidos
+                SET id_cliente = ?, id_estado = ?, fecha_pedido = ?, direccion_pedido
+                WHERE id_pedido = ?';
+        $params = array($this->id_cliente, $this->id_estado, $this->fecha_pedido, $this->direccion_pedido, $this->id_pedido);
+        return Database::executeRow($sql, $params);
+    }
+
+    public function deleteRow()
+    {
+        $sql = 'DELETE FROM pedidos
+                WHERE id_pedido = ?';
+        $params = array($this->id_pedido);
         return Database::executeRow($sql, $params);
     }
 }
