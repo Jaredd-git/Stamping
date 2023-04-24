@@ -47,20 +47,20 @@ class Valoracion extends ValoracionQueries
         }
     }
 
-    public function setFecha($value)
+    public function setComentario($value)
     {
-        if (Validator::validateDate($value)) {
-            $this->fecha = $value;
+        if (Validator::validateString($value, 1, 200)) {
+            $this->comentario = $value;
             return true;
         } else {
             return false;
         }
     }
 
-    public function setComentario($value)
+    public function setFecha($value)
     {
-        if (Validator::validateString($value, 1, 200)) {
-            $this->comentario = $value;
+        if (Validator::validateDate($value)) {
+            $this->fecha = $value;
             return true;
         } else {
             return false;
@@ -95,14 +95,14 @@ class Valoracion extends ValoracionQueries
         return $this->calificacion;
     }
 
-    public function getFecha()
-    {
-        return $this->fecha;
-    }
-
     public function getComentario()
     {
         return $this->comentario;
+    }
+
+    public function getFecha()
+    {
+        return $this->fecha;
     }
 
     public function getEstado()
