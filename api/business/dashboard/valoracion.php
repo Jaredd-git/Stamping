@@ -46,7 +46,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'readOne':
-                if (!$valoracion->setId($_POST['id_valoracion'])) {
+                if (!$valoracion->setId($_POST['id'])) {
                     $result['exception'] = 'Valoracion incorrecta';
                 } elseif ($result['dataset'] = $valoracion->readOne()) {
                     $result['status'] = 1;
@@ -57,7 +57,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'delete':
-                if (!$valoracion->setId($_POST['id_valoracion'])) {
+                if (!$valoracion->setId($_POST['id'])) {
                     $result['exception'] = 'Valoracion incorrecta';
                 } elseif (!$valoracion->readOne()) {
                     $result['exception'] = 'Valoracion inexistente';
@@ -69,7 +69,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'changeStatus':
-                    if (!$valoracion->setId($_POST['id_valoracion'])) {
+                    if (!$valoracion->setId($_POST['id'])) {
                         $result['exception'] = 'Valoracion incorrecta';
                     } elseif (!$data = $valoracion->readOne()) {
                         $result['exception'] = 'Valoracion inexistente';
