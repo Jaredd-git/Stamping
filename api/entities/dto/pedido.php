@@ -12,7 +12,6 @@ class Pedido extends PedidoQueries
     protected $id_estado = null;
     protected $fecha_pedido = null;
     protected $direccion_pedido = null;
-
     protected $id_detalle = null;
     protected $producto = null;
     protected $talla = null;
@@ -54,7 +53,7 @@ class Pedido extends PedidoQueries
 
     public function setFechaPedido($value)
     {
-        if (Validator::validateNaturalNumber($value)) {
+        if (Validator::validateDate($value)) {
             $this->fecha_pedido = $value;
             return true;
         } else {
@@ -64,7 +63,7 @@ class Pedido extends PedidoQueries
 
     public function setDireccion($value)
     {
-        if (Validator::validateNaturalNumber($value)) {
+        if (Validator::validateString($value)) {
             $this->direccion_pedido = $value;
             return true;
         } else {
