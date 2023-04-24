@@ -1,7 +1,7 @@
 <?php
 require_once('../../helpers/database.php');
 /*
-*	Clase para manejar el acceso a datos de la entidad PRODUCTO.
+*	Clase para manejar el acceso a datos de la entidad CLIENTE.
 */
 class ValoracionQueries
 {
@@ -11,18 +11,18 @@ class ValoracionQueries
     public function searchRows($value)
     {
         $sql = 'SELECT id_valoracion, id_producto, calificacion_producto, comentario_producto, fecha_comentario, estado_comentario
-                FROM valoraciones INNER JOIN productos USING(id_producto)
-                WHERE calificacion_producto ILIKE ? OR fecha_comentario ILIKE ?
-                ORDER BY calificacion_producto';
-        $params = array("%$value%", "%$value%");
+                FROM valoraciones
+                WHERE calificacion_producto ILIKE ? 
+                ORDER BY calificaion_producto';
+        $params = array("%$value%");
         return Database::getRows($sql, $params);
     }
 
     public function readAll()
     {
         $sql = 'SELECT id_valoracion, id_producto, calificacion_producto, comentario_producto, fecha_comentario, estado_comentario
-        FROM valoraciones INNER JOIN productos USING(id_producto)
-        ORDER BY calificacion_producto';
+        FROM valoraciones
+        ORDER BY calificacion_producto ASC';
         return Database::getRows($sql);
     }
 
