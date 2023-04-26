@@ -1,7 +1,6 @@
 <?php
 require_once('../../helpers/validator.php');
 require_once('../../entities/dao/detallepedido_queries.php');
-require_once('../../entities/dao/pedido_queries.php');
 /*
 *	Clase para manejar la transferencia de datos de las entidades PEDIDO y DETALLE_PEDIDO.
 */

@@ -132,5 +132,6 @@ if (isset($_GET['action'])) {
         print(json_encode($result));
     } else {
         print(json_encode('Recurso no disponible'));
+    }
 }
-    
+
