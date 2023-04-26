@@ -53,6 +53,9 @@ HEADER.innerHTML = `
         <nav class="barra-nav navbar-ligth sticky-top" style="background-color: #ccc;">
             <div class="text-center p-4" >
                 <a style="text-decoration: none;" class="text-reset fw-bold" href="home.html">STAMPING</a>
+                <ul class="dropdown-menu">
+                  <li><a onclick="logOut()">Salir</a></li>
+                </ul>
             </div>
         </nav>           
     </div>
