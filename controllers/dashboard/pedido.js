@@ -1,5 +1,7 @@
 // Constante para completar la ruta de la API.
 const PEDIDO_API = 'business/dashboard/detallepedido.php';
+const PRODUCTO_API = 'business/dashboard/tipo.php';
+const TALLA_API = 'business/dashboard/producto.php';
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
 // Constante para establecer el formulario de guardar.
@@ -101,18 +103,6 @@ async function fillTable(form = null) {
 }
 
 /*
-*   Función para preparar el formulario al momento de insertar un registro.
-*   Parámetros: ninguno.
-*   Retorno: ninguno.
-*/
-function openCreate(){
-    // Se restauran los elementos del formulario.
-    SAVE_FORM.reset();
-    // Se asigna título a la caja de diálogo.
-    MODAL_TITLE.textContent = 'Actualizar pedido';
-}
-
-/*
 *   Función asíncrona para preparar el formulario al momento de actualizar un registro.
 *   Parámetros: id (identificador del registro seleccionado).
 *   Retorno: ninguno.
@@ -130,19 +120,19 @@ async function openUpdate(id) {
         // Se restauran los elementos del formulario.
         SAVE_FORM.reset();
         // Se asigna título a la caja de diálogo.
-        MODAL_TITLE.textContent = 'Revisar pedido';
+        MODAL_TITLE.textContent = 'Revisar Detalle pedido';
         // Se deshabilitan los campos necesarios.
         document.getElementById('id').disabled = true;
-        document.getElementById('nombres').disabled = true;
-        document.getElementById('estadop').disabled = true;
-        document.getElementById('fechap').disabled = true;
-        document.getElementById('direccion').disabled = true;
+        document.getElementById('producto');
+        document.getElementById('talla');
+        document.getElementById('cantidadp').disabled = true;
+        document.getElementById('precio').disabled = true;
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.id_pedido;
-        document.getElementById('nombres').value = JSON.dataset.id_cliente;
-        document.getElementById('estadop').value = JSON.dataset.id_estado_pedido;
-        document.getElementById('fechap').value = JSON.dataset.fecha_pedido;
-        document.getElementById('direccion').value = JSON.dataset.direccion_pedido;
+        fillSelect(PRODUCTO_API, 'readAll', 'nombre_producto', JSON.dataset.id_producto);
+        fillSelect(TALLA_API, 'readAll', 'talla', JSON.dataset.id_talla);
+        document.getElementById('cantidadp').value = JSON.dataset.fecha_pedido;
+        document.getElementById('precio').value = JSON.dataset.direccion_pedido;
     } else {
         sweetAlert(2, JSON.exception, false);
     }
