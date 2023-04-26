@@ -129,7 +129,7 @@ async function openUpdate(id) {
         document.getElementById('precio').disabled = true;
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.id_pedido;
-        fillSelect(PRODUCTO_API, 'readAll', 'nombre_producto', JSON.dataset.id_producto);
+        fillSelect(PRODUCTO_API, 'readAll', 'producto', JSON.dataset.id_producto);
         fillSelect(TALLA_API, 'readAll', 'talla', JSON.dataset.id_talla);
         document.getElementById('cantidadp').value = JSON.dataset.fecha_pedido;
         document.getElementById('precio').value = JSON.dataset.direccion_pedido;
