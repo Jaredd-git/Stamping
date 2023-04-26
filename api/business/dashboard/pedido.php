@@ -1,5 +1,5 @@
 <?php
-require_once('../../entities/dto/.php')
+require_once('../../entities/dto/pedido.php')
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
@@ -132,9 +132,5 @@ if (isset($_GET['action'])) {
         print(json_encode($result));
     } else {
         print(json_encode('Recurso no disponible'));
-    } 
-} else {
-    print(json_encode('Recurso no disponible'));
 }
-
     
