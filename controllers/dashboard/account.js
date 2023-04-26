@@ -14,11 +14,19 @@ document.addEventListener('DOMContentLoaded', async () => {
       HEADER.innerHTML = `
           <!-- Navbar de la pagina web -->
           <div>
-              <nav class="barra-nav navbar-ligth sticky-top" style="background-color: #ccc;">
+              <nav class="navbar-ligth sticky-top" style="background-color: #ccc;">
                   <div class="text-center p-4" >
                       <a style="text-decoration: none;" class="text-reset fw-bold" href="home.html">STAMPING</a>
                   </div>
-              </nav>            
+              </nav>  
+              <div class="dropdown">
+                    <button class="btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    Cuenta: <b>${JSON.username}</b>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                      <li><a class="dropdown-item" onClick="logOut()">Salir</a></li>
+                    </ul>
+                  </div>         
           </div>
           `;
 
@@ -46,19 +54,3 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   }
 })
-
-HEADER.innerHTML = `
-    <!-- Navbar de la pagina web -->
-    <div>
-        <nav class="barra-nav navbar-ligth sticky-top" style="background-color: #ccc;">
-            <div class="text-center p-4" >
-                <a style="text-decoration: none;" class="text-reset fw-bold" href="home.html">STAMPING</a>
-                <ul class="dropdown-menu">
-                  <li><a onclick="logOut()">Salir</a></li>
-                </ul>
-            </div>
-        </nav>           
-    </div>
-    `;
-
-
