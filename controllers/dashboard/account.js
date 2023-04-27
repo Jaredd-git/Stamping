@@ -14,19 +14,19 @@ document.addEventListener('DOMContentLoaded', async () => {
             HEADER.innerHTML = `
           <!-- Navbar de la pagina web -->
           <div>
-              <nav class="navbar-ligth sticky-top" style="background-color: #ccc;">
-                  <div class="text-center p-4" >
-                      <a style="text-decoration: none;" class="text-reset fw-bold" href="home.html">STAMPING</a>
+                <nav class="navbar-ligth sticky-top" style="background-color: #ccc;">
+                    <div class="text-center p-4" >
+                    <a style="text-decoration: none;" class="text-reset fw-bold" href="home.html">STAMPING</a>
                   </div>
-              </nav>  
-              <div class="dropdown">
+                </nav>  
+                <div class="dropdown">
                     <button class="btn-secondary dropdown-toggle mt-3 ms-3" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                     Cuenta: <b>${JSON.username}</b>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                       <li><a class="dropdown-item" onClick="logOut()">Salir</a></li>
                     </ul>
-                  </div>         
+                </div>         
           </div>
           `;
 
