@@ -1,5 +1,6 @@
 // Constante para completar la ruta de la API.
 const PEDIDO_API = 'business/dashboard/pedido.php';
+const DETALLE_API = 'business/dashboard/detallepedido.php';
 const PRODUCTO_API = 'business/dashboard/producto.php';
 const TALLA_API = 'business/dashboard/talla.php';
 // Constante para establecer el formulario de buscar.
@@ -110,9 +111,9 @@ async function fillTable(form = null) {
 async function openUpdate(id) {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
-    FORM.append('id_pedido', id);
+    FORM.append('id_detalle', id);
     // Petición para obtener los datos del registro solicitado.
-    const JSON = await dataFetch(PEDIDO_API, 'readOne', FORM);
+    const JSON = await dataFetch(DETALLE_API, 'readOneDp', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
