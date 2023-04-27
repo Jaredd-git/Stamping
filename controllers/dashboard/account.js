@@ -7,11 +7,11 @@ const FOOTER = document.querySelector('footer');
 /* Se manda al header codigo para usarlo en el html */
 document.addEventListener('DOMContentLoaded', async () => {
 
-  // Constante para completar la ruta de la API.
-  const JSON = await dataFetch(USER_API, 'getUser');
-  if (JSON.session) {
-    if (JSON.status) {
-      HEADER.innerHTML = `
+    // Constante para completar la ruta de la API.
+    const JSON = await dataFetch(USER_API, 'getUser');
+    if (JSON.session) {
+        if (JSON.status) {
+            HEADER.innerHTML = `
           <!-- Navbar de la pagina web -->
           <div>
               <nav class="navbar-ligth sticky-top" style="background-color: #ccc;">
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                   </div>
               </nav>  
               <div class="dropdown">
-                    <button class="btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="btn-secondary dropdown-toggle mt-3 ms-3" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                     Cuenta: <b>${JSON.username}</b>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -30,8 +30,8 @@ document.addEventListener('DOMContentLoaded', async () => {
           </div>
           `;
 
-      /* Se manda al footer codigo para usarlo en el html */
-      FOOTER.innerHTML = `
+            /* Se manda al footer codigo para usarlo en el html */
+            FOOTER.innerHTML = `
           <!-- Copyright -->
           <div style="background-color: rgba(0, 0, 0, 0.05); ">
             © 2023 Copyright:
@@ -39,11 +39,11 @@ document.addEventListener('DOMContentLoaded', async () => {
           </div>
           <!-- Copyright -->
             `;
-    } else {
+        } else {
 
 
-      /* Se manda al footer codigo para usarlo en el html */
-      FOOTER.innerHTML = `
+            /* Se manda al footer codigo para usarlo en el html */
+            FOOTER.innerHTML = `
           <!-- Copyright -->
           <div style="background-color: rgba(0, 0, 0, 0.05); ">
             © 2023 Copyright:
@@ -51,6 +51,6 @@ document.addEventListener('DOMContentLoaded', async () => {
           </div>
           <!-- Copyright -->
             `;
+        }
     }
-  }
 })
