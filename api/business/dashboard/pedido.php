@@ -14,13 +14,25 @@ if (isset($_GET['action'])) {
         $result['session'] = 1;
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
-            // Si la acción es "readAll"
+            // Acción para obtener todos los pedidos registrados.
             case 'readAll':
                 // Se lee todo el conjunto de datos de pedidos
                 if ($result['dataset'] = $pedido->readAll()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen '.count($result['dataset']).' registros';
                  // Si ocurre una excepción en la base de datos, se captura
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                // Si no hay datos registrados, se informa al usuario
+                } else {
+                    $result['exception'] = 'No hay datos registrados';
+                }
+                break;
+                // Acción para obtener los estados de los pedidos.
+            case 'readEstados':
+                // Se lee todo el conjunto de datos de pedidos
+                if ($result['dataset'] = $pedido->readEstados()) {
+                    $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 // Si no hay datos registrados, se informa al usuario
@@ -64,7 +76,7 @@ if (isset($_GET['action'])) {
                 // Se valida el formulario de actualización de pedido
                 $_POST = Validator::validateForm($_POST);
                 // Se comprueba si se ha ingresado correctamente el ID del pedido
-                if (!$pedido->setIdPedido($_POST['id'])) {
+                if (!$pedido->setIdPedido($_POST['id_pedido'])) {
                     $result['exception'] = 'Pedido incorrecto';
                 // Si el pedido no existe, se informa al usuario
                 } elseif (!$pedido->readOne()) {
@@ -108,13 +120,14 @@ if (isset($_GET['action'])) {
                 break;
             case 'changeStatus':
                 // Se verifica si el ID del cliente es válido
-                if (!$cliente->setId($_POST['id_cliente'])) {
-                    $result['exception'] = 'Cliente incorrecto';
-                // Se verifica si el cliente existe
-                } elseif (!$data = $cliente->readOne()) {
-                    $result['exception'] = 'Cliente inexistente';
+                if (!$pedido->setIdPedido($_POST['id_pedido'])) {
+                    $result['exception'] = 'Pedido incorrecto';
+                } if (!$pedido->setEstado($_POST['estado'])) {
+                    $result['exception'] = 'Estado incorrecto';
+                } elseif (!$data = $pedido->readOne()) {
+                    $result['exception'] = 'Pedido inexistente';
                 // Si todas las validaciones anteriores son correctas, se actualiza el estado del cliente en la base de datos
-                } elseif ($cliente->changeStatus($data['estado_cliente'])) {
+                } elseif ($pedido->changeStatus()) {
                     $result['status'] = 1;
                     $result['message'] = 'Estado actualizado correctamente';
                 // Si se produce algún error al actualizar el estado del cliente, se captura la excepción

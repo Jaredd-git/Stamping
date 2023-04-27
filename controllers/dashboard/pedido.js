@@ -16,10 +16,6 @@ const RECORDS = document.getElementById('records');
 // Constante para establecer la modal de guardar.
 const MODAL = new bootstrap.Modal(document.getElementById('staticBackdrop'));
 
-const OPTIONS = {
-    dismissible: false
-}
-
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para llenar la tabla con los registros disponibles.
@@ -40,14 +36,13 @@ SEARCH_FORM.addEventListener('submit', (event) => {
 SAVE_FORM.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
-    // Se verifica la acción a realizar.
-    (document.getElementById('id').value) ? action = 'update' : action = 'create';
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(SAVE_FORM);
     // Petición para guardar los datos del formulario.
-    const JSON = await dataFetch(PEDIDO_API, action, FORM);
+    const JSON = await dataFetch(PEDIDO_API, 'changeStatus', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
+        MODAL.hide();
         // Se carga nuevamente la tabla para visualizar los cambios.
         fillTable();
         // Se muestra un mensaje de éxito.
@@ -78,8 +73,8 @@ async function fillTable(form = null) {
             TBODY_ROWS.innerHTML += `
                 <tr>
                     <td>${row.id_pedido}</td>
-                    <td>${row.id_cliente}</td>
-                    <td>${row.id_estado}</td>
+                    <td>${row.cliente}</td>
+                    <td>${row.estado}</td>
                     <td>${row.fecha_pedido}</td>
                     <td>${row.direccion_pedido}</td>
                     <th>
@@ -93,9 +88,6 @@ async function fillTable(form = null) {
                 </tr>
             `;
         });
-
-        // Se inicializa el componente Tooltip para que funcionen las sugerencias textuales.
-        // M.Tooltip.init(document.querySelectorAll('.tooltipped'));
         // Se muestra un mensaje de acuerdo con el resultado.
         RECORDS.textContent = JSON.message;
     } else {
@@ -111,9 +103,9 @@ async function fillTable(form = null) {
 async function openUpdate(id) {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
-    FORM.append('id', id);
+    FORM.append('id_pedido', id);
     // Petición para obtener los datos del registro solicitado.
-    const JSON = await dataFetch(DETALLE_API, 'readOneDp', FORM);
+    const JSON = await dataFetch(PEDIDO_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
@@ -121,21 +113,18 @@ async function openUpdate(id) {
         // Se restauran los elementos del formulario.
         SAVE_FORM.reset();
         // Se asigna título a la caja de diálogo.
-        MODAL_TITLE.textContent = 'Revisar Detalle pedido';
+        MODAL_TITLE.textContent = 'Cambiar estado del pedido';
         // Se deshabilitan los campos necesarios.
-        document.getElementById('id').disabled = true;
-        document.getElementById('idpedido').disabled = true;
-        document.getElementById('producto').disabled = true;
-        document.getElementById('talla').disabled = true;
-        document.getElementById('cantidadp').disabled = true;
-        document.getElementById('precio').disabled = true;
+        document.getElementById('id_pedido').readOnly = true;
+        document.getElementById('fecha').disabled = true;
+        document.getElementById('cliente').disabled = true;
+        document.getElementById('direccion').disabled = true;
         // Se inicializan los campos del formulario.
-        document.getElementById('id').value = JSON.dataset.id_detalle;
-        document.getElementById('idpedido').value = JSON.dataset.id_pedido;
-        fillSelect(PRODUCTO_API, 'readAll', 'producto', JSON.dataset.id_producto);
-        fillSelect(TALLA_API, 'readAll', 'talla', JSON.dataset.id_talla);
-        document.getElementById('cantidadp').value = JSON.dataset.fecha_pedido;
-        document.getElementById('precio').value = JSON.dataset.direccion_pedido;
+        document.getElementById('id_pedido').value = JSON.dataset.id_pedido;
+        document.getElementById('fecha').value = JSON.dataset.fecha_pedido;
+        document.getElementById('cliente').value = JSON.dataset.cliente;
+        document.getElementById('direccion').value = JSON.dataset.direccion_pedido;
+        fillSelect(PEDIDO_API, 'readEstados', 'estado', JSON.dataset.id_estado);
     } else {
         sweetAlert(2, JSON.exception, false);
     }
