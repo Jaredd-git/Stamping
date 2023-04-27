@@ -35,6 +35,15 @@ class PedidoQueries
         return Database::getRow($sql, $params);
     }
 
+    public function readOneDp()
+    {
+        $sql = 'SELECT id_detalle, id_pedido, id_producto, id_talla, cantidad_producto, precio_producto 
+            FROM detalles_pedidos
+		    WHERE id_detalle = ?';
+        $params = array($this->id_detalle);
+        return Database::getRow($sql, $params);
+    }
+
     public function changeStatus($status)
     {
         ($status) ? $status = 0 : $status = 1;
