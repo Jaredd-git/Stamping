@@ -54,40 +54,38 @@
                                     <div class="container">
                                         <br>
                                         <div class="row">
-                                            <div class="form-floating mb-3 col-4">
-                                                <input class="d-none" type="number" id="id" name="id">
-                                                <input type="number" class="form-control" id="idpedido" name="idpedido"
-                                                    placeholder="name@example.com">
-                                                <label for="floatingInput"># Pedido</label>
+                                            <div class="input-field mb-3 col-4">
+                                                <input type="number" class="form-control" id="id_pedido" name="id_pedido">
+                                                <label for="id_pedido"># Pedido</label>
                                             </div>
                                             <div class="input-field mb-3 col-4">
-                                                <input type="text" class="form-control" id="producto" name="producto"
-                                                    placeholder="name@example.com">
-                                                <label for="floatingInput">Producto</label>
+                                                <input type="text" class="form-control" id="cliente" name="cliente">
+                                                <label for="cliente">Cliente</label>
                                             </div>
                                             <div class="input-field mb-3 col-4">
-                                                <input type="text" class="form-control" id="talla" name="talla"
+                                                <input type="date" class="form-control" id="fecha" name="fecha"
                                                     placeholder="name@example.com">
-                                                <label for="floatingInput">Talla</label>
+                                                <label for="fecha">Fecha</label>
                                             </div>
-                                            <div class="form-floating mb-3 col-4">
-                                                <input type="number" class="form-control" id="cantidadp"
-                                                    name="cantidadp" placeholder="name@example.com" required>
-                                                <label for=" floatingInput">Cantidad producto</label>
+                                            <div class="input-field mb-3 col-4">
+                                                <input type="text" class="form-control" id="direccion" name="direccion">
+                                                <label for="direccion">Dirección</label>
                                             </div>             
-                                            <div class="form-floating mb-3 col-4">
-                                                <input type="number" class="form-control" id="precio" name="precio"
-                                                    placeholder="name@example.com" step="0.01">
-                                                <label for=" floatingInput">Precio</label>
+                                            <div class="input-field mb-3 col-6">
+                                                <select class="form-select" id="estado" name="estado">
+                                                </select>
                                             </div>
                                         </div>
                                         </br>
                                     </div>
                                 </div>
                                 <div class="modal-footer d-flex justify-content-center">
-                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
-                                        <i class="bi bi-x-circle-fill"></i>
-                                        Cerrar
+                                    <button type="reset" class="btn btn-secondary">
+                                        <i class="bi bi-arrow-counterclockwise"></i>
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="bi bi-save-fill">
+                                        </i>
                                     </button>
                                 </div>
                             </form>

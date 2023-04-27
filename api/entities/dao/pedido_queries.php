@@ -83,4 +83,44 @@ class PedidoQueries
         $params = array($this->id_detalle, $_SESSION['id_pedido']);
         return Database::executeRow($sql, $params);
     }
+
+    // Método para obtener los estados de los pedidos.
+    public function readEstados()
+    {
+        $sql = 'SELECT id_estado_pedido, estado
+                FROM estados_pedidos';
+        return Database::getRows($sql);
+    }
+
+    // Método para obtener todos los pedidos registrados.
+    public function readAll()
+    {
+        $sql = "SELECT id_pedido, CONCAT(nombre_cliente,' ', apellido_cliente) cliente, id_estado, estado, fecha_pedido, direccion_pedido
+                FROM pedidos p
+                INNER JOIN clientes USING(id_cliente)
+                INNER JOIN estados_pedidos ep ON ep.id_estado_pedido = p.id_estado";
+        return Database::getRows($sql);
+    }
+
+    // Método para obtener los datos de un pedido.
+    public function readOne()
+    {
+        $sql = "SELECT id_pedido, CONCAT(nombre_cliente,' ', apellido_cliente) cliente, id_estado, estado, fecha_pedido, direccion_pedido
+                FROM pedidos p
+                INNER JOIN clientes USING(id_cliente)
+                INNER JOIN estados_pedidos ep ON ep.id_estado_pedido = p.id_estado
+		        WHERE id_pedido = ?";
+        $params = array($this->id_pedido);
+        return Database::getRow($sql, $params);
+    }
+    
+    // Método para cambiar el estado de un pedido
+    public function changeStatus()
+    {
+        $sql = 'UPDATE pedidos
+                SET id_estado = ?
+                WHERE id_pedido = ?';
+        $params = array($this->id_estado, $this->id_pedido);
+        return Database::executeRow($sql, $params);
+    }
 }
