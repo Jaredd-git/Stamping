@@ -45,7 +45,7 @@ async function fillTable(form = null) {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TBODY_ROWS.innerHTML += `
                 <tr>
-                    <td>${row.id_producto}</td>
+                    <td>${row.nombre_producto}</td>
                     <td>${row.calificacion_producto}</td>
                     <td>${row.comentario_producto}</td>
                     <td>${row.fecha_comentario}</td>
@@ -61,9 +61,6 @@ async function fillTable(form = null) {
                 </tr>
             `;
         });
-
-        // Se inicializa el componente Tooltip para que funcionen las sugerencias textuales.
-        // M.Tooltip.init(document.querySelectorAll('.tooltipped'));
         // Se muestra un mensaje de acuerdo con el resultado.
         RECORDS.textContent = JSON.message;
     } else {

@@ -20,8 +20,8 @@ class ValoracionQueries
 
     public function readAll()
     {
-        $sql = 'SELECT id_valoracion, id_producto, calificacion_producto, comentario_producto, fecha_comentario, estado_comentario
-        FROM valoraciones
+        $sql = 'SELECT id_valoracion, id_producto, nombre_producto, calificacion_producto, comentario_producto, fecha_comentario, estado_comentario
+        FROM valoraciones INNER JOIN productos USING(id_producto)
         ORDER BY calificacion_producto ASC';
         return Database::getRows($sql);
     }
