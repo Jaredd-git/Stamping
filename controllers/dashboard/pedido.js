@@ -111,7 +111,7 @@ async function fillTable(form = null) {
 async function openUpdate(id) {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
-    FORM.append('id_detalle', id);
+    FORM.append('id', id);
     // Petición para obtener los datos del registro solicitado.
     const JSON = await dataFetch(DETALLE_API, 'readOneDp', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -124,12 +124,14 @@ async function openUpdate(id) {
         MODAL_TITLE.textContent = 'Revisar Detalle pedido';
         // Se deshabilitan los campos necesarios.
         document.getElementById('id').disabled = true;
-        document.getElementById('producto');
-        document.getElementById('talla');
+        document.getElementById('idpedido').disabled = true;
+        document.getElementById('producto').disabled = true;
+        document.getElementById('talla').disabled = true;
         document.getElementById('cantidadp').disabled = true;
         document.getElementById('precio').disabled = true;
         // Se inicializan los campos del formulario.
-        document.getElementById('id').value = JSON.dataset.id_pedido;
+        document.getElementById('id').value = JSON.dataset.id_detalle;
+        document.getElementById('idpedido').value = JSON.dataset.id_pedido;
         fillSelect(PRODUCTO_API, 'readAll', 'producto', JSON.dataset.id_producto);
         fillSelect(TALLA_API, 'readAll', 'talla', JSON.dataset.id_talla);
         document.getElementById('cantidadp').value = JSON.dataset.fecha_pedido;

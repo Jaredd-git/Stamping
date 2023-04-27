@@ -39,7 +39,7 @@ if (isset($_GET['action'])) {
                 } elseif (!$pedido->readOneDp()) {
                     $result['exception'] = 'Detalle inexistente';
                 // Se verifica si el nombre del cliente es válido
-                } elseif (!$pedido->setIdPedido($_POST['id'])) {
+                } elseif (!$pedido->setIdPedido($_POST['idpedido'])) {
                     $result['exception'] = 'Pedido incorrecto';
                 } elseif (!$pedido->setProducto($_POST['producto'])) {
                     $result['exception'] = 'Producto incorrecto';
