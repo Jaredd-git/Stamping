@@ -14,41 +14,10 @@ if (isset($_GET['action'])) {
         $result['session'] = 1;
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
-            // Si la acción es "readAll"
-            case 'readAll':
-                // Se lee todo el conjunto de datos de pedidos
-                if ($result['dataset'] = $pedido->readAll()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Existen '.count($result['dataset']).' registros';
-                 // Si ocurre una excepción en la base de datos, se captura
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
-                // Si no hay datos registrados, se informa al usuario
-                } else {
-                    $result['exception'] = 'No hay datos registrados';
-                }
-                break;
-            case 'search':
-                 // Se valida el formulario de búsqueda y se comprueba si el usuario ha ingresado un valor de búsqueda
-                $_POST = Validator::validateForm($_POST);
-                if ($_POST['search'] == '') {
-                    $result['exception'] = 'Ingrese un valor para buscar';
-                // Si se encuentran coincidencias en la base de datos, se informa al usuario y se muestran en la respuesta    
-                } elseif ($result['dataset'] = $pedido->searchRows($_POST['search'])) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
-                // Si ocurre una excepción en la base de datos, se captura    
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
-                // Si no hay coincidencias, se informa al usuario
-                } else {
-                    $result['exception'] = 'No hay coincidencias';
-                }
-                break;
             case 'readOne':
                 // Se comprueba si se ha ingresado correctamente el ID del pedido
-                if (!$pedido->setIdPedido($_POST['id_pedido'])) {
-                    $result['exception'] = 'Pedido incorrecto';
+                if (!$pedido->setIdDetalle($_POST['id_detalle'])) {
+                    $result['exception'] = 'Detalle incorrecto';
                 // Si se encuentra el pedido, se muestra en la respuesta
                 } elseif ($result['dataset'] = $pedido->readOne()) {
                     $result['status'] = 1;
@@ -57,51 +26,37 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 // Si el pedido no existe, se informa al usuario
                 } else {
-                    $result['exception'] = 'Pedido inexistente';
+                    $result['exception'] = 'Detalle inexistente';
                 }
                 break;
             case 'update':
                 // Se valida el formulario de actualización de pedido
                 $_POST = Validator::validateForm($_POST);
                 // Se comprueba si se ha ingresado correctamente el ID del pedido
-                if (!$pedido->setIdPedido($_POST['id'])) {
-                    $result['exception'] = 'Pedido incorrecto';
+                if (!$pedido->setIdDetalle($_POST['id'])) {
+                    $result['exception'] = 'Detalle incorrecto';
                 // Si el pedido no existe, se informa al usuario
-                } elseif (!$pedido->readOne()) {
-                    $result['exception'] = 'Pedido inexistente';
+                } elseif (!$pedido->readOneDp()) {
+                    $result['exception'] = 'Detalle inexistente';
                 // Se verifica si el nombre del cliente es válido
-                } elseif (!$pedido->setCliente($_POST['nombres'])) {
-                    $result['exception'] = 'Cliente incorrecto';
+                } elseif (!$pedido->setIdPedido($_POST['id'])) {
+                    $result['exception'] = 'Pedido incorrecto';
+                } elseif (!$pedido->setProducto($_POST['producto'])) {
+                    $result['exception'] = 'Producto incorrecto';
                 // Se verifica si el estado del pedido es válido
-                } elseif (!$pedido->setEstado($_POST['estadop'])) {
-                    $result['exception'] = 'Estado incorrecto';
+                } elseif (!$pedido->setTalla($_POST['talla'])) {
+                    $result['exception'] = 'Talla incorrecta';
                 // Se verifica si la fecha del pedido es válida
-                } elseif (!$pedido->setFechaPedido($_POST['fechap'])) {
-                    $result['exception'] = 'Fecha incorrecta';
+                } elseif (!$pedido->setCantidad($_POST['cantidadp'])) {
+                    $result['exception'] = 'Cantidad incorrecta';
                 // Se verifica si la dirección del pedido es válida
-                } elseif (!$pedido->setDireccion($_POST['direccionp'])) {
-                    $result['exception'] = 'Dirección incorrecta';
+                } elseif (!$pedido->setPrecio($_POST['precio'])) {
+                    $result['exception'] = 'Precio incorrecto';
                 // Si todas las validaciones anteriores son correctas, se actualiza el pedido en la base de datos
                 } elseif ($pedido->updateRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Pedido actualizado correctamente';
                 // Si se produce algún error al actualizar el pedido, se captura la excepción
-                } else {
-                    $result['exception'] = Database::getException();
-                }
-                break;
-            case 'delete':
-                // Se verifica si el pedido tiene un ID válido
-                if (!$pedido->setIdPedido($_POST['id_pedido'])) {
-                    $result['exception'] = 'Pedido incorrecto';
-                // Se verifica si el pedido existe
-                } elseif (!$pedido->readOne()) {
-                    $result['exception'] = 'Pedido inexistente';
-                // Si todas las validaciones anteriores son correctas, se elimina el pedido de la base de datos
-                } elseif ($pedido->deleteRow()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Pedido eliminado correctamente';
-                // Si se produce algún error al eliminar el pedido, se captura la excepción
                 } else {
                     $result['exception'] = Database::getException();
                 }
