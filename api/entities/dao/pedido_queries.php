@@ -123,4 +123,15 @@ class PedidoQueries
         $params = array($this->id_estado, $this->id_pedido);
         return Database::executeRow($sql, $params);
     }
+
+    public function searchRows($value)
+    {
+        $sql = "SELECT id_pedido, CONCAT(nombre_cliente,' ', apellido_cliente) cliente, id_estado, estado, fecha_pedido, direccion_pedido
+                FROM pedidos p
+                INNER JOIN clientes USING(id_cliente)
+                INNER JOIN estados_pedidos ep ON ep.id_estado_pedido = p.id_estado
+                WHERE direccion_pedido ILIKE ?";
+        $params = array("%$value%");
+        return Database::getRows($sql, $params);
+    }
 }

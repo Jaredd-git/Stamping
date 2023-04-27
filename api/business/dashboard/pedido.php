@@ -44,6 +44,8 @@ if (isset($_GET['action'])) {
                  // Se valida el formulario de búsqueda y se comprueba si el usuario ha ingresado un valor de búsqueda
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
+                    $result['status'] = 1;
+                    $result['dataset'] = $pedido->readAll();
                     $result['exception'] = 'Ingrese un valor para buscar';
                 // Si se encuentran coincidencias en la base de datos, se informa al usuario y se muestran en la respuesta    
                 } elseif ($result['dataset'] = $pedido->searchRows($_POST['search'])) {
