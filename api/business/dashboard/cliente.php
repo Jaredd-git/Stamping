@@ -97,35 +97,6 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay coincidencias';
                 }
                 break;
-            case 'create':
-                $_POST = Validator::validateForm($_POST);
-                if (!$cliente->setNombres($_POST['nombres'])) {
-                    $result['exception'] = 'Nombres incorrectos';
-                } elseif (!$cliente->setApellidos($_POST['apellidos'])) {
-                    $result['exception'] = 'Apellidos incorrectos';
-                } elseif (!$cliente->setDUI($_POST['DUI'])) {
-                    $result['exception'] = 'DUI incorrecto';
-                } elseif (!$cliente->setCorreo($_POST['correo'])) {
-                    $result['exception'] = 'Correo incorrecto';
-                } elseif (!$cliente->setTelefono($_POST['telefono'])) {
-                    $result['exception'] = 'Telefono incorrecto';
-                } elseif (!$cliente->setNacimiento($_POST['nacimiento'])) {    
-                    $result['exception'] = 'Fecha incorrecto';
-                } elseif (!$cliente->setDireccion($_POST['direccion'])) {
-                    $result['exception'] = 'Direccion incorrecto';
-                } elseif (!$cliente->setUser($_POST['user'])) {
-                    $result['exception'] = 'Usuario incorrecto';
-                } elseif ($_POST['clave'] != $_POST['confirmar']) {
-                    $result['exception'] = 'Claves diferentes';
-                } elseif (!$usuario->setClave($_POST['clave'])) {
-                    $result['exception'] = Validator::getPasswordError();
-                } elseif ($usuario->createRow()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Cliente creado correctamente';
-                } else {
-                    $result['exception'] = Database::getException();
-                }
-                break;
             case 'readOne':
                 if (!$cliente->setId($_POST['id_cliente'])) {
                     $result['exception'] = 'Cliente incorrecto';
@@ -157,6 +128,8 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Nacimiento incorrecto';
                 } elseif (!$cliente->setDireccion($_POST['direccion'])) {
                     $result['exception'] = 'Dirección incorrecta';
+                } elseif (!$cliente->setUser($_POST['user'])) {
+                    $result['exception'] = 'Usuario incorrecto';
                 } elseif ($cliente->updateRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Cliente actualizado correctamente';

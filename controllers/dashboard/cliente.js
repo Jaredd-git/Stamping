@@ -101,22 +101,6 @@ async function fillTable(form = null) {
 }
 
 /*
-*   Función para preparar el formulario al momento de insertar un registro.
-*   Parámetros: ninguno.
-*   Retorno: ninguno.
-*/
-function openCreate() {
-    // Se restauran los elementos del formulario.
-    SAVE_FORM.reset();
-    // Se asigna título a la caja de diálogo.
-    MODAL_TITLE.textContent = 'Crear cliente';
-    // Se habilitan los campos necesarios.
-    document.getElementById('user').disabled = false;
-    document.getElementById('clave').disabled = false;
-    document.getElementById('confirmar').disabled = false;
-}
-
-/*
 *   Función asíncrona para preparar el formulario al momento de actualizar un registro.
 *   Parámetros: id (identificador del registro seleccionado).
 *   Retorno: ninguno.
@@ -144,8 +128,6 @@ async function openUpdate(id) {
         document.getElementById('nacimiento').disabled = true;
         document.getElementById('direccion').disabled = true;
         document.getElementById('user').disabled = true;
-        document.getElementById('clave').disabled = true;
-        document.getElementById('confirmar').disabled = true;
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.id_cliente;
         document.getElementById('nombres').value = JSON.dataset.nombre_cliente;

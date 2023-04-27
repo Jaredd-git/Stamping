@@ -37,7 +37,7 @@ class ClienteQueries
 
     public function readOne()
     {
-        $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, dui_cliente, correo_cliente, telefono_cliente, nacimiento_cliente, direccion_cliente, estado_cliente
+        $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, dui_cliente, correo_cliente, telefono_cliente, nacimiento_cliente, direccion_cliente, user_cliente, estado_cliente 
                 FROM clientes
                 WHERE id_cliente = ?';
         $params = array($this->id);
