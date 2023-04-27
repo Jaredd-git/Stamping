@@ -81,9 +81,6 @@ async function fillTable(form = null) {
                         <button  onclick="openUpdate(${row.id_pedido})" class="btn btn-outline-info" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Cambiar estado del pedido">
                             <i class="bi bi-file-text"></i>
                         </button>
-                        <button  onclick="openChangeStatus(${row.id_pedido})" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Detalles del pedido">
-                            <i class="bi bi-check2-square"></i>
-                        </button>
                     </th>
                 </tr>
             `;
