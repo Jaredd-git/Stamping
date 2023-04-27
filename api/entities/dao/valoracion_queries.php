@@ -13,7 +13,7 @@ class ValoracionQueries
         $sql = 'SELECT id_valoracion, id_producto, calificacion_producto, comentario_producto, fecha_comentario, estado_comentario
                 FROM valoraciones
                 WHERE calificacion_producto ILIKE ? 
-                ORDER BY calificaion_producto';
+                ORDER BY calificacion_producto';
         $params = array("%$value%");
         return Database::getRows($sql, $params);
     }
