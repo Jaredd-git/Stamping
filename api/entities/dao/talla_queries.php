@@ -5,11 +5,13 @@ require_once('../../helpers/database.php');
 */
 class TallaQueries
 {
+    //Consulta para leer todos lso registros de la tabla tallas
     public function readAll()
     {
         $sql = 'SELECT id_talla, talla
                 FROM tallas
                 ORDER BY talla';
+                //Carga todos los registros de la tabla tallas
         return Database::getRows($sql);
     }
 }
