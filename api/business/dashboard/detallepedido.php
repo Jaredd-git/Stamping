@@ -1,12 +1,12 @@
 <?php
-require_once('../../entities/dto/pedido.php');
+require_once('../../entities/dto/detallepedido.php');
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
     // Se instancia la clase correspondiente.
-    $pedido = new Pedido;
+    $detalle = new Detalle;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'session' => 0, 'message' => null, 'exception' => null, 'dataset' => null, 'username' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
@@ -16,10 +16,10 @@ if (isset($_GET['action'])) {
         switch ($_GET['action']) {
             case 'readOne':
                 // Se comprueba si se ha ingresado correctamente el ID del pedido
-                if (!$pedido->setIdDetalle($_POST['id_detalle'])) {
+                if (!$detalle->setIdDetalle($_POST['id_detalle'])) {
                     $result['exception'] = 'Detalle incorrecto';
                 // Si se encuentra el pedido, se muestra en la respuesta
-                } elseif ($result['dataset'] = $pedido->readOne()) {
+                } elseif ($result['dataset'] = $detalle->readOne()) {
                     $result['status'] = 1;
                 // Si ocurre una excepción en la base de datos, se captura
                 } elseif (Database::getException()) {
@@ -29,52 +29,37 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Detalle inexistente';
                 }
                 break;
-            case 'update':
-                // Se valida el formulario de actualización de pedido
-                $_POST = Validator::validateForm($_POST);
-                // Se comprueba si se ha ingresado correctamente el ID del pedido
-                if (!$pedido->setIdDetalle($_POST['id'])) {
-                    $result['exception'] = 'Detalle incorrecto';
-                // Si el pedido no existe, se informa al usuario
-                } elseif (!$pedido->readOneDp()) {
-                    $result['exception'] = 'Detalle inexistente';
-                // Se verifica si el nombre del cliente es válido
-                } elseif (!$pedido->setIdPedido($_POST['idpedido'])) {
-                    $result['exception'] = 'Pedido incorrecto';
-                } elseif (!$pedido->setProducto($_POST['producto'])) {
-                    $result['exception'] = 'Producto incorrecto';
-                // Se verifica si el estado del pedido es válido
-                } elseif (!$pedido->setTalla($_POST['talla'])) {
-                    $result['exception'] = 'Talla incorrecta';
-                // Se verifica si la fecha del pedido es válida
-                } elseif (!$pedido->setCantidad($_POST['cantidadp'])) {
-                    $result['exception'] = 'Cantidad incorrecta';
-                // Se verifica si la dirección del pedido es válida
-                } elseif (!$pedido->setPrecio($_POST['precio'])) {
-                    $result['exception'] = 'Precio incorrecto';
-                // Si todas las validaciones anteriores son correctas, se actualiza el pedido en la base de datos
-                } elseif ($pedido->updateRow()) {
+            // Acción para obtener todos los pedidos registrados.
+            case 'readAll':
+                // Se lee todo el conjunto de datos de pedidos
+                if ($result['dataset'] = $detalle->readAll()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Pedido actualizado correctamente';
-                // Si se produce algún error al actualizar el pedido, se captura la excepción
-                } else {
+                    $result['message'] = 'Existen '.count($result['dataset']).' registros';
+                 // Si ocurre una excepción en la base de datos, se captura
+                } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
+                // Si no hay datos registrados, se informa al usuario
+                } else {
+                    $result['exception'] = 'No hay datos registrados';
                 }
                 break;
-            case 'changeStatus':
-                // Se verifica si el ID del cliente es válido
-                if (!$cliente->setId($_POST['id_cliente'])) {
-                    $result['exception'] = 'Cliente incorrecto';
-                // Se verifica si el cliente existe
-                } elseif (!$data = $cliente->readOne()) {
-                    $result['exception'] = 'Cliente inexistente';
-                // Si todas las validaciones anteriores son correctas, se actualiza el estado del cliente en la base de datos
-                } elseif ($cliente->changeStatus($data['estado_cliente'])) {
+            case 'search':
+                 // Se valida el formulario de búsqueda y se comprueba si el usuario ha ingresado un valor de búsqueda
+                $_POST = Validator::validateForm($_POST);
+                if ($_POST['search'] == '') {
                     $result['status'] = 1;
-                    $result['message'] = 'Estado actualizado correctamente';
-                // Si se produce algún error al actualizar el estado del cliente, se captura la excepción
-                } else {
+                    $result['dataset'] = $detalle->readAll();
+                    $result['exception'] = 'Ingrese un valor para buscar';
+                // Si se encuentran coincidencias en la base de datos, se informa al usuario y se muestran en la respuesta    
+                } elseif ($result['dataset'] = $detalle->searchRows($_POST['search'])) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
+                // Si ocurre una excepción en la base de datos, se captura    
+                } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
+                // Si no hay coincidencias, se informa al usuario
+                } else {
+                    $result['exception'] = 'No hay coincidencias';
                 }
                 break;
             default:
