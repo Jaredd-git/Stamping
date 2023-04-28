@@ -17,10 +17,6 @@ const MODAL = new bootstrap.Modal(document.getElementById('staticBackdrop'));
 const OPTIONS = {
     dismissible: false
 }
-// Inicialización del componente Modal para que funcionen las cajas de diálogo.
-//M.Modal.init(document.querySelectorAll('.modal'), OPTIONS);
-// Constante para establecer la modal de guardar.
-//const SAVE_MODAL = M.Modal.getInstance(document.getElementById('save-modal'));
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
