@@ -45,9 +45,9 @@ async function fillTable(form = null) {
             TBODY_ROWS.innerHTML += `
                 <tr>
                     <td>${row.id_pedido}</td>
-                    <td>${row.producto}</td>
+                    <td>${row.nombre_producto}</td>
                     <td>${row.talla}</td>
-                    <td>${row.cantidad}</td>
+                    <td>${row.cantidad_producto}</td>
                     <td>${row.precio}</td>
                 </tr>
             `;

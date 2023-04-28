@@ -14,21 +14,6 @@ if (isset($_GET['action'])) {
         $result['session'] = 1;
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
-            case 'readOne':
-                // Se comprueba si se ha ingresado correctamente el ID del pedido
-                if (!$detalle->setIdDetalle($_POST['id_detalle'])) {
-                    $result['exception'] = 'Detalle incorrecto';
-                // Si se encuentra el pedido, se muestra en la respuesta
-                } elseif ($result['dataset'] = $detalle->readOne()) {
-                    $result['status'] = 1;
-                // Si ocurre una excepción en la base de datos, se captura
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
-                // Si el pedido no existe, se informa al usuario
-                } else {
-                    $result['exception'] = 'Detalle inexistente';
-                }
-                break;
             // Acción para obtener todos los pedidos registrados.
             case 'readAll':
                 // Se lee todo el conjunto de datos de pedidos
