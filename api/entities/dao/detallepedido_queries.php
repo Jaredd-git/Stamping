@@ -8,6 +8,7 @@ class DetalleQueries
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
     */
+    //Consulta para realizar la busqueda de datos en la tabla clientes
     public function searchRows($value)
     {
         $sql = 'SELECT id_detalle, id_pedido, id_producto, id_talla, cantidad_producto, precio
@@ -15,16 +16,19 @@ class DetalleQueries
                 INNER JOIN productos USING(id_producto)
                 INNER JOIN tallas USING(id_talla)
                 WHERE id_pedido ILIKE ?';
+                //Guarda en un array los parametros de busqueda
         $params = array("%$value%");
+        //Devuelve los datos buscados
         return Database::getRows($sql, $params);
     }
-
+    //Consulta para leer todos los datos de la tabla clientes
     public function readAll()
     {
         $sql = 'SELECT id_detalle, id_pedido, id_producto, nombre_producto, id_talla, talla, cantidad_producto, precio
                 FROM detalles_pedidos p
                 INNER JOIN productos USING(id_producto)
                 INNER JOIN tallas USING(id_talla)';
+                //Devueve todos los valores de la tabla clientes
         return Database::getRows($sql);
     }
 }

@@ -16,12 +16,12 @@ class ClienteQueries
                 FROM clientes
                 WHERE apellido_cliente ILIKE ? OR nombre_cliente ILIKE ?
                 ORDER BY nombre_cliente';
-                //guarda en un array los parametros de busqueda
+                //Guarda en un array los parametros de busqueda
         $params = array("%$value%", "%$value%");
         //Devuelve los datos buscados
         return Database::getRows($sql, $params);
     }
-    //consulta para leer todos los datos de la tabla clientes
+    //Consulta para leer todos los datos de la tabla clientes
     public function readAll()
     {
         $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, telefono_cliente,direccion_cliente,dui_cliente, correo_cliente, estado_cliente
