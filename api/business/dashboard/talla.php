@@ -14,12 +14,15 @@ if (isset($_GET['action'])) {
         $result['session'] = 1;
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
+            // Accion utilizada para leer los datos de la tabla tallas 
             case 'readAll':
                 if ($result['dataset'] = $talla->readAll()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen '.count($result['dataset']).' registros';
+                    // Si ocurre una excepción en la base de datos, se captura
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
+                    // Si no hay datos registrados, se informa al usuario
                 } else {
                     $result['exception'] = 'No hay datos registrados';
                 }

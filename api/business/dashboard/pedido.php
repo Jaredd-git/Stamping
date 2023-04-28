@@ -40,6 +40,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
+                // Acción para buscar en la tabla los pedidos registrados
             case 'search':
                  // Se valida el formulario de búsqueda y se comprueba si el usuario ha ingresado un valor de búsqueda
                 $_POST = Validator::validateForm($_POST);
@@ -59,6 +60,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay coincidencias';
                 }
                 break;
+                // Acción para obtener los datos de un pedido seleccionado
             case 'readOne':
                 // Se comprueba si se ha ingresado correctamente el ID del pedido
                 if (!$pedido->setIdPedido($_POST['id_pedido'])) {
@@ -74,6 +76,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Pedido inexistente';
                 }
                 break;
+                // Acción para actualizar un pedido seleccionado
             case 'update':
                 // Se valida el formulario de actualización de pedido
                 $_POST = Validator::validateForm($_POST);
@@ -104,6 +107,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+                // Acción para eliminar un pedido
             case 'delete':
                 // Se verifica si el pedido tiene un ID válido
                 if (!$pedido->setIdPedido($_POST['id_pedido'])) {
@@ -120,12 +124,15 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+                // Acción para cambiar el estado de un pedido
             case 'changeStatus':
                 // Se verifica si el ID del cliente es válido
                 if (!$pedido->setIdPedido($_POST['id_pedido'])) {
                     $result['exception'] = 'Pedido incorrecto';
+                    // Se verifica si el estado del pedido es valido
                 } if (!$pedido->setEstado($_POST['estado'])) {
                     $result['exception'] = 'Estado incorrecto';
+                    // Se verifica si el pedido existe, si no se informa al usuario
                 } elseif (!$data = $pedido->readOne()) {
                     $result['exception'] = 'Pedido inexistente';
                 // Si todas las validaciones anteriores son correctas, se actualiza el estado del cliente en la base de datos
