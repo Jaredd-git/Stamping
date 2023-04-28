@@ -65,10 +65,14 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Validator::getFileError();
                 } elseif ($producto->createRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Producto creado correctamente';
+                    if (Validator::saveFile($_FILES['imagen'], $producto->getRuta(), $producto->getImagen())) {
+                        $result['message'] = 'Producto creado correctamente';
                     } else {
-                        $result['exception'] = Database::getException();
+                        $result['message'] = 'Producto creado pero no se guardó la imagen';
                     }
+                }else {
+                        $result['exception'] = Database::getException();;
+                }
                 break;
             case 'readOne':
                 if (!$producto->setId($_POST['id'])) {
@@ -103,9 +107,22 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Talla incorrecta';
                 } elseif (!$producto->setExistencias($_POST['existencias'])) {
                     $result['exception'] = 'Existencias incorrectas';
-                } elseif ($producto->updateRow()) {
+                } elseif (!is_uploaded_file($_FILES['imagen']['tmp_name'])) {
+                    if ($producto->updateRow($data['imagen_producto'])) {
                         $result['status'] = 1;
                         $result['message'] = 'Producto modificado correctamente';
+                    } else {
+                        $result['exception'] = Database::getException();
+                    }
+                } elseif (!$producto->setImagen($_FILES['imagen'])) {
+                    $result['exception'] = Validator::getFileError();
+                } elseif ($producto->updateRow($data['imagen_producto'])) {
+                    $result['status'] = 1;
+                    if (Validator::saveFile($_FILES['imagen'], $producto->getRuta(), $producto->getImagen())) {
+                        $result['message'] = 'Producto modificado correctamente';
+                    } else {
+                        $result['message'] = 'Producto modificado pero no se guardó la imagen';
+                    }
                 } else {
                     $result['exception'] = Database::getException();
                 }
@@ -117,7 +134,11 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Producto inexistente';
                 } elseif ($producto->deleteRow()) {
                     $result['status'] = 1;
+                    if (Validator::deleteFile($producto->getRuta(), $data['imagen_producto'])) {
                         $result['message'] = 'Producto eliminado correctamente';
+                    } else {
+                        $result['message'] = 'Producto eliminado pero no se borró la imagen';
+                    }
                     } else {
                         $result['exception'] = Database::getException();
                     }
