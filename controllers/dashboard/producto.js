@@ -74,13 +74,14 @@ async function fillTable(form = null) {
     if (JSON.status) {
         // Se recorre el conjunto de registros (dataset) fila por fila a través del objeto row.
         JSON.dataset.forEach(row => {
-            (row.estado_producto) ? estado  = 'Activo' : estado = 'Inactivo';
+            (row.estado_producto) ? estado = 'Activo' : estado = 'Inactivo';
             // Se establece un icono para el estado del producto.
             (row.estado_producto) ? icon = 'visibility' : icon = 'visibility_off';
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TBODY_ROWS.innerHTML += `
             
                 <tr>
+                    <td><img src="${SERVER_URL}images/productos/${row.imagen_producto}" class="materialboxed" height="100"></td>
                     <td>${row.nombre_producto}</td>
                     <td>${row.descripcion_producto}</td>
                     <td>${row.precio_producto}</td>
@@ -115,7 +116,7 @@ function openCreate() {
     // Se asigna el título a la caja de diálogo.
     MODAL_TITLE.textContent = 'Crear producto';
     // Se establece el campo de archivo como obligatorio.
-    //document.getElementById('archivo').required = true;
+    // document.getElementById('archivo').required = false;
     // Llamada a la función para llenar el select del formulario. Se encuentra en el archivo components.js
     fillSelect(TIPO_API, 'readAll', 'tipo');
     fillSelect(TALLA_API, 'readAll', 'talla');
