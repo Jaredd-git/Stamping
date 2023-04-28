@@ -28,9 +28,8 @@ class ProductoQueries
 
     public function readAll()
     {
-        $sql = 'SELECT id_producto, nombre_producto, descripcion_producto, precio_producto, imagen_producto, estado_producto, color_producto, id_tipo, id_talla_p, existencias
+        $sql = 'SELECT id_producto, nombre_producto, descripcion_producto, precio_producto, imagen_producto, estado_producto, color_producto, id_tipo, existencias
         FROM productos INNER JOIN tipos USING(id_tipo)
-        INNER JOIN tallas USING(id_talla)
         ORDER BY nombre_producto';
         return Database::getRows($sql);
     }
