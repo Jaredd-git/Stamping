@@ -8,48 +8,58 @@ class ValoracionQueries
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
     */
+    //Consulta para realizar la busqueda de datos en la tabla valoraciones
     public function searchRows($value)
     {
         $sql = 'SELECT id_valoracion, id_producto, calificacion_producto, comentario_producto, fecha_comentario, estado_comentario
                 FROM valoraciones
                 WHERE comentario_producto ILIKE ?
                 ORDER BY fecha_comentario ASC';
+                //Guarda en un array los parametros de busqueda
         $params = array("%$value%");
+        //Devuelve los datos buscados
         return Database::getRows($sql, $params);
     }
-
+    //Consulta para leer todos los datos de la tabla valoraciones
     public function readAll()
     {
         $sql = 'SELECT id_valoracion, id_producto, nombre_producto, calificacion_producto, comentario_producto, fecha_comentario, estado_comentario
         FROM valoraciones INNER JOIN productos USING(id_producto)
         ORDER BY calificacion_producto ASC';
+        //Devueve todos los valores de la tabla valoraciones
         return Database::getRows($sql);
     }
-
+    //Consulta para cargar un dato especifico de la tabla valoraciones
     public function readOne()
     {
         $sql = 'SELECT id_valoracion, id_producto, calificacion_producto, comentario_producto, fecha_comentario, estado_comentario
                 FROM valoraciones
                 WHERE id_valoracion = ?';
+                //Guarda el id de la valoracion seleccionada
         $params = array($this->id);
+        //Devuelve los datos de la valoracion seleccionada
         return Database::getRow($sql, $params);
     }
-
+    //Elimina una valoracion en la base de datos
     public function deleteRow()
     {
         $sql = 'DELETE FROM valoraciones
                 WHERE id_valoracion = ?';
+                //Obtiene el id de la valoracion seleccionada
         $params = array($this->id);
+        //Elimina la valoracion
         return Database::executeRow($sql, $params);
     }
-
+    //Consulta para cambiar el estado de la valoracion
     public function changeStatus($status)
     {
         ($status) ? $status = 0 : $status = 1;
         $sql = 'UPDATE valoraciones
                 SET estado_comentario = ?
                 WHERE id_valoracion = ?';
+                //Obtiene el id de la valoracion
         $params = array($status, $this->id);
+        //Cambia el estado de la valoracion
         return Database::executeRow($sql, $params);
     }
 }
