@@ -149,7 +149,7 @@ async function openUpdate(id) {
         document.getElementById('color').value = JSON.dataset.color_producto;
         document.getElementById('descripcion').value = JSON.dataset.descripcion_producto;
         fillSelect(TIPO_API, 'readAll', 'tipo', JSON.dataset.id_tipo);
-        fillSelect(TALLA_API, 'readAll', 'talla', JSON.dataset.id_talla);
+        fillSelect(TALLA_API, 'readAll', 'talla', JSON.dataset.id_talla_p);
         if (JSON.dataset.estado_producto) {
             document.getElementById('estado').checked = true;
         } else {
