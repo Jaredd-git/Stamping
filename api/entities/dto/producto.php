@@ -104,12 +104,8 @@ class Producto extends ProductoQueries
 
     public function setExistencias($value)
     {
-        if (Validator::validateExist($value)) {
-            $this->existencias = $value;
-            return true;
-        } else {
-            return false;
-        }
+        $this->existencias = $value;
+        return true;
     }
 
     public function setImagen($value)
