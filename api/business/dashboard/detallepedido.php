@@ -28,6 +28,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
+                // Accion para buscar datos en la tabla de detalle pedido
             case 'search':
                  // Se valida el formulario de búsqueda y se comprueba si el usuario ha ingresado un valor de búsqueda
                 $_POST = Validator::validateForm($_POST);
