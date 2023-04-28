@@ -28,7 +28,7 @@ class ProductoQueries
 
     public function readAll()
     {
-        $sql = 'SELECT id_producto, nombre_producto, descripcion_producto, precio_producto, imagen_producto, estado_producto, color_producto, id_tipo, id_talla, existencias
+        $sql = 'SELECT id_producto, nombre_producto, descripcion_producto, precio_producto, imagen_producto, estado_producto, color_producto, id_tipo, id_talla_p, existencias
         FROM productos INNER JOIN tipos USING(id_tipo)
         INNER JOIN tallas USING(id_talla)
         ORDER BY nombre_producto';
@@ -37,7 +37,7 @@ class ProductoQueries
 
     public function readOne()
     {
-        $sql = 'SELECT id_producto, nombre_producto, descripcion_producto, precio_producto, imagen_producto, estado_producto, color_producto, id_tipo, id_talla, existencias
+        $sql = 'SELECT id_producto, nombre_producto, descripcion_producto, precio_producto, imagen_producto, estado_producto, color_producto, id_tipo, id_talla_p, existencias
                 FROM productos
                 WHERE id_producto = ?';
         $params = array($this->id);
@@ -48,7 +48,7 @@ class ProductoQueries
     {
         ($this->imagen) ? Validator::deleteFile($this->getRuta(), $current_image) : $this->imagen = $current_image;
         $sql = 'UPDATE productos
-                SET nombre_producto = ?, descripcion_producto = ?, precio_producto = ?, imagen_producto = ?,estado_producto = ?, color_producto = ?, id_tipo = ?, id_talla = ?, existencias = ?
+                SET nombre_producto = ?, descripcion_producto = ?, precio_producto = ?, imagen_producto = ?,estado_producto = ?, color_producto = ?, id_tipo = ?, id_talla_p = ?, existencias = ?
                 WHERE id_producto = ?';
         $params = array($this->nombre, $this->descripcion, $this->precio, $this->imagen,$this->estado, $this->color, $this->tipo, $this->talla, $this->existencias, $this->id);
         return Database::executeRow($sql, $params);
