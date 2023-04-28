@@ -119,7 +119,7 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
                     $result['status'] = 1;
-                    $result['dataset'] = $pedido->readAll();
+                    $result['dataset'] = $usuario->readAll();
                     $result['exception'] = 'Ingrese un valor para buscar';
                     // Si se encuentran coincidencias en la base de datos, se informa al usuario y se muestran en la respuesta  
                 } elseif ($result['dataset'] = $usuario->searchRows($_POST['search'])) {
