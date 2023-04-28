@@ -58,6 +58,21 @@ class Validator
     }
 
     /*
+    *   Método para validar un número natural como por ejemplo llave primaria, llave foránea, entre otros.
+    *   Parámetros: $value (dato a validar).
+    *   Retorno: booleano (true si el valor es correcto o false en caso contrario).
+    */
+    public static function validateExist($value)
+    {
+        // Se verifica que el valor sea un número entero mayor o igual a uno.
+        if (filter_var($value, FILTER_VALIDATE_INT, array('min_range' => 0))) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /*
     *   Método para validar un archivo de imagen.
     *   Parámetros: $file (archivo de un formulario), $maxWidth (ancho máximo para la imagen) y $maxHeigth (alto máximo para la imagen).
     *   Retorno: booleano (true si el archivo es correcto o false en caso contrario).
