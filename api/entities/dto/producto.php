@@ -173,4 +173,9 @@ class Producto extends ProductoQueries
     {
         return $this->imagen;
     }
+
+    public function getRuta()
+    {
+        return $this->ruta;
+    }
 }
