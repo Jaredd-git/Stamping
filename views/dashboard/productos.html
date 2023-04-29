@@ -111,6 +111,39 @@
                     </div>
                 </div>
             </div>
+            <!-- Modal para gestionar existencias-->
+            <div class="modal fade" id="changeStock" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="modal-title">Actualizar existencias</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                                data-tooltip="Cerrar"></button>
+                        </div>
+                        <form method="post" id="save-form2" enctype="multipart/form-data">
+                            <div class="modal-body">
+                                <div class="container">
+                                    <div class="row">
+                                        <input class="d-none" type="number" id="id_p" name="id_p">
+                                        <div class=" mb-3 col-6">
+                                            <label for=" floatingInput">Existencias</label>
+                                            <input type="number" min="0" max="1000" class="form-control" id="existencias"
+                                                name="existencias">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer d-flex justify-content-center">
+                                <button type="submit" class="btn btn-outline-primary">
+                                    <i class="bi bi-save-fill"> </i>
+                                    Guardar cambios
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- Crea una tabla para mostrar los productos -->
         <div class="row" id="div-table">
