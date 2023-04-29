@@ -115,6 +115,22 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Producto inexistente';
                 }
                 break;
+                // Accion utilizada para leer los campos del producto seleccionado 
+            case 'readOneStock':
+                // Se comprueba si se ha ingresado correctamente el ID del producto
+                if (!$producto->setId($_POST['id_p'])) {
+                    $result['exception'] = 'Producto incorrecto';
+                    // Si se encuentra el producto, se muestra en la respuesta
+                } elseif ($result['dataset'] = $producto->readOne()) {
+                    $result['status'] = 1;
+                    // Si ocurre una excepción en la base de datos, se captura
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                    // Si el producto no existe, se informa al usuario
+                } else {
+                    $result['exception'] = 'Producto inexistente';
+                }
+                break;
                 // Accion utilizada para actualizar los campos del producto seleccionado 
             case 'update':
                 // Se valida el formulario de actualización de producto
@@ -165,6 +181,25 @@ if (isset($_GET['action'])) {
                     } else {
                         $result['message'] = 'Producto modificado pero no se guardó la imagen';
                     }
+                } else {
+                    $result['exception'] = Database::getException();
+                }
+                break;
+                // Accion utilizada para actualizar un campo seleccionado de la tabla productos
+            case 'changeStock':
+                // Se valida el formulario de actualización de existencias
+                $_POST = Validator::validateForm($_POST);
+                // Se verifica si el ID del producto es válido
+                if (!$producto->setId($_POST['id_p'])) {
+                    $result['exception'] = 'Producto incorrecto';
+                    // Se verifica si el el producto existe
+                } elseif (!$data = $producto->readOne()) {
+                    $result['exception'] = 'Producto inexistente';
+                    // Si todas las validaciones anteriores son correctas, se actualizan las existencias del producto en la base de datos
+                } elseif ($producto->changeStock()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Existencias actualizadas correctamente';
+                    // Si se produce algún error al actualizar las existencias del producto, se captura la excepción
                 } else {
                     $result['exception'] = Database::getException();
                 }
