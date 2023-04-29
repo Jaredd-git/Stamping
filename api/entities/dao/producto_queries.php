@@ -20,6 +20,7 @@ class ProductoQueries
         //Devuelve los datos buscados
         return Database::getRows($sql, $params);
     }
+
     //Consulta para crear un nuevo producto
     public function createRow()
     {
@@ -30,6 +31,7 @@ class ProductoQueries
         //Crea el nuevo producto
         return Database::executeRow($sql, $params);
     }
+
     //Consulta para leer todos los datos de la tabla productos
     public function readAll()
     {
@@ -39,6 +41,7 @@ class ProductoQueries
         //Muestra todos los datos de la tabla productos
         return Database::getRows($sql);
     }
+
     //Consulta para cargar un dato especifico de la tabla productos
     public function readOne()
     {
@@ -50,6 +53,7 @@ class ProductoQueries
         //Carga el dato seleccionado
         return Database::getRow($sql, $params);
     }
+
     //Actualiza unos datos especificos de la tabla productos
     public function updateRow($current_image)
     {
@@ -63,6 +67,17 @@ class ProductoQueries
         //Actualiza el producto seleccionado
         return Database::executeRow($sql, $params);
     }
+
+    //Consulta para cambiar las existencias de un producto
+    public function changeStock()
+    {
+        $sql = 'UPDATE productos
+                SET existencias = ?
+                WHERE id_producto = ?';
+        $params = array($_POST['existencias'], $this->id);
+        return Database::executeRow($sql, $params);
+    }
+
     //Consulta para eliminar un campo desconocido
     public function deleteRow()
     {
