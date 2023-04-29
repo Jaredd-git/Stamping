@@ -92,6 +92,9 @@ async function fillTable(form = null) {
                         <button  onclick="openUpdate(${row.id_producto})" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Actualizar producto">
                             <i class="bi bi-pencil-square"></i>
                         </button>
+                        <button  onclick="openDelete(${row.id_producto})" class="btn btn-outline-info" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Gestionar existencias">
+                        <i class="bi bi-boxes"></i>
+                        </button>
                         <button  onclick="openDelete(${row.id_producto})" class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Eliminar producto">
                             <i class="bi bi-trash-fill"></i>
                         </button>
