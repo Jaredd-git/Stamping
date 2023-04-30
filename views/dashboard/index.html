@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Inicia sesión</title>
+    <!-- Importación de archivos CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
@@ -11,30 +12,39 @@
 </head>
 
 <body>
+    <!-- Encabezado del documento -->
     <header></header>
     <section>
         <div class="row">
                 <div class="col-12">
+                    <!-- Inserta una imagen con un identificador "imgS" y un atributo "alt" para accesibilidad -->
                     <div class="imagen">
                         <img id="imgS" src="../../resources/img/Imagenes/banner.png" alt="banner">
                     </div>
                 </div>
                 <div class="row align-items-center">
                     <div class="col-lg-12">
-
+                        <!-- Crea un encabezado de nivel 1 para el título de inicio de sesión -->
                         <h1>Inicio de sesión</h1>
+                        <!-- Crea un formulario para el inicio de sesión con un identificador "login-form" y una clase "formulario" -->
                         <form method="post" id="login-form" class="formulario">
+                            <!-- Crea un campo de entrada de texto para el nombre de usuario -->
                             <input type="text" name="user" placeholder="Usuario">
+                            <!-- Crea un grupo de entrada de contraseña con un botón que muestra/oculta la contraseña y un identificador "pass"-->
                             <div class="input-group">
                                 <input type="password" name="pass" id="pass" class="form-control" placeholder="Contraseña">
                                 <button class="btn btn-secondary" type="button" id="show-password" data-toggle="tooltip" data-bs-placement="bottom">
+                                    <!-- Crea un icono de ojo relleno de Bootstrap para el botón -->
                                     <i class="bi bi-eye-fill"></i>
                                 </button>
                             </div>
+                            <!-- Crea una casilla de verificación para recordar el inicio de sesión con una clase "check-Recuerda" -->
                             <input class="check-Recuerda" type="checkbox" value="">
+                            <!-- Crea una etiqueta para la casilla de verificación de recordar sesión -->
                             <label class="palabra">&nbsp Recuerdame</label>
+                            <!-- Crea un enlace para restablecer la contraseña -->
                             <a class="palabra" href="#">Olvide mi contraseña</a>
-
+                             <!-- Crea un botón de envío para el formulario con la clase "btn-login" -->
                             <button class="btn-login" type="submit">Entrar</button>
                         </form>
                     </div>
@@ -43,13 +53,16 @@
         <div class="row">
                 <div class="col-12">
                     <div class="imagen">
+                        <!-- Inserta otra imagen con un identificador "imgI" y un atributo "alt" para accesibilidad -->
                         <img id="imgI" src="../../resources/img/Imagenes/banner.png" alt="banner">
                     </div>
                 </div>
         </div>
     </section>
+    <!-- Pie del documento -->
     <footer class="text-center text-dark"></footer>
 
+    <!-- Importación de archivos JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
         crossorigin="anonymous"></script>
