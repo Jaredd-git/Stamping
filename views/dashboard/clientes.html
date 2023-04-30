@@ -39,17 +39,21 @@
                 <!-- Modal -->
                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <!-- En esta sección se define el tamaño y la posición del modal -->
                     <div class="modal-dialog modal-xl modal-dialog-centered">
+                        <!-- En este bloque se define el contenido del modal -->
                         <div class="modal-content">
+                            <!-- La cabecera del modal contiene el título y un botón para cerrar -->
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="modal-title">..</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                                     data-tooltip="Cerrar"></button>
                             </div>
+                            <!-- Aquí se define el formulario que se muestra en el cuerpo del modal -->
                             <form method="post" id="save-form">
                                 <div class="modal-body">
                                     <div class="container">
-
+                                        
                                         <div class="row">
                                             <input class="d-none" type="number" id="id" name="id">
                                             <div class="form-floating mb-3 col-4">
@@ -101,9 +105,11 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer d-flex justify-content-center">
+                                    <!-- Creamos un botón y le asignamos la clase "btn-primary" y el atributo "data-bs-dismiss" para cerrar el modal cuando se haga clic sobre el botón. -->
                                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                                    <!-- Creamos un icono utilizando la biblioteca "bootstrap-icons" y le asignamos la clase "bi bi-x-circle-fill" -->
                                         <i class="bi bi-x-circle-fill"></i>
-                                        Cerrar
+                                    Cerrar 
                                     </button>
                                 </div>
                             </form>
