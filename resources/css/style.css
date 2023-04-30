@@ -9,6 +9,7 @@
     height: 70%;
     overflow: hidden;
 }*/
+
 .btn{
   background-color: #cccccc;
   border-radius: 20px;
@@ -19,9 +20,11 @@
 body{
     font-family: 'Lexend Deca', sans-serif;
     background: #F2F2F2;
+    overflow: hidden;
 }
+
 #imgS{
-    position: static;
+    position: fixed;
     width: 100%;
 }
 #imgI{
@@ -30,6 +33,7 @@ body{
     width: 100%;
     transform: rotate(180deg);
 }
+
 .formulario{
     margin: 0 auto;
     padding-top: 35px;
@@ -43,6 +47,7 @@ h6{
 }
 
 h1{
+    margin-top: 110px;
     color: #000000;
     letter-spacing: 1px;
     text-align: center;
@@ -51,7 +56,6 @@ h1{
 
 section{
     justify-content: center;
-    margin-top: 135px;
 }
 
 input { 
