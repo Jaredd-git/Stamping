@@ -10,13 +10,6 @@
     overflow: hidden;
 }*/
 
-.btn{
-  background-color: #cccccc;
-  border-radius: 20px;
-  width: 220px;
-  height: 220px;
-}
-
 body{
     font-family: 'Lexend Deca', sans-serif;
     background: #F2F2F2;
@@ -80,6 +73,11 @@ input {
 input:focus{
     box-shadow: inset 0 -5px 45px #a5a4a4, 0 1px 1px #a0a0a0;
 }
+
+#show-password{
+    height: 39px;
+}
+
 .btn-login{
     position: relative;
     bottom: -10px;
