@@ -28,9 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
   });
-  
-  
-  
 
 // Método manejador de eventos para cuando se envía el formulario de inicio de sesión.
 LOGIN_FORM.addEventListener('submit', async (event) => {
