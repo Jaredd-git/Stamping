@@ -76,7 +76,7 @@ class ClienteQueries
         if ($data = Database::getRow($sql, $params)) {
             $this->id = $data['id_cliente'];
             $this->estado = $data['estado_cliente'];
-            $this->correo = $user;
+            $this->user = $user;
             return true;
         } else {
             //Si no esta desactivado
@@ -90,7 +90,7 @@ class ClienteQueries
         $params = array($this->id);
         $data = Database::getRow($sql, $params);
         //Si la clave del cliente es igual es correcta
-        if (password_verify($password, $data['clave_cliente'])) {
+        if ($password == $data['clave_cliente']) {
             return true;
         } else {
             //Si no es incorrecta
