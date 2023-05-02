@@ -62,21 +62,21 @@ class ClienteQueries
         //Elimina el cliente
         return Database::executeRow($sql, $params);
     }
-    
 
     /*
     *   Métodos para gestionar la cuenta del cliente.
     */
+
     //Consulta para verificar si el usuario cliente esta activo
     public function checkUser($correo)
     {
-        $sql = 'SELECT id_cliente, estado_cliente FROM clientes WHERE correo_cliente = ?';
+        $sql = 'SELECT id_cliente, estado_cliente FROM clientes WHERE user_cliente = ?';
         $params = array($correo);
         //Verifica si el cliente esta activo
         if ($data = Database::getRow($sql, $params)) {
             $this->id = $data['id_cliente'];
             $this->estado = $data['estado_cliente'];
-            $this->correo = $correo;
+            $this->correo = $user;
             return true;
         } else {
             //Si no esta desactivado
