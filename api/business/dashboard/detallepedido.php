@@ -17,7 +17,9 @@ if (isset($_GET['action'])) {
             // Acción para obtener todos los pedidos registrados.
             case 'readAll':
                 // Se lee todo el conjunto de datos de pedidos
-                if ($result['dataset'] = $detalle->readAll()) {
+                if (!$detalle->setIdPedido($_POST['id_pedido'])) {
+                    $result['exception'] = 'Pedido incorrecto';
+                } elseif ($result['dataset'] = $detalle->readAll()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen '.count($result['dataset']).' registros';
                  // Si ocurre una excepción en la base de datos, se captura
