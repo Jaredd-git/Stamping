@@ -98,7 +98,8 @@ class PedidoQueries
         $sql = "SELECT id_pedido, CONCAT(nombre_cliente,' ', apellido_cliente) cliente, id_estado, estado, fecha_pedido, direccion_pedido
                 FROM pedidos p
                 INNER JOIN clientes USING(id_cliente)
-                INNER JOIN estados_pedidos ep ON ep.id_estado_pedido = p.id_estado";
+                INNER JOIN estados_pedidos ep ON ep.id_estado_pedido = p.id_estado
+                ORDER BY id_pedido";
         return Database::getRows($sql);
     }
 
