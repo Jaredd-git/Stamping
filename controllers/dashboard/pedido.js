@@ -3,19 +3,23 @@ const PEDIDO_API = 'business/dashboard/pedido.php';
 const DETALLE_API = 'business/dashboard/detallepedido.php';
 const PRODUCTO_API = 'business/dashboard/producto.php';
 const TALLA_API = 'business/dashboard/talla.php';
+
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
 // Constante para establecer el formulario de guardar.
 const SAVE_FORM = document.getElementById('save-form');
 // Constante para establecer el título de la modal.
 const MODAL_TITLE = document.getElementById('modal-title');
-// Constantes para establecer el contenido de la tabla.
+// Constantes para establecer el contenido de la tabla de pedidos.
 const TBODY_ROWS = document.getElementById('tbody-rows');
 const RECORDS = document.getElementById('records');
-
+// Constantes para establecer el contenido de la tabla de detalle.
+const TBODY_ROWS_DETAIL = document.getElementById('tbody-rows-detail');
+const RECORDS_DETAIL = document.getElementById('records-detail');
 // Constante para establecer la modal de guardar.
 const MODAL = new bootstrap.Modal(document.getElementById('staticBackdrop'));
-
+// Constante para establecer la modal de detalle.
+const DETAIL_MODAL = new bootstrap.Modal(document.getElementById('detail-modal'));
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para llenar la tabla con los registros disponibles.
@@ -81,6 +85,9 @@ async function fillTable(form = null) {
                         <button  onclick="openUpdate(${row.id_pedido})" class="btn btn-outline-info" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Cambiar estado del pedido">
                             <i class="bi bi-file-text"></i>
                         </button>
+                        <button  onclick="openDetail(${row.id_pedido})" class="btn btn-outline-info" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ver detalle del pedido">
+                            <i class="bi bi-file-text"></i>
+                        </button>
                     </th>
                 </tr>
             `;
@@ -122,6 +129,43 @@ async function openUpdate(id) {
         document.getElementById('cliente').value = JSON.dataset.cliente;
         document.getElementById('direccion').value = JSON.dataset.direccion_pedido;
         fillSelect(PEDIDO_API, 'readEstados', 'estado', JSON.dataset.id_estado);
+    } else {
+        sweetAlert(2, JSON.exception, false);
+    }
+}
+
+/*
+*   Función asíncrona para obtener el detalle de un pedido.
+*   Parámetros: id (identificador del registro seleccionado).
+*   Retorno: ninguno.
+*/
+async function openDetail(id) {
+    // Se define una constante tipo objeto con los datos del registro seleccionado.
+    const FORM = new FormData();
+    FORM.append('id_pedido', id);
+    // Petición para obtener los datos del registro solicitado.
+    const JSON = await dataFetch(DETALLE_API, 'readAll', FORM);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    if (JSON.status) {
+        // Se abre la caja de diálogo que contiene el formulario.
+        DETAIL_MODAL.show();
+        document.getElementById('pedido').textContent = id;
+        // Se recorre el conjunto de registros fila por fila.
+        JSON.dataset.forEach(row => {
+            subtotal = row.cantidad_producto * row.precio;
+            // Se crean y concatenan las filas de la tabla con los datos de cada registro.
+            TBODY_ROWS_DETAIL.innerHTML += `
+                <tr>
+                    <td>${row.nombre_producto}</td>
+                    <td>${row.talla}</td>
+                    <td>${row.cantidad_producto}</td>
+                    <td>${row.precio}</td>
+                    <td>${subtotal.toFixed(2)}</td>
+                </tr>
+            `;
+        });
+        // Se muestra un mensaje de acuerdo con el resultado.
+        RECORDS_DETAIL.textContent = JSON.message;
     } else {
         sweetAlert(2, JSON.exception, false);
     }
