@@ -27,6 +27,45 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
+                // Accion para crear un nuevo tipo de prenda
+            case 'create':
+                // Se valida el fromulario de crear tipo
+                $_POST = Validator::validateForm($_POST);
+                // Se verifica si el nombre es correcto
+                if (!$tipo->setNombreTipo($_POST['nombre'])) {
+                    $result['exception'] = 'Nombre incorrecto';
+                    // Se verifica si los apellidos son correctos
+                } elseif (!$tipo->setDescripcion($_POST['descripcion'])) {
+                    $result['exception'] = 'Descripcion incorrecta';
+                    // Si todas la validaciones son correctas se crea el usuario correctamente
+                } elseif ($tipo->createRow()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Tipo creado correctamente';
+                    // Si ocurre un error se captura la excepcion en la base de datos
+                } else {
+                    $result['exception'] = Database::getException();
+                }
+                break;
+                // Accion para eliminar un tipo de prenda
+            case 'delete':
+                // Se verifica el usuario no se pueda eliminar a si mismo
+                if ($_POST['id_usuario'] == $_SESSION['id_admin']) {
+                    $result['exception'] = 'No se puede eliminar a sí mismo';
+                    // Se verifica si el id proporcionado es correcto
+                } elseif (!$tipo->setId($_POST['id_tipo'])) {
+                    $result['exception'] = 'Tipo incorrecto';
+                    // Se verifica si el tipo existe
+                } elseif (!$tipo->readOne()) {
+                    $result['exception'] = 'Tipo inexistente';
+                    // Si todas las validaciones son correctas se elimina el usuario
+                } elseif ($tipo->deleteRow()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Tipo eliminado correctamente';
+                    // Si ocurre un error, se captura la excepcion
+                } else {
+                    $result['exception'] = Database::getException();
+                }
+                break;
             default:
             // Si no se encuentra ninguna acción disponible dentro de la sesión, se muestra un mensaje de error
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
