@@ -24,11 +24,13 @@ class DetalleQueries
     //Consulta para leer todos los datos de la tabla detalle pedidos
     public function readAll()
     {
-        $sql = 'SELECT id_detalle, id_pedido, id_producto, nombre_producto, id_talla, talla, cantidad_producto, precio
+        $sql = 'SELECT id_detalle, nombre_producto, talla, cantidad_producto, precio
                 FROM detalles_pedidos p
                 INNER JOIN productos USING(id_producto)
-                INNER JOIN tallas USING(id_talla)';
+                INNER JOIN tallas USING(id_talla)
+                WHERE id_pedido = ?';
+                $params = array($this->id_pedido);
                 //Devueve todos los valores de la tabla detalle pedidos
-        return Database::getRows($sql);
+        return Database::getRows($sql, $params);
     }
 }
