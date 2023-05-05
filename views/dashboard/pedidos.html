@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pedidos</title>
+    <!-- Importación de archivos CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
@@ -12,8 +13,11 @@
 </head>
 
 <body>
+    <!-- Encabezado del documento -->
     <header></header>
+    <!-- Elemento principal -->
     <main>
+        <!-- Elemento de anclaje con atributo href que direcciona a "home.html" -->
         <a href="home.html">
             <button type="button" class="btn btn-secondary" id="btn-regresar">
                 <i class="bi bi-arrow-left-short"></i>
@@ -21,15 +25,19 @@
             </button>
         </a>
         <div class="container">
+            <!--Crea un encabezado de nivel 3 para el titulo de pedidos-->
             <h3 class="text-center">Administración de pedidos</h3>
         </div>
         <div>
             <!-- Buscador de la tabla -->
             <div class="input-group rounded">
+                <!-- Elemento de contenedor con clase "d-flex" que indica que se utilizará un diseño flexbox para los elementos que contiene -->
                 <div class=" d-flex">
+                    <!--Formulario que contiene un método "post" que se enviará al servidor cuando se envíe el formulario y un ID de "search-form" para buscar-->
                     <form class="d-flex" method="post" id="search-form">
                         <input id="search" type="text" name="search" class="form-control rounded" placeholder="Search"
-                            aria-label="Search" aria-describedby="search-addon" />
+                            aria-label="Search" aria-describedby="search-addon"/>
+                        <!-- Elemento de botón de envío con ID "search-btn" y tipo "submit" -->
                         <button id="search-btn" type="submit">
                             <i class="bi bi-search"></i>
                         </button>
@@ -62,35 +70,47 @@
         <!-- Modal para cambiar estado -->
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <!-- Se crea una ventana modal centrada en la pantalla y se le asigna una clase de tamaño extra grande -->
             <div class="modal-dialog modal-xl modal-dialog-centered">
+                <!-- Se crea el contenido del modal -->
                 <div class="modal-content">
+                    <!-- Se crea el encabezado de la modal -->
                     <div class="modal-header">
+                        <!-- Se crea un título principal de tamaño 5 y se le asigna un ID -->
                         <h1 class="modal-title fs-5" id="modal-title">..</h1>
+                        <!-- Se crea un botón para cerrar la modal y se le asigna una clase para que sea un icono-->
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                             data-tooltip="Cerrar"></button>
                     </div>
+                    <!-- Se crea un formulario para agregar o editar datos en la base de datos -->
                     <form method="post" id="save-form">
+                        <!-- Se crea el cuerpo de la modal -->
                         <div class="modal-body">
                             <div class="container">
                                 <br>
                                 <div class="row">
+                                    <!-- Se crea un campo para leer el número de pedido y se le asigna tamaño 4 -->
                                     <div class="form-floating mb-3 col-4">
                                         <input type="number" class="form-control" id="id_pedido" name="id_pedido">
                                         <label for="id_pedido"># Pedido</label>
                                     </div>
+                                    <!-- Se crea un campo para leer el cliente y se le asigna tamaño 4 -->
                                     <div class="form-floating mb-3 col-4">
                                         <input type="text" class="form-control" id="cliente" name="cliente">
                                         <label for="cliente">Cliente</label>
                                     </div>
+                                    <!-- Se crea un campo para leer la fecha y se le asigna tamaño 4 -->
                                     <div class="form-floating mb-3 col-4">
                                         <input type="date" class="form-control" id="fecha" name="fecha"
                                             placeholder="name@example.com">
                                         <label for="fecha">Fecha</label>
                                     </div>
+                                    <!-- Se crea un campo para leer la dirección y se le asigna tamaño 4 -->
                                     <div class="form-floating mb-3 col-6">
                                         <input type="text" class="form-control" id="direccion" name="direccion">
                                         <label for="direccion">Dirección</label>
                                     </div>
+                                    <!--Crea un elemento de selección de opciones para cargar los estados del pedido-->
                                     <div class="input-field mb-3 col-4">
                                         <select class="form-select form-select-m" id="estado" name="estado">
                                         </select>
@@ -99,7 +119,9 @@
                                 </br>
                             </div>
                         </div>
+                        <!-- Crea un elemento de pie del modal y alinea su contenido en el centro horizontal-->
                         <div class="modal-footer d-flex justify-content-center">
+                             <!-- Crea un botón con el tipo "submit", y un icono de bootstap-->
                             <button type="submit" class="btn btn-outline-primary">
                                 <i class="bi bi-save-fill"> </i>
                                 Guardar cambios
@@ -112,10 +134,15 @@
         <!-- Modal para ver detalle -->
         <div class="modal fade" id="detail-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <!-- Se crea una ventana modal centrada en la pantalla y se le asigna una clase de tamaño extra grande -->
             <div class="modal-dialog modal-xl modal-dialog-centered">
+                <!-- Se crea el contenido del modal -->
                 <div class="modal-content">
+                    <!-- Se crea el encabezado de la modal -->
                     <div class="modal-header">
+                        <!-- Se crea un título principal de tamaño 5 y se le asigna un ID -->
                         <h1 class="modal-title fs-5">Detalle del pedido <b id="pedido"></b></h1>
+                        <!-- Se crea un botón para cerrar la modal y se le asigna una clase para que sea un icono-->
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                             data-tooltip="Cerrar"></button>
                     </div>
@@ -123,7 +150,7 @@
                     <div class="row" id="div-table">
                         <div class="col-12">
                             <div class="row">
-                                <!-- Se crea una tabla para mostrar los datos de los usuarios administradores -->
+                                <!-- Se crea una tabla para mostrar los datos de los detalles del pedido-->
                                 <table class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr id="records-detail"></tr>
@@ -148,6 +175,7 @@
     <!-- Footer con enlaces a redes sociales y terminos y condiciones -->
     <footer class="text-center text-dark "></footer>
 
+    <!-- Importación de archivos JavaScript -->
     <script type="text/javascript" src="../../controllers/dashboard/account.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
