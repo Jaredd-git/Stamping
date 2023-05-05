@@ -14,10 +14,25 @@ HEADER.innerHTML = `
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <span class="navbar-brand mb-0 h1">Stamping</span>
-                    <section>
-                        <a href="#"><i><img style="width: 40px; " src="../../resources/img/iconos/isearch.png"></i></a>
-                        <a href="#"><i><img style="width: 32px;" src="../../resources/img/iconos/iuser.png"></i></a>
-                        <a href="#"><i><img style="width: 32px;" src="../../resources/img/iconos/ibolsa.png"></i></a>
+                    <section class="d-flex">
+                        <div class="dropdown">
+                            <button class="btn btn-transparent" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="bi bi-person" style="font-size: 30px;"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end text-center py-3" aria-labelledby="dropdownMenuButton">
+                                <li>
+                                    <button class="btn btn-primary d-flex justify-content-center align-items-center mx-auto mb-2" type="submit">
+                                        <span class="bi bi-person me-2"></span>
+                                        Iniciar sesión
+                                    </button>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li>
+                                        <span class="align-middle">¿No tiene una cuenta?</span>
+                                        <a class="btn btn-link text-decoration-none" href="#">Regístrese</a>
+                                    </li>
+                                </li>
+                            </ul>
+                        </div>
                     </section>
                 </div>
             </nav>
