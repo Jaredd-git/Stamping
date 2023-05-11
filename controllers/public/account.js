@@ -15,7 +15,7 @@ HEADER.innerHTML = `
                     </button>
                     <span class="navbar-brand mb-0 h1">Stamping</span>
                     <section class="d-flex">
-                        <div class="dropdown">
+                        <div class="dropdown btn-group dropstart">
                             <button class="btn btn-transparent" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                                 <span class="bi bi-person" style="font-size: 30px;"></span>
                             </button>
@@ -28,11 +28,14 @@ HEADER.innerHTML = `
                                     <li><hr class="dropdown-divider"></li>
                                     <li>
                                         <span class="align-middle">¿No tiene una cuenta?</span>
-                                        <a class="btn btn-link text-decoration-none" href="#">Regístrese</a>
+                                        <a class="btn btn-link text-decoration-none" href="signup.html">Regístrese</a>
                                     </li>
                                 </li>
                             </ul>
                         </div>
+                        <button class="btn btn-transparent" type="button" id="shopcart">
+                            <span class="bi bi-bag-heart"" style="font-size: 28px;"></span>
+                        </button>
                     </section>
                 </div>
             </nav>
