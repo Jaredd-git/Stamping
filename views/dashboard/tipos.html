@@ -59,40 +59,16 @@
                                         <div class="row">
                                             <input class="d-none" type="number" id="id" name="id">
                                             <div class="form-floating mb-3 col-6">
-                                                <input type="text" class="form-control" id="nombres" name="nombres"
+                                                <input type="text" class="form-control" id="nombre" name="nombre"
                                                     placeholder="name@example.com">
-                                                <label for="floatingInput">Nombre</label>
+                                                <label for="floatingInput">Tipo</label>
                                             </div>
                                             <div class="form-floating mb-3 col-6">
-                                                <input type="text" class="form-control" id="apellidos" name="apellidos"
+                                                <input type="text" class="form-control" id="descripcion" name="descripcion"
                                                     placeholder="name@example.com">
-                                                <label for="floatingInput">Apellido</label>
+                                                <label for="floatingInput">Descripción</label>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="form-floating mb-3 col-6">
-                                                <input type="email" class="form-control" id="correo" name="correo"
-                                                    placeholder="name@example.com">
-                                                <label for=" floatingInput">Correo</label>
-                                            </div>
-                                            <div class="form-floating mb-3 col-6">
-                                                <input type="text" class="form-control" id="alias" name="alias"
-                                                    placeholder="name@example.com">
-                                                <label for=" floatingInput">Alias</label>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="form-floating mb-3 col-6">
-                                                <input type="password" class="form-control" id="clave" name="clave" placeholder="name@example.com">
-                                                <label for=" floatingInput">Clave</label>
-                                            </div>
-                                            <div class="form-floating mb-3 col-6">
-                                                <input type="password" class="form-control" id="confirmar" name="confirmar"
-                                                    placeholder="name@example.com">
-                                                <label for=" floatingInput">Confirmar clave</label>
-                                            </div>
-                                        </div>
-                                        </br>
                                     </div>
                                 </div>
                                 <div class="modal-footer d-flex justify-content-center">
@@ -119,10 +95,8 @@
                         <thead>
                             <tr id="records"></tr>
                             <!-- Se agregan los encabezados de la tabla -->
-                            <th scope="col" style="width: 170px;">Apellidos</th>
-                            <th scope="col" style="width: 170px;">Nombres</th>
-                            <th scope="col" style="width: 60px;">Correos</th>
-                            <th scope="col" style="width: 60px;">Alias</th>
+                            <th scope="col" style="width: 170px;">Tipo</th>
+                            <th scope="col" style="width: 170px;">Descripción</th>
                             <th scope="col" style="width: 60px;">Acciones</th>
 
                         </thead>
@@ -145,7 +119,7 @@
         crossorigin="anonymous"></script>
     <script type="text/javascript" src="../../resources/js/sweetalerts.min.js"></script>
     <script type="text/javascript" src="../../controllers/components.js"></script>
-    <script type="text/javascript" src="../../controllers/dashboard/usuario.js"></script>
+    <script type="text/javascript" src="../../controllers/dashboard/tipo.js"></script>
 </body>
 
 </html>

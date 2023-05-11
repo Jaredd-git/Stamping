@@ -36,7 +36,7 @@ class Tipo extends TipoQueries
     public function setDescripcion($value)
     {
         if (Validator::validateAlphabetic($value, 1, 50)) {
-            $this->nombres = $value;
+            $this->descripcion = $value;
             return true;
         } else {
             return false;

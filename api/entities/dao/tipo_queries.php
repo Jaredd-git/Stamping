@@ -20,7 +20,7 @@ class TipoQueries
         $sql = 'INSERT INTO tipos(nombre_tipo, descripcion_tipo)
                 VALUES(?, ?)';
                 //Obtiene los datos del nuevo tipo 
-        $params = array($this->nombre, $this->descripcion);
+        $params = array($this->nombres, $this->descripcion);
         //Crea el usuario en la base de datos
         return Database::executeRow($sql, $params);
     }
@@ -33,5 +33,16 @@ class TipoQueries
         $params = array($this->id);
         //Elimina el tipo de prenda
         return Database::executeRow($sql, $params);
+    }
+    //Consulta para cargar un dato especifico de la tabla productos
+    public function readOne()
+    {
+        $sql = 'SELECT id_tipo nombre_tipo, descripcion_tipo
+                FROM tipos
+                WHERE id_tipo = ?';
+                //Se obtiene el id del producto
+        $params = array($this->id);
+        //Carga el dato seleccionado
+        return Database::getRow($sql, $params);
     }
 }

@@ -49,7 +49,7 @@ if (isset($_GET['action'])) {
                 // Accion para eliminar un tipo de prenda
             case 'delete':
                 // Se verifica el usuario no se pueda eliminar a si mismo
-                if ($_POST['id_usuario'] == $_SESSION['id_admin']) {
+                if ($_POST['id_tipo'] == $_SESSION['id_admin']) {
                     $result['exception'] = 'No se puede eliminar a sí mismo';
                     // Se verifica si el id proporcionado es correcto
                 } elseif (!$tipo->setId($_POST['id_tipo'])) {
