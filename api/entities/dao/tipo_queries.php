@@ -5,6 +5,18 @@ require_once('../../helpers/database.php');
 */
 class TipoQueries
 {
+    //Consulta para realizar la busqueda de datos en la tabla usuarios
+    public function searchRows($value)
+    {
+        $sql = 'SELECT id_tipo, nombre_tipo, descripcion_tipo
+                FROM tipos
+                WHERE nombre_tipo ILIKE ? OR descripcion_tipo ILIKE ?
+                ORDER BY nombre_tipo';
+                //Guarda en un array los parametros de busqueda
+        $params = array("%$value%", "%$value%");
+        //Devuelve los datos buscados
+        return Database::getRows($sql, $params);
+    }
     //Consulta para cargar todos los registros de la tabla tipos
     public function readAll()
     {
@@ -32,6 +44,28 @@ class TipoQueries
                 //Obtiene el id del tipo de prenda seleccionada
         $params = array($this->id);
         //Elimina el tipo de prenda
+        return Database::executeRow($sql, $params);
+    }
+    //Consulta para cargar un dato especifico de la tabla productos
+    public function readOne()
+    {
+        $sql = 'SELECT id_tipo, nombre_tipo, descripcion_tipo
+                FROM tipos
+                WHERE id_tipo = ?';
+                //Se obtiene el id del producto
+        $params = array($this->id);
+        //Carga el dato seleccionado
+        return Database::getRow($sql, $params);
+    }
+    //Actualiza unos datos especificos de la tabla productos
+    public function updateRow()
+    {
+        $sql = 'UPDATE tipos
+                SET nombre_tipo = ?, descripcion_tipo = ?
+                WHERE id_tipo = ?';
+                //Obtiene todos los datos para la actualizacion del producto
+        $params = array($this->nombre, $this->descripcion, $this->id);
+        //Actualiza el producto seleccionado
         return Database::executeRow($sql, $params);
     }
 }

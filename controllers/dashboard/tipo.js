@@ -62,6 +62,9 @@ async function fillTable(form = null) {
                     <td>${row.nombre_tipo}</td>
                     <td>${row.descripcion_tipo}</td>
                     <th>
+                        <button  onclick="openUpdate(${row.id_tipo})" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Actualizar producto">
+                            <i class="bi bi-pencil-square"></i>
+                        </button>
                         <button  onclick="openDelete(${row.id_tipo})" class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Eliminar usuario">
                             <i class="bi bi-trash-fill"></i>
                         </button>
@@ -81,7 +84,7 @@ async function fillTable(form = null) {
 *   Parámetros: ninguno.
 *   Retorno: ninguno.
 */
-function openCreate(){
+function openCreate() {
     // Se restauran los elementos del formulario.
     SAVE_FORM.reset();
     // Se asigna título a la caja de diálogo.
@@ -112,5 +115,28 @@ async function openDelete(id) {
         } else {
             sweetAlert(2, JSON.exception, false);
         }
+    }
+}
+
+async function openUpdate(id) {
+    // Se define un objeto con los datos del registro seleccionado.
+    const FORM = new FormData();
+    FORM.append('id', id);
+    // Petición para obtener los datos del registro solicitado.
+    const JSON = await dataFetch(TIPO_API, 'readOne', FORM);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    if (JSON.status) {
+        // Se abre la caja de diálogo que contiene el formulario.
+        MODAL.show()
+        // Se restauran los elementos del formulario.
+        SAVE_FORM.reset();
+        // Se asigna el título para la caja de diálogo (modal).
+        MODAL_TITLE.textContent = 'Actualizar tipo';
+        // Se inicializan los campos del formulario.
+        document.getElementById('id').value = JSON.dataset.id_tipo;
+        document.getElementById('nombre').value = JSON.dataset.nombre_tipo;
+        document.getElementById('descripcion').value = JSON.dataset.descripcion_tipo;
+    } else {
+        sweetAlert(2, JSON.exception, false);
     }
 }

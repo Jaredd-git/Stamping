@@ -8,7 +8,7 @@ class Tipo extends TipoQueries
 {
     // Declaración de atributos (propiedades).
     protected $id = null;
-    protected $nombreTipo = null;
+    protected $nombre = null;
     protected $descripcion = null;
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -26,7 +26,7 @@ class Tipo extends TipoQueries
     public function setNombreTipo($value)
     {
         if (Validator::validateAlphabetic($value, 1, 50)) {
-            $this->nombres = $value;
+            $this->nombre = $value;
             return true;
         } else {
             return false;
@@ -36,7 +36,7 @@ class Tipo extends TipoQueries
     public function setDescripcion($value)
     {
         if (Validator::validateAlphabetic($value, 1, 50)) {
-            $this->nombres = $value;
+            $this->descripcion = $value;
             return true;
         } else {
             return false;
@@ -52,7 +52,7 @@ class Tipo extends TipoQueries
 
     public function getNombreTipo()
     {
-        return $this->nombreTipo;
+        return $this->nombre;
     }
 
     public function getDescripcion()

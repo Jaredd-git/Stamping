@@ -27,6 +27,22 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
+                // Accion utilizada para leer los campos del producto seleccionado 
+            case 'readOne':
+                // Se comprueba si se ha ingresado correctamente el ID del producto
+                if (!$tipo->setId($_POST['id'])) {
+                    $result['exception'] = 'Tipo incorrecto';
+                    // Si se encuentra el producto, se muestra en la respuesta
+                } elseif ($result['dataset'] = $tipo->readOne()) {
+                    $result['status'] = 1;
+                    // Si ocurre una excepción en la base de datos, se captura
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                    // Si el producto no existe, se informa al usuario
+                } else {
+                    $result['exception'] = 'Producto inexistente';
+                }
+                break;
                 // Accion para crear un nuevo tipo de prenda
             case 'create':
                 // Se valida el fromulario de crear tipo
@@ -49,7 +65,7 @@ if (isset($_GET['action'])) {
                 // Accion para eliminar un tipo de prenda
             case 'delete':
                 // Se verifica el usuario no se pueda eliminar a si mismo
-                if ($_POST['id_usuario'] == $_SESSION['id_admin']) {
+                if ($_POST['id_tipo'] == $_SESSION['id_admin']) {
                     $result['exception'] = 'No se puede eliminar a sí mismo';
                     // Se verifica si el id proporcionado es correcto
                 } elseif (!$tipo->setId($_POST['id_tipo'])) {
@@ -62,6 +78,31 @@ if (isset($_GET['action'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Tipo eliminado correctamente';
                     // Si ocurre un error, se captura la excepcion
+                } else {
+                    $result['exception'] = Database::getException();
+                }
+                break;
+                // Accion utilizada para actualizar los campos del cliente seleccionado 
+            case 'update':
+                // Se valida el formulario de actualización de cliente
+                $_POST = Validator::validateForm($_POST);
+                // Se comprueba si se ha ingresado correctamente el ID del cliente
+                if (!$tipo->setId($_POST['id'])) {
+                    $result['exception'] = 'Tipo incorrecto';
+                    // Si el cliente no existe, se informa al usuario
+                } elseif (!$tipo->readOne()) {
+                    $result['exception'] = 'Tipo inexistente';
+                    // Se verifica si el nombre del cliente es válido
+                } elseif (!$tipo->setNombreTipo($_POST['nombre'])) {
+                    $result['exception'] = 'Nombre incorrecto';
+                    // Se verifica si el apellido del cliente es válido
+                } elseif (!$tipo->setDescripcion($_POST['descripcion'])) {
+                    $result['exception'] = 'Descripcion incorrecta';
+                    // Si todas las validaciones anteriores son correctas, se actualiza el pedido en la base de datos
+                } elseif ($tipo->updateRow()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Tipo actualizado correctamente';
+                    // Si se produce algún error al actualizar el cliente, se captura la excepción
                 } else {
                     $result['exception'] = Database::getException();
                 }
