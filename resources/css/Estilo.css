@@ -24,10 +24,6 @@ body {
     position: absolute;
 }
 
-.dropdown:hover .dropdown-menu {
-    display: block;
-}
-
 .btn-transparent {
     background-color: transparent;
     color: inherit;
