@@ -14,6 +14,26 @@ if (isset($_GET['action'])) {
         $result['session'] = 1;
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
+            //Accion utilizada para buscar por diferentes campos en la tabla productos
+            case 'search':
+                // Se valida el formulario de búsqueda y se comprueba si el usuario ha ingresado un valor de búsqueda
+                $_POST = Validator::validateForm($_POST);
+                if ($_POST['search'] == '') {
+                    $result['status'] = 1;
+                    $result['dataset'] = $tipo->readAll();
+                    $result['exception'] = 'Ingrese un valor para buscar';
+                    // Si se encuentran coincidencias en la base de datos, se informa al usuario y se muestran en la respuesta
+                } elseif ($result['dataset'] = $tipo->searchRows($_POST['search'])) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
+                    // Si ocurre una excepción en la base de datos, se captura 
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                    // Si no hay coincidencias, se informa al usuario
+                } else {
+                    $result['exception'] = 'No hay coincidencias';
+                }
+                break;
             // Accion utilizada para leer los datos de la tabla tipos 
             case 'readAll':
                 if ($result['dataset'] = $tipo->readAll()) {
