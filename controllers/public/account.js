@@ -1,3 +1,6 @@
+// Constante para completar la ruta de la API.
+const USER_API = 'business/public/cliente.php';
+
 // Constantes para establecer las etiquetas de encabezado y pie de la página web.
 const HEADER = document.querySelector('header');
 const FOOTER = document.querySelector('footer');
@@ -21,12 +24,14 @@ HEADER.innerHTML = `
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end text-center py-3" aria-labelledby="dropdownMenuButton">
                                 <li>
-                                    <button class="btn btn-primary d-flex justify-content-center align-items-center mx-auto mb-2" type="submit">
+                                    <!--Botón de inicio de sesión-->
+                                    <a href="login.html" class="btn btn-primary d-flex justify-content-center align-items-center mx-auto mb-2">
                                         <span class="bi bi-person me-2"></span>
                                         Iniciar sesión
-                                    </button>
+                                    </a>                            
                                     <li><hr class="dropdown-divider"></li>
                                     <li>
+                                        <!--Enlace de registro-->
                                         <span class="align-middle">¿No tiene una cuenta?</span>
                                         <a class="btn btn-link text-decoration-none" href="signup.html">Regístrese</a>
                                     </li>
@@ -157,7 +162,7 @@ FOOTER.innerHTML = `
     <!-- Copyright -->
     <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
         © 2023 Copyright:
-        <a class="text-reset fw-bold" href="https://stamping.com/">stamping.com</a>
+        <a class="text-reset fw-bold" href="index.html">Stamping.com</a>
     </div>
     <!-- Copyright -->
     `;
