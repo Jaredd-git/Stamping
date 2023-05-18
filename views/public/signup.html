@@ -77,18 +77,24 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-12 text-center mt-3">
+                <div class="col-lg text-center mt-3">
                     <h3>Dirección de residencia</h3>
                     <div class="form-floating mt-3">
                         <textarea class="form-control" placeholder="Leave a comment here" id="dirección"></textarea>
                         <label for="floatingTextarea">Dirección</label>
                     </div>
                 </div>
+                <div class="form-floating mb-3">
+                    <input type="date" class="form-control" id="nacimiento" name="nacimiento" placeholder="nacimiento">
+                    <label for="floatingInput">nacimiento</label>
+                </div>
                 <div class="col-lg text-center">
                     <button type="submit" class="btn btn-secondary btn-login" form="../">Entrar</button>
                 </div>
             </div>
         </div>
+        <!-- Importación de la librería para que funcione el reCAPTCHA. Para más información https://developers.google.com/recaptcha/docs/v3 -->
+        <script src="https://www.google.com/recaptcha/api.js?render=6LdBzLQUAAAAAJvH-aCUUJgliLOjLcmrHN06RFXT"></script>
     </form>
     <footer class="fixed-bottom imgI">
     </footer>

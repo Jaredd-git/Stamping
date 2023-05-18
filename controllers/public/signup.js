@@ -5,6 +5,19 @@ const SIGNUP_FORM = document.getElementById('signup_form');
  * Se encarga de obtener los elementos necesarios para mostrar/ocultar la contraseña y asignar un evento al botón correspondiente.
  */
 document.addEventListener('DOMContentLoaded', () => {
+    reCAPTCHA();
+    // Constante tipo objeto para obtener la fecha y hora actual.
+    const TODAY = new Date();
+    // Se declara e inicializa una variable para guardar el día en formato de 2 dígitos.
+    let day = ('0' + TODAY.getDate()).slice(-2);
+    // Se declara e inicializa una variable para guardar el mes en formato de 2 dígitos.
+    var month = ('0' + (TODAY.getMonth() + 1)).slice(-2);
+    // Se declara e inicializa una variable para guardar el año con la mayoría de edad.
+    let year = TODAY.getFullYear() - 18;
+    // Se declara e inicializa una variable para establecer el formato de la fecha.
+    let date = `${year}-${month}-${day}`;
+    // Se asigna la fecha como valor máximo en el campo del formulario.
+    document.getElementById('nacimiento').max = date;
     const showPasswordButton1 = document.querySelector('#show-password1');
     const showPasswordButton2 = document.querySelector('#show-password2');
     const passwordInput1 = document.querySelector('#pass');
@@ -64,3 +77,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
+/*
+*   Función para obtener un token del reCAPTCHA y asignarlo al formulario.
+*   Parámetros: ninguno.
+*   Retorno: ninguno.
+*/
+function reCAPTCHA() {
+    // Método para generar el token del reCAPTCHA.
+    grecaptcha.ready(() => {
+        // Constante para guardar la llave pública del reCAPTCHA.
+        const PUBLIC_KEY = '6LdBzLQUAAAAAJvH-aCUUJgliLOjLcmrHN06RFXT';
+        // Se obtiene un token para la página web mediante la llave pública.
+        grecaptcha.execute(PUBLIC_KEY, { action: 'homepage' }).then((token) => {
+            // Se asigna el valor del token al campo oculto del formulario
+            document.getElementById('g-recaptcha-response').value = token;
+        });
+    });
+}
