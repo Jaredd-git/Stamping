@@ -77,10 +77,10 @@ class ClienteQueries
     */
 
     //Consulta para verificar si el usuario cliente esta activo
-    public function checkUser($correo)
+    public function checkUser($user)
     {
         $sql = 'SELECT id_cliente, estado_cliente FROM clientes WHERE user_cliente = ?';
-        $params = array($correo);
+        $params = array($user);
         //Verifica si el cliente esta activo
         if ($data = Database::getRow($sql, $params)) {
             $this->id = $data['id_cliente'];
