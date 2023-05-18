@@ -81,17 +81,20 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+            // Accion para iniciar sesión en el sistema
             case 'login':
+                // Se valida el formulario de login
                 $_POST = Validator::validateForm($_POST);
-                if (!$cliente->checkUser($_POST['usuario'])) {
-                    $result['exception'] = 'Correo incorrecto';
+                // Se verifica que el usuario proporcionado sea correcto
+                if (!$cliente->checkUser($_POST['user'])) {
+                    $result['exception'] = 'Usuario incorrecto';
                 } elseif (!$cliente->getEstado()) {
                     $result['exception'] = 'La cuenta ha sido desactivada';
-                } elseif ($cliente->checkPassword($_POST['clave'])) {
+                } elseif ($cliente->checkPassword($_POST['pass'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Autenticación correcta';
                     $_SESSION['id_cliente'] = $cliente->getId();
-                    $_SESSION['correo_cliente'] = $cliente->getCorreo();
+                    $_SESSION['user_cliente'] = $cliente->getUser();
                 } else {
                     $result['exception'] = 'Clave incorrecta';
                 }
