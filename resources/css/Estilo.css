@@ -32,4 +32,9 @@ body {
 
 .icono-grande {
     font-size: 30px;
-}  
+}
+
+footer{
+    background-color: rgba(0, 0, 0, 0.05);
+    margin-top: 20px;
+}

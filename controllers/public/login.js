@@ -48,7 +48,7 @@ LOGIN_PUBLIC.addEventListener('submit', async (event) => {
     const JSON = await dataFetch(USER_API, 'login', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
-        sweetAlert(1, JSON.message, true, 'home.html');
+        sweetAlert(1, JSON.message, true, 'index.html');
     } else {
         sweetAlert(2, JSON.exception, false);
     }

@@ -64,15 +64,13 @@ HEADER.innerHTML = `
                     </ul>
                 </div>
             </div>
-    </div>
+        </div>
     `;
 
 /* Se manda al footer codigo para usarlo en el html */
 FOOTER.innerHTML = `
-    <section class="justify-content-center justify-content-lg-between " style="height: 2px">
+    <section class="justify-content-center justify-content-lg-between " style="height: 2px;">
 
-        <!-- Right -->
-        <div>
             <a href="" class="me-4 text-reset">
                 <i class="fab fa-facebook-f"></i>
             </a>
@@ -91,8 +89,6 @@ FOOTER.innerHTML = `
             <a href="" src="../../resources/img/iconos/Facebook.png" class="me-4 text-reset">
                 <i></i>
             </a>
-        </div>
-        <!-- Right -->
     </section>
     <!-- Section: Social media -->
 
