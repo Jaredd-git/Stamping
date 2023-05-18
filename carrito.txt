@@ -1,0 +1,21 @@
+// Obtener el botón del carrito por su ID
+const shopcartButton = document.getElementById('shopcart');
+
+// Agregar evento click al botón del carrito para abrir el Offcanvas
+shopcartButton.addEventListener('click', function () {
+  const offcanvas = new bootstrap.Offcanvas(document.getElementById('offcanvasRight'), {
+    backdrop: 'static'
+  });
+  offcanvas.show();
+});
+
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasRightLabel">Carrito</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <!-- Contenido del carrito aquí -->
+  </div>
+</div>
