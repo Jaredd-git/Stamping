@@ -21,6 +21,15 @@ class ClienteQueries
         //Devuelve los datos buscados
         return Database::getRows($sql, $params);
     }
+
+    public function createRow()
+    {
+        $sql = 'INSERT INTO clientes(nombres_cliente, apellidos_cliente, dui_cliente, correo_cliente,  telefono_cliente, nacimiento_cliente, direccion_cliente, user_cliente, clave_cliente, estado_cliente)
+                VALUES(?, ?, ?, ?, ?, ?, ?, ?)';
+        $params = array($this->nombres, $this->apellidos, $this->correo, $this->dui, $this->telefono, $this->nacimiento, $this->direccion, $this->clave);
+        return Database::executeRow($sql, $params);
+    }
+
     //Consulta para leer todos los datos de la tabla clientes
     public function readAll()
     {

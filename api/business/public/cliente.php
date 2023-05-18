@@ -70,6 +70,8 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Fecha de nacimiento incorrecta';
                 } elseif (!$cliente->setTelefono($_POST['telefono'])) {
                     $result['exception'] = 'Teléfono incorrecto';
+                } elseif (!$cliente->setUser($_POST['usuario'])){
+                    $result['exception'] = 'Usuario incorrecto';
                 } elseif ($_POST['clave'] != $_POST['confirmar_clave']) {
                     $result['exception'] = 'Claves diferentes';
                 } elseif (!$cliente->setClave($_POST['clave'])) {
