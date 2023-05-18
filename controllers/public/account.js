@@ -54,12 +54,12 @@ HEADER.innerHTML = `
                                     oferta</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../../views/public/productos.html">Nuevos diseños</a>
+                                <a class="nav-link" href="../../views/public/nuevosproductos.html">Nuevos diseños</a>
                             </li>
                         </div>
                         <div class="v-line"></div>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../views/public/nuevosproductos.html">Todos los productos</a>
+                            <a class="nav-link" href="../../views/public/todosproductos.html">Todos los productos</a>
                         </li>
                     </ul>
                 </div>

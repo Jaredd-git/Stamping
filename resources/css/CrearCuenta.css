@@ -101,3 +101,7 @@ input:focus {
     font-size: 14px;
 }
 
+form{
+    margin-bottom: 80px;
+}
+
