@@ -1,12 +1,12 @@
 
-const SIGNUP_FORM = document.getElementById('signup_form');
+const SIGNUP_FORM = document.getElementById('signup-form');
 
 /**
  * Event listener que se ejecuta cuando el DOM ha sido cargado.
  * Se encarga de obtener los elementos necesarios para mostrar/ocultar la contraseña y asignar un evento al botón correspondiente.
  */
 document.addEventListener('DOMContentLoaded', () => {
-    reCAPTCHA();
+    // reCAPTCHA();
     // Constante tipo objeto para obtener la fecha y hora actual.
     const TODAY = new Date();
     // Se declara e inicializa una variable para guardar el día en formato de 2 dígitos.
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('nacimiento').max = date;
     const showPasswordButton1 = document.querySelector('#show-password1');
     const showPasswordButton2 = document.querySelector('#show-password2');
-    const passwordInput1 = document.querySelector('#pass');
+    const passwordInput1 = document.querySelector('#clave');
     const passwordInput2 = document.querySelector('#confirmar_clave');
 
     // Se crea una instancia del tooltip de Bootstrap y se asignan las opciones.
@@ -32,15 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // Retraso para mostrar y ocultar la información
             delay: { show: 0, hide: 1 }
         });
-
-        if (showPasswordButton2) {
-            const tooltip2 = new bootstrap.Tooltip(showPasswordButton2, {
-                title: 'Mostrar contraseña',
-                placement: 'bottom',
-                // Retraso para mostrar y ocultar la información
-                delay: { show: 0, hide: 1 }
-            });
-        }
         // Se asigna un evento al botón para cambiar el tipo de input y mostrar/ocultar la contraseña.
         showPasswordButton1.addEventListener('click', () => {
             // Se verifica si el tipo de atributo "type" del elemento passwordInput es "password". Si es así, se establece el valor "text" a la variable type, de lo contrario se establece el valor "password".
@@ -59,23 +50,32 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+    if (showPasswordButton2) {
+        const tooltip2 = new bootstrap.Tooltip(showPasswordButton2, {
+            title: 'Mostrar contraseña',
+            placement: 'bottom',
+            // Retraso para mostrar y ocultar la información
+            delay: { show: 0, hide: 1 }
+        });
+        showPasswordButton2.addEventListener('click', () => {
+            // Se verifica si el tipo de atributo "type" del elemento passwordInput es "password". Si es así, se establece el valor "text" a la variable type, de lo contrario se establece el valor "password".
+            const type = passwordInput2.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput2.setAttribute('type', type);
+            // Cambia el ícono del botón de mostrar/ocultar contraseña
+            showPasswordButton2.querySelector('i').classList.toggle('bi-eye-fill');
+            showPasswordButton2.querySelector('i').classList.toggle('bi-eye-slash-fill');
+            // Actualizar el título del tooltip según el estado actual del botón
+            if (showPasswordButton2.querySelector('i').classList.contains('bi-eye-slash-fill')) {
+                tooltip2._config.title = 'Ocultar contraseña';
+                tooltip2.show();
+            } else {
+                tooltip2._config.title = 'Mostrar contraseña';
+                tooltip2.show();
+            }
+        });
+    }
 
-    showPasswordButton2.addEventListener('click', () => {
-        // Se verifica si el tipo de atributo "type" del elemento passwordInput es "password". Si es así, se establece el valor "text" a la variable type, de lo contrario se establece el valor "password".
-        const type = passwordInput2.getAttribute('type') === 'password' ? 'text' : 'password';
-        passwordInput2.setAttribute('type', type);
-        // Cambia el ícono del botón de mostrar/ocultar contraseña
-        showPasswordButton2.querySelector('i').classList.toggle('bi-eye-fill');
-        showPasswordButton2.querySelector('i').classList.toggle('bi-eye-slash-fill');
-        // Actualizar el título del tooltip según el estado actual del botón
-        if (showPasswordButton2.querySelector('i').classList.contains('bi-eye-slash-fill')) {
-            tooltip2._config.title = 'Ocultar contraseña';
-            tooltip2.show();
-        } else {
-            tooltip2._config.title = 'Mostrar contraseña';
-            tooltip2.show();
-        }
-    });
+
 
 });
 
@@ -95,7 +95,7 @@ SIGNUP_FORM.addEventListener('submit', async (event) => {
     } else {
         sweetAlert(2, JSON.exception, false);
         // Se genera un nuevo token cuando ocurre un problema.
-        reCAPTCHA();
+        // reCAPTCHA();
     }
 });
 
@@ -104,15 +104,15 @@ SIGNUP_FORM.addEventListener('submit', async (event) => {
 *   Parámetros: ninguno.
 *   Retorno: ninguno.
 */
-function reCAPTCHA() {
-    // Método para generar el token del reCAPTCHA.
-    grecaptcha.ready(() => {
-        // Constante para guardar la llave pública del reCAPTCHA.
-        const PUBLIC_KEY = '6LdBzLQUAAAAAJvH-aCUUJgliLOjLcmrHN06RFXT';
-        // Se obtiene un token para la página web mediante la llave pública.
-        grecaptcha.execute(PUBLIC_KEY, { action: 'homepage' }).then((token) => {
-            // Se asigna el valor del token al campo oculto del formulario
-            document.getElementById('g-recaptcha-response').value = token;
-        });
-    });
-}
+// function reCAPTCHA() {
+//     // Método para generar el token del reCAPTCHA.
+//     grecaptcha.ready(() => {
+//         // Constante para guardar la llave pública del reCAPTCHA.
+//         const PUBLIC_KEY = '6LdBzLQUAAAAAJvH-aCUUJgliLOjLcmrHN06RFXT';
+//         // Se obtiene un token para la página web mediante la llave pública.
+//         grecaptcha.execute(PUBLIC_KEY, { action: 'homepage' }).then((token) => {
+//             // Se asigna el valor del token al campo oculto del formulario
+//             document.getElementById('g-recaptcha-response').value = token;
+//         });
+//     });
+// }

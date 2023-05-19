@@ -37,26 +37,26 @@ if (isset($_GET['action'])) {
         // Se compara la acción a realizar cuando el cliente no ha iniciado sesión.
         switch ($_GET['action']) {
             case 'signup':
-                $_POST = Validator::validateForm($_POST);
-                $secretKey = '6LdBzLQUAAAAAL6oP4xpgMao-SmEkmRCpoLBLri-';
-                $ip = $_SERVER['REMOTE_ADDR'];
+                // $_POST = Validator::validateForm($_POST);
+                // $secretKey = '6LdBzLQUAAAAAL6oP4xpgMao-SmEkmRCpoLBLri-';
+                // $ip = $_SERVER['REMOTE_ADDR'];
 
-                $data = array('secret' => $secretKey, 'response' => $_POST['g-recaptcha-response'], 'remoteip' => $ip);
+                // $data = array('secret' => $secretKey, 'response' => $_POST['g-recaptcha-response'], 'remoteip' => $ip);
 
-                $options = array(
-                    'http' => array('header'  => "Content-type: application/x-www-form-urlencoded\r\n", 'method' => 'POST', 'content' => http_build_query($data)),
-                    'ssl' => array('verify_peer' => false, 'verify_peer_name' => false)
-                );
+                // $options = array(
+                //     'http' => array('header'  => "Content-type: application/x-www-form-urlencoded\r\n", 'method' => 'POST', 'content' => http_build_query($data)),
+                //     'ssl' => array('verify_peer' => false, 'verify_peer_name' => false)
+                // );
 
-                $url = 'https://www.google.com/recaptcha/api/siteverify';
-                $context  = stream_context_create($options);
-                $response = file_get_contents($url, false, $context);
-                $captcha = json_decode($response, true);
+                // $url = 'https://www.google.com/recaptcha/api/siteverify';
+                // $context  = stream_context_create($options);
+                // $response = file_get_contents($url, false, $context);
+                // $captcha = json_decode($response, true);
 
-                if (!$captcha['success']) {
-                    $result['recaptcha'] = 1;
-                    $result['exception'] = 'No eres humano';
-                } elseif (!$cliente->setNombres($_POST['nombres'])) {
+                // if (!$captcha['success']) {
+                //     $result['recaptcha'] = 1;
+                //     $result['exception'] = 'No eres humano';
+                 if (!$cliente->setNombres($_POST['nombres'])) {
                     $result['exception'] = 'Nombres incorrectos';
                 } elseif (!$cliente->setApellidos($_POST['apellidos'])) {
                     $result['exception'] = 'Apellidos incorrectos';
