@@ -99,7 +99,7 @@ class ClienteQueries
         $params = array($this->id);
         $data = Database::getRow($sql, $params);
         //Si la clave del cliente es igual es correcta
-        if ($password == $data['clave_cliente']) {
+        if (password_verify($password, $data['clave_cliente'])) {
             return true;
         } else {
             //Si no es incorrecta
