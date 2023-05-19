@@ -24,9 +24,9 @@ class ClienteQueries
 
     public function createRow()
     {
-        $sql = 'INSERT INTO clientes(nombres_cliente, apellidos_cliente, dui_cliente, correo_cliente,  telefono_cliente, nacimiento_cliente, direccion_cliente, user_cliente, clave_cliente, estado_cliente)
-                VALUES(?, ?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->nombres, $this->apellidos, $this->correo, $this->dui, $this->telefono, $this->nacimiento, $this->direccion, $this->clave);
+        $sql = 'INSERT INTO clientes(nombre_cliente, apellido_cliente, dui_cliente, correo_cliente,  telefono_cliente, nacimiento_cliente, direccion_cliente, user_cliente, clave_cliente)
+                VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        $params = array($this->nombres, $this->apellidos, $this->dui, $this->correo, $this->telefono, $this->nacimiento, $this->direccion, $this->user, $this->clave);
         return Database::executeRow($sql, $params);
     }
 
