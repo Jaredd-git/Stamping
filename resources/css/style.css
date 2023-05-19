@@ -25,6 +25,7 @@ body{
     bottom: 0;
     width: 100%;
     transform: rotate(180deg);
+    z-index: -1;
 }
 
 .formulario{
@@ -127,6 +128,6 @@ form a:hover{
     border-left-width: 1px;
     height: 60%;
     width: 1%;
-    left: 15%;
+    left: 11%;
     position: absolute;
 }
