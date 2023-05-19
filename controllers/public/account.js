@@ -29,16 +29,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                                     <span class="bi bi-person" style="font-size: 30px;"></span>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end text-center py-3" aria-labelledby="dropdownMenuButton">
-                                    <li>
-                                        <button type="button" class="btn btn-primary">
-                                        <!-- Creamos un icono utilizando la biblioteca "bootstrap-icons" y le asignamos la clase "bi bi-x-circle-fill" -->
-                                            <i class="bi bi-x-circle-fill"></i>
-                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                <li><a class="dropdown-item" onClick="logOut()">Salir</a></li>
-                                            </ul>
-                                            Cerrar sesión
-                                        </button>
-                                    </li>
+                                    <li><a class="dropdown-item" type="button" class="btn btn-primary" onClick="logOut()">Cerrar sesión</a></li>
                                 </ul>
                             </div>
                             <button class="btn btn-transparent" type="button" id="shopcart">
