@@ -42,6 +42,15 @@ class ProductoQueries
         return Database::getRows($sql);
     }
 
+    public function readAllPreview()
+    {
+        $sql = 'SELECT id_producto, nombre_producto, descripcion_producto, precio_producto, imagen_producto
+        FROM productos
+        ORDER BY nombre_producto';
+        //Muestra todos los datos de la tabla productos
+        return Database::getRows($sql);
+    }
+
     //Consulta para cargar un dato especifico de la tabla productos
     public function readOne()
     {
