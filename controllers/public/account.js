@@ -23,23 +23,21 @@ document.addEventListener('DOMContentLoaded', async () => {
                             </button>
                             <span class="navbar-brand mb-0 h1">Stamping</span>
                         <section class="d-flex">
-                            <div class="dropdown btn-group dropstart">
+                            <div class="dropdown btn-group align-items-center">
                                 <button class="btn btn-transparent" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <b>${JSON.username}</b>
                                     <span class="bi bi-person" style="font-size: 30px;"></span>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end text-center py-3" aria-labelledby="dropdownMenuButton">
                                     <li>
-                                        <!--Botón de inicio de sesión-->
-                                        <a href="login.html" class="btn btn-primary d-flex justify-content-center align-items-center mx-auto mb-2">
-                                            <span class="bi bi-person me-2"></span>
-                                            Iniciar sesión
-                                        </a>                            
-                                        <li><hr class="dropdown-divider"></li>
-                                        <li>
-                                            <!--Enlace de registro-->
-                                            <span class="align-middle">¿No tiene una cuenta?</span>
-                                            <a class="btn btn-link text-decoration-none" href="signup.html">Regístrese</a>
-                                        </li>
+                                        <button type="button" class="btn btn-primary">
+                                        <!-- Creamos un icono utilizando la biblioteca "bootstrap-icons" y le asignamos la clase "bi bi-x-circle-fill" -->
+                                            <i class="bi bi-x-circle-fill"></i>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                <li><a class="dropdown-item" onClick="logOut()">Salir</a></li>
+                                            </ul>
+                                            Cerrar sesión
+                                        </button>
                                     </li>
                                 </ul>
                             </div>
