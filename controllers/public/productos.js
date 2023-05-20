@@ -1,5 +1,5 @@
 // Constante para completar la ruta de la API.
-const PRODUCTO_API = 'bussines/public/producto.php';
+const PRODUCTO_API = 'business/public/producto.php'; 
 // Constante para establecer el contenedor de categorías.
 const PRODUCTOS = document.getElementById('productos');
 // Constante tipo objeto para establecer las opciones del componente Slider.
@@ -17,18 +17,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         PRODUCTOS.innerHTML = '';
         // Se recorre el conjunto de registros fila por fila a través del objeto row.
         JSON.dataset.forEach(row => {
-            // Se establece la página web de destino con los parámetros.
-            url = `../views/public/verprenda.html?id=${row.id_producto}&nombre=${row.nombre_producto}`;
-            // Se crean y concatenan las tarjetas con los datos de cada categoría.
             PRODUCTOS.innerHTML += `
             <div class="col">
-                <div class="card text-light">
-                  <img src="${SERVER_URL}../images/productos/${row.imagen_producto}" class="card-img-top" alt="...">
+                <div class="card text-black">
+                  <img src="${SERVER_URL}images/productos/${row.imagen_producto}" class="card-img-top" alt="...">
                   <div class="card-body">
                     <h5 class="card-title">${row.nombre_producto}</h5>
                     <p class="card-text">${row.descripcion_producto}</p>
                     <p class="card-text">${row.precio_producto}</p>
-                    <a href="${url}" class="btn btn-primary">Ver producto</a>
                   </div>
                 </div>
               </div>
