@@ -27,12 +27,12 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <p class="card-text">${row.precio_producto}</p>
                   </div>
                 </div>
-              </div>
+            </div>
             `;
-        });
-        
+    });
+
     } else {
-        // Se asigna al título del contenido de la excepción cuando no existen datos para mostrar.
-        document.getElementById('title').textContent = JSON.exception;
+    // Se asigna al título del contenido de la excepción cuando no existen datos para mostrar.
+    document.getElementById('title').textContent = JSON.exception;
     }
 });
