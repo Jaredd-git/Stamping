@@ -35,7 +35,7 @@ class PedidoQueries
     public function createDetail()
     {
         // Se realiza una subconsulta para obtener el precio del producto.
-        $sql = 'INSERT INTO detalle_pedido(id_producto, precio_producto, cantidad_producto, id_pedido)
+        $sql = 'INSERT INTO detalles_pedidos(id_producto, precio, cantidad_producto, id_pedido)
                 VALUES(?, (SELECT precio_producto FROM productos WHERE id_producto = ?), ?, ?)';
         $params = array($this->producto, $this->producto, $this->cantidad, $this->id_pedido);
         return Database::executeRow($sql, $params);
@@ -44,7 +44,7 @@ class PedidoQueries
     // Método para obtener los productos que se encuentran en el carrito de compras.
     public function readOrderDetail()
     {
-        $sql = 'SELECT id_detalle, nombre_producto, detalle_pedido.precio_producto, detalle_pedido.cantidad_producto
+        $sql = 'SELECT id_detalle, nombre_producto, detalle_pedido.precio, detalle_pedido.cantidad_producto
                 FROM pedidos INNER JOIN detalle_pedido USING(id_pedido) INNER JOIN productos USING(id_producto)
                 WHERE id_pedido = ?';
         $params = array($this->id_pedido);
@@ -68,7 +68,7 @@ class PedidoQueries
     // Método para actualizar la cantidad de un producto agregado al carrito de compras.
     public function updateDetail()
     {
-        $sql = 'UPDATE detalle_pedido
+        $sql = 'UPDATE detalles_pedidos
                 SET cantidad_producto = ?
                 WHERE id_detalle = ? AND id_pedido = ?';
         $params = array($this->cantidad, $this->id_detalle, $_SESSION['id_pedido']);
@@ -78,7 +78,7 @@ class PedidoQueries
     // Método para eliminar un producto que se encuentra en el carrito de compras.
     public function deleteDetail()
     {
-        $sql = 'DELETE FROM detalle_pedido
+        $sql = 'DELETE FROM detalles_pedidos
                 WHERE id_detalle = ? AND id_pedido = ?';
         $params = array($this->id_detalle, $_SESSION['id_pedido']);
         return Database::executeRow($sql, $params);
