@@ -7,10 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ver Prenda</title>
     <link rel="stylesheet" href="../../resources/css/Estilo.css">
-    <link rel="stylesheet" href="../../resources/css/StyleVerPrenda.css">
+    <!-- <link rel="stylesheet" href="../../resources/css/StyleVerPrenda.css"> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
 </head>
 
 <body>
@@ -21,54 +22,75 @@
     <br>
     <div class="container">
         <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-lg-1 t-2 text-right">
-                <img src="../../resources/img/Imagenes/ImgenMuestra.png" alt="ImagenMuestra">
-            </div>
-            <div class="col-lg-6 t-2 text-center">
+            <div class="col-lg-6 text-center pt-5">
                 <img src="../../resources/img/Imagenes/ImgenGrande.png" alt="ImagenMuestra">
             </div>
-            <div class="col-lg-4 t-2">
-                <div>
-                    <div>
-                        <h3>Suerter Manga Larga</h2>
-                            <p>Premium <br> $40 <br> Talla</p>
+            <div class="col-lg-6 pt-5">
+                <div class="row">
+                    <h2>Informacion de Prenda</h2>
+                    <div id="informacion" class="mt-2 mb-2">
+                        <h4>Suerter Manga Larga</h4>
+                        <p class="mt-3">
+                            <b>Tipo:</b> Premium
+                            <br>
+                            <b>Precio:</b> $40
+                        </p>
                     </div>
-                    <div>
-                        <select class="selects t-2" name="select">
-                            <option id="s" value="value1" selected>S</option>
-                            <option value="value2">Value 2</option>
-                            <option value="value3">Value 3</option>
-                        </select>
-                        <select class="selects t-2" name="select">
-                            <option value="value1" selected>Negro</option>
-                            <option value="value2">Value 2</option>
-                            <option value="value3">Value 3</option>
-                        </select>
-                        <h4>Elige el estampado</h2>
-                    </div>
-                    <div class="estampado">
-                        <input class="explorar" type="file">
-                        <img class="ayuda" src="../../resources/img/iconos/ayuda.png" alt="ayuda">
-                    </div>
-                    <br>
-                    <div>
-                        <select id="cantidad" class="cantidad" name="selectCantidad">
-
-                        </select>
-                        <button class="btbA" type="submit"> Agregar </button>
-                    </div>
-
                 </div>
+                <div class="mt-2">
+                    <h4>Elige el estampado</h4>
+                </div>
+                <form class="mt-3">
+                    <div>
+                        <div class="form-floating mb-2">
+                            <select class="form-select" id="talla" name="talla"
+                                aria-label="Floating label select example">
+                                <option selected>Seleccione una talla</option>
+                                <option value="1">S</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                            <label for="talla">Talla</label>
+                        </div>
+                        <div class="form-floating mb-2">
+                            <select class="form-select" id="color" name="color"
+                                aria-label="Floating label select example">
+                                <option selected>Seleccione un color</option>
+                                <option value="1">Negro</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                            <label for="color">Color</label>
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3 tamaño-n">
+                        <input type="number" class="form-control" id="cantidad" name="cantidad" min="1" max="50"
+                            placeholder="cantidad">
+                        <label for="cantidad">Cantidad:</label>
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Selecione la imagen para el estampado:</label>
+                        <input class="form-control" name="formFile" type="file" id="formFile">
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-secondary" type="submit"> Agregar </button>
+                    </div>
+                </form>
+
+
             </div>
         </div>
+        <div class="row mt-5">
+            <div class="col-lg-" style="border: 1px solid black ">
+                <div id="rateYo"></div>
 
-
-
-        <!-- <div class="col-5">
-
-        </div> -->
+            </div>
+        </div>
     </div>
+
+
+
+
 
     <!-- final del section -->
     <!-- Footer con enlaces a redes sociales y terminos y condiciones -->
@@ -81,10 +103,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
         integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
         crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
     <script type="text/javascript" src="../../resources/js/sweetalerts.min.js"></script>
     <script type="text/javascript" src="../../controllers/components.js"></script>
-    <script src="../js/cantidad.js"></script>   
     <script type="text/javascript" src="../../controllers/public/account.js"></script>
+    <script type="text/javascript" src="../../controllers/public/detalle.js"></script>
+
 
 </body>
 
