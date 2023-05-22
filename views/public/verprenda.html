@@ -57,8 +57,29 @@
 
                         </select>
                         <button class="btbA" type="submit"> Agregar </button>
+                        <button onclick="{openUpdate()}" type="submit" class="btbA mt-2" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">
+                            <i>Valoraciones</i>
+                        </button>
                     </div>
-
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="modal-title">..</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                                        data-tooltip="Cerrar"></button>
+                                </div>
+                                <form method="post" id="save-form" enctype="multipart/form-data">
+                                    <div class="container">
+                                        <h4 class="align-items-center text-light">Valoraciones</h4>
+                                        <div name="valoraciones" id="valoraciones"></div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -83,9 +104,8 @@
         crossorigin="anonymous"></script>
     <script type="text/javascript" src="../../resources/js/sweetalerts.min.js"></script>
     <script type="text/javascript" src="../../controllers/components.js"></script>
-    <script src="../js/cantidad.js"></script>   
     <script type="text/javascript" src="../../controllers/public/account.js"></script>
-
+    <script type="text/javascript" src="../../controllers/public/valoracion.js"></script>
 </body>
 
 </html>
