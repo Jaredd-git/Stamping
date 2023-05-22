@@ -36,55 +36,6 @@
                             <b>Precio:</b> $40
                         </p>
                     </div>
-                    <div>
-                        <select class="selects t-2" name="select">
-                            <option id="s" value="value1" selected>S</option>
-                            <option value="value2">Value 2</option>
-                            <option value="value3">Value 3</option>
-                        </select>
-                        <select class="selects t-2" name="select">
-                            <option value="value1" selected>Negro</option>
-                            <option value="value2">Value 2</option>
-                            <option value="value3">Value 3</option>
-                        </select>
-                        <h4>Elige el estampado</h2>
-                    </div>
-                    <div class="estampado">
-                        <input class="explorar" type="file">
-                        <img class="ayuda" src="../../resources/img/iconos/ayuda.png" alt="ayuda">
-                    </div>
-                    <br>
-                    <div>
-                        <select id="cantidad" class="cantidad" name="selectCantidad">
-
-                        </select>
-                        <button class="btbA" type="submit"> Agregar </button>
-                        <button onclick="{openUpdate()}" type="submit" class="btbA mt-2" data-bs-toggle="modal"
-                            data-bs-target="#staticBackdrop">
-                            <i>Valoraciones</i>
-                        </button>
-                    </div>
-                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
-                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-xl modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="modal-title">..</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                                        data-tooltip="Cerrar"></button>
-                                </div>
-                                <form method="post" id="save-form" enctype="multipart/form-data">
-                                    <div class="container">
-                                        <h4 class="align-items-center text-light">Valoraciones</h4>
-                                        <div name="valoraciones" id="valoraciones"></div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-2">
-                    <h4>Elige el estampado</h4>
                 </div>
                 <form class="mt-3">
                     <div>
@@ -122,7 +73,28 @@
                         <button class="btn btn-secondary" type="submit"> Agregar </button>
                     </div>
                 </form>
-
+                <button onclick="{openUpdate()}" type="submit" class="btn btn-secondary" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop">
+                    Valoraciones
+                </button>
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="modal-title">..</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                                    data-tooltip="Cerrar"></button>
+                            </div>
+                            <form method="post" id="save-form" enctype="multipart/form-data">
+                                <div class="container">
+                                    <h4 class="align-items-center text-light">Valoraciones</h4>
+                                    <div name="valoraciones" id="valoraciones"></div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </div>
