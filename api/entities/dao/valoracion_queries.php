@@ -29,6 +29,16 @@ class ValoracionQueries
         //Devueve todos los valores de la tabla valoraciones
         return Database::getRows($sql);
     }
+
+    public function readAllPreview()
+    {
+        $sql = 'SELECT id_valoracion, id_producto, comentario_producto, calificacion_producto, fecha_comentario
+        FROM valoraciones
+        ORDER BY calificacion_producto';
+        //Muestra todos los datos de la tabla productos
+        return Database::getRows($sql);
+    }
+
     //Consulta para cargar un dato especifico de la tabla valoraciones
     public function readOne()
     {
