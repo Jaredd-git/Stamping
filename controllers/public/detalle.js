@@ -10,24 +10,33 @@ M.Tooltip.init(document.querySelectorAll('.tooltipped'));
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', async () => {
-    // Constante tipo objeto con los datos del producto seleccionado.
-    const FORM = new FormData();
-    FORM.append('id_producto', PARAMS.get('id'));
-    // Petición para solicitar los datos del producto seleccionado.
-    const JSON = await dataFetch(PRODUCTO_API, 'readOne', FORM);
-    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-    if (JSON.status) {
-        // Se colocan los datos en la página web de acuerdo con el producto seleccionado previamente.
-        document.getElementById('nombre').textContent = JSON.dataset.nombre_producto;
-        document.getElementById('descripcion').textContent = JSON.dataset.descripcion_producto;
-        document.getElementById('precio').textContent = JSON.dataset.precio_producto;
-        document.getElementById('id_producto').value = JSON.dataset.id_producto;
-    } else {
-        // Se presenta un mensaje de error cuando no existen datos para mostrar.
-        document.getElementById('title').textContent = JSON.exception;
-        // Se limpia el contenido cuando no hay datos para mostrar.
-        document.getElementById('detalle').innerHTML = '';
-    }
+
+    $(function () {
+        $("#rating").rateYo({
+            starWidth: "30px",
+            rating: 3.5,
+            readOnly: true
+        });
+    });
+
+    // // Constante tipo objeto con los datos del producto seleccionado.
+    // const FORM = new FormData();
+    // FORM.append('id_producto', PARAMS.get('id'));
+    // // Petición para solicitar los datos del producto seleccionado.
+    // const JSON = await dataFetch(PRODUCTO_API, 'readOne', FORM);
+    // // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    // if (JSON.status) {
+    //     // Se colocan los datos en la página web de acuerdo con el producto seleccionado previamente.
+    //     document.getElementById('nombre').textContent = JSON.dataset.nombre_producto;
+    //     document.getElementById('descripcion').textContent = JSON.dataset.descripcion_producto;
+    //     document.getElementById('precio').textContent = JSON.dataset.precio_producto;
+    //     document.getElementById('id_producto').value = JSON.dataset.id_producto;
+    // } else {
+    //     // Se presenta un mensaje de error cuando no existen datos para mostrar.
+    //     document.getElementById('title').textContent = JSON.exception;
+    //     // Se limpia el contenido cuando no hay datos para mostrar.
+    //     document.getElementById('detalle').innerHTML = '';
+    // }
 });
 
 // Método manejador de eventos para cuando se envía el formulario de agregar un producto al carrito.
