@@ -52,3 +52,29 @@ document.addEventListener('DOMContentLoaded', async () => {
 //         sweetAlert(3, JSON.exception, true, 'login.html');
 //     }
 // });
+
+
+// function shoppingCart(event) {
+//     // Se evita recargar la página web después de enviar el formulario.
+//     event.preventDefault();
+//     // Constante tipo objeto con los datos del formulario.
+//     const FORM = new FormData(SHOPPING_FORM);
+//     // Petición para guardar los datos del formulario.
+//     dataFetch(PEDIDO_API, 'createDetail', FORM)
+//         .then(JSON => {
+//             // Se comprueba si la respuesta es satisfactoria, de lo contrario se constata si el cliente ha iniciado sesión.
+//             if (JSON.status) {
+//                 sweetAlert(1, JSON.message, false, 'cart.html');
+//             } else if (JSON.session) {
+//                 sweetAlert(2, JSON.exception, false);
+//             } else {
+//                 sweetAlert(3, JSON.exception, true, 'login.html');
+//             }
+//             // Abrir el offcanvas después de realizar todas las acciones.
+//             document.getElementById('offcanvasRight').classList.add('show');
+//         })
+//         .catch(error => {
+//             // Manejo de errores en caso de que la petición falle.
+//             sweetAlert(4, 'Se produjo un error al enviar el formulario. Por favor, inténtalo de nuevo más tarde.', true);
+//         });
+// }
