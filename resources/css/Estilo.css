@@ -115,3 +115,27 @@ footer{
         height: auto;
     }
 }
+
+/* Estilo para la imagen */
+#imagen {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Estilo para la columna que contiene la imagen */
+  .col-lg-6 {
+    display: flex;
+    align-items: center;
+  }
+  
+  @media (max-width: 1366px) {
+    /* Ajuste de estilos para pantallas de 1366x768 */
+    .col-lg-6 {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    #imagen {
+      margin-bottom: 20px;
+    }
+  }
