@@ -68,3 +68,50 @@ footer{
 .tamaño-n{
     max-width: 150px ;
 }
+
+.image-container{
+    position: relative;
+}
+
+.image-container image{
+    width: 100%;
+    height: auto;
+}
+
+.text-overlay {
+    position: absolute;
+    color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: 'Lexend Deca', sans-serif;
+    font-size:  24px;
+}
+
+@media (max-width: 390px) {
+    .image-container {
+        margin-bottom: 20px;
+    }
+
+    .text-overlay {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 765px) {
+    .image-container {
+        margin-bottom: 20px;
+    }
+
+    .text-overlay {
+        font-size: 18px;
+    }
+
+    .image-container img {
+        width: 100%;
+        height: auto;
+    }
+}

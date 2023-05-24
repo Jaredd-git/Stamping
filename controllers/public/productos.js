@@ -4,33 +4,33 @@ const PRODUCTO_API = 'business/public/producto.php';
 const PRODUCTOS = document.getElementById('productos');
 // Constante tipo objeto para establecer las opciones del componente Slider.
 const OPTIONS = {
-  height: 300
+    height: 300
 }
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', async () => {
-  // Petición para obtener las categorías disponibles.
-  const JSON = await dataFetch(PRODUCTO_API, 'readAllPreview');
-  // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-  if (JSON.status) {
-    // Se inicializa el contenedor de categorías.
-    PRODUCTOS.innerHTML = '';
-    // Se recorre el conjunto de registros fila por fila a través del objeto row.
-    JSON.dataset.forEach(row => {
-      PRODUCTOS.innerHTML += `
-            <div class="col">
-                <div class="card text-black">
-                  <img src="${SERVER_URL}images/productos/${row.imagen_producto}" class="card-img-top" alt="...">
-                  <a href="verprenda.html?id=${row.id_producto}" class="btn btn-dark mt-2 ms-2 me-2" data-tooltip="Ver producto">
-                    Ver producto
-                  </a>
-                  <div class="card-body">
-                    <h5 class="card-title">${row.nombre_producto}</h5>
-                    <p class="card-text">${row.descripcion_producto}</p>
-                    <p class="card-text">${row.precio_producto}</p>
-                  </div>
+    // Petición para obtener las categorías disponibles.
+    const JSON = await dataFetch(PRODUCTO_API, 'readAllPreview');
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    if (JSON.status) {
+        // Se inicializa el contenedor de categorías.
+        PRODUCTOS.innerHTML = '';
+        // Se recorre el conjunto de registros fila por fila a través del objeto row.
+        JSON.dataset.forEach(row => {
+            PRODUCTOS.innerHTML += `
+                <div class="col">
+                    <div class="card text-black">
+                        <img src="${SERVER_URL}images/productos/${row.imagen_producto}" class="card-img-top" alt="...">
+                        <a href="verprenda.html?id=${row.id_producto}" class="btn btn-dark mt-2 ms-2 me-2" data-tooltip="Ver producto">
+                            Ver producto
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">${row.nombre_producto}</h5>
+                            <p class="card-text">${row.descripcion_producto}</p>
+                            <p class="card-text">${row.precio_producto}</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
             `;
     });
   } else {
