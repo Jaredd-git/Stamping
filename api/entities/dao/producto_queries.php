@@ -54,7 +54,7 @@ class ProductoQueries
     //Consulta para cargar un dato especifico de la tabla productos
     public function readOne()
     {
-        $sql = 'SELECT id_producto, nombre_producto, descripcion_producto, precio_producto, imagen_producto, estado_producto, color_producto, id_tipo, id_talla, existencias
+        $sql = 'SELECT id_producto, nombre_producto, descripcion_producto, precio_producto, imagen_producto, estado_producto, color_producto, id_tipo, id_talla_p, existencias
                 FROM productos
                 WHERE id_producto = ?';
                 //Se obtiene el id del producto
