@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                                     <li><a class="dropdown-item" type="button" class="btn btn-primary" onClick="logOut()">Cerrar sesión</a></li>
                                 </ul>
                             </div>
-                            <button class="btn btn-transparent" type="button" id="shopcart">
+                            <button class="btn btn-transparent" type="button">
                                 <span class="bi bi-bag-heart"" style="font-size: 28px;"></span>
                             </button>
                         </section>
@@ -252,64 +252,23 @@ document.addEventListener('DOMContentLoaded', async () => {
                         </div>
                     </div>
                 </div>
-                <!-- Formulario con método POST y tipo de codificación para envío de archivos -->
-                <form method="post" id="save-frm" enctype="multipart/form-data">
-                    <!-- Se crea un campo para leer los productos-->
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="productos" name="productos" readonly>
-                        <label for="productos">PRODUCTOS</label>
-                    </div>
-                    <!-- Se crea un campo para actualizar y leer la cantidad-->
-                    <div class="form-floating mb-3">
-                        <input type="number" class="form-control" id="cantidad" name="cantidad" min="1" required>
-                        <label for="cantidad">CANTIDAD</label>
-                    </div>
-                    <!-- Se crea un campo para leer el precio-->
-                    <div class="form-floating mb-3">
-                        <input type="number" class="form-control" id="precio" name="precio" readonly step="0.01">
-                        <label for="precio">PRECIO (US$)</label>
-                    </div>
-                    <!-- Se crea un campo para leer el subtotal-->
-                    <div class="form-floating mb-3">
-                        <input type="number" class="form-control" id="subtotal" name="subtotal" readonly>
-                        <label for="subtotal">SUBTOTAL</label>
-                    </div>
-                    <!-- Fila con alineación a la derecha -->
-                    <div class="row justify-content-end">
-                        <!--Párrafo con texto alineado a la derecha y un elemento en negrita identificado como "pago"-->
-                        <p class="text-end">TOTAL A PAGAR (US$) <b id="pago"></b></p>
-                    </div>                
-                </form>
                 <div class="row">
-                    <!-- Contenedor de botones -->
-                    <div class="col-12 btnn">
-                        <div class="d-flex justify-content-center">
-                            <!-- Botón con estilo de contorno, para actualizar el pedido del carrito-->
-                            <button type="button" class="btn btn-outline-primary me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Actualizar Carrito">
-                                <i class="bi bi-pencil-square"></i>
-                            </button>
-                            <!-- Botón con estilo de contorno, para eliminar el pedido del carrito-->
-                            <button type="button" class="btn btn-outline-secondary me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar Carrito">
-                                <i class="bi bi-cart-x-fill"></i>
-                            </button>
-                            <!-- Botón con estilo de contorno, para pagar el pedido-->
-                            <button type="button" class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Pagar">
-                                <i class="bi bi-cash"></i>
-                            </button>
-                        </div>
+                    <div class="col-12 text-center">
+                        <p style="font-size: 18px;">Debe iniciar sesión para ver su carrito.</p> <!-- Se establece el tamaño de fuente en 18px -->
                     </div>
-                </div>                         
-                <div class="row">
-                    <div class="col-12">
-                        <!--Contenedor de imagen para el pie del offcanvas-->
-                        <div class="imagen">
-                            <!-- Inserta otra imagen con un identificador "imgI" y un atributo "alt" para accesibilidad -->
-                            <img id="imgFof" src="../../resources/img/Imagenes/hofc.png" alt="banner">
-                        </div>
+                </div>
+            </div>                         
+            <div class="row">
+                <div class="col-12">
+                    <!--Contenedor de imagen para el pie del offcanvas-->
+                    <div class="imagen">
+                        <!-- Inserta otra imagen con un identificador "imgI" y un atributo "alt" para accesibilidad -->
+                        <img id="imgFof" src="../../resources/img/Imagenes/hofc.png" alt="banner">
                     </div>
                 </div>
             </div>
-        </div>    
+        </div>
+    </div>    
     `;
 
     // Agregar el contenido del offcanvas al documento
