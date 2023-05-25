@@ -8,6 +8,7 @@ class Valoracion extends ValoracionQueries
 {
     // Declaración de atributos (propiedades).
     protected $id = null;
+    protected $nombre = null;
     protected $producto = null;
     protected $calificacion = null;
     protected $comentario = null;
@@ -41,6 +42,16 @@ class Valoracion extends ValoracionQueries
     {
         if (Validator::validateNaturalNumber($value)) {
             $this->calificacion = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setNombre($value)
+    {
+        if (Validator::validateString($value, 1, 25)) {
+            $this->nombre = $value;
             return true;
         } else {
             return false;
@@ -98,6 +109,11 @@ class Valoracion extends ValoracionQueries
     public function getComentario()
     {
         return $this->comentario;
+    }
+
+    public function getNombre()
+    {
+        return $this->nombre;
     }
 
     public function getFecha()

@@ -20,6 +20,18 @@ class ValoracionQueries
         //Devuelve los datos buscados
         return Database::getRows($sql, $params);
     }
+
+    //Consulta para crear un nuevo producto
+    public function createRow()
+    {
+        $sql = 'INSERT INTO valoraciones(id_producto, nombre, calificacion_producto, comentario_producto)
+                VALUES(?, ?, ?, ?)';
+                //Se obtienen todos los parametros para el nuevo producto
+        $params = array($this->producto, $this->nombre, $this->calificacion, $this->comentario);
+        //Crea el nuevo producto
+        return Database::executeRow($sql, $params);
+    }
+
     //Consulta para leer todos los datos de la tabla valoraciones
     public function readAll()
     {

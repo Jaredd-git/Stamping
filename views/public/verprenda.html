@@ -70,6 +70,10 @@
                     data-bs-target="#staticBackdrop">
                     Valoraciones
                 </button>
+                <button onclick="{openCreate()}" type="button" class="btn btn-secondary mt-2" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop2">
+                    Valoraciones
+                </button>
                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog modal-xl modal-dialog-centered">
@@ -88,7 +92,51 @@
                         </div>
                     </div>
                 </div>
-
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="modal-title2">..</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                                    data-tooltip="Cerrar"></button>
+                            </div>
+                            <form method="post" id="save-form2">
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <div class="row">
+                                            <input class="" type="number" id="id" name="id">
+                                            <div class="form-floating mb-3 col-6">
+                                                <input type="text" class="form-control" id="nombre" name="nombre">
+                                                <label for="floatingInput">Nombre</label>
+                                            </div>
+                                            <div class="form-floating mb-3 col-6">
+                                                <input type="number" class="form-control" id="calificacion" name="calificacion">
+                                                <label for="floatingInput">Calificacion</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-floating mb-3 col-6">
+                                                <input type="text" class="form-control" id="comentario" name="comentario">
+                                                <label for=" floatingInput">Comentario</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer d-flex justify-content-center">
+                                    <button type="reset" class="btn btn-secondary">
+                                        <i class="bi bi-arrow-counterclockwise"></i>
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="bi bi-save-fill">
+                                        </i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

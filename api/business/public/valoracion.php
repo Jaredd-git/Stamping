@@ -27,6 +27,26 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
+                case 'createRow':
+                    // Se valida el fromulario de crear usuario
+                    $_POST = Validator::validateForm($_POST);
+                    // Se verifica si los nombres son correctos
+                    if (!$valoracion->setNombre($_POST['nombre'])) {
+                        $result['exception'] = 'Nombre incorrecto';
+                        // Se verifica si los apellidos son correctos
+                    } elseif (!$valoracion->setCalificacion($_POST['calificacion'])) {
+                        $result['exception'] = 'Calificacion incorrecto';
+                        // Se verifica si el alias es correcto
+                    } elseif (!$valoracion->setComentario($_POST['comentario'])) {
+                        $result['exception'] = 'Comentario incorrecto';
+                    } elseif ($valoracion->createRow()) {
+                        $result['status'] = 1;
+                        $result['message'] = 'Valoracion creada correctamente';
+                        // Si ocurre un error se captura la excepcion en la base de datos
+                    } else {
+                        $result['exception'] = Database::getException();
+                    }
+                    break;
             default:
             // Si no se encuentra ninguna acción disponible dentro de la sesión, se muestra un mensaje de error
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
