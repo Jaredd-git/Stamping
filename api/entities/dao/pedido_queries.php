@@ -13,7 +13,7 @@ class PedidoQueries
     {
         $sql = 'SELECT id_pedido
                 FROM pedidos
-                WHERE estado_pedido = 3 AND id_cliente = ?';
+                WHERE id_estado = 3 AND id_cliente = ?';
         $params = array($_SESSION['id_cliente']);
         if ($data = Database::getRow($sql, $params)) {
             $this->id_pedido = $data['id_pedido'];
@@ -53,11 +53,11 @@ class PedidoQueries
 
             // Si hay suficientes productos disponibles y se realizó la inserción, se retorna true
             return true;
-    } else {
-        // No hay suficientes productos disponibles, se retorna false
-        return false;
+        } else {
+            // No hay suficientes productos disponibles, se retorna false
+            return false;
+        }
     }
-}
 
     // Método para obtener los productos que se encuentran en el carrito de compras.
     public function readOrderDetail()
