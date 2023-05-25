@@ -1,0 +1,14 @@
+const shopcartBtn = document.getElementById('shopcart');
+    // Agregar el manejador de eventos al botón del carrito
+    shopcartBtn.addEventListener('click', () => {
+    // Llamar a la función toggleOffcanvas() para abrir o cerrar el offcanvas
+    toggleOffcanvas();
+    });
+});
+
+    // Función para abrir o cerrar el offcanvas
+    function toggleOffcanvas() {
+        const offcanvas = document.getElementById('offcanvasRight');
+        const offcanvasInstance = new bootstrap.Offcanvas(offcanvas);
+        offcanvasInstance.toggle();
+    }
