@@ -112,32 +112,23 @@
                 </div>
             </div>
             <!-- Formulario con método POST y tipo de codificación para envío de archivos -->
-            <form method="post" id="save-frm" enctype="multipart/form-data">
-                <!-- Se crea un campo para leer los productos-->
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="productos" name="productos" readonly>
-                    <label for="productos">PRODUCTO</label>
-                </div>
-                <!-- Se crea un campo para actualizar y leer la cantidad-->
-                <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="cantidad" name="cantidad" min="1" required>
-                    <label for="cantidad">CANTIDAD</label>
-                </div>
-                <!-- Se crea un campo para leer el precio-->
-                <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="precio" name="precio" readonly step="0.01">
-                    <label for="precio">PRECIO (US$)</label>
-                </div>
-                <!-- Se crea un campo para leer el subtotal-->
-                <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="subtotal" name="subtotal" readonly>
-                    <label for="subtotal">SUBTOTAL</label>
-                </div>
-                <!-- Fila con alineación a la derecha -->
-                <div class="row justify-content-end">
-                    <!--Párrafo con texto alineado a la derecha y un elemento en negrita identificado como "pago"-->
-                    <p class="text-end">TOTAL A PAGAR (US$) <b id="pago"></b></p>
-                </div>                
+            <form method="post" id="save-frm">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                      <div class="col-md-12">
+                        <div class="card-body">
+                          <h5 class="card-title" id="nombre_producto">Card title</h5>
+                          <p class="card-text" id="precio_p">PRECIO ($US)</p>
+                          <input type="number" class="form-control" min="1">
+                          <p class="card-text" id="subtotal">SUBTOTAL</p>
+                          <div class="row justify-content-end">
+                            <!--Párrafo con texto alineado a la derecha y un elemento en negrita identificado como "pago"-->
+                            <p class="text-end">TOTAL A PAGAR (US$) <b id="pago"></b></p>
+                        </div>     
+                        </div>
+                      </div>
+                    </div>
+                  </div>            
             </form>
             <div class="row">
                 <!-- Contenedor de botones -->
