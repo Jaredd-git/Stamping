@@ -30,8 +30,6 @@ document.addEventListener('DOMContentLoaded', async () => {
      } else {
          // Se presenta un mensaje de error cuando no existen datos para mostrar.
          document.getElementById('title').textContent = JSON.exception;
-         // Se limpia el contenido cuando no hay datos para mostrar.
-         document.getElementById('detalle').innerHTML = '';
      }
 });
 

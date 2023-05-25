@@ -1,6 +1,6 @@
 <?php
 require_once('../../entities/dto/valoracion.php');
-
+session_start();
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
     // Se instancia la clase correspondiente.
@@ -12,7 +12,7 @@ if (isset($_GET['action'])) {
         switch ($_GET['action']) {
             //Accion utilizada para poder leer todos los campos de la tabla productos
             case 'readAllPreview':
-                if (!$valoracion->setId($_POST['id_producto'])) {
+                if (!$valoracion->setProducto($_POST['id_producto'])) {
                     $result['exception'] = 'Producto incorrecto';
                     // Si se encuentra el producto, se muestra en la respuesta
                 }
@@ -30,10 +30,8 @@ if (isset($_GET['action'])) {
                 case 'createRow':
                     // Se valida el fromulario de crear usuario
                     $_POST = Validator::validateForm($_POST);
-                    // Se verifica si los nombres son correctos
-                    if (!$valoracion->setNombre($_POST['nombre'])) {
-                        $result['exception'] = 'Nombre incorrecto';
-                        // Se verifica si los apellidos son correctos
+                    if (!$valoracion->setProducto($_POST['id'])) {
+                        $result['exception'] = 'Producto incorrecto';
                     } elseif (!$valoracion->setCalificacion($_POST['calificacion'])) {
                         $result['exception'] = 'Calificacion incorrecto';
                         // Se verifica si el alias es correcto

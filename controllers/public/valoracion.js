@@ -12,10 +12,7 @@ const SAVE_FORM = document.getElementById('save-form');
 const SAVE_FORM2 = document.getElementById('save-form2');
 // Constante para establecer el título de la modal.
 const MODAL_TITLE2 = document.getElementById('modal-title2');
-
-// Constante tipo objeto para obtener los parámetros disponibles en la URL.
-const PARAMS1 = new URLSearchParams(location.search);
-const PARAMS2 = new URLSearchParams(location.search);
+const MODAL_TITLE = document.getElementById('modal-title');
 
 document.addEventListener('DOMContentLoaded', async () => {
 });
@@ -23,16 +20,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 SAVE_FORM2.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
-    // Se verifica la acción a realizar.
-    (document.getElementById('id').value) ? action = 'update' : action = 'createRow';
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(SAVE_FORM2);
     // Petición para guardar los datos del formulario.
-    const JSON = await dataFetch(VALORACION_API, action, FORM);
+    const JSON = await dataFetch(VALORACION_API, 'createRow', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
-        // Se carga nuevamente la tabla para visualizar los cambios.
-        fillTable();
         // Se cierra la caja de diálogo.
         MODAL2.hide();
         // Se muestra un mensaje de éxito.
@@ -45,31 +38,29 @@ SAVE_FORM2.addEventListener('submit', async (event) => {
  function openCreate() {
         // Se restauran los elementos del formulario.
     SAVE_FORM2.reset();
-
     // Se asigna el título a la caja de diálogo.
     MODAL_TITLE2.textContent = 'Crear valoracion';
-    
-    document.getElementById('id').textContent = "id_producto";
-    
+    document.getElementById('id').value = PARAMS.get('id');
 }
 
 async function openUpdate() {
     // Se define un objeto con los datos del registro seleccionado.
     const FORM = new FormData();
-    FORM.append('id_producto', PARAMS1.get('id'));
+    FORM.append('id_producto', PARAMS.get('id'));
     const JSON = await dataFetch(VALORACION_API, 'readAllPreview', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
         MODAL.show();
         MODAL_TITLE.textContent = 'Valoraciones';
+        VALORACIONES.innerHTML = '';
         //document.getElementById('producto').textContent = id;
         JSON.dataset.forEach(row => {
             VALORACIONES.innerHTML += `
             <div class="col mt-4">
                 <div class="card text-black">
                   <div class="card-body">
-                    <h5 class="card-title">Valoracion</h5>
+                    <h5 class="card-title">${row.cliente}</h5>
                     <p class="card-text">${row.comentario_producto}</p>
                     <p class="card-text">${row.calificacion_producto}</p>
                     <p class="card-text">${row.fecha_comentario}</p>

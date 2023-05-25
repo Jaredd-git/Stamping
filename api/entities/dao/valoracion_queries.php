@@ -24,10 +24,10 @@ class ValoracionQueries
     //Consulta para crear un nuevo producto
     public function createRow()
     {
-        $sql = 'INSERT INTO valoraciones(id_producto, nombre, calificacion_producto, comentario_producto)
+        $sql = 'INSERT INTO valoraciones(id_producto, id_cliente, calificacion_producto, comentario_producto)
                 VALUES(?, ?, ?, ?)';
                 //Se obtienen todos los parametros para el nuevo producto
-        $params = array($this->producto, $this->nombre, $this->calificacion, $this->comentario);
+        $params = array($this->producto, $_SESSION['id_cliente'], $this->calificacion, $this->comentario);
         //Crea el nuevo producto
         return Database::executeRow($sql, $params);
     }
@@ -44,10 +44,11 @@ class ValoracionQueries
 
     public function readAllPreview()
     {
-        $sql = 'SELECT id_valoracion, id_producto, comentario_producto, calificacion_producto, fecha_comentario
+        $sql = "SELECT id_valoracion, id_producto, CONCAT(nombre_cliente, ' ', apellido_cliente) cliente, comentario_producto, calificacion_producto, fecha_comentario
         FROM valoraciones
-        WHERE id_producto = ?';
-        $params = array($this->id);
+		INNER JOIN clientes USING(id_cliente)
+        WHERE id_producto = ?";
+        $params = array($this->producto);
         //Muestra todos los datos de la tabla productos
         return Database::getRows($sql, $params);
     }

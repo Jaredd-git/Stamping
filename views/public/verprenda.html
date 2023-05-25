@@ -28,7 +28,7 @@
             <div class="col-lg-6 pt-5">
                 <h2 id="title"></h2>
                 <div class="row">
-                    <input id="id_producto" name="id_producto" class="d-none">
+                    
                     <div id="informacion" class="mt-2 mb-2">
                         <h4 id="nombre"></h4>
                         <p id="descripcion" class="mt-3"></p>
@@ -36,6 +36,7 @@
                     </div>
                 </div>
                 <form class="mt-3">
+                    <input id="id_producto" name="id_producto" class="d-none">
                     <div>
                         <div class="form-floating mb-2">
                             <select class="form-select" id="talla" name="talla"
@@ -63,14 +64,14 @@
                         <input class="form-control" name="formFile" type="file" id="formFile">
                     </div>
                     <div class="text-center">
-                        <button id="shopcart" class="btn btn-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Agregar al carrito</button>
+                        <button id="shopcart" class="btn btn-secondary" type="submit" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Agregar al carrito</button>
                     </div>
                 </form>
                 <button onclick="{openUpdate()}" type="button" class="btn btn-secondary" data-bs-toggle="modal"
                     data-bs-target="#staticBackdrop">
                     Valoraciones
                 </button>
-                <button onclick="{openCreate()}" type="button" class="btn btn-secondary mt-2" data-bs-toggle="modal"
+                <button onclick="openCreate()" type="button" class="btn btn-secondary mt-2" data-bs-toggle="modal"
                     data-bs-target="#staticBackdrop2">
                     Valoraciones
                 </button>
@@ -106,14 +107,10 @@
                                 <div class="modal-body">
                                     <div class="container">
                                         <div class="row">
-                                            <input class="" type="number" id="id" name="id">
+                                            <input class="d-none" type="number" id="id" name="id">
                                             <div class="form-floating mb-3 col-6">
-                                                <input type="text" class="form-control" id="nombre" name="nombre">
-                                                <label for="floatingInput">Nombre</label>
-                                            </div>
-                                            <div class="form-floating mb-3 col-6">
-                                                <input type="number" class="form-control" id="calificacion" name="calificacion">
-                                                <label for="floatingInput">Calificacion</label>
+                                                <input type="number" class="form-control" id="calificacion" name="calificacion" min="1" max="5">
+                                                <label for="floatingInput">Calificación</label>
                                             </div>
                                         </div>
                                         <div class="row">
