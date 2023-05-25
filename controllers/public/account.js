@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const JSON = await dataFetch(USER_API, 'getUser');
     // Se comprueba si el usuario está autenticado para establecer el encabezado respectivo.
     if (JSON.session) {
+
         HEADER.innerHTML = `
         <!-- Navbar de la pagina web -->
             <div class="sticky-top">
@@ -32,7 +33,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                                     <li><a class="dropdown-item" type="button" class="btn btn-primary" onClick="logOut()">Cerrar sesión</a></li>
                                 </ul>
                             </div>
-                            <button class="btn btn-transparent" type="button">
+                            <button class="btn btn-transparent" type="button" id="shopcart">
                                 <span class="bi bi-bag-heart"" style="font-size: 28px;"></span>
                             </button>
                         </section>
@@ -60,6 +61,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 </div>
             </div>
         `;
+        
     } else {
         HEADER.innerHTML = `
         <!-- Navbar de la pagina web -->
@@ -227,7 +229,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Función para abrir o cerrar el offcanvas
     function toggleOffcanvas() {
-        const offcanvas = document.getElementById('offcanvasRight');
+        const offcanvas = document.getElementById('cart-offcanvas');
         const offcanvasInstance = new bootstrap.Offcanvas(offcanvas);
         offcanvasInstance.toggle();
     }
@@ -235,7 +237,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Contenido del offcanvas
     const offcanvasContent = `
         <!--Offcanvas en la posición final (derecha)-->
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" data-bs-backdrop="static">
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="cart-offcanvas" aria-labelledby="offcanvasRightLabel" data-bs-backdrop="static">
             <!--Encabezado del offcanvas-->
             <div class="offcanvas-header">
                 <!-- Botón para cerrar el offcanvas -->
