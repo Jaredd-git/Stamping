@@ -32,32 +32,32 @@ class PedidoQueries
     }
 
     // Método para agregar un producto al carrito de compras.
-//     public function createDetail()
-//     {
-//         // Consulta para obtener la cantidad disponible del producto en la tabla "productos"
-//         $sqlQuantityAvailable = 'SELECT existencias FROM productos WHERE id_producto = ?';
-//         $params = array($this->producto);
-//         $quantityAvailable = = Database::getScalar($sqlQuantityAvailable, $params);
+    public function createDetail()
+    {
+        // Consulta para obtener la cantidad disponible del producto en la tabla "productos"
+        $sqlQuantityAvailable = 'SELECT existencias FROM productos WHERE id_producto = ?';
+        $params = array($this->producto);
+        $quantityAvailable = Database::getScalar($sqlQuantityAvailable, $params);
 
-//         if ($quantityAvailable >= $this->cantidad) {
-//             // Verificar si la cantidad disponible es suficiente para realizar la inserción en la tabla "detalles_pedidos; Se realiza una subconsulta para obtener el precio del producto.
-//             $sql = 'INSERT INTO detalles_pedidos(id_producto, precio, cantidad_producto, id_pedido)
-//             VALUES(?, (SELECT precio_producto FROM productos WHERE id_producto = ?), ?, ?)';
-//             $params = array($this->producto, $this->producto, $this->cantidad, $this->id_pedido);
-//             return Database::executeRow($sql, $params);
+        if ($quantityAvailable >= $this->cantidad) {
+            // Verificar si la cantidad disponible es suficiente para realizar la inserción en la tabla "detalles_pedidos; Se realiza una subconsulta para obtener el precio del producto.
+            $sql = 'INSERT INTO detalles_pedidos(id_producto, precio, cantidad_producto, id_pedido)
+            VALUES(?, (SELECT precio_producto FROM productos WHERE id_producto = ?), ?, ?)';
+            $params = array($this->producto, $this->producto, $this->cantidad, $this->id_pedido);
+            return Database::executeRow($sql, $params);
 
-//             // Consulta para actualizar la cantidad disponible en la tabla "productos"
-//             $sqlActualizarCantidad = 'UPDATE productos SET existencias = existencias - ? WHERE id_producto = ?';
-//             $paramsActualizarCantidad = array($this->cantidad, $this->producto);
-//             Database::executeRow($sqlActualizarCantidad, $paramsActualizarCantidad);
+            // Consulta para actualizar la cantidad disponible en la tabla "productos"
+            $sqlActualizarCantidad = 'UPDATE productos SET existencias = existencias - ? WHERE id_producto = ?';
+            $paramsActualizarCantidad = array($this->cantidad, $this->producto);
+            Database::executeRow($sqlActualizarCantidad, $paramsActualizarCantidad);
 
-//             // Si hay suficientes productos disponibles y se realizó la inserción, se retorna true
-//             return true;
-//     } else {
-//         // No hay suficientes productos disponibles, se retorna false
-//         return false;
-//     }
-// }
+            // Si hay suficientes productos disponibles y se realizó la inserción, se retorna true
+            return true;
+    } else {
+        // No hay suficientes productos disponibles, se retorna false
+        return false;
+    }
+}
 
     // Método para obtener los productos que se encuentran en el carrito de compras.
     public function readOrderDetail()
