@@ -12,7 +12,11 @@ if (isset($_GET['action'])) {
         switch ($_GET['action']) {
             //Accion utilizada para poder leer todos los campos de la tabla productos
             case 'readAllPreview':
-                if ($result['dataset'] = $valoracion->readAllPreview()) {
+                if (!$valoracion->setId($_POST['id_producto'])) {
+                    $result['exception'] = 'Producto incorrecto';
+                    // Si se encuentra el producto, se muestra en la respuesta
+                }
+                else if ($result['dataset'] = $valoracion->readAllPreview()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen '.count($result['dataset']).' registros';
                     // Si ocurre una excepción en la base de datos, se captura

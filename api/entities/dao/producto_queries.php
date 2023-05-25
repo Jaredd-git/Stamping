@@ -38,6 +38,7 @@ class ProductoQueries
         $sql = 'SELECT id_producto, nombre_producto, descripcion_producto, precio_producto, imagen_producto, estado_producto, color_producto, id_tipo, existencias
         FROM productos INNER JOIN tipos USING(id_tipo)
         ORDER BY nombre_producto';
+        
         //Muestra todos los datos de la tabla productos
         return Database::getRows($sql);
     }

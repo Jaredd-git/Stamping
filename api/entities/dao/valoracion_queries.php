@@ -34,9 +34,10 @@ class ValoracionQueries
     {
         $sql = 'SELECT id_valoracion, id_producto, comentario_producto, calificacion_producto, fecha_comentario
         FROM valoraciones
-        ORDER BY calificacion_producto';
+        WHERE id_producto = ?';
+        $params = array($this->id);
         //Muestra todos los datos de la tabla productos
-        return Database::getRows($sql);
+        return Database::getRows($sql, $params);
     }
 
     //Consulta para cargar un dato especifico de la tabla valoraciones

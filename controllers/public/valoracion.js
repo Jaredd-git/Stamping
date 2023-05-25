@@ -9,10 +9,13 @@ const SAVE_FORM = document.getElementById('save-form');
 // Constante para establecer el título de la modal.
 const MODAL_TITLE = document.getElementById('modal-title');
 
-async function openUpdate(id) {
+// Constante tipo objeto para obtener los parámetros disponibles en la URL.
+const PARAMS1 = new URLSearchParams(location.search);
+
+async function openUpdate() {
     // Se define un objeto con los datos del registro seleccionado.
     const FORM = new FormData();
-    FORM.append('id_producto', id);
+    FORM.append('id_producto', PARAMS1.get('id'));
     const JSON = await dataFetch(VALORACION_API, 'readAllPreview', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
@@ -21,7 +24,7 @@ async function openUpdate(id) {
         //document.getElementById('producto').textContent = id;
         JSON.dataset.forEach(row => {
             VALORACIONES.innerHTML += `
-            <div class="col">
+            <div class="col mt-4">
                 <div class="card text-black">
                   <div class="card-body">
                     <h5 class="card-title">Valoracion</h5>
