@@ -150,6 +150,7 @@ async function openDetail(id) {
         // Se abre la caja de diálogo que contiene el formulario.
         DETAIL_MODAL.show();
         document.getElementById('pedido').textContent = id;
+        SAVE_FORM.reset
         // Se recorre el conjunto de registros fila por fila.
         JSON.dataset.forEach(row => {
             subtotal = row.cantidad_producto * row.precio;
