@@ -128,7 +128,7 @@ footer{
     align-items: center;
   }
   
-  @media (max-width: 1366px) {
+  @media (max-width: 1920px) {
     /* Ajuste de estilos para pantallas de 1366x768 */
     .col-lg-6 {
       flex-direction: column;
