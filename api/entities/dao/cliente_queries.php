@@ -22,11 +22,15 @@ class ClienteQueries
         return Database::getRows($sql, $params);
     }
 
+    //Consulta para crear los datos del cliente
     public function createRow()
     {
+        // Se define la consulta SQL para insertar una nueva fila en la tabla 'clientes'.
         $sql = 'INSERT INTO clientes(nombre_cliente, apellido_cliente, dui_cliente, correo_cliente,  telefono_cliente, nacimiento_cliente, direccion_cliente, user_cliente, clave_cliente)
                 VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        // Se definen los parámetros de la consulta SQL utilizando los valores de las propiedades del objeto.
         $params = array($this->nombres, $this->apellidos, $this->dui, $this->correo, $this->telefono, $this->nacimiento, $this->direccion, $this->user, $this->clave);
+        // Se ejecuta la consulta utilizando la función 'executeRow' y se retornan los resultados.
         return Database::executeRow($sql, $params);
     }
 
