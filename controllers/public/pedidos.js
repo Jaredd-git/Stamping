@@ -1,5 +1,5 @@
 // Constantes para completar las rutas de la API.
-const PEDIDO_API = 'business/dashboard/pedido.php';
+const PEDIDO_API = 'business/public/pedido.php';
 // Constantes para establecer el contenido de la tabla.
 const TBODY_ROWS = document.getElementById('tbody-rows');
 const RECORDS = document.getElementById('records');

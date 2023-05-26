@@ -77,6 +77,8 @@ async function readOrderDetail() {
                     <p>${subtotal.toFixed(2)}</p>
                 </div>
             `;
+            // Actualizar el contenido del elemento offcanvasContent en el DOM
+            document.getElementById('content-cart').innerHTML = offcanvasContent;
         });
         // Se muestra el total a pagar con dos decimales.
         document.getElementById('pago').textContent = total.toFixed(2);

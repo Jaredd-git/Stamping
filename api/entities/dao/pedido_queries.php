@@ -104,6 +104,19 @@ class PedidoQueries
         return Database::getRows($sql);
     }
 
+    // Método para obtener todos los pedidos registrados.
+    public function readAllPedido()
+    {
+        $sql = "SELECT id_pedido, CONCAT(nombre_cliente,' ', apellido_cliente) cliente, estado, fecha_pedido, direccion_pedido
+        FROM pedidos p
+        INNER JOIN clientes USING(id_cliente)
+        INNER JOIN estados_pedidos ep ON ep.id_estado_pedido = p.id_estado
+        WHERE id_cliente = ?
+        ORDER BY id_pedido";
+        return Database::getRows($sql);
+    }
+
+
     // Método para obtener los datos de un pedido.
     public function readOne()
     {
