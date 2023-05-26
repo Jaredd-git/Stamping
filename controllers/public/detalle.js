@@ -71,46 +71,99 @@ async function readOrderDetail() {
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se inicializa el cuerpo de la tabla.
-        CART_DATA.innerHTML = `
-            <div class="card mb-3" style="max-width: 540px;">
-                <div class="row g-0">
-                    <div class="col-md-12">
-                        <div class="card-body">
-                            <h5 class="card-title" id="nombre_producto">Card title</h5>
-                            <p class="card-text" id="precio_p">PRECIO ($US)</p>
-                            <input type="number" class="form-control" min="1">
-                            <p class="card-text" id="subtotal">SUBTOTAL</p>
-                            <div class="row justify-content-end">
-                                <!--Párrafo con texto alineado a la derecha y un elemento en negrita identificado como "pago"-->
-                                <p class="text-end">TOTAL A PAGAR (US$) <b id="pago"></b></p>
-                            </div>     
-                        </div>
-                    </div>
-                </div>
-            </div>`;
+        CART_DATA.innerHTML = '';
         // Se declara e inicializa una variable para calcular el importe por cada producto.
         let subtotal = 0;
         // Se declara e inicializa una variable para sumar cada subtotal y obtener el monto final a pagar.
         let total = 0;
         // Se recorre el conjunto de registros fila por fila a través del objeto row.
         JSON.dataset.forEach(row => {
-            subtotal = row.precio_producto * row.cantidad_producto;
+            JSON.dataset
+            subtotal = row.precio * row.cantidad_producto;
             total += subtotal;
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             CART_DATA.innerHTML += `
                 <div class="card-body">
                     <h5>${row.nombre_producto}</h5>
-                    <p>${row.precio_producto}</p>
-                    <input>${row.cantidad_producto}</input>
-                    <p>${subtotal.toFixed(2)}</p>
+                    <p>$${row.precio}</p>
+                    <input type="number" class="form-control" min="1" value="${row.cantidad_producto}">
+                    <p>$${subtotal.toFixed(2)}</p>
+                </div>
+                <div class="row" id="buttons-cart">
+                    <div class="col-12 btnn">
+                        <div class="d-flex justify-content-center">
+                            <!-- Botón con estilo de contorno, para actualizar el pedido del carrito-->
+                            <button onclick="openUpdateDetalle(${row.id_detalle}, ${row.cantidad_producto})" type="button" class="btn btn-outline-primary me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Actualizar Carrito">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                            <!-- Botón con estilo de contorno, para eliminar el pedido del carrito-->
+                            <button onclick="openDelete(${row.id_detalle})" type="button" class="btn btn-outline-secondary me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar Carrito">
+                                <i class="bi bi-cart-x-fill"></i>
+                            </button>
+                            <!-- Botón con estilo de contorno, para pagar el pedido-->
+                            <button onclick="finishOrder()" type="button" class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Pagar">
+                                <i class="bi bi-cash"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             `;
-            // Actualizar el contenido del elemento offcanvasContent en el DOM
-            document.getElementById('content-cart').innerHTML = offcanvasContent;
+            
         });
         // Se muestra el total a pagar con dos decimales.
         document.getElementById('pago').textContent = total.toFixed(2);
     } else {
         sweetAlert(4, JSON.exception, false, 'verprenda.html');
+    }
+}
+
+/*
+*   Función para abrir la caja de diálogo con el formulario de cambiar cantidad de producto.
+*   Parámetros: id (identificador del producto) y quantity (cantidad actual del producto).
+*   Retorno: ninguno.
+*/
+function openUpdateDetail(id, quantity) {
+    // Se inicializan los campos del formulario con los datos del registro seleccionado.
+    document.getElementById('id_detalle').value = id;
+    document.getElementById('cantidad').value = quantity;
+}
+
+/*
+*   Función asíncrona para mostrar un mensaje de confirmación al momento de eliminar un producto del carrito.
+*   Parámetros: id (identificador del producto).
+*   Retorno: ninguno.
+*/
+async function openDeleteDetail(id) {
+    // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
+    const RESPONSE = await confirmAction('¿Está seguro de remover el producto?');
+    // Se verifica la respuesta del mensaje.
+    if (RESPONSE) {
+        FORM.append('id_detalle', id);
+        // Petición para eliminar un producto del carrito de compras.
+        const JSON = await dataFetch(PEDIDO_API, 'deleteDetail', FORM);
+        // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+        if (JSON.status) {
+            // Se carga nuevamente la tabla para visualizar los cambios.
+            readOrderDetail();
+            sweetAlert(1, JSON.message, true);
+        } else {
+            sweetAlert(2, JSON.exception, false);
+        }
+    }
+}
+
+async function finishOrder() {
+    // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
+    const RESPONSE = await confirmAction('¿Está seguro de finalizar el pedido?');
+    // Se verifica la respuesta del mensaje.
+    if (RESPONSE) {
+        // Petición para finalizar el pedido en proceso.
+        const JSON = await dataFetch(PEDIDO_API, 'finishOrder');
+        // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+        if (JSON.status) {
+            sweetAlert(1, JSON.message, true, 'todosproductos.html');
+        } else {
+            sweetAlert(2, JSON.exception, false);
+        }
     }
 }
