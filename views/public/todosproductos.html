@@ -14,20 +14,41 @@
     <header></header>
     <main>
         <!-- Todos los productos que la tienda posee con sus respectivos filtros -->
+        <!-- Un elemento principal para el contenido principal de la página -->
+
         <div class="container">
+            <!-- Un contenedor para agrupar el contenido -->
+
             <div class="row">
+                <!-- Una fila para el formulario de búsqueda -->
+
                 <form class="d-flex" method="post" id="search-form">
+                    <!-- Un formulario con identificador "search-form" y método "post" -->
+
                     <input id="search" type="text" name="search" class="form-control rounded" placeholder="Search"
                         aria-label="Search" aria-describedby="search-addon" />
+                    <!-- Campo de entrada de texto para la búsqueda -->
+
                     <button id="search-btn" type="submit">
+                        <!-- Botón para enviar el formulario de búsqueda -->
+
                         <i class="bi bi-search"></i>
+                        <!-- Icono de búsqueda -->
                     </button>
                 </form>
             </div>
+
             <div class="row justify-content-start">
+                <!-- Una fila para la lista de productos -->
+
                 <div class="container">
+                    <!-- Otro contenedor para agrupar el contenido -->
+
                     <h4 class="align-items-center text-light" id="title">Productos</h4>
+                    <!-- Título de la sección de productos -->
+
                     <div class="row row-cols-1 row-cols-md-4 g-4" name="productos" id="productos"></div>
+                    <!-- Una fila con columnas para mostrar los productos. Los productos se insertarán aquí dinámicamente -->
                 </div>
             </div>
         </div>

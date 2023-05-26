@@ -10,29 +10,52 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-        <link rel="stylesheet" href="../../resources/css/admin.css">
 </head>
 
 <body>
     <!-- comienza navbar -->
     <header></header>
     <main>
+        <!-- La etiqueta <main> indica el contenido principal de la página -->
+
         <div class="row" id="div-table">
+            <!-- Una fila que contiene un div con identificador "div-table" -->
+
             <div class="col-12">
+                <!-- La columna ocupa 12 columnas de ancho en todos los tamaños de pantalla -->
+
                 <div class="row">
+                    <!-- Otra fila dentro de la columna -->
+
                     <!-- Se crea una tabla para mostrar los datos de los usuarios administradores -->
                     <table class="table table-striped table-bordered table-hover">
+                        <!-- Una tabla con varias clases CSS para dar estilo a la tabla -->
+
                         <thead>
+                            <!-- El encabezado de la tabla -->
+
                             <tr id="records"></tr>
-                            <!-- Se agregan los encabezados de la tabla -->
+                            <!-- Una fila con identificador "records" que contendrá los encabezados de la tabla -->
+
                             <th scope="col" style="width: 30px;"># Pedido</th>
+                            <!-- Una columna para el número de pedido con un ancho de 30px -->
+
                             <th scope="col" style="width: 50px;">Cliente</th>
+                            <!-- Una columna para el nombre del cliente con un ancho de 50px -->
+
                             <th scope="col" style="width: 50px;">Estado</th>
+                            <!-- Una columna para el estado del pedido con un ancho de 50px -->
+
                             <th scope="col" style="width: 50px;">Fecha pedido</th>
+                            <!-- Una columna para la fecha del pedido con un ancho de 50px -->
+
                             <th scope="col" style="width: 170px;">Dirección</th>
+                            <!-- Una columna para la dirección con un ancho de 170px -->
                         </thead>
+
                         <!-- Se controlan los datos de los usuarios admin a la tabla-->
                         <tbody id="tbody-rows"></tbody>
+                        <!-- El cuerpo de la tabla donde se agregarán las filas de datos -->
                     </table>
                 </div>
             </div>

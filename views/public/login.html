@@ -13,49 +13,53 @@
 
 <body>
     <header></header>
-    <section>
-        <div class="row">
-            <div class="row align-items-|center">
-                <div class="col-lg-12">
-                    <!-- Crea un formulario para el inicio de sesión con un identificador "login-form" y una clase "formulario" -->
-                    <form method="post" id="login-public" class="formulario">
-                        <!-- Crea un encabezado de nivel 1 para el título de inicio de sesión -->
-                        <h1>Inicio de sesión</h1>
-                        <!-- Crea un campo de entrada de texto para el nombre de usuario -->
-                        <input type="text" name="user" placeholder="Usuario" id="user">
-                        <!-- Crea un grupo de entrada de contraseña con un botón que muestra/oculta la contraseña y un identificador "pass"-->
-                        <div class="input-group">
-                            <input type="password" name="pass" id="pass" class="form-control" placeholder="Contraseña">
-                            <button class="btn btn-secondary" type="button" id="show-password" data-toggle="tooltip" data-bs-placement="bottom">
-                                <!-- Crea un icono de ojo relleno de Bootstrap para el botón -->
-                                <i class="bi bi-eye-fill"></i>
-                            </button>
-                        </div>
-                        <!-- Crea una casilla de verificación para recordar el inicio de sesión con una clase "check-Recuerda" -->
-                        <input class="check-Recuerda" type="checkbox" value="">
-                        <!-- Crea una etiqueta para la casilla de verificación de recordar sesión -->
-                        <label class="palabra">&nbsp Recuerdame</label>
-                        <!-- Crea un enlace para restablecer la contraseña -->
-                        <a class="palabra" href="#">Olvide mi contraseña</a>
-                        <!-- Crea un botón de envío para el formulario con la clase "btn-login" -->
-                        <button class="btn-login" type="submit">Entrar</button>
-                    </form>
+    <main>
+        <section>
+            <div class="row">
+                <div class="row align-items-|center">
+                    <div class="col-lg-12">
+                        <!-- Crea un formulario para el inicio de sesión con un identificador "login-form" y una clase "formulario" -->
+                        <form method="post" id="login-public" class="formulario">
+                            <!-- Crea un encabezado de nivel 1 para el título de inicio de sesión -->
+                            <h1>Inicio de sesión</h1>
+                            <!-- Crea un campo de entrada de texto para el nombre de usuario -->
+                            <input type="text" name="user" placeholder="Usuario" id="user">
+                            <!-- Crea un grupo de entrada de contraseña con un botón que muestra/oculta la contraseña y un identificador "pass"-->
+                            <div class="input-group">
+                                <input type="password" name="pass" id="pass" class="form-control"
+                                    placeholder="Contraseña">
+                                <button class="btn btn-secondary" type="button" id="show-password" data-toggle="tooltip"
+                                    data-bs-placement="bottom">
+                                    <!-- Crea un icono de ojo relleno de Bootstrap para el botón -->
+                                    <i class="bi bi-eye-fill"></i>
+                                </button>
+                            </div>
+                            <!-- Crea una casilla de verificación para recordar el inicio de sesión con una clase "check-Recuerda" -->
+                            <input class="check-Recuerda" type="checkbox" value="">
+                            <!-- Crea una etiqueta para la casilla de verificación de recordar sesión -->
+                            <label class="palabra">&nbsp Recuerdame</label>
+                            <!-- Crea un enlace para restablecer la contraseña -->
+                            <a class="palabra" href="#">Olvide mi contraseña</a>
+                            <!-- Crea un botón de envío para el formulario con la clase "btn-login" -->
+                            <button class="btn-login" type="submit">Entrar</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="imagen">
-                    <!-- Inserta otra imagen con un identificador "imgI" y un atributo "alt" para accesibilidad -->
-                    <img id="imgI" src="../../resources/img/Imagenes/banner.png" alt="banner">
+            <div class="row">
+                <div class="col-12">
+                    <div class="imagen">
+                        <!-- Inserta otra imagen con un identificador "imgI" y un atributo "alt" para accesibilidad -->
+                        <img id="imgI" src="../../resources/img/Imagenes/banner.png" alt="banner">
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
     <footer></footer>
 
 
-    <!-- Importación de archivos JavaScript -->    
+    <!-- Importación de archivos JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
         crossorigin="anonymous"></script>
