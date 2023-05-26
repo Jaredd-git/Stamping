@@ -236,9 +236,13 @@ document.addEventListener('DOMContentLoaded', async () => {
                     </div>
                 </div>
                 <div class="row" id="content-cart">
+                <input class="d-none" type="number" id="id_detalle" name="id_detalle">
                     <div class="col-12 text-center">
                         <p style="font-size: 18px;">Debe iniciar sesión para ver su carrito.</p> <!-- Se establece el tamaño de fuente en 18px -->
                     </div>
+                </div>
+                <div class="row" id="buttons-cart">
+                    
                 </div>
             </div>                         
             <div class="row">
