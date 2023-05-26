@@ -42,16 +42,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <div class="collapse sticky-top" id="navbarToggleExternalContent">
                     <div class="bg-ligth p-4 contenido-navbar opacity-75">
                         <ul class="nav flex-row">
-                            <div class="flex-column">
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="../../views/public/ofertas.html">Productos
-                                        en
-                                        oferta</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="../../views/public/nuevosproductos.html">Nuevos diseños</a>
-                                </li>
-                            </div>
                             <div class="v-line"></div>
                             <li class="nav-item">
                                 <a class="nav-link" href="../../views/public/todosproductos.html">Todos los productos</a>
