@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end text-center py-3" aria-labelledby="dropdownMenuButton">
                                     <li><a class="dropdown-item" type="button" class="btn btn-primary" onClick="logOut()">Cerrar sesión</a></li>
+                                    <li><a class="dropdown-item" type="button" class="btn btn-primary" href="../view/public/pedidos.html">Ver mis pedidos</a></li>
                                 </ul>
                             </div>
                             <button class="btn btn-transparent" type="button" id="shopcart">
@@ -42,16 +43,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <div class="collapse sticky-top" id="navbarToggleExternalContent">
                     <div class="bg-ligth p-4 contenido-navbar opacity-75">
                         <ul class="nav flex-row">
-                            <div class="flex-column">
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="../../views/public/ofertas.html">Productos
-                                        en
-                                        oferta</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="../../views/public/nuevosproductos.html">Nuevos diseños</a>
-                                </li>
-                            </div>
                             <div class="v-line"></div>
                             <li class="nav-item">
                                 <a class="nav-link" href="../../views/public/todosproductos.html">Todos los productos</a>
@@ -254,7 +245,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" id="content-cart">
                     <div class="col-12 text-center">
                         <p style="font-size: 18px;">Debe iniciar sesión para ver su carrito.</p> <!-- Se establece el tamaño de fuente en 18px -->
                     </div>
