@@ -254,7 +254,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" id="content-cart">
                     <div class="col-12 text-center">
                         <p style="font-size: 18px;">Debe iniciar sesión para ver su carrito.</p> <!-- Se establece el tamaño de fuente en 18px -->
                     </div>
