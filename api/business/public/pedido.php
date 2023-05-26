@@ -118,7 +118,7 @@ if (isset($_GET['action'])) {
                 break;
             //Acción utiliada para leer los pedidos del cliente
             case 'readAll':
-                if ($result['dataset'] = $pedido->readAll()) {
+                if ($result['dataset'] = $pedido->readAllPedido()) {
                         $result['status'] = 1;
                         $result['message'] = 'Existen '.count($result['dataset']).' registros';
                     // Si ocurre una excepción en la base de datos, se captura
