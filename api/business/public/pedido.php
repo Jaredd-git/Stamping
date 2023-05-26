@@ -51,11 +51,11 @@ if (isset($_GET['action'])) {
                 break;
             case 'updateDetail':
                 $_POST = Validator::validateForm($_POST);
-                if (!$pedido->setIdDetalle($_POST['id_detalle'])) {
+                if (!$detalle->setIdDetalle($_POST['id_detalle'])) {
                     $result['exception'] = 'Detalle incorrecto';
-                } elseif (!$pedido->setCantidad($_POST['cantidad'])) {
+                } elseif (!$detalle->setCantidad($_POST['cantidad'])) {
                     $result['exception'] = 'Cantidad incorrecta';
-                } elseif ($pedido->updateDetail()) {
+                } elseif ($detalle->updateDetail()) {
                     $result['status'] = 1;
                     $result['message'] = 'Cantidad modificada correctamente';
                 } else {
@@ -63,9 +63,9 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'deleteDetail':
-                if (!$pedido->setIdDetalle($_POST['id_detalle'])) {
+                if (!$detalle->setIdDetalle($_POST['id_detalle'])) {
                     $result['exception'] = 'Detalle incorrecto';
-                } elseif ($pedido->deleteDetail()) {
+                } elseif ($detalle->deleteDetail()) {
                     $result['status'] = 1;
                     $result['message'] = 'Producto removido correctamente';
                 } else {
