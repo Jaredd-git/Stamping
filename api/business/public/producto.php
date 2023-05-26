@@ -38,6 +38,25 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Producto inexistente';
                 }
                 break;
+            case 'search':
+                // Se valida el formulario de búsqueda y se comprueba si el usuario ha ingresado un valor de búsqueda
+                $_POST = Validator::validateForm($_POST);
+                if ($_POST['search'] == '') {
+                    $result['status'] = 1;
+                    $result['dataset'] = $producto->readAllPreview();
+                    $result['exception'] = 'Ingrese un valor para buscar';
+                    // Si se encuentran coincidencias en la base de datos, se informa al usuario y se muestran en la respuesta
+                } elseif ($result['dataset'] = $producto->searchRows($_POST['search'])) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
+                    // Si ocurre una excepción en la base de datos, se captura 
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                    // Si no hay coincidencias, se informa al usuario
+                } else {
+                    $result['exception'] = 'No hay coincidencias';
+                }
+                break;
             default:
             // Si no se encuentra ninguna acción disponible dentro de la sesión, se muestra un mensaje de error
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
