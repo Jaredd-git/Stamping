@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <div class="card-body">
                             <h5 class="card-title">${row.nombre_producto}</h5>
                             <p class="card-text">${row.descripcion_producto}</p>
-                            <p class="card-text">${row.precio_producto}</p>
+                            <p class="card-text">$ ${row.precio_producto}</p>
                         </div>
                     </div>
                 </div>
