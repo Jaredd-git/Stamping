@@ -80,6 +80,18 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Ocurrió un problema al finalizar el pedido';
                 }
                 break;
+                case 'readAll':
+                    if ($result['dataset'] = $->readAll()) {
+                        $result['status'] = 1;
+                        $result['message'] = 'Existen '.count($result['dataset']).' registros';
+                        // Si ocurre una excepción en la base de datos, se captura
+                    } elseif (Database::getException()) {
+                        $result['exception'] = Database::getException();
+                        // Si no hay datos registrados, se informa al usuario
+                    } else {
+                        $result['exception'] = 'No hay datos registrados';
+                    }
+                    break;
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }
