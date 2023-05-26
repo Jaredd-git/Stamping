@@ -14,18 +14,24 @@ if (isset($_GET['action'])) {
         $result['session'] = 1;
         // Se compara la acción a realizar cuando un cliente ha iniciado sesión.
         switch ($_GET['action']) {
+            //Acción utilizada para tomar el usuario
             case 'getUser':
+                // Se verifica si existe una sesión de usuario activa.
                 if (isset($_SESSION['user_cliente'])) {
                     $result['status'] = 1;
                     $result['username'] = $_SESSION['user_cliente'];
+                // Se muestra una excepción indicando que el nombre de usuario no está definido.
                 } else {
                     $result['exception'] = 'Nombre de usuario indefinido';
                 }
                 break;
+            //Acción utilizada para cerrar sesión del usuario
             case 'logOut':
+                 // Se cierra la sesión del usuario.
                 if (session_destroy()) {
                     $result['status'] = 1;
                     $result['message'] = 'Sesión cerrada correctamente';
+                // Se muestra una excepción indicando que ocurrió un problema al cerrar la sesión.
                 } else {
                     $result['exception'] = 'Ocurrió un problema al cerrar la sesión';
                 }
@@ -36,6 +42,7 @@ if (isset($_GET['action'])) {
     } else {
         // Se compara la acción a realizar cuando el cliente no ha iniciado sesión.
         switch ($_GET['action']) {
+            //Acción utilizada para registrar un cliente
             case 'signup':
                 // $_POST = Validator::validateForm($_POST);
                 // $secretKey = '6LdBzLQUAAAAAL6oP4xpgMao-SmEkmRCpoLBLri-';
@@ -56,6 +63,7 @@ if (isset($_GET['action'])) {
                 // if (!$captcha['success']) {
                 //     $result['recaptcha'] = 1;
                 //     $result['exception'] = 'No eres humano';
+                // Se validan y asignan los valores de los campos del cliente.
                  if (!$cliente->setNombres($_POST['nombres'])) {
                     $result['exception'] = 'Nombres incorrectos';
                 } elseif (!$cliente->setApellidos($_POST['apellidos'])) {
@@ -76,6 +84,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Claves diferentes';
                 } elseif (!$cliente->setClave($_POST['clave'])) {
                     $result['exception'] = Validator::getPasswordError();
+                //Se verifica si se pudo crear el cliente
                 } elseif ($cliente->createRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Cuenta registrada correctamente';
