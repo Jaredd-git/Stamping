@@ -113,7 +113,8 @@ class PedidoQueries
         INNER JOIN estados_pedidos ep ON ep.id_estado_pedido = p.id_estado
         WHERE id_cliente = ?
         ORDER BY id_pedido";
-        return Database::getRows($sql);
+        $params = array($this->id_cliente);
+        return Database::getRows($sql, $params);
     }
 
 
