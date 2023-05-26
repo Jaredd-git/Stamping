@@ -6,7 +6,7 @@ const TALLA_API = 'business/public/talla.php';
 // Constante tipo objeto para obtener los parámetros disponibles en la URL.
 const PARAMS = new URLSearchParams(location.search);
 // Constante para establecer el formulario de agregar un producto al carrito de compras.
-const SHOPPING_FORM = document.getElementById('shopping-form');
+const CART_FORM = document.getElementById('cart-form');
 
 
 // Método manejador de eventos para cuando el documento ha cargado.
@@ -34,22 +34,24 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 // Método manejador de eventos para cuando se envía el formulario de agregar un producto al carrito.
-// SHOPPING_FORM.addEventListener('submit', async (event) => {
-//     // Se evita recargar la página web después de enviar el formulario.
-//     event.preventDefault();
-//     // Constante tipo objeto con los datos del formulario.
-//     const FORM = new FormData(SHOPPING_FORM);
-//     // Petición para guardar los datos del formulario.
-//     const JSON = await dataFetch(PEDIDO_API, 'createDetail', FORM);
-//     // Se comprueba si la respuesta es satisfactoria, de lo contrario se constata si el cliente ha iniciado sesión.
-//     if (JSON.status) {
-//         sweetAlert(1, JSON.message, true, 'cart.html');
-//     } else if (JSON.session) {
-//         sweetAlert(2, JSON.exception, false);
-//     } else {
-//         sweetAlert(3, JSON.exception, true, 'login.html');
-//     }
-// });
+CART_FORM.addEventListener('submit', async (event) => {
+    // Se evita recargar la página web después de enviar el formulario.
+    event.preventDefault();
+    // Constante tipo objeto con los datos del formulario.
+    const FORM = new FormData(CART_FORM);
+    // Petición para guardar los datos del formulario.
+    const JSON = await dataFetch(PEDIDO_API, 'createDetail', FORM);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se constata si el cliente ha iniciado sesión.
+    if (JSON.status) {
+        sweetAlert(1, JSON.message, true);
+        const OFFCANVAS = new bootstrap.Offcanvas(document.getElementById('cart-offcanvas'));
+        OFFCANVAS.toggle();
+    } else if (JSON.session) {
+        sweetAlert(2, JSON.exception, false);
+    } else {
+        sweetAlert(3, JSON.exception, true, 'login.html');
+    }
+});
 
 
 // function shoppingCart(event) {

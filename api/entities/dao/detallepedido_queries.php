@@ -16,7 +16,7 @@ class DetalleQueries
                 INNER JOIN productos USING(id_producto)
                 INNER JOIN tallas USING(id_talla)
                 WHERE id_pedido ILIKE ?';
-                //Guarda en un array los parametros de busqueda
+        //Guarda en un array los parametros de busqueda
         $params = array("%$value%");
         //Devuelve los datos buscados
         return Database::getRows($sql, $params);
@@ -29,8 +29,35 @@ class DetalleQueries
                 INNER JOIN productos USING(id_producto)
                 INNER JOIN tallas USING(id_talla)
                 WHERE id_pedido = ?';
-                $params = array($this->id_pedido);
-                //Devueve todos los valores de la tabla detalle pedidos
+        $params = array($this->id_pedido);
+        //Devueve todos los valores de la tabla detalle pedidos
         return Database::getRows($sql, $params);
+    }
+
+    // Método para agregar un producto al carrito de compras.
+    public function createDetail()
+    {
+        // Consulta para obtener la cantidad disponible del producto en la tabla "productos"
+        $sqlQuantityAvailable = 'SELECT existencias FROM productos WHERE id_producto = ?';
+        $params = array($this->producto);
+        $data = Database::getRow($sqlQuantityAvailable, $params);
+
+        if ($data['existencias'] >= $this->cantidad) {
+            // Verificar si la cantidad disponible es suficiente para realizar la inserción en la tabla "detalles_pedidos; Se realiza una subconsulta para obtener el precio del producto.
+            $sql = 'INSERT INTO detalles_pedidos(id_producto, precio, cantidad_producto, id_pedido, id_talla)
+            VALUES(?, (SELECT precio_producto FROM productos WHERE id_producto = ?), ?, ?, ?)';
+            $params = array($this->producto, $this->producto, $this->cantidad, $this->id_pedido, $this->talla);
+            if (Database::executeRow($sql, $params)) {
+                // Consulta para actualizar la cantidad disponible en la tabla "productos"
+                $sqlActualizarCantidad = 'UPDATE productos SET existencias = existencias - ? WHERE id_producto = ?';
+                $paramsActualizarCantidad = array($this->cantidad, $this->producto);
+                return Database::executeRow($sqlActualizarCantidad, $paramsActualizarCantidad);
+            } else {
+                return false;
+            }
+        } else {
+            // No hay suficientes productos disponibles, se retorna false
+            return false;
+        }
     }
 }

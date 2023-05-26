@@ -41,6 +41,7 @@ SAVE_FORM2.addEventListener('submit', async (event) => {
     // Se asigna el título a la caja de diálogo.
     MODAL_TITLE2.textContent = 'Crear valoracion';
     document.getElementById('id').value = PARAMS.get('id');
+    
 }
 
 async function openUpdate() {
