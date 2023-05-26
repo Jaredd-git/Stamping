@@ -3,7 +3,7 @@ const PEDIDO_API = 'business/public/pedido.php';
 // Constante para establecer el formulario de cambiar producto.
 const ITEM_FORM = document.getElementById('item-form');
 // Constante para establecer el cuerpo de la tabla.
-const TBODY_ROWS = document.getElementById('tbody-rows');
+const CART_DATA = document.getElementById('content-cart');
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -43,7 +43,23 @@ async function readOrderDetail() {
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se inicializa el cuerpo de la tabla.
-        TBODY_ROWS.innerHTML = '';
+        CART_DATA.innerHTML = `
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-12">
+                        <div class="card-body">
+                            <h5 class="card-title" id="nombre_producto">Card title</h5>
+                            <p class="card-text" id="precio_p">PRECIO ($US)</p>
+                            <input type="number" class="form-control" min="1">
+                            <p class="card-text" id="subtotal">SUBTOTAL</p>
+                            <div class="row justify-content-end">
+                                <!--Párrafo con texto alineado a la derecha y un elemento en negrita identificado como "pago"-->
+                                <p class="text-end">TOTAL A PAGAR (US$) <b id="pago"></b></p>
+                            </div>     
+                        </div>
+                    </div>
+                </div>
+            </div>`;
         // Se declara e inicializa una variable para calcular el importe por cada producto.
         let subtotal = 0;
         // Se declara e inicializa una variable para sumar cada subtotal y obtener el monto final a pagar.
@@ -53,27 +69,19 @@ async function readOrderDetail() {
             subtotal = row.precio_producto * row.cantidad_producto;
             total += subtotal;
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
-            TBODY_ROWS.innerHTML += `
-                <tr>
-                    <td>${row.nombre_producto}</td>
-                    <td>${row.precio_producto}</td>
-                    <td>${row.cantidad_producto}</td>
-                    <td>${subtotal.toFixed(2)}</td>
-                    <td>
-                        <a onclick="openUpdate(${row.id_detalle}, ${row.cantidad_producto})" class="btn waves-effect blue tooltipped" data-tooltip="Cambiar">
-                            <i class="material-icons">exposure</i>
-                        </a>
-                        <a onclick="openDelete(${row.id_detalle})" class="btn waves-effect red tooltipped" data-tooltip="Remover">
-                            <i class="material-icons">remove_shopping_cart</i>
-                        </a>
-                    </td>
-                </tr>
+            CART_DATA.innerHTML += `
+                <div class="card-body">
+                    <h5>${row.nombre_producto}</h5>
+                    <p>${row.precio_producto}</p>
+                    <input>${row.cantidad_producto}</input>
+                    <p>${subtotal.toFixed(2)}</p>
+                </div>
             `;
         });
         // Se muestra el total a pagar con dos decimales.
         document.getElementById('pago').textContent = total.toFixed(2);
     } else {
-        sweetAlert(4, JSON.exception, false, 'index.html');
+        sweetAlert(4, JSON.exception, false, 'verprenda.html');
     }
 }
 
