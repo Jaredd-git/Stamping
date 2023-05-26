@@ -83,10 +83,10 @@ async function readOrderDetail() {
             total += subtotal;
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             CART_DATA.innerHTML += `
-                <div class="card-body">
+                <div class="card-body ms-5">
                     <h5>${row.nombre_producto}</h5>
                     <p>$${row.precio}</p>
-                    <input type="number" class="form-control" min="1" value="${row.cantidad_producto}">
+                    <input type="number" class="form-control tamaño-n" min="1" value="${row.cantidad_producto}">
                     <p>$${subtotal.toFixed(2)}</p>
                 </div>
                 <div class="row" id="buttons-cart">
