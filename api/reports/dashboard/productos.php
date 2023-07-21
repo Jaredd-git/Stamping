@@ -1,50 +1,32 @@
 <?php
-// Se incluye la clase con las plantillas para generar reportes.
 require_once('../../helpers/report.php');
-// Se incluyen las clases para la transferencia y acceso a datos.
 require_once('../../entities/dto/producto.php');
+
 // Se instancia la clase para crear el reporte.
 $pdf = new Report;
 // Se inicia el reporte con el encabezado del documento.
-$pdf->startReport('Existencias de productos');
-// Se instancia el módelo Categoría para obtener los datos.
+$pdf->startReport('Productos por existencias');
 $producto = new Producto;
-
-class PDF extends FPDF
-{
-// Cabecera de página
-function Header()
-{
-    // Logo
-    $this->Image('logo.png',10,8,33);
-    // Arial bold 15
-    $this->SetFont('Arial','B',15);
-    // Movernos a la derecha
-    $this->Cell(80);
-    // Título
-    $this->Cell(30,10,'Title',1,0,'C');
-    // Salto de línea
-    $this->Ln(20);
-}
-
-// Pie de página
-function Footer()
-{
-    // Posición: a 1,5 cm del final
-    $this->SetY(-15);
-    // Arial italic 8
-    $this->SetFont('Arial','I',8);
-    // Número de página
-    $this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
-}
-}
-
-// Creación del objeto de la clase heredada
-$pdf = new PDF();
-$pdf->AliasNbPages();
-$pdf->AddPage();
-$pdf->SetFont('Times','',12);
-for($i=1;$i<=40;$i++)
-    $pdf->Cell(0,10,'Imprimiendo línea número '.$i,0,1);
-$pdf->Output();
-?>
+// Se verifica si existen registros para mostrar, de lo contrario se imprime un mensaje.
+if ($dataProductos = $producto->readAll()) {
+    // Se establece un color de relleno para los encabezados.
+    $pdf->SetFillColor(140, 178, 200);
+    $pdf->SetTextColor(255);
+    $pdf->SetFont('Arial','B');
+    // Se imprimen las celdas con los encabezados.
+    $pdf->cell(80, 10, 'Nombre', 1, 0, 'C', 1);
+    $pdf->cell(20, 10, 'Precio', 1, 0, 'C', 1);
+    $pdf->cell(30, 10, 'Estado', 1, 0, 'C', 1);
+    $pdf->cell(30, 10, 'Existencias', 1, 1, 'C', 1);
+    foreach ($dataProductos as $rowProducto) {
+        ($rowProducto['estado_producto']) ? $estado = 'Activo' : $estado = 'Inactivo';
+        // Se imprimen las celdas con los datos de los productos.
+        $pdf->cell(80, 10, $pdf->encodeString($rowProducto['nombre_producto']), 1, 0);
+        $pdf->cell(20, 10, $rowProducto['precio_producto'], 1, 0);
+        $pdf->cell(30, 10, $estado, 1, 0);
+        $pdf->cell(30, 10, $rowProducto['existencias'], 1, 1);}
+    }else {
+        $pdf->cell(0, 10, $pdf->encodeString('Categoría incorrecta o inexistente'), 1, 1);
+    }
+// Se llama implícitamente al método footer() y se envía el documento al navegador web.
+$pdf->output('I', 'productos.pdf');
