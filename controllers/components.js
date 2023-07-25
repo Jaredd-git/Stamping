@@ -127,20 +127,17 @@ function barGraph(canvas, xAxis, yAxis, legend, title) {
     xAxis.forEach(() => {
         colors.push('#' + (Math.random().toString(16)).substring(2, 8));
     });
-    // Se establece el contexto donde se mostrará el gráfico, es decir, se define la etiqueta canvas a utilizar.
-    const context = document.getElementById(canvas).getContext('2d');
+    // Se establece el contexto donde se mostrará el gráfico, es decir, la etiqueta canvas a utilizar.
+    const CONTEXT = document.getElementById(canvas).getContext('2d');
     // Se crea una instancia para generar el gráfico con los datos recibidos. Requiere la librería chart.js para funcionar.
-    const chart = new Chart(context, {
+    const CHART = new Chart(CONTEXT, {
         type: 'bar',
         data: {
             labels: xAxis,
             datasets: [{
                 label: legend,
                 data: yAxis,
-                borderColor: '#000000',
-                borderWidth: 1,
-                backgroundColor: colors,
-                barPercentage: 1
+                backgroundColor: colors
             }]
         },
         options: {
@@ -157,7 +154,6 @@ function barGraph(canvas, xAxis, yAxis, legend, title) {
             scales: {
                 y: {
                     ticks: {
-                        beginAtZero: true,
                         stepSize: 1
                     }
                 }
@@ -178,10 +174,10 @@ function pieGraph(canvas, legends, values, title) {
     values.forEach(() => {
         colors.push('#' + (Math.random().toString(16)).substring(2, 8));
     });
-    // Se establece el contexto donde se mostrará el gráfico, es decir, se define la etiqueta canvas a utilizar.
-    const context = document.getElementById(canvas).getContext('2d');
+    // Se establece el contexto donde se mostrará el gráfico, es decir, la etiqueta canvas a utilizar.
+    const CONTEXT = document.getElementById(canvas).getContext('2d');
     // Se crea una instancia para generar el gráfico con los datos recibidos. Requiere la librería chart.js para funcionar.
-    const chart = new Chart(context, {
+    const CHART = new Chart(CONTEXT, {
         type: 'pie',
         data: {
             labels: legends,
