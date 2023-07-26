@@ -86,4 +86,17 @@ class ValoracionQueries
         //Cambia el estado de la valoracion
         return Database::executeRow($sql, $params);
     }
+
+    /**
+     * Método para generar gráficas
+     */
+    public function promedioValoracionProducto()
+    {
+        $sql = 'SELECT p.nombre_producto, ROUND(AVG(v.calificacion_producto)) AS promedio_valoracion
+            FROM valoraciones v
+            INNER JOIN productos p ON v.id_producto = p.id_producto
+            GROUP BY p.nombre_producto
+            ORDER BY promedio_valoracion DESC';
+        return Database::getRows($sql);
+    }
 }
