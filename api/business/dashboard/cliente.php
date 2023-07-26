@@ -146,8 +146,19 @@ if (isset($_GET['action'])) {
                         $result['exception'] = Database::getException();
                     }
                     break;
+            //Este caso se encarga de obtener la cantidad de clientes activos e inactivos.
+            case 'clientesActivosInactivos':
+                //Ejecuta la función para obtener clientes activos e inactivos y almacena el resultado en el dataset
+                if ($result['dataset'] = $cliente->clientesActivosInactivos()) {
+                    //Indica que la operación se realizó con éxito y que se encontraron datos.
+                    $result['status'] = 1;
+                //Indica que no se encontraron datos para la consulta o que ocurrió algún problema durante la operación.
+                } else {
+                    $result['exception'] = 'No hay datos disponibles';
+                }
+                break;
             default:
-             // Si no se encuentra ninguna acción disponible dentro de la sesión, se muestra un mensaje de error
+                // Si no se encuentra ninguna acción disponible dentro de la sesión, se muestra un mensaje de error
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }
         // Se indica el tipo de contenido a mostrar y su respectivo conjunto de caracteres.
