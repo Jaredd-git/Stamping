@@ -98,4 +98,14 @@ class ProductoQueries
         //Se elimina el registro seleccionado
         return Database::executeRow($sql, $params);
     }
+
+    public function readExistenciasRp()
+    {
+        $sql = 'SELECT id_producto, nombre_producto, precio_producto, estado_producto, existencias
+        FROM productos INNER JOIN
+        ORDER BY nombre_producto';
+        
+        //Muestra todos los datos de la tabla productos
+        return Database::getRows($sql);
+    }
 }

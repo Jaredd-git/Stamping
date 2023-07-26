@@ -1,7 +1,6 @@
 <?php
 // Se incluye la clase para generar archivos PDF.
 require_once('../../libraries/fpdf185/fpdf.php');
-
 /*
 *   Clase para definir las plantillas de los reportes del sitio privado.
 *   Para más información http://www.fpdf.org/
@@ -28,14 +27,16 @@ class Report extends FPDF
         if (isset($_SESSION['id_admin'])) {
             // Se asigna el título del documento a la propiedad de la clase.
             $this->title = $title;
+            $this->setFont('Arial', 'B', 15);
             // Se establece el título del documento (true = utf-8).
-            $this->setTitle('Dashboard - Reporte', true);
+            $this->setTitle('Administracion - Reporte', true);
             // Se establecen los margenes del documento (izquierdo, superior y derecho).
             $this->setMargins(15, 15, 15);
             // Se añade una nueva página al documento con orientación vertical y formato carta, llamando implícitamente al método header()
             $this->addPage('p', 'letter');
             // Se define un alias para el número total de páginas que se muestra en el pie del documento.
             $this->aliasNbPages();
+            $this->setFont('Arial', 'B', 15);
         } else {
             header('location:' . self::CLIENT_URL);
         }
@@ -55,17 +56,19 @@ class Report extends FPDF
     *   Se sobrescribe el método de la librería para establecer la plantilla del encabezado de los reportes.
     *   Se llama automáticamente en el método addPage()
     */
+
     public function header()
     {
         // Se establece el logo.
+ 
         $this->image('../../images/logo.png', 20, 20, 20);
         // Se ubica el título.
         $this->cell(20);
-        $this->setFont('Arial', 'B', 15);
+        $this->setFont('Arial', 'B', 20);
         $this->cell(166, 10, $this->encodeString($this->title), 0, 1, 'C');
         // Se ubica la fecha y hora del servidor.
         $this->cell(20);
-        $this->setFont('Arial', '', 10);
+        $this->setFont('Arial', 'B', 15);
         $this->cell(166, 10, 'Fecha/Hora: ' . date('d-m-Y H:i:s'), 0, 1, 'C');
         // Se agrega un salto de línea para mostrar el contenido principal del documento.
         $this->ln(10);
