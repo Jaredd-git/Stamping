@@ -217,6 +217,7 @@ function lineGraph(canvas, legends, values, title) {
         data: {
             labels: legends,
             datasets: [{
+                label: 'Pedidos',
                 data: values,
                 backgroundColor: colors
             }]
@@ -227,7 +228,13 @@ function lineGraph(canvas, legends, values, title) {
                     display: true,
                     text: title
                 }
-            }
+            },
+        scales: {
+          y: {
+            min: 1,
+            max: 15,
+          }
+        }
         }
     });
 }
