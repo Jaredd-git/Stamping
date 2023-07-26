@@ -44,3 +44,14 @@ async function fillTable(form = null) {
         sweetAlert(4, JSON.exception, true);
     }
 }
+/*
+*   Función para abrir el reporte de productos por categoría.
+*   Parámetros: ninguno.
+*   Retorno: ninguno.
+*/
+function openReport() {
+    // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+    const PATH = new URL(`${SERVER_URL}reports/public/pedidos.php`);
+    // Se abre el reporte en una nueva pestaña del navegador web.
+    window.open(PATH.href);
+}
