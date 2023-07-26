@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     graficoBarrasEstado();
     graficoPastelPedidosEstado();
     graficoBarraPedidosMes();
+    graficoDonaExistenciasProducto();
 });
 
 /*
@@ -81,9 +82,36 @@ async function graficoBarraPedidosMes() {
             cantidad.push(row.cantidad_pedidos);
         });
         // Llamada a la función que genera y muestra un gráfico de pastel. Se encuentra en el archivo components.js
-        barGraph('chart2', mes, cantidad, 'Pedidos por mes');
+        lineGraph('chart2', mes, cantidad, 'Pedidos por mes');
     } else {
         document.getElementById('chart2').remove();
+        console.log(DATA.exception);
+    }
+}
+
+/*
+*   Función asíncrona para mostrar en un gráfico de dona las existencias de cada producto.
+*   Parámetros: ninguno.
+*   Retorno: ninguno.
+*/
+async function graficoDonaExistenciasProducto() {
+    // Petición para obtener los datos del gráfico.
+    const DATA = await dataFetch(PRODUCTO_API, 'existenciasProductos');
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
+    if (DATA.status) {
+        // Se declaran los arreglos para guardar los datos a graficar.
+        let producto = [];
+        let existencias = [];
+        // Se recorre el conjunto de registros fila por fila a través del objeto row.
+        DATA.dataset.forEach(row => {
+            // Se agregan los datos a los arreglos.
+            producto.push(row.nombre_producto);
+            existencias.push(row.existencias);
+        });
+        // Llamada a la función que genera y muestra un gráfico de barras. Se encuentra en el archivo components.js
+        doughnutGraph('chart3', producto, existencias, 'Existencias de producto', 'Existencias de cada producto');
+    } else {
+        document.getElementById('chart3').remove();
         console.log(DATA.exception);
     }
 }
