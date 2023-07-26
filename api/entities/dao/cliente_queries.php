@@ -157,6 +157,6 @@ class ClienteQueries
         END AS estado_cliente
         FROM clientes
         GROUP BY estado_cliente ORDER BY cantidad DESC";
-        return Database::getRows($sql)
+        return Database::getRows($sql);
     }
 }
