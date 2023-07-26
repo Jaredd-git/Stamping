@@ -43,7 +43,7 @@ async function graficoBarrasEstado() {
             cantidades.push(row.cantidad);
         });
         // Llamada a la función que genera y muestra un gráfico de barras. Se encuentra en el archivo components.js
-        barGraph('chart5', estados, cantidades, 'Cantidad de productos', 'Clientes por estado');
+        barGraph('chart5', estados, cantidades, 'Cantidad de clientes', 'Clientes por estado');
     } else {
         document.getElementById('chart5').remove();
         console.log(DATA.exception);
