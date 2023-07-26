@@ -72,3 +72,8 @@ footer{
     bottom: 0;
     width: 100%;
 }
+
+.custom-accordion-body{
+    /* Cambia el valor según lo necesario */
+    height: 200px; 
+}
