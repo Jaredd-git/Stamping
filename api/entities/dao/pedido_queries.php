@@ -169,7 +169,7 @@ class PedidoQueries
                     EXTRACT(MONTH FROM fecha_pedido) AS mes,
                     COUNT(*) AS cantidad_pedidos
                 FROM pedidos
-                WHERE fecha_pedido >= NOW() - INTERVAL '2 months'
+                WHERE fecha_pedido >= NOW() - INTERVAL '3 months'
                 GROUP BY mes
                 ORDER BY mes ASC;";
         return Database::getRows($sql);
