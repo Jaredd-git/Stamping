@@ -142,4 +142,21 @@ class ClienteQueries
         //Cambia el estado del cliente
         return Database::executeRow($sql, $params);
     }
+
+    /*
+    * Métodos para generar gráficas 
+    */
+
+    public function clientesActivosInactivos()
+    {
+        $sql = "SELECT COUNT(id_cliente) AS cantidad,
+        CASE
+            WHEN estado_cliente = true THEN 'Activo'
+            WHEN estado_cliente = false THEN 'Inactivo'
+            ELSE 'Desconocido'
+        END AS estado_cliente
+        FROM clientes
+        GROUP BY estado_cliente ORDER BY cantidad DESC";
+        return Database::getRows($sql)
+    }
 }
