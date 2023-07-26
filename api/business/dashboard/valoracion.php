@@ -98,6 +98,17 @@ if (isset($_GET['action'])) {
                         $result['exception'] = Database::getException();
                     }
                 break;
+             //Este caso se encarga de obtener el promedio de valoraciones por productos.
+             case 'promedioValoracionProducto':
+                //Ejecuta la función para obtener las valoraciones de los productos y almacena el resultado en el dataset
+                if ($result['dataset'] = $valoracion->promedioValoracionProducto()) {
+                    //Indica que la operación se realizó con éxito y que se encontraron datos.
+                    $result['status'] = 1;
+                //Indica que no se encontraron datos para la consulta o que ocurrió algún problema durante la operación.
+                } else {
+                    $result['exception'] = 'No hay datos disponibles';
+                }
+                break;
             default:
             // Si no se encuentra ninguna acción disponible dentro de la sesión, se muestra un mensaje de error
                  $result['exception'] = 'Acción no disponible dentro de la sesión';
