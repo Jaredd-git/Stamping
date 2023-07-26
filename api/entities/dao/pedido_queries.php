@@ -150,4 +150,29 @@ class PedidoQueries
         $params = array("%$value%");
         return Database::getRows($sql, $params);
     }
+
+    /*
+    *   Métodos para generar gráficas.
+    */
+    public function cantidadPedidosEstado()
+    {
+        $sql = 'SELECT b.estado, COUNT(a.id_estado) AS cantidad_pedidos
+                FROM pedidos a
+                JOIN estados_pedidos b ON a.id_estado = b.id_estado_pedido
+                GROUP BY b.estado;';
+        return Database::getRows($sql);
+    }
+
+    public function cantidadPedidosMes()
+    {
+        $sql = "SELECT
+                    EXTRACT(MONTH FROM fecha_pedido) AS mes,
+                    COUNT(*) AS cantidad_pedidos
+                FROM pedidos
+                WHERE fecha_pedido >= NOW() - INTERVAL '2 months'
+                GROUP BY mes
+                ORDER BY mes ASC;";
+        return Database::getRows($sql);
+    }
+
 }

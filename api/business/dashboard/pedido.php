@@ -144,6 +144,21 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+            //Para graficos
+            case 'cantidadPedidosEstado':
+                if ($result['dataset'] = $pedido->cantidadPedidosEstado()) {
+                    $result['status'] = 1;
+                } else {
+                    $result['exception'] = 'No hay datos disponibles';
+                }
+                break;
+            case 'cantidadPedidosMes':
+                if ($result['dataset'] = $pedido->cantidadPedidosMes()) {
+                    $result['status'] = 1;
+                } else {
+                    $result['exception'] = 'No hay datos disponibles';
+                }
+                break;
             default:
                 // Si no se encuentra ninguna acción disponible dentro de la sesión, se muestra un mensaje de error
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
