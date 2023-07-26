@@ -108,4 +108,17 @@ class ProductoQueries
         //Muestra todos los datos de la tabla productos
         return Database::getRows($sql);
     }
+
+    /**
+     * Métodos para generar gráficas
+     */
+
+    public function existenciasProductos()
+    {
+        $sql = 'SELECT nombre_producto, SUM(existencias) AS existencias
+            FROM productos
+            GROUP BY nombre_producto, existencias
+            ORDER BY existencias DESC';
+        return Database::getRows($sql);
+    }
 }
