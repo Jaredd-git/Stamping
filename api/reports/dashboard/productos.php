@@ -18,7 +18,7 @@ if ($dataProductos = $producto->readAll()) {
     // Se establece la fuente para los encabezados.
     $pdf->setFont('Arial', 'B', 12);
     // Se imprimen las celdas con los encabezados.
-    $pdf->cell(80, 10, 'Nombre', 1, 0, 'C', 1);
+    $pdf->cell(40, 10, 'Nombre', 1, 0, 'C', 1);
     $pdf->cell(30, 10, 'Precio', 1, 0, 'C', 1);
     $pdf->cell(30, 10, 'Estado', 1, 0, 'C', 1);
     $pdf->cell(30, 10, 'Existencias', 1, 1, 'C', 1);
@@ -31,7 +31,7 @@ if ($dataProductos = $producto->readAll()) {
     foreach ($dataProductos as $rowProducto) {
         ($rowProducto['estado_producto']) ? $estado = 'Activo' : $estado = 'Inactivo';
         // Se imprimen las celdas con los datos de los productos.
-        $pdf->cell(80, 10, $pdf->encodeString($rowProducto['nombre_producto']), 1, 0);
+        $pdf->cell(40, 10, $pdf->encodeString($rowProducto['nombre_producto']), 1, 0);
         $pdf->cell(30, 10, $rowProducto['precio_producto'], 1, 0);
         $pdf->cell(30, 10, $estado, 1, 0);
         $pdf->cell(30, 10, $rowProducto['existencias'], 1, 1);}

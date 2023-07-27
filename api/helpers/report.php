@@ -30,16 +30,16 @@ class Report extends FPDF
         if (isset($_SESSION['id_admin'])) {
             // Se asigna el título del documento a la propiedad de la clase.
             $this->title = $title;
-            $this->setFont('Arial', 'B', 12);
+            $this->setFont('Helvetica', 'B', 12);
             // Se establece el título del documento (true = utf-8).
             $this->setTitle('Administracion - Reporte', true);
             // Se establecen los margenes del documento (izquierdo, superior y derecho).
-            $this->setMargins(20, 60, 15);
+            $this->setMargins(50, 60, 50);
             // Se añade una nueva página al documento con orientación vertical y formato carta, llamando implícitamente al método header()
             $this->addPage('p', 'letter');
             // Se define un alias para el número total de páginas que se muestra en el pie del documento.
             $this->aliasNbPages();
-            $this->setFont('Arial', 'B', 12);
+            $this->setFont('Helvetica', 'B', 12);
         } else {
             header('location:' . self::CLIENT_URL);
         }
