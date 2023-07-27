@@ -16,7 +16,7 @@ if ($dataUsuario = $usuario->readAll()) {
 
     $pdf->setFillColor(43, 110, 181);
     // Se establece la fuente para los encabezados.
-    $pdf->setFont('Arial', 'B', 12);
+    $pdf->setFont('Helvetica', 'B', 12);
     // Se imprimen las celdas con los encabezados.
     $pdf->cell(40, 10, 'Nombre', 1, 0, 'C', 1);
     $pdf->cell(40, 10, 'Apellido', 1, 0, 'C', 1);
@@ -24,9 +24,9 @@ if ($dataUsuario = $usuario->readAll()) {
     $pdf->cell(30, 10, 'Alias', 1, 1, 'C', 1);
 
     // Se establece un color de relleno para mostrar el nombre de la categoría.
-    $pdf->setFillColor(188, 190, 204);
+    $pdf->setFillColor(255);
     // Se establece la fuente para los datos de los productos.
-    $pdf->setFont('Arial', 'B', 10);
+    $pdf->setFont('Helvetica', 'B', 10);
 
     foreach ($dataUsuario as $rowUsuario) {
         $pdf->cell(40, 10, $pdf->encodeString($rowUsuario['nombre_usuario']), 1, 0, 'C', 1);
