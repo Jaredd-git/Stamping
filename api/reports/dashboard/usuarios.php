@@ -24,7 +24,7 @@ if ($dataUsuario = $usuario->readAll()) {
     $pdf->cell(30, 10, 'Alias', 1, 1, 'C', 1);
 
     // Se establece un color de relleno para mostrar el nombre de la categoría.
-    $pdf->setFillColor(255);
+    $pdf->setFillColor(220);
     // Se establece la fuente para los datos de los productos.
     $pdf->setFont('Helvetica', 'B', 10);
 

@@ -119,10 +119,8 @@ if (isset($_GET['action'])) {
             //Acción utiliada para leer los pedidos del cliente
             case 'readAll':
                 // Se verifica si no se pudo establecer el ID del detalle.
-                if (!$pedido->setCliente($_SESSION['id_cliente'])) {
-                    $result['exception'] = 'Cliente incorrecto';
-                }
-                elseif ($result['dataset'] = $pedido->readAllPedido()) {
+                
+                if ($result['dataset'] = $pedido->readAllPedido()) {
                         $result['status'] = 1;
                         $result['message'] = 'Existen '.count($result['dataset']).' registros';
                     // Si ocurre una excepción en la base de datos, se captura
