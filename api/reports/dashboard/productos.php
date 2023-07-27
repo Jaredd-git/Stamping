@@ -7,14 +7,14 @@ require_once('../../entities/dto/producto.php');
 // Se instancia la clase para crear el reporte.
 $pdf = new Report;
 // Se inicia el reporte con el encabezado del documento.
-$pdf->startReport('Existencias');
+$pdf->startReport('Existencias de productos');
 // Se instancia el módelo Categoría para obtener los datos.
 $producto = new Producto;
 // Se verifica si existen registros para mostrar, de lo contrario se imprime un mensaje.
 if ($dataProductos = $producto->readAll()) {
     // Se establece un color de relleno para los encabezados.
 
-    $pdf->setFillColor(175);
+    $pdf->setFillColor(43, 110, 181);
     // Se establece la fuente para los encabezados.
     $pdf->setFont('Arial', 'B', 12);
     // Se imprimen las celdas con los encabezados.

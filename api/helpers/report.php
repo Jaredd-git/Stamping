@@ -1,6 +1,9 @@
 <?php
 // Se incluye la clase para generar archivos PDF.
 require_once('../../libraries/fpdf185/fpdf.php');
+require_once('../../entities/dto/usuario.php');
+
+$usuario = new Usuario;
 /*
 *   Clase para definir las plantillas de los reportes del sitio privado.
 *   Para más información http://www.fpdf.org/
@@ -31,7 +34,7 @@ class Report extends FPDF
             // Se establece el título del documento (true = utf-8).
             $this->setTitle('Administracion - Reporte', true);
             // Se establecen los margenes del documento (izquierdo, superior y derecho).
-            $this->setMargins(20, 50, 15);
+            $this->setMargins(20, 60, 15);
             // Se añade una nueva página al documento con orientación vertical y formato carta, llamando implícitamente al método header()
             $this->addPage('p', 'letter');
             // Se define un alias para el número total de páginas que se muestra en el pie del documento.
@@ -71,9 +74,9 @@ class Report extends FPDF
         // Se ubica el título.
         $this->cell(20);
         $this->setFont('Helvetica', '', 20);
-        $this->cell(125, 20, $this->encodeString($this->title), 0, 1, 'C');
+        $this->cell(130, 20, $this->encodeString($this->title), 0, 1, 'C');
         // Se agrega un salto de línea para mostrar el contenido principal del documento.
-        $this->ln(10);
+        $this->ln(2);
     }
 
     /*
@@ -85,10 +88,10 @@ class Report extends FPDF
         // Se establece la posición para el número de página (a 15 milímetros del final).
         $this->setY(-15);
         // Se establece la fuente para el número de página.
-        $this->setFont('Arial', 'I', 8);
+        $this->setFont('Helvetica', 'I', 10);
         // Se imprime una celda con el número de página.
         $this->cell(0, 10, $this->encodeString('Página ') . $this->pageNo() . '/{nb}', 0, 0, 'C');
-        $this->setFont('Helvetica', '', 12);
-        $this->cell(170, 200, 'Fecha/Hora: ' . date('d-m-Y H:i:s'), 0, 1, 'C');
+        $this->cell(-30, 10, 'Fecha/Hora: ' . date('d-m-Y H:i:s'), 0, 1, 'C');
+        $this->cell(-110, -10, 'Reporte generado por: Ferxxo69');
     }
 }
