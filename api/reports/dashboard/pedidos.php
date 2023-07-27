@@ -7,20 +7,20 @@ require_once('../../entities/dto/pedido.php');
 // Se instancia la clase para crear el reporte.
 $pdf = new Report;
 // Se inicia el reporte con el encabezado del documento.
-$pdf->startReport('Pedidos');
+$pdf->startReport('Pedidos entregados');
 // Se instancia el módelo Categoría para obtener los datos.
 $pedido = new Pedido;
 
 if ($dataPedidos = $pedido->readAllPedidosE()) {
     // Se establece un color de relleno para los encabezados.
 
-    $pdf->setFillColor(43, 110, 181);
+    $pdf->setFillColor(147, 203, 230);
     // Se establece la fuente para los encabezados.
     $pdf->setFont('Helvetica', 'B', 12);
     // Se imprimen las celdas con los encabezados.
-    $pdf->cell(40, 10, 'Cliente', 1, 0, 'C', 1);
+    $pdf->cell(43, 10, 'Cliente', 1, 0, 'C', 1);
     $pdf->cell(30, 10, 'Fecha', 1, 0, 'C', 1);
-    $pdf->cell(45, 10, 'Direccion', 1, 0, 'C', 1);
+    $pdf->cell(83, 10, 'Direccion', 1, 0, 'C', 1);
     $pdf->cell(30, 10, 'Estado', 1, 1, 'C', 1);
 
     // Se establece un color de relleno para mostrar el nombre de la categoría.
@@ -30,9 +30,9 @@ if ($dataPedidos = $pedido->readAllPedidosE()) {
 
     foreach ($dataPedidos as $rowPedido) {
         // Se imprimen las celdas con los datos de los productos.
-        $pdf->cell(40, 10, $pdf->encodeString($rowPedido['cliente']), 1, 0, 'C', 1);
+        $pdf->cell(43, 10, $pdf->encodeString($rowPedido['cliente']), 1, 0, 'C', 1);
         $pdf->cell(30, 10, $pdf->encodeString($rowPedido['fecha_pedido']), 1, 0, 'C', 1);
-        $pdf->cell(45, 10, $pdf->encodeString($rowPedido['direccion_pedido']), 1, 0, 'C', 1);
+        $pdf->cell(83, 10, $pdf->encodeString($rowPedido['direccion_pedido']), 1, 0, 'C', 1);
         $pdf->cell(30, 10, ($rowPedido['estado']), 1, 1, 'C', 1);}
     } else {
         $pdf->cell(0, 10, $pdf->encodeString('Pedido incorrecta o inexistente'), 1, 1);
@@ -41,13 +41,13 @@ if ($dataPedidos = $pedido->readAllPedidosE()) {
 if ($dataPedidos = $pedido->readAllPedidosC()) {
     // Se establece un color de relleno para los encabezados.
 
-    $pdf->setFillColor(43, 110, 181);
+    $pdf->setFillColor(147, 203, 230);
     // Se establece la fuente para los encabezados.
     $pdf->setFont('Helvetica', 'B', 12);
     // Se imprimen las celdas con los encabezados.
-    $pdf->cell(40, 10, 'Cliente', 1, 0, 'C', 1);
+    $pdf->cell(43, 10, 'Cliente', 1, 0, 'C', 1);
     $pdf->cell(30, 10, 'Fecha', 1, 0, 'C', 1);
-    $pdf->cell(45, 10, 'Direccion', 1, 0, 'C', 1);
+    $pdf->cell(83, 10, 'Direccion', 1, 0, 'C', 1);
     $pdf->cell(30, 10, 'Estado', 1, 1, 'C', 1);
 
     // Se establece un color de relleno para mostrar el nombre de la categoría.
@@ -57,9 +57,9 @@ if ($dataPedidos = $pedido->readAllPedidosC()) {
 
     foreach ($dataPedidos as $rowPedido) {
         // Se imprimen las celdas con los datos de los productos.
-        $pdf->cell(40, 10, $pdf->encodeString($rowPedido['cliente']), 1, 0, 'C', 1);
+        $pdf->cell(43, 10, $pdf->encodeString($rowPedido['cliente']), 1, 0, 'C', 1);
         $pdf->cell(30, 10, $pdf->encodeString($rowPedido['fecha_pedido']), 1, 0, 'C', 1);
-        $pdf->cell(45, 10, $pdf->encodeString($rowPedido['direccion_pedido']), 1, 0, 'C', 1);
+        $pdf->cell(83, 10, $pdf->encodeString($rowPedido['direccion_pedido']), 1, 0, 'C', 1);
         $pdf->cell(30, 10, ($rowPedido['estado']), 1, 1, 'C', 1);}
     } else {
         $pdf->cell(0, 10, $pdf->encodeString('Pedido incorrecta o inexistente'), 1, 1);
@@ -69,13 +69,13 @@ if ($dataPedidos = $pedido->readAllPedidosC()) {
 if ($dataPedidos = $pedido->readAllPedidosP()) {
     // Se establece un color de relleno para los encabezados.
 
-    $pdf->setFillColor(43, 110, 181);
+    $pdf->setFillColor(147, 203, 230);
     // Se establece la fuente para los encabezados.
     $pdf->setFont('Helvetica', 'B', 12);
     // Se imprimen las celdas con los encabezados.
-    $pdf->cell(40, 10, 'Cliente', 1, 0, 'C', 1);
+    $pdf->cell(43, 10, 'Cliente', 1, 0, 'C', 1);
     $pdf->cell(30, 10, 'Fecha', 1, 0, 'C', 1);
-    $pdf->cell(45, 10, 'Direccion', 1, 0, 'C', 1);
+    $pdf->cell(83, 10, 'Direccion', 1, 0, 'C', 1);
     $pdf->cell(30, 10, 'Estado', 1, 1, 'C', 1);
 
     // Se establece un color de relleno para mostrar el nombre de la categoría.
@@ -85,9 +85,9 @@ if ($dataPedidos = $pedido->readAllPedidosP()) {
 
     foreach ($dataPedidos as $rowPedido) {
         // Se imprimen las celdas con los datos de los productos.
-        $pdf->cell(40, 10, $pdf->encodeString($rowPedido['cliente']), 1, 0, 'C', 1);
+        $pdf->cell(43, 10, $pdf->encodeString($rowPedido['cliente']), 1, 0, 'C', 1);
         $pdf->cell(30, 10, $pdf->encodeString($rowPedido['fecha_pedido']), 1, 0, 'C', 1);
-        $pdf->cell(45, 10, $pdf->encodeString($rowPedido['direccion_pedido']), 1, 0, 'C', 1);
+        $pdf->cell(83, 10, $pdf->encodeString($rowPedido['direccion_pedido']), 1, 0, 'C', 1);
         $pdf->cell(30, 10, ($rowPedido['estado']), 1, 1, 'C', 1);}
     } else {
         $pdf->cell(0, 10, $pdf->encodeString('Pedido incorrecta o inexistente'), 1, 1);
