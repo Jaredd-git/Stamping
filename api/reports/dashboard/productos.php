@@ -14,7 +14,7 @@ $producto = new Producto;
 if ($dataProductos = $producto->readAll()) {
     // Se establece un color de relleno para los encabezados.
 
-    $pdf->setFillColor(43, 110, 181);
+    $pdf->setFillColor(147, 203, 230);
     // Se establece la fuente para los encabezados.
     $pdf->setFont('Helvetica', 'B', 12);
     // Se imprimen las celdas con los encabezados.
