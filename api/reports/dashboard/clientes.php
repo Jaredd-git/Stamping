@@ -28,7 +28,7 @@ if ($dataClientes = $cliente->readAll()) {
         ($rowClientes['estado_cliente']) ? $estado = 'Activo' : $estado = 'Inactivo';
         // Se imprimen las celdas con los datos de los productos.
         $pdf->cell(40, 10, $pdf->encodeString($rowClientes['nombre_cliente']), 1, 0);
-        $pdf->cell(30, 10, $rowClientes['apellido_cliente'], 1, 0);
+        $pdf->cell(30, 10, $pdf->encodeString($rowClientes['apellido_cliente']), 1, 0);
         $pdf->cell(30, 10, $estado, 1, 1);}
     } else {
         $pdf->cell(0, 10, $pdf->encodeString('Producto incorrecta o inexistente'), 1, 1);
