@@ -26,7 +26,7 @@ if ($dataPedidos = $pedido->readAllPedidosE()) {
     // Se establece un color de relleno para mostrar el nombre de la categoría.
     $pdf->setFillColor(255);
     // Se establece la fuente para los datos de los productos.
-    $pdf->setFont('Helvetica', 'B', 10);
+    $pdf->setFont('Helvetica', '', 10);
 
     foreach ($dataPedidos as $rowPedido) {
         // Se imprimen las celdas con los datos de los productos.
@@ -53,7 +53,7 @@ if ($dataPedidos = $pedido->readAllPedidosC()) {
     // Se establece un color de relleno para mostrar el nombre de la categoría.
     $pdf->setFillColor(255);
     // Se establece la fuente para los datos de los productos.
-    $pdf->setFont('Helvetica', 'B', 10);
+    $pdf->setFont('Helvetica', '', 10);
 
     foreach ($dataPedidos as $rowPedido) {
         // Se imprimen las celdas con los datos de los productos.
@@ -81,7 +81,7 @@ if ($dataPedidos = $pedido->readAllPedidosP()) {
     // Se establece un color de relleno para mostrar el nombre de la categoría.
     $pdf->setFillColor(255);
     // Se establece la fuente para los datos de los productos.
-    $pdf->setFont('Helvetica', 'B', 10);
+    $pdf->setFont('Helvetica', '', 10);
 
     foreach ($dataPedidos as $rowPedido) {
         // Se imprimen las celdas con los datos de los productos.

@@ -25,7 +25,7 @@ if ($dataClientes = $cliente->readAll()) {
     // Se establece un color de relleno para mostrar el nombre de la categoría.
     $pdf->setFillColor(255);
     // Se establece la fuente para los datos de los productos.
-    $pdf->setFont('Helvetica', 'B', 10);
+    $pdf->setFont('Helvetica', '', 10);
 
     foreach ($dataClientes as $rowClientes) {
         ($rowClientes['estado_cliente']) ? $estado = 'Activo' : $estado = 'Inactivo';

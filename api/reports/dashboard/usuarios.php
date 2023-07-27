@@ -24,9 +24,9 @@ if ($dataUsuario = $usuario->readAll()) {
     $pdf->cell(30, 10, 'Alias', 1, 1, 'C', 1);
 
     // Se establece un color de relleno para mostrar el nombre de la categoría.
-    $pdf->setFillColor(220);
+    $pdf->setFillColor(255);
     // Se establece la fuente para los datos de los productos.
-    $pdf->setFont('Helvetica', 'B', 10);
+    $pdf->setFont('Helvetica', '', 8);
 
     foreach ($dataUsuario as $rowUsuario) {
         $pdf->cell(53, 10, $pdf->encodeString($rowUsuario['nombre_usuario']), 1, 0, 'C', 1);

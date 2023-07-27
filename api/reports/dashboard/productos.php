@@ -26,7 +26,7 @@ if ($dataProductos = $producto->readAll()) {
     // Se establece un color de relleno para mostrar el nombre de la categoría.
     $pdf->setFillColor(255);
     // Se establece la fuente para los datos de los productos.
-    $pdf->setFont('Helvetica', 'B', 10);
+    $pdf->setFont('Helvetica', '', 10);
 
     foreach ($dataProductos as $rowProducto) {
         ($rowProducto['estado_producto']) ? $estado = 'Activo' : $estado = 'Inactivo';
