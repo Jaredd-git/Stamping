@@ -184,4 +184,15 @@ class PedidoQueries
         WHERE id_pedido = 3";
         return Database::getRows($sql);
     }
+
+    public function readAllPedidosC()
+    {
+        $sql = "SELECT id_pedido, CONCAT(nombre_cliente,' ', apellido_cliente) cliente, id_estado, estado, fecha_pedido, direccion_pedido
+        FROM pedidos p
+        INNER JOIN clientes USING(id_cliente)
+        INNER JOIN estados_pedidos ep ON ep.id_estado_pedido = p.id_estado
+        WHERE id_pedido = 2";
+        return Database::getRows($sql);
+    }
 }
+
