@@ -7,7 +7,7 @@ require_once('../../entities/dto/pedido.php');
 // Se instancia la clase para crear el reporte.
 $pdf = new Report;
 // Se inicia el reporte con el encabezado del documento.
-$pdf->startReport('Pedidos entregados');
+$pdf->startReport('Pedidos');
 // Se instancia el módelo Categoría para obtener los datos.
 $pedido = new Pedido;
 
