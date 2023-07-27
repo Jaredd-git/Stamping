@@ -14,12 +14,12 @@ $usuario = new Usuario;
 if ($dataUsuario = $usuario->readAll()) {
     // Se establece un color de relleno para los encabezados.
 
-    $pdf->setFillColor(43, 110, 181);
+    $pdf->setFillColor(147, 203, 230);
     // Se establece la fuente para los encabezados.
     $pdf->setFont('Helvetica', 'B', 12);
     // Se imprimen las celdas con los encabezados.
-    $pdf->cell(40, 10, 'Nombre', 1, 0, 'C', 1);
-    $pdf->cell(40, 10, 'Apellido', 1, 0, 'C', 1);
+    $pdf->cell(53, 10, 'Nombre', 1, 0, 'C', 1);
+    $pdf->cell(53, 10, 'Apellido', 1, 0, 'C', 1);
     $pdf->cell(50, 10, 'Correo electronico', 1, 0, 'C', 1);
     $pdf->cell(30, 10, 'Alias', 1, 1, 'C', 1);
 
@@ -29,8 +29,8 @@ if ($dataUsuario = $usuario->readAll()) {
     $pdf->setFont('Helvetica', 'B', 10);
 
     foreach ($dataUsuario as $rowUsuario) {
-        $pdf->cell(40, 10, $pdf->encodeString($rowUsuario['nombre_usuario']), 1, 0, 'C', 1);
-        $pdf->cell(40, 10, $pdf->encodeString($rowUsuario['apellido_usuario']), 1, 0, 'C', 1);
+        $pdf->cell(53, 10, $pdf->encodeString($rowUsuario['nombre_usuario']), 1, 0, 'C', 1);
+        $pdf->cell(53, 10, $pdf->encodeString($rowUsuario['apellido_usuario']), 1, 0, 'C', 1);
         $pdf->cell(50, 10, $pdf->encodeString($rowUsuario['correo_usuario']), 1, 0, 'C', 1);
         $pdf->cell(30, 10, $pdf->encodeString($rowUsuario['alias_usuario']), 1, 1, 'C', 1);}
     } else {
