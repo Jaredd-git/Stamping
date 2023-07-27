@@ -27,16 +27,16 @@ class Report extends FPDF
         if (isset($_SESSION['id_admin'])) {
             // Se asigna el título del documento a la propiedad de la clase.
             $this->title = $title;
-            $this->setFont('Arial', 'B', 15);
+            $this->setFont('Arial', 'B', 12);
             // Se establece el título del documento (true = utf-8).
             $this->setTitle('Administracion - Reporte', true);
             // Se establecen los margenes del documento (izquierdo, superior y derecho).
-            $this->setMargins(15, 15, 15);
+            $this->setMargins(20, 50, 15);
             // Se añade una nueva página al documento con orientación vertical y formato carta, llamando implícitamente al método header()
             $this->addPage('p', 'letter');
             // Se define un alias para el número total de páginas que se muestra en el pie del documento.
             $this->aliasNbPages();
-            $this->setFont('Arial', 'B', 15);
+            $this->setFont('Arial', 'B', 12);
         } else {
             header('location:' . self::CLIENT_URL);
         }
@@ -60,16 +60,18 @@ class Report extends FPDF
     public function header()
     {
         // Se establece el logo.
- 
-        $this->image('../../images/logo.png', 20, 20, 20);
+        $this->image('../../images/imagen1.png', 0, -20, 216);
+        $this->image('../../images/logo.png', 5, 5, 60);
+        $this->setFont('Helvetica', '', 10);
+        $this->Text(155, 25, 'Stamping S.A de C.V');
+        $this->Text(155, 30, 'El Salvador, San Salvador');
+        $this->Text(155, 35, 'Tel. +503 5698 - 2323');
+        $this->Text(155, 40, 'Stamping_outlet@gmail.com');
+        $this->Text(155, 45, 'http://www.Stamping.com');
         // Se ubica el título.
         $this->cell(20);
-        $this->setFont('Arial', 'B', 20);
-        $this->cell(166, 10, $this->encodeString($this->title), 0, 1, 'C');
-        // Se ubica la fecha y hora del servidor.
-        $this->cell(20);
-        $this->setFont('Arial', 'B', 15);
-        $this->cell(166, 10, 'Fecha/Hora: ' . date('d-m-Y H:i:s'), 0, 1, 'C');
+        $this->setFont('Helvetica', '', 20);
+        $this->cell(125, 20, $this->encodeString($this->title), 0, 1, 'C');
         // Se agrega un salto de línea para mostrar el contenido principal del documento.
         $this->ln(10);
     }
@@ -86,5 +88,7 @@ class Report extends FPDF
         $this->setFont('Arial', 'I', 8);
         // Se imprime una celda con el número de página.
         $this->cell(0, 10, $this->encodeString('Página ') . $this->pageNo() . '/{nb}', 0, 0, 'C');
+        $this->setFont('Helvetica', '', 12);
+        $this->cell(170, 200, 'Fecha/Hora: ' . date('d-m-Y H:i:s'), 0, 1, 'C');
     }
 }

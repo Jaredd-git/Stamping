@@ -13,9 +13,10 @@ $producto = new Producto;
 // Se verifica si existen registros para mostrar, de lo contrario se imprime un mensaje.
 if ($dataProductos = $producto->readAll()) {
     // Se establece un color de relleno para los encabezados.
+
     $pdf->setFillColor(175);
     // Se establece la fuente para los encabezados.
-    $pdf->setFont('Arial', 'B', 14);
+    $pdf->setFont('Arial', 'B', 12);
     // Se imprimen las celdas con los encabezados.
     $pdf->cell(80, 10, 'Nombre', 1, 0, 'C', 1);
     $pdf->cell(30, 10, 'Precio', 1, 0, 'C', 1);
@@ -25,7 +26,7 @@ if ($dataProductos = $producto->readAll()) {
     // Se establece un color de relleno para mostrar el nombre de la categoría.
     $pdf->setFillColor(225);
     // Se establece la fuente para los datos de los productos.
-    $pdf->setFont('Arial', 'B', 12);
+    $pdf->setFont('Arial', 'B', 10);
 
     foreach ($dataProductos as $rowProducto) {
         ($rowProducto['estado_producto']) ? $estado = 'Activo' : $estado = 'Inactivo';
