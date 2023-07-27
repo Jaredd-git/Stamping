@@ -72,9 +72,8 @@ class Report extends FPDF
         $this->Text(155, 40, 'Stamping_outlet@gmail.com');
         $this->Text(155, 45, 'http://www.Stamping.com');
         // Se ubica el título.
-        $this->cell(20);
         $this->setFont('Helvetica', '', 20);
-        $this->cell(130, 20, $this->encodeString($this->title), 0, 1, 'C');
+        $this->cell(0, 20, $this->encodeString($this->title), 0, 1, 'C');
         // Se agrega un salto de línea para mostrar el contenido principal del documento.
         $this->ln(2);
     }
