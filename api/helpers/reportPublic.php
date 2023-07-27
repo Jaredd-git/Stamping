@@ -1,6 +1,9 @@
 <?php
 // Se incluye la clase para generar archivos PDF.
 require_once('../../libraries/fpdf185/fpdf.php');
+require_once('../../entities/dto/usuario.php');
+
+$usuario = new Usuario;
 /*
 *   Clase para definir las plantillas de los reportes del sitio privado.
 *   Para más información http://www.fpdf.org/
@@ -8,7 +11,7 @@ require_once('../../libraries/fpdf185/fpdf.php');
 class Report extends FPDF
 {
     // Constante para definir la ruta de las vistas del sitio privado.
-    const CLIENT_URL = 'http://localhost/Stamping/views/public/';
+    const CLIENT_URL = 'http://localhost/Stamping/views/dashboard/';
     // Propiedad para guardar el título del reporte.
     private $title = null;
 
@@ -24,19 +27,19 @@ class Report extends FPDF
         // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en los reportes.
         session_start();
         // Se verifica si un administrador ha iniciado sesión para generar el documento, de lo contrario se direcciona a la página web principal.
-        if (isset($_SESSION['id_usuario'])) {
+        if (isset($_SESSION['id_cliente'])) {
             // Se asigna el título del documento a la propiedad de la clase.
             $this->title = $title;
-            $this->setFont('Helvetica', 'B', 15);
+            $this->setFont('Helvetica', 'B', 12);
             // Se establece el título del documento (true = utf-8).
-            $this->setTitle('Registro de pedidos' $pdf);
+            $this->setTitle('Administracion - Reporte', true);
             // Se establecen los margenes del documento (izquierdo, superior y derecho).
-            $this->setMargins(15, 15, 15);
+            $this->setMargins(20, 60, 20);
             // Se añade una nueva página al documento con orientación vertical y formato carta, llamando implícitamente al método header()
             $this->addPage('p', 'letter');
             // Se define un alias para el número total de páginas que se muestra en el pie del documento.
             $this->aliasNbPages();
-            $this->setFont('Arial', 'B', 15);
+            $this->setFont('Helvetica', 'B', 12);
         } else {
             header('location:' . self::CLIENT_URL);
         }
@@ -60,18 +63,20 @@ class Report extends FPDF
     public function header()
     {
         // Se establece el logo.
- 
-        $this->image('../../images/logo.png', 20, 20, 20);
+        $this->image('../../images/imagen1.png', 0, -20, 216);
+        $this->image('../../images/logo.png', 5, 5, 60);
+        $this->setFont('Helvetica', '', 10);
+        $this->Text(155, 25, 'Stamping S.A de C.V');
+        $this->Text(155, 30, 'El Salvador, San Salvador');
+        $this->Text(155, 35, 'Tel. +503 5698 - 2323');
+        $this->Text(155, 40, 'Stamping_outlet@gmail.com');
+        $this->Text(155, 45, 'http://www.Stamping.com');
         // Se ubica el título.
         $this->cell(20);
-        $this->setFont('Arial', 'B', 20);
-        $this->cell(166, 10, $this->encodeString($this->title), 0, 1, 'C');
-        // Se ubica la fecha y hora del servidor.
-        $this->cell(20);
-        $this->setFont('Arial', 'B', 15);
-        $this->cell(166, 10, 'Fecha/Hora: ' . date('d-m-Y H:i:s'), 0, 1, 'C');
+        $this->setFont('Helvetica', '', 20);
+        $this->cell(130, 20, $this->encodeString($this->title), 0, 1, 'C');
         // Se agrega un salto de línea para mostrar el contenido principal del documento.
-        $this->ln(10);
+        $this->ln(2);
     }
 
     /*
@@ -83,8 +88,10 @@ class Report extends FPDF
         // Se establece la posición para el número de página (a 15 milímetros del final).
         $this->setY(-15);
         // Se establece la fuente para el número de página.
-        $this->setFont('Arial', 'I', 8);
+        $this->setFont('Helvetica', 'I', 10);
         // Se imprime una celda con el número de página.
         $this->cell(0, 10, $this->encodeString('Página ') . $this->pageNo() . '/{nb}', 0, 0, 'C');
+        $this->cell(-30, 10, 'Fecha/Hora: ' . date('d-m-Y H:i:s'), 0, 1, 'C');
+        $this->cell(-110, -10, 'Reporte generado por: usuario');
     }
 }

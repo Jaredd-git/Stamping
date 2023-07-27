@@ -181,7 +181,7 @@ class PedidoQueries
         FROM pedidos p
         INNER JOIN clientes USING(id_cliente)
         INNER JOIN estados_pedidos ep ON ep.id_estado_pedido = p.id_estado
-        WHERE id_pedido = 3";
+        WHERE id_estado = 3";
         return Database::getRows($sql);
     }
 
@@ -191,7 +191,7 @@ class PedidoQueries
         FROM pedidos p
         INNER JOIN clientes USING(id_cliente)
         INNER JOIN estados_pedidos ep ON ep.id_estado_pedido = p.id_estado
-        WHERE id_pedido = 2";
+        WHERE id_estado = 2";
         return Database::getRows($sql);
     }
 
@@ -201,7 +201,7 @@ class PedidoQueries
         FROM pedidos p
         INNER JOIN clientes USING(id_cliente)
         INNER JOIN estados_pedidos ep ON ep.id_estado_pedido = p.id_estado
-        WHERE id_pedido = 1";
+        WHERE id_estado = 1";
         return Database::getRows($sql);
     }
 }
