@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                                 <ul class="dropdown-menu dropdown-menu-end text-center py-3" aria-labelledby="dropdownMenuButton">
                                     <li><a class="dropdown-item" type="button" class="btn btn-primary" onClick="logOut()">Cerrar sesión</a></li>
                                     <li><a class="dropdown-item" type="button" class="btn btn-primary" href="../../views/public/pedidos.html">Ver mis pedidos</a></li>
+                                    <li><a class="dropdown-item" type="button" class="btn btn-primary" href="../../reports/public/pedidosClientes.php<<<<<<<<">Factura pedidos</a></li>
                                 </ul>
                             </div>
                             <button class="btn btn-transparent" type="button" id="shopcart">
