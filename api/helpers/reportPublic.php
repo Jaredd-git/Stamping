@@ -3,7 +3,7 @@
 require_once('../../libraries/fpdf185/fpdf.php');
 require_once('../../entities/dto/cliente.php');
 
-$usuario = new Usuario;
+$cliente = new Cliente;
 /*
 *   Clase para definir las plantillas de los reportes del sitio privado.
 *   Para más información http://www.fpdf.org/
