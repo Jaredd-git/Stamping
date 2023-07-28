@@ -27,7 +27,7 @@ if ($dataPedido = $pedido->readAllP()) {
     $pdf->setFillColor(255);
     // Se establece la fuente para los datos de los productos.
     $pdf->setFont('Helvetica', '', 10);
-
+    // Se cargan los datos a la tabla anteriormente creada
     foreach ($dataPedido as $rowPedido) {
         // Se imprimen las celdas con los datos de los productos.
         $pdf->cell(20, 10, $pdf->encodeString($rowPedido['id_pedido']), 1, 0, 'C', 1);

@@ -174,7 +174,7 @@ class PedidoQueries
                 ORDER BY mes ASC;";
         return Database::getRows($sql);
     }
-
+    //consulta para cargar todos los pedidos con el estado de pendiente
     public function readAllPedidosP()
     {
         $sql = "SELECT id_pedido, CONCAT(nombre_cliente,' ', apellido_cliente) cliente, id_estado, estado, fecha_pedido, direccion_pedido
@@ -184,7 +184,7 @@ class PedidoQueries
         WHERE id_estado = 3";
         return Database::getRows($sql);
     }
-
+    //consulta para cargar todos los pedidos con el estado de cancelado
     public function readAllPedidosC()
     {
         $sql = "SELECT id_pedido, CONCAT(nombre_cliente,' ', apellido_cliente) cliente, id_estado, estado, fecha_pedido, direccion_pedido
@@ -194,7 +194,7 @@ class PedidoQueries
         WHERE id_estado = 2";
         return Database::getRows($sql);
     }
-
+//consulta para cargar todos los pedidos con el estado de entregado
     public function readAllPedidosE()
     {
         $sql = "SELECT id_pedido, CONCAT(nombre_cliente,' ', apellido_cliente) cliente, id_estado, estado, fecha_pedido, direccion_pedido
@@ -204,7 +204,7 @@ class PedidoQueries
         WHERE id_estado = 1";
         return Database::getRows($sql);
     }
-
+    
     public function readAllP()
     {
         $sql = "SELECT id_pedido, CONCAT(nombre_cliente,' ', apellido_cliente) cliente, id_estado, estado, fecha_pedido, direccion_pedido

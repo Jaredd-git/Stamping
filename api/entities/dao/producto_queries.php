@@ -112,7 +112,7 @@ class ProductoQueries
     /**
      * Métodos para generar gráficas
      */
-
+    //consulta para cargar todas las existencias de los productos en el sistema
     public function existenciasProductos()
     {
         $sql = 'SELECT nombre_producto, SUM(existencias) AS existencias
