@@ -11,7 +11,7 @@ $pdf->startReport('Mis pedidos');
 // Se instancia el módelo Categoría para obtener los datos.
 $pedido = new Pedido;
 // Se verifica si existen registros para mostrar, de lo contrario se imprime un mensaje.
-if ($dataPedido = $pedido->readAllPedido()) {
+if ($dataPedido = $pedido->readAllP()) {
     // Se establece un color de relleno para los encabezados.
     $pdf->setFillColor(147, 203, 230);
     // Se establece la fuente para los encabezados.
@@ -31,7 +31,7 @@ if ($dataPedido = $pedido->readAllPedido()) {
     foreach ($dataPedido as $rowPedido) {
         // Se imprimen las celdas con los datos de los productos.
         $pdf->cell(20, 10, $pdf->encodeString($rowPedido['id_pedido']), 1, 0, 'C', 1);
-        $pdf->cell(60, 10, $rowPedido['cliente'], 1, 0, 'C', 1);
+        $pdf->cell(60, 10, $pdf->encodeString($rowPedido['cliente']), 1, 0, 'C', 1);
         $pdf->cell(20, 10, $rowPedido['estado'], 1, 0, 'C', 1);
         $pdf->cell(40, 10, $rowPedido['fecha_pedido'], 1, 0, 'C', 1);
         $pdf->cell(46, 10, $rowPedido['direccion_pedido'], 1, 1, 'C', 1);
