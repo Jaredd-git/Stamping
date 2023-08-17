@@ -171,7 +171,7 @@ class PedidoQueries
                 FROM pedidos
                 WHERE fecha_pedido >= NOW() - INTERVAL '3 months'
                 GROUP BY mes
-                ORDER BY mes ASC;";
+                ORDER BY mes ASC LIMIT 3;";
         return Database::getRows($sql);
     }
     //consulta para cargar todos los pedidos con el estado de pendiente
